@@ -4,6 +4,7 @@ Process the results of box_test.py and make some plots.
 """
 import glob
 import numpy as np
+
 import matplotlib
 from matplotlib import rc
 import matplotlib.pyplot as plt
@@ -19,13 +20,12 @@ plt.rc('font',**{'family':'sans-serif','sans-serif':['Helvetica']})
 plt.ion()
 
 data = {}
-
 for i in 1000*(2**np.arange(10)):
-    files = glob.glob('counts/'+str(i)+'_*.dat')
+    files = glob.glob('../data/counts/'+str(i)+'_*.dat')
     if files:
         data[i] = []
         for f in files:
-            temp = np.loadtxt(f,skiprows=1,dtype=np.float128)
+            temp = np.loadtxt(f,skiprows=1,dtype=np.float64)
             data[i].append(temp[:,2])
         data[i] = np.array(data[i])
 
@@ -36,8 +36,11 @@ sigma0 = []
 sigma1 = []
 sigma2 = []
 sigma3 = []
+sigmax = []
 for x in xx:
-    sigma[x] = data[x].std(axis=0)/data[x].mean(axis=0)
+    mean = data[x].mean(axis=0)
+    std = data[x].std(axis=0)
+    sigma[x] = std/mean
     sigma0.append(sigma[x][0])
     sigma1.append(sigma[x][1])
     sigma2.append(sigma[x][2])
@@ -49,7 +52,7 @@ plt.loglog(xx,sigma0,'-^',lw=1.5,label='1st bin')
 plt.loglog(xx,sigma1,'-v',lw=1.5,label='2nd bin')
 plt.loglog(xx,sigma2,'-*',lw=1.5,label='3rd bin')
 plt.loglog(xx,sigma3,'-s',lw=1.5,label='4th bin')
-plt.loglog(xx,1/np.sqrt(xx/1e3)*0.025,lw=4)
+plt.loglog(xx,1/np.sqrt(xx/1e3)*0.025,lw=4,label=r'$\sqrt{N_R}$')
 plt.legend()
 plt.xlim(9e2,3e5)
 plt.ylim(1e-3,2e-1)
