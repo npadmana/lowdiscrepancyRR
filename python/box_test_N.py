@@ -43,8 +43,6 @@ def write_1d(bins,counts,outfilename):
 #...
 
 def do_one(comm,rank,bins,Nr,outname):
-    points = np.random.random((Nr,3))
-    points2 = points.copy()
     if rank == 0:
         print '--------- Processing:',outname
     counts = do_counting(comm,rank,bins,points,points2)
@@ -64,9 +62,13 @@ def main(argv=None):
                       help='Number of random points (%default)')
     parser.add_option('-b','--bins',dest='binfile',default='distancebins_small_log2.dat',
                       help='file containing the bins to compute pairs in (%default)')
+    parser.add_option('-s','--seed',dest='seed',default='1',type=int,
+                      help='random number seed for numpy (%default).')
     (opts,args) = parser.parse_args(argv)
 
     bins = np.loadtxt(opts.binfile)
+
+    np.random.seed(opts.seed)
 
     comm = MPI.COMM_WORLD
     rank = comm.Get_rank()

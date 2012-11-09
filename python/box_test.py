@@ -13,15 +13,15 @@ script = """#!/bin/bash
 #PBS -l nodes=NODES:ppn=8
 #PBS -l walltime=48:0:00
 #PBS -l mem=RAMgb
-#PBS -o temp/NN_nn.out
+#PBS -o ../temp/NN_nn.out
 #PBS -j oe
 
 cd astronomy/fastRR/
 
-mpirun -np NCPU python box_test_N.py -b distancebins_small_log2.dat --Nr NN -n nn
+mpirun -np NCPU python box_test_N.py -s SEED -b distancebins_small_log2.dat --Nr NN -n nn
 """
-bashfilename = 'temp/NN_nn.sh'
-datafilename = 'temp/randoms_NN_nn.txt'
+bashfilename = '../temp/NN_nn.sh'
+datafilename = '../temp/randoms_NN_nn.txt'
 
 def do_one(Nr,n):
     """Generate a random file with Nr points, labeled n, and compute RR on it."""
@@ -35,6 +35,7 @@ def do_one(Nr,n):
     bashname = bashfilename.replace('NN',str(Nr)).replace('nn',str(n))
     bash = script.replace('NODES',str(NODES)).replace('RAM',str(RAM)).replace('NCPU',str(NCPU))
     bash = bash.replace('NN',str(Nr)).replace('nn',str(n))
+    bash = bash.replace('SEED',str(Nr))
     outfile = open(bashname,'w')
     outfile.write(bash)
     outfile.close()
