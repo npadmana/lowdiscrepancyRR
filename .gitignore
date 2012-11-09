@@ -1,0 +1,12 @@
+*~
+
+# Eclipse files
+.project
+
+# Python files 
+*.pyc
+
+# TeX files
+*.aux
+*.log
+
