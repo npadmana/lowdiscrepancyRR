@@ -70,7 +70,7 @@ def main(argv=None):
 
     comm = MPI.COMM_WORLD
     rank = comm.Get_rank()
-    outfilename = '../data/NN_nn.dat'
+    outfilename = '../data/counts/NN_nn.dat'
 
     for n in range(opts.n):
         outname = outfilename.replace('NN',str(opts.Nr)).replace('nn',str(n))
