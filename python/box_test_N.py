@@ -43,6 +43,15 @@ def write_1d(bins,counts,outfilename):
 #...
 
 def do_one(comm,rank,bins,Nr,outname):
+    """
+    Generate one random realization, and compute its auto-correlation.
+    """
+    # careful! want to only have one of these floating around...
+    if rank == 0:
+        points = np.random.random((Nr,3))
+        points2 = points.copy()
+    points = comm.bcast(points,root=0)
+    points2 = comm.bcast(points2,root=0)
     if rank == 0:
         print '--------- Processing:',outname
     counts = do_counting(comm,rank,bins,points,points2)
