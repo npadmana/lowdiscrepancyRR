@@ -10,7 +10,10 @@
 %\linenumbers
 
 %Make my life significantly easier
-\newcommand{\bd}{{\bm \delta}}
+\newcommand{\vx}{{\bm x}}
+\newcommand{\vdx}{{\bm dx}}
+\newcommand{\vy}{{\bm y}}
+\newcommand{\bin}{\Theta}
 
 
 \title[Geometric Integrals for Correlation Functions]
@@ -40,13 +43,26 @@ Given its importance, ????? DISCUSS FAST METHODS HERE ETC ETC ETC ???
 
 BRIEF DESCRIPTION OF THIS WORK
 
-This paper is organized as follows : Sec.~\ref{sec:}
+This paper is organized as follows : Sec.~\ref{sec:RR} introduces the $RR$
+integral, and presents the usual method by which it is estimated. We then
+introduce our suggested technique for calculating this integral, constrasting it
+with the usual calculation in a series of three examples that increase in
+complexity and realism. We then summarize the algorithm in Sec.~\ref{sec:alg}.
+We then present an important simplification applicable to surveys with separable
+angular and radial selection functions in Sec.~\ref{sec:sep}.
+We continue by extending our algorithm to the $DR$ integral in
+Sec.~\ref{sec:DR}. Appendix~\ref{sec:review} reviews the basics of Monte Carlo and quasi-Monte
+Carlo integration techniques, and gathers together results used in this work.
 
+A note on the nomenclature used in the paper. Vectors are denoted as ($\vx$),
+with their components specified as $x_{i}$. We also define a bin function
+$\bin(\vx,\vy)$ which is $1$ if the separation between $\vx$ and $\vy$
+corresponds to the bin of interest, and zero otherwise. 
 
 \section{The RR Integral}
 \label{sec:RR}
 
-\subsection{The Landy-Szalay Estimator and the Standard Calculation}
+\subsection{Correlation Function Estimators and their Standard Calculation}
 
 \subsection{Three Examples}
 
@@ -56,11 +72,14 @@ This paper is organized as follows : Sec.~\ref{sec:}
 
 \subsubsection{The DEEP2 Survey Mask}
 
-\section{The Algorithm}
+\subsection{The Algorithm Summarized}
 \label{sec:alg}
 
 \section{Separable Window Functions}
 \label{sec:sep}
+
+\section{The DR Integral}
+\label{sec:DR}
 
 \section{Conclusions}
 \label{sec:conclude}
