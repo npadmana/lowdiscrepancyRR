@@ -11,6 +11,7 @@
 
 %Make my life significantly easier
 \newcommand{\vx}{{\bm x}}
+\newcommand{\vr}{{\bm r}}
 \newcommand{\vdx}{{\bm dx}}
 \newcommand{\vy}{{\bm y}}
 \newcommand{\bin}{\Theta}
@@ -74,6 +75,35 @@ corresponds to the bin of interest, and zero otherwise.
 
 \subsection{The Algorithm Summarized}
 \label{sec:alg}
+
+PSEUDO-CODE HERE?????
+\begin{enumerate}
+  \item Generate a random vector in $[0,1)^{2n}$ .
+  \begin{enumerate}
+    \item Repeat the instructions in this group $N$ times.
+    \item Generate a $2n$ dimensional element in $[0,1)^{2n}$ from a low
+    discrepancy sequence.
+    \item Shift it (mod 1) by the random vector stored above.
+    \item Generate $\vx$ from the first $n$ elements and $\vdx$ from the last
+    $n$.
+    \item Generate $\vy$ from $\vx$ and $\vdx$. The most common rules are
+    summarized below.
+    \item Evaluate $n_1(\vx) n_2(\vy) \bin(\vx, \vy)$ and add to a running sum
+    $\Sigma$.
+  \end{enumerate}
+  \item The estimate for $RR$ is then $\Sigma/N$ multiplied by the appropriate
+  Jacobian factors from the variable transformations. 
+  \item If desired, an error may be estimated by repeating this process and
+  measuring the scatter. 
+\end{enumerate}
+
+COMMON VARIABLE TRANSFORMATIONS
+\begin{itemize}
+  \item $2D$ Cartesian space
+  \item $2D$ Spherical coordinates
+  \item $3D$ Cartesian space
+\end{itemize}
+
 
 \section{Separable Window Functions}
 \label{sec:sep}
