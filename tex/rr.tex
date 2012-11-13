@@ -47,9 +47,10 @@ BRIEF DESCRIPTION OF THIS WORK
 This paper is organized as follows : Sec.~\ref{sec:RR} introduces the $RR$
 integral, and presents the usual method by which it is estimated. We then
 introduce our suggested technique for calculating this integral, constrasting it
-with the usual calculation in a series of three examples that increase in
-complexity and realism. We then summarize the algorithm in Sec.~\ref{sec:alg}.
-We then present an important simplification applicable to surveys with separable
+with the usual calculation in a series of three toy problems. We then summarize
+the algorithm in Sec.~\ref{sec:alg} and present two real world examples from the
+DEEP2 DR4 (CITE???) and SDSS-III DR9 (CITES???) surveys. We then present an
+important simplification applicable to surveys with separable 
 angular and radial selection functions in Sec.~\ref{sec:sep}.
 We continue by extending our algorithm to the $DR$ integral in
 Sec.~\ref{sec:DR}. Appendix~\ref{sec:review} reviews the basics of Monte Carlo and quasi-Monte
@@ -65,15 +66,15 @@ corresponds to the bin of interest, and zero otherwise.
 
 \subsection{Correlation Function Estimators and their Standard Calculation}
 
-\subsection{Three Examples}
+\subsection{Three Toy Problems}
 
 \subsubsection{The Unit Interval}
 
+\subsubsection{A Spherical Cap}
+
 \subsubsection{The Unit 3D Hypercube}
 
-\subsubsection{The DEEP2 Survey Mask}
-
-\subsection{The Algorithm Summarized}
+\section{The Algorithm Summarized}
 \label{sec:alg}
 
 PSEUDO-CODE HERE?????
@@ -104,9 +105,16 @@ COMMON VARIABLE TRANSFORMATIONS
   \item $3D$ Cartesian space
 \end{itemize}
 
+\subsection{The DEEP2 DR4 Survey Mask}
+
+
+\subsection{The SDSS-III DR9 Survey Mask}
+
 
 \section{Separable Window Functions}
 \label{sec:sep}
+
+\subsection{Application to the SDSS-III Survey Mask}
 
 \section{The DR Integral}
 \label{sec:DR}
