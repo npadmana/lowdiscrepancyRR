@@ -4,6 +4,9 @@
  * November 13, 2012
  */
 
+#ifndef ANG2D_H_
+#define ANG2D_H_
+
 #include <vector>
 #include <algorithm>
 #include <cmath>
@@ -143,3 +146,6 @@ vector<double> rreval(dpair RABounds, dpair DecBounds, dpair thetaBin, int nrand
 }
 
 }
+
+
+#endif
