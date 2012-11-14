@@ -1,0 +1,320 @@
+Running with bins from 0.015625 to 0.03125...
+Running with 1000 pseudo-random numbers... 
+and 100 simulations
+Simulations will be saved in rrdump_00_00001000.dat 
+The mean is  0.0001076784 +/-  0.0000000368 with a scatter of  0.0000003675, a fractional error of  0.341336 percent
+Total evaluation time = 0.079887 seconds 
+Running with bins from 0.015625 to 0.03125...
+Running with 4000 pseudo-random numbers... 
+and 100 simulations
+Simulations will be saved in rrdump_00_00004000.dat 
+The mean is  0.0001076874 +/-  0.0000000167 with a scatter of  0.0000001667, a fractional error of  0.154756 percent
+Total evaluation time = 0.18833 seconds 
+Running with bins from 0.015625 to 0.03125...
+Running with 16000 pseudo-random numbers... 
+and 100 simulations
+Simulations will be saved in rrdump_00_00016000.dat 
+The mean is  0.0001076806 +/-  0.0000000068 with a scatter of  0.0000000682, a fractional error of  0.063296 percent
+Total evaluation time = 0.62262 seconds 
+Running with bins from 0.015625 to 0.03125...
+Running with 64000 pseudo-random numbers... 
+and 100 simulations
+Simulations will be saved in rrdump_00_00064000.dat 
+The mean is  0.0001076822 +/-  0.0000000025 with a scatter of  0.0000000248, a fractional error of  0.022995 percent
+Total evaluation time = 2.31525 seconds 
+Running with bins from 0.015625 to 0.03125...
+Running with 256000 pseudo-random numbers... 
+and 100 simulations
+Simulations will be saved in rrdump_00_00256000.dat 
+The mean is  0.0001076849 +/-  0.0000000010 with a scatter of  0.0000000096, a fractional error of  0.008906 percent
+Total evaluation time = 9.05609 seconds 
+Running with bins from 0.015625 to 0.03125...
+Running with 1024000 pseudo-random numbers... 
+and 100 simulations
+Simulations will be saved in rrdump_00_01024000.dat 
+The mean is  0.0001076857 +/-  0.0000000004 with a scatter of  0.0000000044, a fractional error of  0.004076 percent
+Total evaluation time = 36.6742 seconds 
+Running with bins from 0.015625 to 0.03125...
+Running with 4096000 pseudo-random numbers... 
+and 100 simulations
+Simulations will be saved in rrdump_00_04096000.dat 
+The mean is  0.0001076854 +/-  0.0000000002 with a scatter of  0.0000000015, a fractional error of  0.001413 percent
+Total evaluation time = 147.157 seconds 
+Running with bins from 0.015625 to 0.03125...
+Running with 16384000 pseudo-random numbers... 
+and 100 simulations
+Simulations will be saved in rrdump_00_16384000.dat 
+The mean is  0.0001076854 +/-  0.0000000001 with a scatter of  0.0000000008, a fractional error of  0.000713 percent
+Total evaluation time = 577.808 seconds 
+Running with bins from 0.03125 to 0.0625...
+Running with 1000 pseudo-random numbers... 
+and 100 simulations
+Simulations will be saved in rrdump_01_00001000.dat 
+The mean is  0.0008288648 +/-  0.0000003528 with a scatter of  0.0000035281, a fractional error of  0.425658 percent
+Total evaluation time = 0.079636 seconds 
+Running with bins from 0.03125 to 0.0625...
+Running with 4000 pseudo-random numbers... 
+and 100 simulations
+Simulations will be saved in rrdump_01_00004000.dat 
+The mean is  0.0008290795 +/-  0.0000001605 with a scatter of  0.0000016055, a fractional error of  0.193646 percent
+Total evaluation time = 0.188282 seconds 
+Running with bins from 0.03125 to 0.0625...
+Running with 16000 pseudo-random numbers... 
+and 100 simulations
+Simulations will be saved in rrdump_01_00016000.dat 
+The mean is  0.0008288670 +/-  0.0000000642 with a scatter of  0.0000006416, a fractional error of  0.077409 percent
+Total evaluation time = 0.623647 seconds 
+Running with bins from 0.03125 to 0.0625...
+Running with 64000 pseudo-random numbers... 
+and 100 simulations
+Simulations will be saved in rrdump_01_00064000.dat 
+The mean is  0.0008288393 +/-  0.0000000284 with a scatter of  0.0000002836, a fractional error of  0.034218 percent
+Total evaluation time = 2.3199 seconds 
+Running with bins from 0.03125 to 0.0625...
+Running with 256000 pseudo-random numbers... 
+and 100 simulations
+Simulations will be saved in rrdump_01_00256000.dat 
+The mean is  0.0008288782 +/-  0.0000000098 with a scatter of  0.0000000985, a fractional error of  0.011883 percent
+Total evaluation time = 9.14853 seconds 
+Running with bins from 0.03125 to 0.0625...
+Running with 1024000 pseudo-random numbers... 
+and 100 simulations
+Simulations will be saved in rrdump_01_01024000.dat 
+The mean is  0.0008288790 +/-  0.0000000040 with a scatter of  0.0000000400, a fractional error of  0.004830 percent
+Total evaluation time = 37.2505 seconds 
+Running with bins from 0.03125 to 0.0625...
+Running with 4096000 pseudo-random numbers... 
+and 100 simulations
+Simulations will be saved in rrdump_01_04096000.dat 
+The mean is  0.0008288790 +/-  0.0000000018 with a scatter of  0.0000000179, a fractional error of  0.002154 percent
+Total evaluation time = 146.793 seconds 
+Running with bins from 0.03125 to 0.0625...
+Running with 16384000 pseudo-random numbers... 
+and 100 simulations
+Simulations will be saved in rrdump_01_16384000.dat 
+The mean is  0.0008288787 +/-  0.0000000009 with a scatter of  0.0000000088, a fractional error of  0.001066 percent
+Total evaluation time = 585.87 seconds 
+Running with bins from 0.0625 to 0.125...
+Running with 1000 pseudo-random numbers... 
+and 100 simulations
+Simulations will be saved in rrdump_02_00001000.dat 
+The mean is  0.0061219435 +/-  0.0000039414 with a scatter of  0.0000394137, a fractional error of  0.643811 percent
+Total evaluation time = 0.079177 seconds 
+Running with bins from 0.0625 to 0.125...
+Running with 4000 pseudo-random numbers... 
+and 100 simulations
+Simulations will be saved in rrdump_02_00004000.dat 
+The mean is  0.0061253259 +/-  0.0000015705 with a scatter of  0.0000157048, a fractional error of  0.256392 percent
+Total evaluation time = 0.190138 seconds 
+Running with bins from 0.0625 to 0.125...
+Running with 16000 pseudo-random numbers... 
+and 100 simulations
+Simulations will be saved in rrdump_02_00016000.dat 
+The mean is  0.0061248964 +/-  0.0000006162 with a scatter of  0.0000061621, a fractional error of  0.100608 percent
+Total evaluation time = 0.624717 seconds 
+Running with bins from 0.0625 to 0.125...
+Running with 64000 pseudo-random numbers... 
+and 100 simulations
+Simulations will be saved in rrdump_02_00064000.dat 
+The mean is  0.0061265104 +/-  0.0000002525 with a scatter of  0.0000025252, a fractional error of  0.041217 percent
+Total evaluation time = 2.35343 seconds 
+Running with bins from 0.0625 to 0.125...
+Running with 256000 pseudo-random numbers... 
+and 100 simulations
+Simulations will be saved in rrdump_02_00256000.dat 
+The mean is  0.0061267081 +/-  0.0000001082 with a scatter of  0.0000010817, a fractional error of  0.017656 percent
+Total evaluation time = 9.38284 seconds 
+Running with bins from 0.0625 to 0.125...
+Running with 1024000 pseudo-random numbers... 
+and 100 simulations
+Simulations will be saved in rrdump_02_01024000.dat 
+The mean is  0.0061267112 +/-  0.0000000459 with a scatter of  0.0000004592, a fractional error of  0.007496 percent
+Total evaluation time = 36.4353 seconds 
+Running with bins from 0.0625 to 0.125...
+Running with 4096000 pseudo-random numbers... 
+and 100 simulations
+Simulations will be saved in rrdump_02_04096000.dat 
+The mean is  0.0061266830 +/-  0.0000000191 with a scatter of  0.0000001913, a fractional error of  0.003122 percent
+Total evaluation time = 146.135 seconds 
+Running with bins from 0.0625 to 0.125...
+Running with 16384000 pseudo-random numbers... 
+and 100 simulations
+Simulations will be saved in rrdump_02_16384000.dat 
+The mean is  0.0061266864 +/-  0.0000000094 with a scatter of  0.0000000945, a fractional error of  0.001542 percent
+Total evaluation time = 594.99 seconds 
+Running with bins from 0.125 to 0.25...
+Running with 1000 pseudo-random numbers... 
+and 100 simulations
+Simulations will be saved in rrdump_03_00001000.dat 
+The mean is  0.0415008480 +/-  0.0000435020 with a scatter of  0.0004350195, a fractional error of  1.048218 percent
+Total evaluation time = 0.079917 seconds 
+Running with bins from 0.125 to 0.25...
+Running with 4000 pseudo-random numbers... 
+and 100 simulations
+Simulations will be saved in rrdump_03_00004000.dat 
+The mean is  0.0414803745 +/-  0.0000144644 with a scatter of  0.0001446440, a fractional error of  0.348705 percent
+Total evaluation time = 0.190941 seconds 
+Running with bins from 0.125 to 0.25...
+Running with 16000 pseudo-random numbers... 
+and 100 simulations
+Simulations will be saved in rrdump_03_00016000.dat 
+The mean is  0.0414813767 +/-  0.0000072133 with a scatter of  0.0000721332, a fractional error of  0.173893 percent
+Total evaluation time = 0.630629 seconds 
+../../cpp/build/unit3d/unit3d --nrand 1000 --rmin 0.015625 --rmax 0.031250 --nsim 100 --save rrdump_00_00001000.dat
+-----------------------------
+../../cpp/build/unit3d/unit3d --nrand 4000 --rmin 0.015625 --rmax 0.031250 --nsim 100 --save rrdump_00_00004000.dat
+-----------------------------
+../../cpp/build/unit3d/unit3d --nrand 16000 --rmin 0.015625 --rmax 0.031250 --nsim 100 --save rrdump_00_00016000.dat
+-----------------------------
+../../cpp/build/unit3d/unit3d --nrand 64000 --rmin 0.015625 --rmax 0.031250 --nsim 100 --save rrdump_00_00064000.dat
+-----------------------------
+../../cpp/build/unit3d/unit3d --nrand 256000 --rmin 0.015625 --rmax 0.031250 --nsim 100 --save rrdump_00_00256000.dat
+-----------------------------
+../../cpp/build/unit3d/unit3d --nrand 1024000 --rmin 0.015625 --rmax 0.031250 --nsim 100 --save rrdump_00_01024000.dat
+-----------------------------
+../../cpp/build/unit3d/unit3d --nrand 4096000 --rmin 0.015625 --rmax 0.031250 --nsim 100 --save rrdump_00_04096000.dat
+-----------------------------
+../../cpp/build/unit3d/unit3d --nrand 16384000 --rmin 0.015625 --rmax 0.031250 --nsim 100 --save rrdump_00_16384000.dat
+-----------------------------
+../../cpp/build/unit3d/unit3d --nrand 1000 --rmin 0.031250 --rmax 0.062500 --nsim 100 --save rrdump_01_00001000.dat
+-----------------------------
+../../cpp/build/unit3d/unit3d --nrand 4000 --rmin 0.031250 --rmax 0.062500 --nsim 100 --save rrdump_01_00004000.dat
+-----------------------------
+../../cpp/build/unit3d/unit3d --nrand 16000 --rmin 0.031250 --rmax 0.062500 --nsim 100 --save rrdump_01_00016000.dat
+-----------------------------
+../../cpp/build/unit3d/unit3d --nrand 64000 --rmin 0.031250 --rmax 0.062500 --nsim 100 --save rrdump_01_00064000.dat
+-----------------------------
+../../cpp/build/unit3d/unit3d --nrand 256000 --rmin 0.031250 --rmax 0.062500 --nsim 100 --save rrdump_01_00256000.dat
+-----------------------------
+../../cpp/build/unit3d/unit3d --nrand 1024000 --rmin 0.031250 --rmax 0.062500 --nsim 100 --save rrdump_01_01024000.dat
+-----------------------------
+../../cpp/build/unit3d/unit3d --nrand 4096000 --rmin 0.031250 --rmax 0.062500 --nsim 100 --save rrdump_01_04096000.dat
+-----------------------------
+../../cpp/build/unit3d/unit3d --nrand 16384000 --rmin 0.031250 --rmax 0.062500 --nsim 100 --save rrdump_01_16384000.dat
+-----------------------------
+../../cpp/build/unit3d/unit3d --nrand 1000 --rmin 0.062500 --rmax 0.125000 --nsim 100 --save rrdump_02_00001000.dat
+-----------------------------
+../../cpp/build/unit3d/unit3d --nrand 4000 --rmin 0.062500 --rmax 0.125000 --nsim 100 --save rrdump_02_00004000.dat
+-----------------------------
+../../cpp/build/unit3d/unit3d --nrand 16000 --rmin 0.062500 --rmax 0.125000 --nsim 100 --save rrdump_02_00016000.dat
+-----------------------------
+../../cpp/build/unit3d/unit3d --nrand 64000 --rmin 0.062500 --rmax 0.125000 --nsim 100 --save rrdump_02_00064000.dat
+-----------------------------
+../../cpp/build/unit3d/unit3d --nrand 256000 --rmin 0.062500 --rmax 0.125000 --nsim 100 --save rrdump_02_00256000.dat
+-----------------------------
+../../cpp/build/unit3d/unit3d --nrand 1024000 --rmin 0.062500 --rmax 0.125000 --nsim 100 --save rrdump_02_01024000.dat
+-----------------------------
+../../cpp/build/unit3d/unit3d --nrand 4096000 --rmin 0.062500 --rmax 0.125000 --nsim 100 --save rrdump_02_04096000.dat
+-----------------------------
+../../cpp/build/unit3d/unit3d --nrand 16384000 --rmin 0.062500 --rmax 0.125000 --nsim 100 --save rrdump_02_16384000.dat
+-----------------------------
+../../cpp/build/unit3d/unit3d --nrand 1000 --rmin 0.125000 --rmax 0.250000 --nsim 100 --save rrdump_03_00001000.dat
+-----------------------------
+../../cpp/build/unit3d/unit3d --nrand 4000 --rmin 0.125000 --rmax 0.250000 --nsim 100 --save rrdump_03_00004000.dat
+-----------------------------
+../../cpp/build/unit3d/unit3d --nrand 16000 --rmin 0.125000 --rmax 0.250000 --nsim 100 --save rrdump_03_00016000.dat
+-----------------------------
+../../cpp/build/unit3d/unit3d --nrand 64000 --rmin 0.125000 --rmax 0.250000 --nsim 100 --save rrdump_03_0006400Running with bins from 0.125 to 0.25...
+Running with 64000 pseudo-random numbers... 
+and 100 simulations
+Simulations will be saved in rrdump_03_00064000.dat 
+The mean is  0.0414821283 +/-  0.0000027653 with a scatter of  0.0000276527, a fractional error of  0.066662 percent
+Total evaluation time = 2.37253 seconds 
+Running with bins from 0.125 to 0.25...
+Running with 256000 pseudo-random numbers... 
+and 100 simulations
+Simulations will be saved in rrdump_03_00256000.dat 
+The mean is  0.0414837502 +/-  0.0000012835 with a scatter of  0.0000128347, a fractional error of  0.030939 percent
+Total evaluation time = 9.25488 seconds 
+Running with bins from 0.125 to 0.25...
+Running with 1024000 pseudo-random numbers... 
+and 100 simulations
+Simulations will be saved in rrdump_03_01024000.dat 
+The mean is  0.0414842720 +/-  0.0000005145 with a scatter of  0.0000051446, a fractional error of  0.012401 percent
+Total evaluation time = 36.9726 seconds 
+Running with bins from 0.125 to 0.25...
+Running with 4096000 pseudo-random numbers... 
+and 100 simulations
+Simulations will be saved in rrdump_03_04096000.dat 
+The mean is  0.0414849553 +/-  0.0000001865 with a scatter of  0.0000018651, a fractional error of  0.004496 percent
+Total evaluation time = 149.301 seconds 
+Running with bins from 0.125 to 0.25...
+Running with 16384000 pseudo-random numbers... 
+and 100 simulations
+Simulations will be saved in rrdump_03_16384000.dat 
+The mean is  0.0414849226 +/-  0.0000000919 with a scatter of  0.0000009194, a fractional error of  0.002216 percent
+Total evaluation time = 587.016 seconds 
+Running with bins from 0.25 to 0.5...
+Running with 1000 pseudo-random numbers... 
+and 100 simulations
+Simulations will be saved in rrdump_04_00001000.dat 
+The mean is  0.2284376373 +/-  0.0004311420 with a scatter of  0.0043114200, a fractional error of  1.887351 percent
+Total evaluation time = 0.08052 seconds 
+Running with bins from 0.25 to 0.5...
+Running with 4000 pseudo-random numbers... 
+and 100 simulations
+Simulations will be saved in rrdump_04_00004000.dat 
+The mean is  0.2282349064 +/-  0.0001671777 with a scatter of  0.0016717771, a fractional error of  0.732481 percent
+Total evaluation time = 0.193364 seconds 
+Running with bins from 0.25 to 0.5...
+Running with 16000 pseudo-random numbers... 
+and 100 simulations
+Simulations will be saved in rrdump_04_00016000.dat 
+The mean is  0.2280201491 +/-  0.0000624902 with a scatter of  0.0006249024, a fractional error of  0.274056 percent
+Total evaluation time = 0.643088 seconds 
+Running with bins from 0.25 to 0.5...
+Running with 64000 pseudo-random numbers... 
+and 100 simulations
+Simulations will be saved in rrdump_04_00064000.dat 
+The mean is  0.2279374675 +/-  0.0000305444 with a scatter of  0.0003054441, a fractional error of  0.134003 percent
+Total evaluation time = 2.42057 seconds 
+Running with bins from 0.25 to 0.5...
+Running with 256000 pseudo-random numbers... 
+and 100 simulations
+Simulations will be saved in rrdump_04_00256000.dat 
+The mean is  0.2279137726 +/-  0.0000139574 with a scatter of  0.0001395737, a fractional error of  0.061240 percent
+Total evaluation time = 9.47467 seconds 
+Running with bins from 0.25 to 0.5...
+Running with 1024000 pseudo-random numbers... 
+and 100 simulations
+Simulations will be saved in rrdump_04_01024000.dat 
+The mean is  0.2279047081 +/-  0.0000051797 with a scatter of  0.0000517966, a fractional error of  0.022727 percent
+Total evaluation time = 37.9593 seconds 
+Running with bins from 0.25 to 0.5...
+Running with 4096000 pseudo-random numbers... 
+and 100 simulations
+Simulations will be saved in rrdump_04_04096000.dat 
+The mean is  0.2279035650 +/-  0.0000022580 with a scatter of  0.0000225801, a fractional error of  0.009908 percent
+Total evaluation time = 149.321 seconds 
+Running with bins from 0.25 to 0.5...
+Running with 16384000 pseudo-random numbers... 
+and 100 simulations
+Simulations will be saved in rrdump_04_16384000.dat 
+The mean is  0.2279053980 +/-  0.0000014726 with a scatter of  0.0000147260, a fractional error of  0.006461 percent
+Total evaluation time = 590.122 seconds 
+0.dat
+-----------------------------
+../../cpp/build/unit3d/unit3d --nrand 256000 --rmin 0.125000 --rmax 0.250000 --nsim 100 --save rrdump_03_00256000.dat
+-----------------------------
+../../cpp/build/unit3d/unit3d --nrand 1024000 --rmin 0.125000 --rmax 0.250000 --nsim 100 --save rrdump_03_01024000.dat
+-----------------------------
+../../cpp/build/unit3d/unit3d --nrand 4096000 --rmin 0.125000 --rmax 0.250000 --nsim 100 --save rrdump_03_04096000.dat
+-----------------------------
+../../cpp/build/unit3d/unit3d --nrand 16384000 --rmin 0.125000 --rmax 0.250000 --nsim 100 --save rrdump_03_16384000.dat
+-----------------------------
+../../cpp/build/unit3d/unit3d --nrand 1000 --rmin 0.250000 --rmax 0.500000 --nsim 100 --save rrdump_04_00001000.dat
+-----------------------------
+../../cpp/build/unit3d/unit3d --nrand 4000 --rmin 0.250000 --rmax 0.500000 --nsim 100 --save rrdump_04_00004000.dat
+-----------------------------
+../../cpp/build/unit3d/unit3d --nrand 16000 --rmin 0.250000 --rmax 0.500000 --nsim 100 --save rrdump_04_00016000.dat
+-----------------------------
+../../cpp/build/unit3d/unit3d --nrand 64000 --rmin 0.250000 --rmax 0.500000 --nsim 100 --save rrdump_04_00064000.dat
+-----------------------------
+../../cpp/build/unit3d/unit3d --nrand 256000 --rmin 0.250000 --rmax 0.500000 --nsim 100 --save rrdump_04_00256000.dat
+-----------------------------
+../../cpp/build/unit3d/unit3d --nrand 1024000 --rmin 0.250000 --rmax 0.500000 --nsim 100 --save rrdump_04_01024000.dat
+-----------------------------
+../../cpp/build/unit3d/unit3d --nrand 4096000 --rmin 0.250000 --rmax 0.500000 --nsim 100 --save rrdump_04_04096000.dat
+-----------------------------
+../../cpp/build/unit3d/unit3d --nrand 16384000 --rmin 0.250000 --rmax 0.500000 --nsim 100 --save rrdump_04_16384000.dat
+-----------------------------
