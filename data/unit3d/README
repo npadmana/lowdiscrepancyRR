@@ -1,0 +1,5 @@
+File format : simple binary
+
+int*4 nsim, nrand
+double*8 rmin, rmax
+double*8 rr[nsim]
