@@ -1,0 +1,378 @@
+Notebook[{
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", " ", 
+   RowBox[{
+   "This", " ", "uses", " ", "the", " ", "Mathematica", " ", "links", " ", 
+    "to", " ", "Cuba"}], " ", "*)"}], "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"ClearAll", "[", "\"\<Global`*\>\"", "]"}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Install", "[", "\"\<Suave\>\"", "]"}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Install", "[", "\"\<Divonne\>\"", "]"}], ";"}], "\n", 
+   RowBox[{
+    RowBox[{"SetDirectory", "[", 
+     RowBox[{"NotebookDirectory", "[", "]"}], "]"}], ";"}]}]}]], "Code"],
+
+Cell[CellGroupData[{
+
+Cell["Set up the rotation matrix ", "Section"],
+
+Cell["\<\
+See ang2d.nb for some more tests\
+\>", "Text"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"r1", " ", "=", " ", 
+    RowBox[{"RotationMatrix", "[", 
+     RowBox[{"\[Theta]", ",", " ", 
+      RowBox[{"{", 
+       RowBox[{"0", ",", "1", ",", "0"}], "}"}]}], "]"}]}], ";"}], 
+  " "}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"r2", " ", "=", " ", 
+   RowBox[{"RotationMatrix", "[", 
+    RowBox[{"\[Phi]", ",", " ", 
+     RowBox[{"{", 
+      RowBox[{"0", ",", " ", "0", ",", " ", "1"}], "}"}]}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"rot", " ", "=", " ", 
+   RowBox[{"r2", ".", "r1"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{"rot", " ", "//", " ", "MatrixForm"}]}], "Input"],
+
+Cell[BoxData[
+ TagBox[
+  RowBox[{"(", "\[NoBreak]", GridBox[{
+     {
+      RowBox[{
+       RowBox[{"Cos", "[", "\[Theta]", "]"}], " ", 
+       RowBox[{"Cos", "[", "\[Phi]", "]"}]}], 
+      RowBox[{"-", 
+       RowBox[{"Sin", "[", "\[Phi]", "]"}]}], 
+      RowBox[{
+       RowBox[{"Cos", "[", "\[Phi]", "]"}], " ", 
+       RowBox[{"Sin", "[", "\[Theta]", "]"}]}]},
+     {
+      RowBox[{
+       RowBox[{"Cos", "[", "\[Theta]", "]"}], " ", 
+       RowBox[{"Sin", "[", "\[Phi]", "]"}]}], 
+      RowBox[{"Cos", "[", "\[Phi]", "]"}], 
+      RowBox[{
+       RowBox[{"Sin", "[", "\[Theta]", "]"}], " ", 
+       RowBox[{"Sin", "[", "\[Phi]", "]"}]}]},
+     {
+      RowBox[{"-", 
+       RowBox[{"Sin", "[", "\[Theta]", "]"}]}], "0", 
+      RowBox[{"Cos", "[", "\[Theta]", "]"}]}
+    },
+    GridBoxAlignment->{
+     "Columns" -> {{Center}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}}, 
+      "RowsIndexed" -> {}},
+    GridBoxSpacings->{"Columns" -> {
+        Offset[0.27999999999999997`], {
+         Offset[0.7]}, 
+        Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+        Offset[0.2], {
+         Offset[0.4]}, 
+        Offset[0.2]}, "RowsIndexed" -> {}}], "\[NoBreak]", ")"}],
+  Function[BoxForm`e$, 
+   MatrixForm[BoxForm`e$]]]], "Output"]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", " ", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"Now", " ", "define", " ", "the", " ", "integrand"}], ";", " ", 
+     RowBox[{"it", " ", "will", " ", "take", " ", "Cos", " ", "\[Theta]"}]}], 
+    ",", " ", 
+    RowBox[{
+    "and", " ", "Cos", " ", "\[CapitalDelta]\[Theta]", " ", "and", " ", 
+     "\[CapitalDelta]\[Phi]"}], ",", " ", 
+    RowBox[{
+    "compute", " ", "the", " ", "position", " ", "of", " ", "the", " ", 
+     "second", " ", "point"}], ",", " ", 
+    RowBox[{
+    "and", " ", "see", " ", "if", " ", "it", " ", "lies", " ", "in", " ", 
+     "the", " ", 
+     RowBox[{"cap", " ", "--"}], " ", "defined", " ", "by", " ", "a", " ", 
+     "minCos"}]}], " ", "*)"}], "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"Clear", "[", "capfunc", "]"}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"capfunc", "[", 
+      RowBox[{
+      "mincos_", ",", " ", "cos\[Theta]_", ",", " ", 
+       "cos\[CapitalDelta]\[Theta]_", ",", " ", "\[CapitalDelta]\[Phi]_"}], 
+      "]"}], ":=", " ", 
+     RowBox[{"Module", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{
+        "x", ",", " ", "sin\[Theta]", ",", " ", 
+         "sin\[CapitalDelta]\[Theta]"}], "}"}], ",", "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{"sin\[Theta]", " ", "=", " ", 
+         RowBox[{"Sqrt", "[", 
+          RowBox[{"1", "-", 
+           SuperscriptBox["cos\[Theta]", "2"]}], "]"}]}], ";", 
+        "\[IndentingNewLine]", 
+        RowBox[{"sin\[CapitalDelta]\[Theta]", " ", "=", " ", 
+         RowBox[{"Sqrt", "[", 
+          RowBox[{"1", " ", "-", " ", 
+           SuperscriptBox["cos\[CapitalDelta]\[Theta]", "2"]}], "]"}]}], ";", 
+        "\[IndentingNewLine]", 
+        RowBox[{"(*", " ", 
+         RowBox[{
+          RowBox[{
+          "Latitude", " ", "given", " ", "by", " ", "a", " ", "simple", " ", 
+           "dot", " ", "product"}], ",", " ", 
+          RowBox[{
+          "reading", " ", "off", " ", "the", " ", "matrix", " ", "above"}]}], 
+         " ", "*)"}], "\[IndentingNewLine]", 
+        RowBox[{"x", " ", "=", " ", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"-", "sin\[Theta]"}], " ", "*", " ", 
+           "sin\[CapitalDelta]\[Theta]", " ", "*", " ", 
+           RowBox[{"Cos", "[", "\[CapitalDelta]\[Phi]", "]"}]}], " ", "+", 
+          " ", 
+          RowBox[{
+          "cos\[Theta]", " ", "*", " ", "cos\[CapitalDelta]\[Theta]"}]}]}], 
+        ";", "\[IndentingNewLine]", 
+        RowBox[{"If", "[", 
+         RowBox[{
+          RowBox[{"x", " ", ">", " ", "mincos"}], ",", " ", "1.0", ",", " ", 
+          "0.0"}], "]"}]}]}], "\[IndentingNewLine]", "]"}]}], 
+    ";"}]}]}]], "Input"],
+
+Cell[BoxData[
+ RowBox[{"(*", " ", 
+  RowBox[{
+   RowBox[{"Attempt", " ", "the", " ", "integral"}], ",", "  ", 
+   RowBox[{"without", " ", "any", " ", "wrapping"}]}], " ", "*)"}]], "Input"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"2", " ", "Pi", " ", 
+  RowBox[{"Divonne", "[", 
+   RowBox[{
+    RowBox[{"capfunc", "[", 
+     RowBox[{
+     "0.0", ",", " ", "cos\[Theta]", ",", " ", "cos\[CapitalDelta]\[Theta]", 
+      ",", " ", "\[CapitalDelta]\[Phi]"}], "]"}], ",", " ", 
+    RowBox[{"{", 
+     RowBox[{"cos\[Theta]", ",", "0.0", ",", "1.0"}], "}"}], ",", " ", 
+    RowBox[{"{", 
+     RowBox[{"cos\[CapitalDelta]\[Theta]", ",", " ", 
+      RowBox[{"Cos", "[", 
+       RowBox[{"5.0", " ", "Degree"}], "]"}], ",", " ", "1.0"}], "}"}], ",", 
+    " ", 
+    RowBox[{"{", 
+     RowBox[{"\[CapitalDelta]\[Phi]", ",", " ", "0.0", ",", " ", 
+      RowBox[{"2", " ", "Pi"}]}], "}"}], ",", " ", 
+    RowBox[{"Verbose", "\[Rule]", "0"}], ",", " ", 
+    RowBox[{"MaxPoints", "\[Rule]", "1000000"}], ",", " ", 
+    RowBox[{"PrecisionGoal", "\[Rule]", "6"}]}], "]"}]}]], "Input"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"Divonne", "::", "success"}], "MessageName"], 
+  RowBox[{
+  ":", " "}], "\<\"Needed \[NoBreak]\\!\\(471208\\)\[NoBreak] integrand \
+evaluations on \[NoBreak]\\!\\(146\\)\[NoBreak] subregions.\"\>"}]], \
+"Message", "MSG"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"{", 
+   RowBox[{
+   "0.14744479847741887`", ",", "1.4749065508889693`*^-7", ",", 
+    "0.11047397348011813`"}], "}"}], "}"}]], "Output"]
+}, Open  ]],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"Clear", "[", "area", "]"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"area", "[", 
+    RowBox[{"mindec_", ",", " ", "theta_", ",", 
+     RowBox[{"precise_:", "4"}], ",", " ", 
+     RowBox[{"maxpoints_:", "1000000"}]}], " ", "]"}], ":=", " ", 
+   RowBox[{"2", " ", "Pi", " ", 
+    RowBox[{"Divonne", "[", 
+     RowBox[{
+      RowBox[{"capfunc", "[", 
+       RowBox[{
+        RowBox[{"Sin", "[", 
+         RowBox[{"mindec", " ", "Degree"}], "]"}], ",", " ", "cos\[Theta]", 
+        ",", " ", "cos\[CapitalDelta]\[Theta]", ",", " ", 
+        "\[CapitalDelta]\[Phi]"}], "]"}], ",", " ", 
+      RowBox[{"{", 
+       RowBox[{"cos\[Theta]", ",", 
+        RowBox[{"Sin", "[", 
+         RowBox[{"mindec", " ", "Degree"}], "]"}], ",", "1.0"}], "}"}], ",", 
+      " ", 
+      RowBox[{"{", 
+       RowBox[{"cos\[CapitalDelta]\[Theta]", ",", " ", 
+        RowBox[{"Cos", "[", 
+         RowBox[{"theta", " ", "Degree"}], "]"}], ",", " ", "1.0"}], "}"}], 
+      ",", " ", 
+      RowBox[{"{", 
+       RowBox[{"\[CapitalDelta]\[Phi]", ",", " ", "0.0", ",", " ", 
+        RowBox[{"2", " ", "Pi"}]}], "}"}], ",", " ", 
+      RowBox[{"Verbose", "\[Rule]", "0"}], ",", " ", 
+      RowBox[{"MaxPoints", "\[Rule]", "maxpoints"}], ",", " ", 
+      RowBox[{"PrecisionGoal", "\[Rule]", "precise"}]}], "]"}]}]}], 
+  ";"}]}], "Input"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"area", "[", 
+  RowBox[{"0.0", ",", " ", "5.0", ",", " ", "6"}], "]"}]], "Input"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"Divonne", "::", "success"}], "MessageName"], 
+  RowBox[{
+  ":", " "}], "\<\"Needed \[NoBreak]\\!\\(471208\\)\[NoBreak] integrand \
+evaluations on \[NoBreak]\\!\\(146\\)\[NoBreak] subregions.\"\>"}]], \
+"Message", "MSG"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"{", 
+   RowBox[{
+   "0.14744479847741887`", ",", "1.4749065508889693`*^-7", ",", 
+    "0.11047397348011813`"}], "}"}], "}"}]], "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"area", "[", 
+  RowBox[{"45.0", ",", " ", "5.0", ",", "5"}], "]"}]], "Input"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"Divonne", "::", "success"}], "MessageName"], 
+  RowBox[{
+  ":", " "}], "\<\"Needed \[NoBreak]\\!\\(130026\\)\[NoBreak] integrand \
+evaluations on \[NoBreak]\\!\\(115\\)\[NoBreak] subregions.\"\>"}]], \
+"Message", "MSG"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"{", 
+   RowBox[{
+   "0.04203459957042759`", ",", "4.140128134045124`*^-7", ",", 
+    "0.012637392627166451`"}], "}"}], "}"}]], "Output"]
+}, Open  ]],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"Clear", "[", "area2", "]"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"area2", "[", 
+    RowBox[{"mindec_", ",", " ", "theta_", ",", 
+     RowBox[{"precise_:", "4"}], ",", " ", 
+     RowBox[{"maxpoints_:", "1000000"}]}], " ", "]"}], ":=", " ", 
+   RowBox[{"2", " ", "Pi", " ", 
+    RowBox[{"Suave", "[", 
+     RowBox[{
+      RowBox[{"capfunc", "[", 
+       RowBox[{
+        RowBox[{"Sin", "[", 
+         RowBox[{"mindec", " ", "Degree"}], "]"}], ",", " ", "cos\[Theta]", 
+        ",", " ", "cos\[CapitalDelta]\[Theta]", ",", " ", 
+        "\[CapitalDelta]\[Phi]"}], "]"}], ",", " ", 
+      RowBox[{"{", 
+       RowBox[{"cos\[Theta]", ",", "0.0", ",", "1.0"}], "}"}], ",", " ", 
+      RowBox[{"{", 
+       RowBox[{"cos\[CapitalDelta]\[Theta]", ",", " ", 
+        RowBox[{"Cos", "[", 
+         RowBox[{"theta", " ", "Degree"}], "]"}], ",", " ", "1.0"}], "}"}], 
+      ",", " ", 
+      RowBox[{"{", 
+       RowBox[{"\[CapitalDelta]\[Phi]", ",", " ", "0.0", ",", " ", 
+        RowBox[{"2", " ", "Pi"}]}], "}"}], ",", " ", 
+      RowBox[{"Verbose", "\[Rule]", "0"}], ",", " ", 
+      RowBox[{"MaxPoints", "\[Rule]", "maxpoints"}], ",", " ", 
+      RowBox[{"PrecisionGoal", "\[Rule]", "precise"}]}], "]"}]}]}], 
+  ";"}]}], "Input"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"area2", "[", 
+  RowBox[{"45.0", ",", " ", "5.0", ",", "5"}], "]"}]], "Input"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"Suave", "::", "success"}], "MessageName"], 
+  RowBox[{
+  ":", " "}], "\<\"Needed \[NoBreak]\\!\\(1000196\\)\[NoBreak] function \
+evaluations on \[NoBreak]\\!\\(1000\\)\[NoBreak] subregions.\"\>"}]], \
+"Message", "MSG"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"{", 
+   RowBox[{
+   "0.043995337699931136`", ",", "3.911174721852343`*^-6", ",", 
+    "6.283185307179586`"}], "}"}], "}"}]], "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"area", "[", 
+  RowBox[{"45.0", ",", "90.0", ",", "5"}], "]"}]], "Input"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"Divonne", "::", "accuracy"}], "MessageName"], 
+  RowBox[{
+  ":", " "}], "\<\"Desired accuracy was not reached within \
+\[NoBreak]\\!\\(1004201\\)\[NoBreak] integrand evaluations on \
+\[NoBreak]\\!\\(224\\)\[NoBreak] subregions.  Estimate that MaxPoints needs \
+to be increased by \[NoBreak]\\!\\(16128\\)\[NoBreak] for this \
+accuracy.\"\>"}]], "Message", "MSG"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"{", 
+   RowBox[{
+   "3.38468136823989`", ",", "0.0000342616923496641`", ",", 
+    "6.283185307179586`"}], "}"}], "}"}]], "Output"]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{699, 724},
+WindowMargins->{{74, Automatic}, {Automatic, 0}},
+FrontEndVersion->"8.0 for Mac OS X x86 (32-bit, 64-bit Kernel) (February 23, \
+2011)",
+StyleDefinitions->"Default.nb"
+]
+
