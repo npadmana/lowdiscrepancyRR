@@ -93,7 +93,7 @@ vector<double> rreval(dpair RABounds, dpair DecBounds, dpair thetaBin, int nrand
 		for_each(x0.begin(), x0.end(), [&rng](double &x){x=rng();});
 
 		// Set up the quasi RNG
-		npQuasiRandom qrng(dim);
+		npQuasiRandom qrng(DIM);
 
 		// Initialize the integrator
 		out=0.0;
@@ -104,16 +104,16 @@ vector<double> rreval(dpair RABounds, dpair DecBounds, dpair thetaBin, int nrand
 			// Generate a random pseudo-random number and shift it mod 1
 			vector<double> x = qrng();
 			transform(x0.begin(), x0.end(), x.begin(), x.begin(),
-					[&r](double a, double b){return modf(a+b,&tmp);});
+					[&tmp](double a, double b){return modf(a+b,&tmp);});
 
 			// Work out the RA, Dec of position 1
 			x[1] = ((x[1] * dphi) + phi1 );
 			x[0] = x[0]*dcth + cth1;
 			ra1 = x[1]/D2R; if (ra1 > 360) ra1 = ra1-360;
- 			dec1 = 90 - acos(x[1])/D2R;
+ 			dec1 = 90 - acos(x[0])/D2R;
 
 			// Work out displacement vector
-			phi_ = x[3]*2 *pi;
+			phi_ = x[3]*2 *PI;
 			cth_ = x[2]*dcDth + cDth1;
 			sth_ = sqrt(1-cth_*cth_);
 			x1 << sth_ * cos(phi_), sth_ * sin(phi_), cth_;

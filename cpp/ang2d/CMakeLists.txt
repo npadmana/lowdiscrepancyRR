@@ -1,0 +1,2 @@
+add_executable(capintegrate capintegrate.cpp)
+target_link_libraries(capintegrate npgsl m boost_program_options)
