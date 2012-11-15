@@ -6,6 +6,7 @@
 #include "ang2d.h"
 
 #include <utility>
+#include <string>
 #include <iostream>
 #include <fstream>
 #include <chrono>
