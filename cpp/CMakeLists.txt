@@ -10,3 +10,4 @@ link_directories(${NPUTILS_LINK_DIRS})
 
 
 add_subdirectory(unit3d)
+add_subdirectory(ang2d)
