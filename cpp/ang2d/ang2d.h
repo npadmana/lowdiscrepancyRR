@@ -68,7 +68,7 @@ vector<double> rreval(dpair RABounds, dpair DecBounds, dpair thetaBin, int nrand
 	double cth1 = sin(DecBounds.first * D2R); // Cos theta_1
 	double dcth = sin(DecBounds.second*D2R) - cth1; // Cos theta_2 - Cos theta_1
 	double phi1 = RABounds.first * D2R; // phi_1
-	double dphi = RABounds.second * D2R; // phi_2 - phi1
+	double dphi = (RABounds.second - RABounds.first) * D2R; // phi_2 - phi1
 
 	// Scatter bounds
 	double cDth1 = cos(thetaBin.second * D2R); // Cos Delta theta_1 --- use the larger number first, to avoid -ve's in the code
@@ -124,7 +124,7 @@ vector<double> rreval(dpair RABounds, dpair DecBounds, dpair thetaBin, int nrand
 			// tmp = sin theta
 			// x[1] = phi
 			rotmat << x[0] * cos(x[1]), -sin(x[1]), tmp *cos(x[1]),
-					  x[0] * sin(x[1]),  cos(x[1]), x[0]*sin(x[1]),
+					  x[0] * sin(x[1]),  cos(x[1]), tmp *sin(x[1]),
 					  tmp             ,          0, x[0];
 
 			x2.noalias() = rotmat * x1;
