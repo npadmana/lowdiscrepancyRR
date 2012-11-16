@@ -2,7 +2,7 @@ import os
 
 nrands = [1000, 4000, 16000, 64000, 256000, 1024000, 4096000, 16384000]
 thetamaxs = [0.1, 1.0, 10.0, 179.999]
-nsim = 1
+nsim = 100
 execfn = "../../cpp/build/ang2d/capintegrate"
 
 for ii in range(len(thetamaxs)) :
