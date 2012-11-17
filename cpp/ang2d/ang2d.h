@@ -25,6 +25,18 @@ const double D2R = 0.017453292519943295769; // Degrees to radians
 
 typedef pair<double, double> dpair;
 
+/** Convenience function -- shifts a random vector in a random direction mod 1
+ *
+ * @param x (vector<double>) : vector to be shifted (in place)
+ * @param x0 (vector<double>) : shift vector
+ *
+ * The vectors should be the same size; no checking is done.
+ */
+void vecshift(vector<double> &x, vector<double> &x0) {
+	double tmp;
+	transform(x0.begin(), x0.end(), x.begin(), x.begin(),
+			[&tmp](double a, double b){return modf(a+b,&tmp);});
+}
 
 /** Compute the angular RR integral
  *
@@ -113,8 +125,7 @@ vector<double> rreval(dpair RABounds, dpair DecBounds, dpair thetaBin,
 
 			// Generate a random pseudo-random number and shift it mod 1
 			vector<double> x = qrng();
-			transform(x0.begin(), x0.end(), x.begin(), x.begin(),
-					[&tmp](double a, double b){return modf(a+b,&tmp);});
+			vecshift(x,x0);
 
 			// Work out the RA, Dec of position 1
 			x[1] = ((x[1] * dphi) + phi1 );
@@ -154,6 +165,94 @@ vector<double> rreval(dpair RABounds, dpair DecBounds, dpair thetaBin,
 	}
 	return outvec;
 }
+
+/** Compute the weighted area of a mask
+ *
+ *	IMPORTANT NOTE : The code assumes RA runs from [0,360], and Dec from [-90,90]
+ *
+ *	The bounds (except for RAbounds, see below) are assumed to be increasing. If not, an exception is thrown.
+ *  For the RABounds, if the second elt is lower, we assume we have wrapped around the sphere.
+ *
+ *   @param RABounds (pair<double, double>)  -- RA bounds to consider (degrees)
+ *   @param DecBounds (pair<double, double>) -- DecBounds to consider (degrees)
+ *	 @param nrand (int) -- number of randoms
+ *	 @param nsim (int) -- number of simulations
+ *	 @param const Mask1 (templated class) -- class where operator() takes RA, Dec (in degrees)
+ *	                                    and returns a double (weight)
+ *
+ *	 Returns vector<double> rr[nsim] --- nsim measurements of RR
+ */
+template <class Mask>
+vector<double> area(dpair RABounds, dpair DecBounds,
+		int nrand, int nsim, const Mask &Mask1) {
+	const int DIM = 2;
+
+	// Dec data validity
+	if ((DecBounds.first < -90) || (DecBounds.first > 90)) throw ("RABounds exception thrown");
+	if ((DecBounds.second < -90) || (DecBounds.second > 90)) throw ("RABounds exception thrown");
+	if (DecBounds.second < DecBounds.first) throw("Dec Bounds exception thrown");
+
+	// RA
+	if ((RABounds.first < 0) || (RABounds.first > 360.0)) throw ("RABounds exception thrown");
+	if ((RABounds.second < 0) || (RABounds.second > 360.0)) throw ("RABounds exception thrown");
+	if (RABounds.second < RABounds.first) RABounds.second += 360; // Wrap around
+
+
+	// Survey Bounds
+	double cth1 = sin(DecBounds.first * D2R); // Cos theta_1
+	double dcth = sin(DecBounds.second*D2R) - cth1; // Cos theta_2 - Cos theta_1
+	double phi1 = RABounds.first; // phi_1, leave in degrees
+	double dphi = (RABounds.second - RABounds.first); // phi_2 - phi1
+
+	// Jacobian
+	double jacobian = dcth * dphi * D2R;
+
+	// Set up the output vector
+	vector<double> outvec(nsim);
+
+	// Set up the random vector
+	vector<double> x0(DIM);
+	npRandom rng(1234);
+
+	// Temporary values
+	double ra1, dec1, out;
+
+	for(int jj=0; jj<nsim; ++jj) {
+
+		for_each(x0.begin(), x0.end(), [&rng](double &x){x=rng();});
+
+		// Set up the quasi RNG
+		npQuasiRandom qrng(DIM);
+
+		// Initialize the integrator
+		out=0.0;
+
+		// Loop over points
+		for (int ii=0; ii<nrand; ++ii) {
+
+			// Generate a random pseudo-random number and shift it mod 1
+			vector<double> x = qrng();
+			vecshift(x,x0);
+
+			// Work out the RA, Dec of position 1
+			ra1 = ((x[1] * dphi) + phi1 ); // in degrees
+			if (ra1 > 360) ra1 = ra1-360;
+			x[0] = x[0]*dcth + cth1;
+ 			dec1 = 90 - acos(x[0])/D2R;
+
+			// Now do the actual calculation
+			out += Mask1(ra1, dec1);
+
+		}
+
+		// Multiply back in the jacobian
+		outvec[jj]  = out/(nrand) * jacobian;
+	}
+	return outvec;
+}
+
+
+
 
 }
 
