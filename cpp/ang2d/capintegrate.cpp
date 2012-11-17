@@ -27,15 +27,20 @@ typedef pair<double, double> dpair;
 /* Simple mask, centered on the N-pole at dec > dec0 */
 class Cap {
 public :
-	double dec0;
-	Cap(double dec0_) : dec0(dec0_) {};
+	double dec0, invarea;
+	Cap(double dec0_);
 
 	double operator()(double ra, double dec) const;
 
 };
 
+Cap::Cap(double dec0_) : dec0(dec0_) {
+	double area = 2*Ang2D::PI * (1 - sin(dec0*Ang2D::D2R));
+	invarea = 1./area;
+}
+
 double Cap::operator()(double ra, double dec) const {
-	if (dec > dec0) {return 1.0;};
+	if (dec > dec0) {return invarea;}
 	return 0.0;
 }
 
@@ -93,6 +98,13 @@ int main(int argc, char **argv) {
 	dpair decBounds(decmin,90);
 	dpair thetaBin(0, thetamax);
 	Cap mask1(decmin);
+
+	// Test the cap area -- do just one simulation
+	{
+		vector<double> val = Ang2D::area(RABounds, decBounds, 1000000, 1, mask1);
+		cout << format("The mask integrates to %13.10f\n")%val[0];
+	}
+
 
 	steady_clock::time_point t1 = steady_clock::now();
 	// Actual call to code needs to go here.
