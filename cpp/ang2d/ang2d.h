@@ -20,7 +20,6 @@ using namespace std;
 using namespace Eigen;
 
 
-const int DIM = 4;
 const double PI = 3.1415926535897932385;
 const double D2R = 0.017453292519943295769; // Degrees to radians
 
@@ -36,18 +35,28 @@ typedef pair<double, double> dpair;
  *
  *  The last element of thetaBin cannot be > 180.0, and the first element must be >= 0.
  *
- *   @param RABounds (pair<double, double>)  -- RA bounds to consider, should correspond normally to mask 1 (degrees)
+ *  The mask() operator should return a quantity which has inverse area dimensions, since this
+ *  allows the most easy transformation to the usual RR terms. The user is responsible for this,
+ *  although we provide a QMC routine to calculate this (area).
+ *
+ *   @param RABounds (pair<double, double>)  -- RA bounds to consider, should correspond normally to
+ *                                              mask 1 (degrees)
  *   @param DecBounds (pair<double, double>) -- DecBounds to consider (degrees)
  *   @param thetaBin (pair<double, double>) -- min, max of the bin (degrees)
  *	 @param nrand (int) -- number of randoms
  *	 @param nsim (int) -- number of simulations
- *	 @param Mask1 (templated class) -- class where operator() takes RA, Dec (in degrees) and returns a double (weight)
- *	 @param Mask2 (templated class) -- class where operator() takes RA, Dec (in degrees) and returns a double (weight)
+ *	 @param const Mask1 (templated class) -- class where operator() takes RA, Dec (in degrees)
+ *	                                    and returns a double (weight)
+ *	 @param const Mask2 (templated class) -- class where operator() takes RA, Dec (in degrees)
+ *	                                   and returns a double (weight)
  *
  *	 Returns vector<double> rr[nsim] --- nsim measurements of RR
  */
 template <class Mask>
-vector<double> rreval(dpair RABounds, dpair DecBounds, dpair thetaBin, int nrand, int nsim, Mask &Mask1, Mask &Mask2) {
+vector<double> rreval(dpair RABounds, dpair DecBounds, dpair thetaBin,
+		int nrand, int nsim, const Mask &Mask1, const Mask &Mask2) {
+	const int DIM = 4;
+
 	// Dec data validity
 	if ((DecBounds.first < -90) || (DecBounds.first > 90)) throw ("RABounds exception thrown");
 	if ((DecBounds.second < -90) || (DecBounds.second > 90)) throw ("RABounds exception thrown");
@@ -71,7 +80,8 @@ vector<double> rreval(dpair RABounds, dpair DecBounds, dpair thetaBin, int nrand
 	double dphi = (RABounds.second - RABounds.first) * D2R; // phi_2 - phi1
 
 	// Scatter bounds
-	double cDth1 = cos(thetaBin.second * D2R); // Cos Delta theta_1 --- use the larger number first, to avoid -ve's in the code
+	double cDth1 = cos(thetaBin.second * D2R); // Cos Delta theta_1 --- use the larger number first,
+	// to avoid -ve's in the code
 	double dcDth = cos(thetaBin.first * D2R) - cDth1; // Cos Delta theta_2 - Cos Delta theta_1
 
 	// Jacobian

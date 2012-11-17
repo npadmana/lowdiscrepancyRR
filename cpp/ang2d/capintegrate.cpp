@@ -30,11 +30,11 @@ public :
 	double dec0;
 	Cap(double dec0_) : dec0(dec0_) {};
 
-	double operator()(double ra, double dec);
+	double operator()(double ra, double dec) const;
 
 };
 
-double Cap::operator()(double ra, double dec) {
+double Cap::operator()(double ra, double dec) const {
 	if (dec > dec0) {return 1.0;};
 	return 0.0;
 }

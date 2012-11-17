@@ -42,7 +42,7 @@ public:
 	DEEP2Mask(const string &fn);
 
 	// Call
-	double operator()(double ra, double dec);
+	double operator()(double ra, double dec) const;
 
 
 };
@@ -84,7 +84,7 @@ DEEP2Mask::DEEP2Mask(const string &fn) {
 
 }
 
-double DEEP2Mask::operator ()(double ra, double dec) {
+double DEEP2Mask::operator ()(double ra, double dec) const {
 	int ira, idec;
 
 	// ra, dec limits
