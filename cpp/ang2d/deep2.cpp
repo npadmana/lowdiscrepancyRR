@@ -6,6 +6,7 @@
 #include "ang2d.h"
 
 #include <string>
+#include <numeric>
 #include <iostream>
 #include <fstream>
 #include <chrono>
@@ -33,6 +34,7 @@ public:
 
 	// RA, Dec limits and dra, ddec
 	double ralim0, ralim1, declim0, declim1, dra, ddec;
+	double weighted_area;
 	int nra, ndec;
 
 	// Mask
@@ -43,6 +45,9 @@ public:
 
 	// Call
 	double operator()(double ra, double dec) const;
+
+	// Weighted area calculation
+	double calc_area();
 
 
 };
@@ -81,6 +86,8 @@ DEEP2Mask::DEEP2Mask(const string &fn) {
 
 	cout << format("RA limits from %10.6f to %10.6f in %i pixels\n") % ralim0 % ralim1 %nra;
 	cout << format("Dec limits from %10.6f to %10.6f in %i pixels\n") % declim0 % declim1 %ndec;
+	weighted_area = calc_area();
+	cout << format("Weighted mask area = %10.6e\n")%weighted_area;
 
 }
 
@@ -100,7 +107,21 @@ double DEEP2Mask::operator ()(double ra, double dec) const {
 	if ((idec < 0) || (idec >= ndec)) return 0.0;
 
 	// Now return
-	return static_cast<double>(arr[idec*nra + ira]);
+	return static_cast<double>(arr[idec*nra + ira])/weighted_area;
+}
+
+double DEEP2Mask::calc_area() {
+	double pixarea, dec0, dec1, area=0.0;
+
+	// Loop over rows in dec
+	for (int idec=0; idec < ndec; ++idec) {
+		dec0 = idec*ddec; dec1 = dec0+ddec;
+		pixarea =(sin(dec1*Ang2D::D2R) - sin(dec0*Ang2D::D2R)) * dra * Ang2D::D2R;
+		area += accumulate(arr.begin()+idec*nra, arr.begin()+(idec+1)*nra, 0.0)*pixarea;
+	}
+
+	return area;
+
 }
 
 
@@ -165,6 +186,13 @@ int main(int argc, char **argv) {
 	dpair RABounds(mask1.ralim0, mask1.ralim1);
 	dpair decBounds(mask1.declim0, mask1.declim1);
 	dpair thetaBin(thetamin, thetamax);
+
+	// Test the cap area -- do just one simulation
+	{
+		vector<double> val = Ang2D::area(RABounds, decBounds, 1000000, 1, mask1);
+		cout << format("The mask integrates to %13.10f\n")%val[0];
+	}
+
 
 	steady_clock::time_point t1 = steady_clock::now();
 	// Actual call to code needs to go here.
