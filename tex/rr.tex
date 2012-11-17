@@ -48,8 +48,8 @@ This paper is organized as follows : Sec.~\ref{sec:RR} introduces the $RR$
 integral, and presents the usual method by which it is estimated. We then
 introduce our suggested technique for calculating this integral, constrasting it
 with the usual calculation in a series of three toy problems. We then summarize
-the algorithm in Sec.~\ref{sec:alg} and present two real world examples from the
-DEEP2 DR4 (CITE???) and SDSS-III DR9 (CITES???) surveys. We then present an
+the algorithm in Sec.~\ref{sec:alg} and present a realistic examples from
+the DEEP2 DR4 (CITE???) survey. We then present an
 important simplification applicable to surveys with separable 
 angular and radial selection functions in Sec.~\ref{sec:sep}.
 We continue by extending our algorithm to the $DR$ integral in
@@ -64,7 +64,35 @@ corresponds to the bin of interest, and zero otherwise.
 \section{The RR Integral}
 \label{sec:RR}
 
+We start by reviewing the basics of galaxy correlation function estimation, as 
+is most commonly used in large-scale structure work today. We then introduce 
+our modifications in a series of toy examples, that highlight both the algorithm
+and the differences with the traditional approach.
+
 \subsection{Correlation Function Estimators and their Standard Calculation}
+
+The galaxy two-point correlation $\xi(r)$ is defined as the fractional excess
+over a uniform distribution in the number of galaxy pairs separated by a
+distance $r$ from one another. The most commonly used estimator is the
+Landy-Szalay (CITE???) estimator :
+\begin{equation}
+\xi = \frac{DD - 2 DR + RR}{RR}
+\end{equation}
+where $DD$ is the number of galaxy pairs. This raw number of pairs must be
+scaled and corrected for the effects of the survey selection function. The $DR$
+and $RR$ terms represent this correction. $RR$ is the expected number of pairs
+if the galaxies were homogeously distributed according to the survey selectio
+function, while $DR$ is the expected number of pairs around the actual galaxies
+themselves. If we consider the survey selection function $n(\vx)$ normalized
+by the volume integral
+\begin{equation}
+N = \int d\vx\,n(\vx)
+\end{equation}
+where $N$ is the observed number of galaxies, then 
+\begin{equation}
+RR = \int d\vx_1  \int d\vx_2 \,n(\vx_1) n(\vx_2) \bin(\vx,\vy) \,\,
+\end{equation}
+
 
 \subsection{Three Toy Problems}
 
@@ -107,8 +135,13 @@ COMMON VARIABLE TRANSFORMATIONS
 
 \subsection{The DEEP2 DR4 Survey Mask}
 
+\begin{figure}
+\includegraphics[width=3in]{plots/deep2mask}
+\caption{The DEEP2 survey mask for the first pointing in field 3. The
+completeness ranges from 0 (white) to 1 (black). }
+\label{fig:deep2mask}
+\end{figure}
 
-\subsection{The SDSS-III DR9 Survey Mask}
 
 
 \section{Separable Window Functions}

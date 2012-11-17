@@ -1,0 +1,164 @@
+Notebook[{
+
+Cell[CellGroupData[{
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"ClearAll", "[", "\"\<Global`*\>\"", "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"SetDirectory", "[", 
+   RowBox[{"NotebookDirectory", "[", "]"}], "]"}], ";"}], "\n", 
+ RowBox[{"NotebookDirectory", "[", "]"}]}], "Code",
+ InitializationCell->True],
+
+Cell[BoxData["\<\"/Users/npadmana/myWork/lowdiscrepancyRR/mma/\"\>"], "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Sec 3", "Section"],
+
+Cell[BoxData[
+ RowBox[{"(*", " ", 
+  RowBox[{
+  "Make", " ", "a", " ", "map", " ", "of", " ", "the", " ", "DEEP2", " ", 
+   "mask"}], " ", "*)"}]], "Input"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"Clear", "[", 
+   RowBox[{
+   "deep2", ",", " ", "deep2meta", ",", "limits", ",", " ", "ndim", ",", " ", 
+    "dlim"}], "]"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"deep2", " ", "=", " ", 
+   RowBox[{"Import", "[", 
+    RowBox[{"\"\<../data/deep2/windowf.31.fits\>\"", ",", "\"\<RawData\>\""}],
+     "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"deep2meta", " ", "=", " ", 
+   RowBox[{"Import", "[", 
+    RowBox[{
+    "\"\<../data/deep2/windowf.31.fits\>\"", ",", "\"\<Metadata\>\""}], 
+    "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"deep2", " ", "=", " ", 
+   RowBox[{"Flatten", "[", 
+    RowBox[{"deep2", ",", " ", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"1", ",", "2"}], "}"}], ",", 
+       RowBox[{"{", "3", "}"}]}], "}"}]}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"limits", " ", "=", " ", 
+   RowBox[{
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{"\"\<RALIM0\>\"", ",", " ", "\"\<DECLIM0\>\""}], "}"}], ",", 
+        " ", 
+        RowBox[{"{", 
+         RowBox[{"\"\<RALIM1\>\"", ",", " ", "\"\<DECLIM1\>\""}], "}"}]}], 
+       "}"}], "/.", " ", "deep2meta"}], ")"}], "[", 
+    RowBox[{"[", 
+     RowBox[{"All", ",", "All", ",", "1"}], "]"}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"ndim", " ", "=", " ", 
+   RowBox[{
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"\"\<NRA\>\"", ",", "\"\<NDEC\>\""}], "}"}], "/.", 
+      "deep2meta"}], ")"}], "[", 
+    RowBox[{"[", 
+     RowBox[{"All", ",", "1"}], "]"}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"dlim", " ", "=", " ", 
+   RowBox[{
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{"limits", "[", 
+       RowBox[{"[", "2", "]"}], "]"}], " ", "-", " ", 
+      RowBox[{"limits", "[", 
+       RowBox[{"[", "1", "]"}], "]"}]}], ")"}], "/", "ndim"}]}], 
+  ";"}]}], "Input"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"p1", " ", "=", " ", 
+   RowBox[{"ArrayPlot", "[", 
+    RowBox[{"deep2", ",", " ", 
+     RowBox[{"DataReversed", "\[Rule]", "True"}], ",", " ", 
+     RowBox[{"Frame", "\[Rule]", "False"}], ",", " ", 
+     RowBox[{"ImageSize", "\[Rule]", 
+      RowBox[{"9", "*", "72"}]}]}], "]"}]}], ";"}]], "Input"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"p2", " ", "=", " ", 
+   RowBox[{"Plot", "[", 
+    RowBox[{"None", ",", " ", 
+     RowBox[{"{", 
+      RowBox[{"x", ",", " ", 
+       RowBox[{"limits", "[", 
+        RowBox[{"[", 
+         RowBox[{"1", ",", "1"}], "]"}], "]"}], ",", " ", 
+       RowBox[{"limits", "[", 
+        RowBox[{"[", 
+         RowBox[{"2", ",", "1"}], "]"}], "]"}]}], "}"}], ",", " ", 
+     RowBox[{"Axes", "\[Rule]", "False"}], ",", " ", 
+     RowBox[{"Frame", "\[Rule]", "True"}], ",", " ", 
+     RowBox[{"PlotRange", "\[Rule]", 
+      SuperscriptBox["limits", "\[Transpose]"]}], ",", " ", 
+     RowBox[{"Epilog", "->", 
+      RowBox[{"Inset", "[", 
+       RowBox[{"p1", ",", 
+        RowBox[{"limits", "[", 
+         RowBox[{"[", "1", "]"}], "]"}], ",", " ", 
+        RowBox[{"{", 
+         RowBox[{"0", ",", "0"}], "}"}], ",", " ", "Automatic"}], "]"}]}], 
+     ",", " ", 
+     RowBox[{"ImageSize", "\[Rule]", 
+      RowBox[{"9", "*", "72"}]}], ",", " ", 
+     RowBox[{"LabelStyle", "\[Rule]", 
+      RowBox[{"{", 
+       RowBox[{"FontSize", "\[Rule]", 
+        RowBox[{"Scaled", "[", "0.04", "]"}]}], "}"}]}], ",", 
+     "\[IndentingNewLine]", 
+     RowBox[{"FrameLabel", "\[Rule]", 
+      RowBox[{"{", 
+       RowBox[{"\"\<RA\>\"", ",", "\"\<Dec\>\""}], "}"}]}], ",", 
+     RowBox[{"FrameStyle", "\[Rule]", 
+      RowBox[{"Thickness", "[", "0.007", "]"}]}], ",", " ", 
+     RowBox[{"ImageMargins", "\[Rule]", "20"}]}], "]"}]}], ";"}]], "Input"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Export", "[", 
+  RowBox[{"\"\<../tex/plots/deep2mask.pdf\>\"", ",", " ", "p2"}], 
+  "]"}]], "Input"],
+
+Cell[BoxData["\<\"../tex/plots/deep2mask.pdf\"\>"], "Output"]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Clear", "[", "deep2", "]"}], ";", " ", 
+  RowBox[{"(*", " ", 
+   RowBox[{"Clean", " ", "up", " ", "memory"}], " ", "*)"}]}]], "Input"]
+}, Open  ]]
+},
+WindowSize->{951, 718},
+WindowMargins->{{29, Automatic}, {Automatic, 0}},
+FrontEndVersion->"8.0 for Mac OS X x86 (32-bit, 64-bit Kernel) (February 23, \
+2011)",
+StyleDefinitions->"Default.nb"
+]
+
