@@ -90,9 +90,23 @@ N = \int d\vx\,n(\vx)
 \end{equation}
 where $N$ is the observed number of galaxies, then 
 \begin{equation}
-RR = \int d\vx_1  \int d\vx_2 \,n(\vx_1) n(\vx_2) \bin(\vx,\vy) \,\,
+RR = \int d\vx_1  \int d\vx_2 \,n(\vx_1) n(\vx_2) \bin(\vx,\vy) \,\,,
+\label{eq:RRdef}
 \end{equation}
+and 
+\begin{equation}
+DR = \sum_{i=1}^{N} \int d\vx_1 \,n(\vx_1) \bin(\vx_1, \vx_{g,i}) \,\,
+\label{eq:DRdef}
+\end{equation}
+where the sum for $DR$ runs over the $N$ galaxy positions $\vx_{g,i}$. 
+Note that for an $n$-dimensional galaxy distribution, the $RR$ integral is
+$2n$-dimensional, while $DR$ is $n$-dimensional. In what follows, it is often
+convenient to scale $DR$ and $RR$ as defined by $N^2$; for simplicity, we refer
+to these as $DR$ and $RR$ as well.
 
+These integrals are usually evaluated by Monte-Carlo techniques by laying down a
+set of random points according to the survey selection function and then
+counting pairs as with the actual galaxies. 
 
 \subsection{Three Toy Problems}
 
