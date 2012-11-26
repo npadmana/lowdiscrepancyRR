@@ -27,35 +27,58 @@ for i in 1000*(2**np.arange(10)):
         for f in files:
             temp = np.loadtxt(f,skiprows=1,dtype=np.float64)
             data[i].append(temp[:,2])
+            bins = temp[:,0]
         data[i] = np.array(data[i])
 
 xx = np.array(sorted(data.keys()))
+
+print 'bins vs. normalized counts'
+N = 128000
+for b,x in zip(bins,data[N][0]):
+    print b,x/N**2
+print '-------------'
+
 sigma = {}
 sigmabin = {}
+mean = {}
 sigma0 = []
 sigma1 = []
 sigma2 = []
 sigma3 = []
+sigma4 = []
 sigmax = []
 for x in xx:
-    mean = data[x].mean(axis=0)
-    std = data[x].std(axis=0)
-    sigma[x] = std/mean
+    meanx = data[x].mean(axis=0)
+    stdx = data[x].std(axis=0)
+    sigma[x] = stdx/meanx
+    mean[x] = meanx
     sigma0.append(sigma[x][0])
     sigma1.append(sigma[x][1])
     sigma2.append(sigma[x][2])
     sigma3.append(sigma[x][3])
+    sigma4.append(sigma[x][4])
 
 plt.ylabel(r'$\sigma_{RR}/mean(RR)$')
 plt.xlabel(r'$N_R$')
+# some horizontal lines
+plt.plot([1e3,1e6],[1e-2,1e-2],lw=0.5,color='grey')
+plt.plot([1e3,1e6],[1e-3,1e-3],lw=0.5,color='grey')
+plt.plot([1e3,1e6],[1e-4,1e-4],lw=0.5,color='grey')
+
+# comparison lines
+plt.loglog(xx,1/np.sqrt(xx/1e3)*0.025,'--',lw=3,label=r'$1/\sqrt{N_R}$')
+plt.loglog(xx,1/(xx/1e3)*0.05,'--',lw=3,label=r'$1/N_R$')
+
 plt.loglog(xx,sigma0,'-^',lw=1.5,label='1st bin')
 plt.loglog(xx,sigma1,'-v',lw=1.5,label='2nd bin')
 plt.loglog(xx,sigma2,'-*',lw=1.5,label='3rd bin')
 plt.loglog(xx,sigma3,'-s',lw=1.5,label='4th bin')
-plt.loglog(xx,1/np.sqrt(xx/1e3)*0.025,lw=4,label=r'$\sqrt{N_R}$')
+plt.loglog(xx,sigma4,'-o',lw=1.5,label='5th bin')
 plt.legend()
-plt.xlim(9e2,3e5)
-plt.ylim(1e-3,2e-1)
+plt.xlim(9e2,6e5)
+plt.ylim(1e-4,2e-1)
+plt.subplots_adjust(bottom=0.14)
+plt.savefig('../plots/sigma_RR-mr_pairs-box.pdf')
 
 import pdb
 pdb.set_trace()

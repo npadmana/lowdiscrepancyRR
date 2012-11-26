@@ -13,14 +13,26 @@ cd ~/astronomy/lowdisprRR/python/
 BINS_1D="-b distancebins_angular_10.dat"
 
 # angular correlation function
-RANDOMS=../data/boss_geometry_2011_06_10-randoms-100000.txt
-echo ./mr_2pc_bin.py --counter angular --skiprows 1 $BINS_1D -o angpairs.dat $RANDOMS
-./mr_2pc_bin.py --counter angular --skiprows 1 $BINS_1D -o angpairs.dat $RANDOMS
+#RANDOMS=../data/boss_geometry_2011_06_10-randoms-100000.txt
+#echo ./mr_2pc_bin.py --counter angular --skiprows 1 $BINS_1D -o angpairs.dat $RANDOMS
+#./mr_2pc_bin.py --counter angular --skiprows 1 $BINS_1D -o angpairs.dat $RANDOMS
 
-RANDOMS=../data/boss_geometry_2011_06_10-randoms-200000.txt
-echo ./mr_2pc_bin.py --counter angular --skiprows 1 $BINS_1D -o angpairs.dat $RANDOMS
-./mr_2pc_bin.py --counter angular --skiprows 1 $BINS_1D -o angpairs.dat $RANDOMS
+#RANDOMS=../data/boss_geometry_2011_06_10-randoms-200000.txt
+#echo ./mr_2pc_bin.py --counter angular --skiprows 1 $BINS_1D -o angpairs.dat $RANDOMS
+#./mr_2pc_bin.py --counter angular --skiprows 1 $BINS_1D -o angpairs.dat $RANDOMS
 
-RANDOMS=../data/boss_geometry_2011_06_10-randoms-1000000.txt
-echo ./mr_2pc_bin.py --counter angular --skiprows 1 $BINS_1D -o angpairs.dat $RANDOMS
-./mr_2pc_bin.py --counter angular --skiprows 1 $BINS_1D -o angpairs.dat $RANDOMS
+#RANDOMS=../data/boss_geometry_2011_06_10-randoms-1000000.txt
+#echo ./mr_2pc_bin.py --counter angular --skiprows 1 $BINS_1D -o angpairs.dat $RANDOMS
+#./mr_2pc_bin.py --counter angular --skiprows 1 $BINS_1D -o angpairs.dat $RANDOMS
+
+RANDOMS=../data/deep2/deep2_angular_1000.txt
+echo ./mr_2pc_bin.py --counter angular $BINS_1D $RANDOMS
+./mr_2pc_bin.py --counter angular $BINS_1D $RANDOMS
+
+RANDOMS=../data/deep2/deep2_angular_10000.txt
+echo ./mr_2pc_bin.py --counter angular $BINS_1D $RANDOMS
+./mr_2pc_bin.py --counter angular $BINS_1D $RANDOMS
+
+RANDOMS=../data/deep2/deep2_angular_100000.txt
+echo ./mr_2pc_bin.py --counter angular $BINS_1D $RANDOMS
+./mr_2pc_bin.py --counter angular $BINS_1D $RANDOMS
