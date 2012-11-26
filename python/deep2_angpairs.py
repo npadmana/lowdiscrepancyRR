@@ -25,7 +25,10 @@ class Deep2Pairs():
     def __call__(self,N):
         """Return N points in the deep2 mask, with their weights."""
         RA = np.random.uniform(self.RAmin,self.RAmax,N)
-        Dec = np.random.uniform(self.DECmin,self.DECmax,N)
+        zmin = np.sin(np.radians(self.DECmin))
+        zmax = np.sin(np.radians(self.DECmax))
+        z = np.random.uniform(zmin,zmax,N)
+        Dec = np.degrees(np.arcsin(z))
         weights = self.get_weights(RA,Dec)
         return np.array(zip(RA,Dec,weights))
     #...
