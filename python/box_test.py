@@ -16,19 +16,20 @@ script = """#!/bin/bash
 #PBS -o ../temp/NN_nn.out
 #PBS -j oe
 
-cd astronomy/fastRR/
+cd astronomy/lowdiscrRR/python/
 
 mpirun -np NCPU python box_test_N.py -s SEED -b distancebins_small_log2.dat --Nr NN -n nn
 """
 bashfilename = '../temp/NN_nn.sh'
-datafilename = '../temp/randoms_NN_nn.txt'
 
 def do_one(Nr,n):
     """Generate a random file with Nr points, labeled n, and compute RR on it."""
     if Nr < 5e4:
         NODES = 1
-    else:
+    elif Nr < 2e5:
         NODES = 2
+    else:
+        NODES = 4
     NCPU = 8*NODES
     RAM = 40*NODES
 

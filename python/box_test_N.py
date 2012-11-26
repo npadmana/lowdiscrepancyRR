@@ -50,6 +50,9 @@ def do_one(comm,rank,bins,Nr,outname):
     if rank == 0:
         points = np.random.random((Nr,3))
         points2 = points.copy()
+    else:
+        points = None
+        points2 = None
     points = comm.bcast(points,root=0)
     points2 = comm.bcast(points2,root=0)
     if rank == 0:
