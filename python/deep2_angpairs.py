@@ -41,13 +41,14 @@ class Deep2Pairs():
     #...
 #...
 
-np.random.seed(100)
-format = '%14.10f'
-dp = Deep2Pairs()
-Npoints = 1000
-filename = '../data/deep2/deep2_angular_%d.txt'
-np.savetxt(filename%Npoints,dp(Npoints),fmt=format)
-Npoints = 10000
-np.savetxt(filename%Npoints,dp(Npoints),fmt=format)
-Npoints = 100000
-np.savetxt(filename%Npoints,dp(Npoints),fmt=format)
+if __name__ == "__main__":
+    np.random.seed(100)
+    format = '%14.10f'
+    dp = Deep2Pairs()
+    Npoints = 1000
+    filename = '../data/deep2/deep2_angular_%d.txt'
+    np.savetxt(filename%Npoints,dp(Npoints),fmt=format)
+    Npoints = 10000
+    np.savetxt(filename%Npoints,dp(Npoints),fmt=format)
+    Npoints = 100000
+    np.savetxt(filename%Npoints,dp(Npoints),fmt=format)

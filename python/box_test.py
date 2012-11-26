@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 """
-Generate random catalogs in a 0-1 box and computer their RR pair-counts.
+Generate random catalogs in a 0-1 box, or the DEEP2 mask,
+and computer their RR pair-counts.
 """
 import numpy as np
 import sys
@@ -18,11 +19,11 @@ script = """#!/bin/bash
 
 cd astronomy/lowdiscrRR/python/
 
-mpirun -np NCPU python box_test_N.py -s SEED -b distancebins_small_log2.dat --Nr NN -n nn
+mpirun -np NCPU python box_test_N.py MASK -s SEED -b BINS --Nr NN -n nn
 """
 bashfilename = '../temp/NN_nn.sh'
 
-def do_one(Nr,n):
+def do_one(Nr,n,deep2=False):
     """Generate a random file with Nr points, labeled n, and compute RR on it."""
     if Nr < 5e4:
         NODES = 1
@@ -30,13 +31,22 @@ def do_one(Nr,n):
         NODES = 2
     else:
         NODES = 4
+
+    if deep2:
+        binfile = 'distancebins_angular_0.25.dat'
+        mask = '--deep2'
+        NODES *= 8
+    else:
+        binfile = 'distancebins_small_log2.dat'
+        mask = ''
+
     NCPU = 8*NODES
     RAM = 40*NODES
 
     bashname = bashfilename.replace('NN',str(Nr)).replace('nn',str(n))
     bash = script.replace('NODES',str(NODES)).replace('RAM',str(RAM)).replace('NCPU',str(NCPU))
     bash = bash.replace('NN',str(Nr)).replace('nn',str(n))
-    bash = bash.replace('SEED',str(Nr))
+    bash = bash.replace('SEED',str(Nr)).replace('BINS',binfile).replace('MASK',mask)
     outfile = open(bashname,'w')
     outfile.write(bash)
     outfile.close()
@@ -59,13 +69,15 @@ def main(argv=None):
                       help='Maximum power of k to multiply min by (%default)')
     parser.add_option('--k',dest='k',type=int,default=2,
                       help='Power to raise to when multiplying by min (%default)')
+    parser.add_option('--deep2',dest='deep2',default=False,action='store_true',
+                      help='Use the DEEP2 mask for angular pairs (%default).')
     (opts,args) = parser.parse_args(argv)
 
     Nrands = opts.min*(opts.k**np.arange(0,opts.maxpow,dtype=np.int))
 
     for Nr in Nrands:
         print 'Doing:',Nr
-        do_one(Nr,opts.n)
+        do_one(Nr,opts.n,deep2=opts.deep2)
 #...
 
 if __name__ == "__main__":
