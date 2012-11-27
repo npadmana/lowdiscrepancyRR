@@ -1,0 +1,224 @@
+Running with a cap centered on the N-pole down to dec = 30...
+Running with 1000 pseudo-random numbers... 
+and 100 simulations
+Simulations will be saved in rrdump_00_00001000.dat 
+The mask integrates to  1.0000000000
+The mean is  0.0000030443 +/-  0.0000000002 with a scatter of  0.0000000016, a fractional error of  0.052947 percent
+Total evaluation time = 0.080705 seconds 
+Running with a cap centered on the N-pole down to dec = 30...
+Running with 4000 pseudo-random numbers... 
+and 100 simulations
+Simulations will be saved in rrdump_00_00004000.dat 
+The mask integrates to  1.0000000000
+The mean is  0.0000030442 +/-  0.0000000001 with a scatter of  0.0000000008, a fractional error of  0.027749 percent
+Total evaluation time = 0.220015 seconds 
+Running with a cap centered on the N-pole down to dec = 30...
+Running with 16000 pseudo-random numbers... 
+and 100 simulations
+Simulations will be saved in rrdump_00_00016000.dat 
+The mask integrates to  1.0000000000
+The mean is  0.0000030443 +/-  0.0000000000 with a scatter of  0.0000000003, a fractional error of  0.010083 percent
+Total evaluation time = 0.774876 seconds 
+Running with a cap centered on the N-pole down to dec = 30...
+Running with 64000 pseudo-random numbers... 
+and 100 simulations
+Simulations will be saved in rrdump_00_00064000.dat 
+The mask integrates to  1.0000000000
+The mean is  0.0000030442 +/-  0.0000000000 with a scatter of  0.0000000001, a fractional error of  0.003970 percent
+Total evaluation time = 3.00694 seconds 
+Running with a cap centered on the N-pole down to dec = 30...
+Running with 256000 pseudo-random numbers... 
+and 100 simulations
+Simulations will be saved in rrdump_00_00256000.dat 
+The mask integrates to  1.0000000000
+The mean is  0.0000030442 +/-  0.0000000000 with a scatter of  0.0000000000, a fractional error of  0.001467 percent
+Total evaluation time = 11.9208 seconds 
+Running with a cap centered on the N-pole down to dec = 30...
+Running with 1024000 pseudo-random numbers... 
+and 100 simulations
+Simulations will be saved in rrdump_00_01024000.dat 
+The mask integrates to  1.0000000000
+The mean is  0.0000030442 +/-  0.0000000000 with a scatter of  0.0000000000, a fractional error of  0.000610 percent
+Total evaluation time = 49.5462 seconds 
+Running with a cap centered on the N-pole down to dec = 30...
+Running with 4096000 pseudo-random numbers... 
+and 100 simulations
+Simulations will be saved in rrdump_00_04096000.dat 
+The mask integrates to  1.0000000000
+The mean is  0.0000030442 +/-  0.0000000000 with a scatter of  0.0000000000, a fractional error of  0.000268 percent
+Total evaluation time = 190.734 seconds 
+Running with a cap centered on the N-pole down to dec = 30...
+Running with 16384000 pseudo-random numbers... 
+and 100 simulations
+Simulations will be saved in rrdump_00_16384000.dat 
+The mask integrates to  1.0000000000
+The mean is  0.0000030442 +/-  0.0000000000 with a scatter of  0.0000000000, a fractional error of  0.000076 percent
+Total evaluation time = 761.524 seconds 
+Running with a cap centered on the N-pole down to dec = 30...
+Running with 1000 pseudo-random numbers... 
+and 100 simulations
+Simulations will be saved in rrdump_01_00001000.dat 
+The mask integrates to  1.0000000000
+The mean is  0.0003026480 +/-  0.0000000379 with a scatter of  0.0000003788, a fractional error of  0.125160 percent
+Total evaluation time = 0.08106 seconds 
+Running with a cap centered on the N-pole down to dec = 30...
+Running with 4000 pseudo-random numbers... 
+and 100 simulations
+Simulations will be saved in rrdump_01_00004000.dat 
+The mask integrates to  1.0000000000
+The mean is  0.0003026503 +/-  0.0000000160 with a scatter of  0.0000001600, a fractional error of  0.052882 percent
+Total evaluation time = 0.220029 seconds 
+Running with a cap centered on the N-pole down to dec = 30...
+Running with 16000 pseudo-random numbers... 
+and 100 simulations
+Simulations will be saved in rrdump_01_00016000.dat 
+The mask integrates to  1.0000000000
+The mean is  0.0003026585 +/-  0.0000000062 with a scatter of  0.0000000616, a fractional error of  0.020354 percent
+Total evaluation time = 0.778515 seconds 
+Running with a cap centered on the N-pole down to dec = 30...
+Running with 64000 pseudo-random numbers... 
+and 100 simulations
+Simulations will be saved in rrdump_01_00064000.dat 
+The mask integrates to  1.0000000000
+The mean is  0.0003026526 +/-  0.0000000025 with a scatter of  0.0000000255, a fractional error of  0.008421 percent
+Total evaluation time = 2.99623 seconds 
+Running with a cap centered on the N-pole down to dec = 30...
+Running with 256000 pseudo-random numbers... 
+and 100 simulations
+Simulations will be saved in rrdump_01_00256000.dat 
+The mask integrates to  1.0000000000
+The mean is  0.0003026548 +/-  0.0000000009 with a scatter of  0.0000000089, a fractional error of  0.002926 percent
+Total evaluation time = 11.9321 seconds 
+Running with a cap centered on the N-pole down to dec = 30...
+Running with 1024000 pseudo-random numbers... 
+and 100 simulations
+Simulations will be saved in rrdump_01_01024000.dat 
+The mask integrates to  1.0000000000
+The mean is  0.0003026557 +/-  0.0000000003 with a scatter of  0.0000000034, a fractional error of  0.001131 percent
+Total evaluation time = 47.6772 seconds 
+Running with a cap centered on the N-pole down to dec = 30...
+Running with 4096000 pseudo-random numbers... 
+and 100 simulations
+Simulations will be saved in rrdump_01_04096000.dat 
+The mask integrates to  1.0000000000
+The mean is  0.0003026554 +/-  0.0000000001 with a scatter of  0.0000000014, a fractional error of  0.000447 percent
+Total evaluation time = 190.328 seconds 
+Running with a cap centered on the N-pole down to dec = 30...
+Running with 16384000 pseudo-random numbers... 
+and 100 simulations
+Simulations will be saved in rrdump_01_16384000.dat 
+The mask integrates to  1.0000000000
+The mean is  0.0003026556 +/-  0.0000000001 with a scatter of  0.0000000006, a fractional error of  0.000191 percent
+Total evaluation time = 779.329 seconds 
+Running with a cap centered on the N-pole down to dec = 30...
+Running with 1000 pseudo-random numbers... 
+and 100 simulations
+Simulations will be saved in rrdump_02_00001000.dat 
+The mask integrates to  1.0000000000
+The mean is  0.0284553825 +/-  0.0000083709 with a scatter of  0.0000837086, a fractional error of  0.294175 percent
+Total evaluation time = 0.080861 seconds 
+Running with a cap centered on the N-pole down to dec = 30...
+Running with 4000 pseudo-random numbers... 
+and 100 simulations
+Simulations will be saved in rrdump_02_00004000.dat 
+The mask integrates to  1.0000000000
+The mean is  0.0284371518 +/-  0.0000035783 with a scatter of  0.0000357828, a fractional error of  0.125831 percent
+Total evaluation time = 0.221931 seconds 
+Running with a cap centered on the N-pole down to dec = 30...
+Running with 16000 pseudo-random numbers... 
+and 100 simulations
+Simulations will be saved in rrdump_02_00016000.dat 
+The mask integrates to  1.0000000000
+The mean is  0.0284385570 +/-  0.0000015359 with a scatter of  0.0000153587, a fractional error of  0.054007 percent
+Total evaluation time = 0.781242 seconds 
+Running with a cap centered on the N-pole down to dec = 30...
+Running with 64000 pseudo-random numbers... 
+and 100 simulations
+Simulations will be saved in rrdump_02_00064000.dat 
+The mask integrates to  1.0000000000
+The mean is  0.0284368432 +/-  0.0000004839 with a scatter of  0.0000048393, a fractional error of  0.017018 percent
+Total evaluation time = 3.01592 seconds 
+Running with a cap centered on the N-pole down to dec = 30...
+Running with 256000 pseudo-random numbers... 
+and 100 simulations
+Simulations will be saved in rrdump_02_00256000.dat 
+The mask integrates to  1.0000000000
+The mean is  0.0284372479 +/-  0.0000002040 with a scatter of  0.0000020400, a fractional error of  0.007174 percent
+Total evaluation time = 12.0402 seconds 
+Running with a cap centered on the N-pole down to dec = 30...
+Running with 1024000 pseudo-random numbers... 
+and 100 simulations
+Simulations will be saved in rrdump_02_01024000.dat 
+The mask integrates to  1.0000000000
+The mean is  0.0284368823 +/-  0.0000000686 with a scatter of  0.0000006856, a fractional error of  0.002411 percent
+Total evaluation time = 47.5929 seconds 
+Running with a cap centered on the N-pole down to dec = 30...
+Running with 4096000 pseudo-random numbers... 
+and 100 simulations
+Simulations will be saved in rrdump_02_04096000.dat 
+The mask integrates to  1.0000000000
+The mean is  0.0284368446 +/-  0.0000000297 with a scatter of  0.0000002972, a fractional error of  0.001045 percent
+Total evaluation time = 191.027 seconds 
+Running with a cap centered on the N-pole down to dec = 30...
+Running with 16384000 pseudo-random numbers... 
+and 100 simulations
+Simulations will be saved in rrdump_02_16384000.dat 
+The mask integrates to  1.0000000000
+The mean is  0.0284368014 +/-  0.0000000098 with a scatter of  0.0000000976, a fractional error of  0.000343 percent
+Total evaluation time = 759.521 seconds 
+Running with a cap centered on the N-pole down to dec = 30...
+Running with 1000 pseudo-random numbers... 
+and 100 simulations
+Simulations will be saved in rrdump_03_00001000.dat 
+The mask integrates to  1.0000000000
+The mean is  0.9994799999 +/-  0.0015966515 with a scatter of  0.0159665150, a fractional error of  1.597482 percent
+Total evaluation time = 0.081766 seconds 
+Running with a cap centered on the N-pole down to dec = 30...
+Running with 4000 pseudo-random numbers... 
+and 100 simulations
+Simulations will be saved in rrdump_03_00004000.dat 
+The mask integrates to  1.0000000000
+The mean is  0.9995999999 +/-  0.0004901020 with a scatter of  0.0049010203, a fractional error of  0.490298 percent
+Total evaluation time = 0.224702 seconds 
+Running with a cap centered on the N-pole down to dec = 30...
+Running with 16000 pseudo-random numbers... 
+and 100 simulations
+Simulations will be saved in rrdump_03_00016000.dat 
+The mask integrates to  1.0000000000
+The mean is  1.0000699999 +/-  0.0002371729 with a scatter of  0.0023717293, a fractional error of  0.237156 percent
+Total evaluation time = 0.794877 seconds 
+Running with a cap centered on the N-pole down to dec = 30...
+Running with 64000 pseudo-random numbers... 
+and 100 simulations
+Simulations will be saved in rrdump_03_00064000.dat 
+The mask integrates to  1.0000000000
+The mean is  1.0000281249 +/-  0.0001105610 with a scatter of  0.0011056098, a fractional error of  0.110558 percent
+Total evaluation time = 3.05874 seconds 
+Running with a cap centered on the N-pole down to dec = 30...
+Running with 256000 pseudo-random numbers... 
+and 100 simulations
+Simulations will be saved in rrdump_03_00256000.dat 
+The mask integrates to  1.0000000000
+The mean is  0.9999943749 +/-  0.0000485958 with a scatter of  0.0004859577, a fractional error of  0.048596 percent
+Total evaluation time = 12.1955 seconds 
+Running with a cap centered on the N-pole down to dec = 30...
+Running with 1024000 pseudo-random numbers... 
+and 100 simulations
+Simulations will be saved in rrdump_03_01024000.dat 
+The mask integrates to  1.0000000000
+The mean is  1.0000283593 +/-  0.0000203474 with a scatter of  0.0002034737, a fractional error of  0.020347 percent
+Total evaluation time = 48.5812 seconds 
+Running with a cap centered on the N-pole down to dec = 30...
+Running with 4096000 pseudo-random numbers... 
+and 100 simulations
+Simulations will be saved in rrdump_03_04096000.dat 
+The mask integrates to  1.0000000000
+The mean is  1.0000014745 +/-  0.0000057940 with a scatter of  0.0000579400, a fractional error of  0.005794 percent
+Total evaluation time = 193.281 seconds 
+Running with a cap centered on the N-pole down to dec = 30...
+Running with 16384000 pseudo-random numbers... 
+and 100 simulations
+Simulations will be saved in rrdump_03_16384000.dat 
+The mask integrates to  1.0000000000
+The mean is  1.0000015869 +/-  0.0000026229 with a scatter of  0.0000262295, a fractional error of  0.002623 percent
+Total evaluation time = 778.561 seconds 
