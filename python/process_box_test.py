@@ -20,23 +20,30 @@ plt.rc('font',**{'family':'sans-serif','sans-serif':['Helvetica']})
 plt.ion()
 
 data = {}
+weightN = {}
+
+#basedir = '../data/counts/'
+basedir = '../data/deep2/counts/'
+
+print 'bins vs. normalized counts'
 for i in 1000*(2**np.arange(10)):
-    files = glob.glob('../data/counts/'+str(i)+'_*.dat')
+    files = glob.glob(basedir+str(i)+'_*.dat')
     if files:
         data[i] = []
         for f in files:
-            temp = np.loadtxt(f,skiprows=1,dtype=np.float64)
-            data[i].append(temp[:,2])
+            if 'deep2' in basedir:
+                # need to get the sum of weights
+                ff = open(f,'r')
+                weightN = float(ff.readline())
+            else:
+                ff = open(f,'r')
+                weightN = 1
+            temp = np.loadtxt(ff,skiprows=1,dtype=np.float64)
+            data[i].append(temp[:,2]/weightN**2)
             bins = temp[:,0]
         data[i] = np.array(data[i])
 
 xx = np.array(sorted(data.keys()))
-
-print 'bins vs. normalized counts'
-N = 128000
-for b,x in zip(bins,data[N][0]):
-    print b,x/N**2
-print '-------------'
 
 sigma = {}
 sigmabin = {}
@@ -58,6 +65,17 @@ for x in xx:
     sigma3.append(sigma[x][3])
     sigma4.append(sigma[x][4])
 
+for i in xx:
+    print i
+    if 'deep2' in basedir:
+        for b,x in zip(bins,mean[i]):
+            print b,x
+    else:
+        for b,x in zip(bins,mean[i]):
+            print b,x/i**2
+    print '-------------'
+
+    
 plt.ylabel(r'$\sigma_{RR}/mean(RR)$')
 plt.xlabel(r'$N_R$')
 # some horizontal lines
@@ -78,7 +96,10 @@ plt.legend()
 plt.xlim(9e2,6e5)
 plt.ylim(1e-4,2e-1)
 plt.subplots_adjust(bottom=0.14)
-plt.savefig('../plots/sigma_RR-mr_pairs-box.pdf')
+if 'deep2' in basedir:
+    plt.savefig('../plots/sigma_RR-mr_pairs-deep2.pdf')
+else:
+    plt.savefig('../plots/sigma_RR-mr_pairs-box.pdf')
 
 import pdb
 pdb.set_trace()
