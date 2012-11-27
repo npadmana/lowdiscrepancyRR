@@ -66,7 +66,7 @@ void vecshift(vector<double> &x, vector<double> &x0) {
  */
 template <class Mask>
 vector<double> rreval(dpair RABounds, dpair DecBounds, dpair thetaBin,
-		int nrand, int nsim, const Mask &Mask1, const Mask &Mask2) {
+		int nrand, int nsim, const Mask &Mask1, const Mask &Mask2, bool use_prng=false) {
 	const int DIM = 4;
 
 	// Dec data validity
@@ -103,7 +103,7 @@ vector<double> rreval(dpair RABounds, dpair DecBounds, dpair thetaBin,
 	vector<double> outvec(nsim);
 
 	// Set up the random vector
-	vector<double> x0(DIM);
+	vector<double> x,x0;
 	npRandom rng(1234);
 
 	// Temporary values
@@ -125,8 +125,14 @@ vector<double> rreval(dpair RABounds, dpair DecBounds, dpair thetaBin,
 		for (int ii=0; ii<nrand; ++ii) {
 
 			// Generate a random pseudo-random number and shift it mod 1
-			vector<double> x = qrng();
-			vecshift(x,x0);
+			// use the regular random number generator if desired.
+			if (use_prng) {
+				// No reason to shift this
+				x = rng(DIM);
+			} else {
+				x = qrng();
+				vecshift(x,x0);
+			}
 
 			// Work out the RA, Dec of position 1
 			x[1] = ((x[1] * dphi) + phi1 );
@@ -185,7 +191,7 @@ vector<double> rreval(dpair RABounds, dpair DecBounds, dpair thetaBin,
  */
 template <class Mask>
 vector<double> area(dpair RABounds, dpair DecBounds,
-		int nrand, int nsim, const Mask &Mask1) {
+		int nrand, int nsim, const Mask &Mask1, bool use_prng=false) {
 	const int DIM = 2;
 
 	// Dec data validity
@@ -212,7 +218,7 @@ vector<double> area(dpair RABounds, dpair DecBounds,
 	vector<double> outvec(nsim);
 
 	// Set up the random vector
-	vector<double> x0(DIM);
+	vector<double> x, x0;
 	npRandom rng(1234);
 
 	// Temporary values
@@ -232,8 +238,15 @@ vector<double> area(dpair RABounds, dpair DecBounds,
 		for (int ii=0; ii<nrand; ++ii) {
 
 			// Generate a random pseudo-random number and shift it mod 1
-			vector<double> x = qrng();
-			vecshift(x,x0);
+			// use the regular random number generator if desired.
+			if (use_prng) {
+				// No reason to shift this
+				x = rng(DIM);
+			} else {
+				x = qrng();
+				vecshift(x,x0);
+			}
+
 
 			// Work out the RA, Dec of position 1
 			ra1 = ((x[1] * dphi) + phi1 ); // in degrees

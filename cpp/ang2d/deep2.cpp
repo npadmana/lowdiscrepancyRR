@@ -132,6 +132,7 @@ int main(int argc, char **argv) {
 
 	string fn;
 	bool savefile=false;
+	bool use_prng=false;
 
 	// Get the input parameters -- pull them into their own scope
 	{
@@ -145,6 +146,7 @@ int main(int argc, char **argv) {
 	    				("thetamax", po::value<double>(&thetamax)->default_value(0.5), "Maximum theta value for RR")
 	    				("nsim", po::value<int>(&nsim)->default_value(1), "Number of simulations")
 	    				("save", po::value<string>(&fn), "save simulation results to file [optional]")
+	    				("prng", "Use pseudo-random numbers instead of a low discrepancy sequence")
 	    				;
 
 			po::variables_map vm;
@@ -162,6 +164,9 @@ int main(int argc, char **argv) {
 			if (vm.count("save")) {
 				savefile=true;
 			}
+			if (vm.count("prng")) {
+				use_prng=true;
+			}
 
 		}
 		catch (exception &e) {
@@ -178,6 +183,9 @@ int main(int argc, char **argv) {
 	if (savefile) {
 		cout << format("Simulations will be saved in %1% \n")%fn;
 	}
+	if (use_prng) {
+		cout << "Using pseudo-random numbers instead of a low discrepancy sequence\n";
+	}
 
 	// Now define the mask
 	DEEP2Mask mask1(maskfn);
@@ -189,14 +197,14 @@ int main(int argc, char **argv) {
 
 	// Test the cap area -- do just one simulation
 	{
-		vector<double> val = Ang2D::area(RABounds, decBounds, 1000000, 1, mask1);
+		vector<double> val = Ang2D::area(RABounds, decBounds, 1000000, 1, mask1, use_prng);
 		cout << format("The mask integrates to %13.10f\n")%val[0];
 	}
 
 
 	steady_clock::time_point t1 = steady_clock::now();
 	// Actual call to code needs to go here.
-	vector<double> val = Ang2D::rreval(RABounds, decBounds, thetaBin, nrand, nsim, mask1, mask1);
+	vector<double> val = Ang2D::rreval(RABounds, decBounds, thetaBin, nrand, nsim, mask1, mask1, use_prng);
 	steady_clock::time_point t2 = steady_clock::now();
 	double mean=0.0, stddev=0.0;
 
