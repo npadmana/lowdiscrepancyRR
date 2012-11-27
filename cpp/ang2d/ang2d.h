@@ -112,7 +112,8 @@ vector<double> rreval(dpair RABounds, dpair DecBounds, dpair thetaBin,
 
 	for(int jj=0; jj<nsim; ++jj) {
 
-		for_each(x0.begin(), x0.end(), [&rng](double &x){x=rng();});
+		// Fill the random vector
+		x0 = rng(DIM);
 
 		// Set up the quasi RNG
 		npQuasiRandom qrng(DIM);
@@ -219,7 +220,7 @@ vector<double> area(dpair RABounds, dpair DecBounds,
 
 	for(int jj=0; jj<nsim; ++jj) {
 
-		for_each(x0.begin(), x0.end(), [&rng](double &x){x=rng();});
+		x0 = rng(DIM);
 
 		// Set up the quasi RNG
 		npQuasiRandom qrng(DIM);
