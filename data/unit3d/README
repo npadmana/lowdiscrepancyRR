@@ -1,3 +1,5 @@
+Filename: first number is bin number, second number is number of points.
+
 File format : simple binary
 
 int*4 nsim, nrand

@@ -5,7 +5,17 @@ import numpy as np
 import pyfits
 
 class Deep2Pairs():
+    """Generate N points in the DEEP2 mask.
+    Usage:
+        d2p = Deep2Pairs()
+        points = d2p(100) # 100 points in the mask
+        points = d2p(10000) # 10000 points in the mask
+        RA = points[:,0]
+        Dec = points[:,1]
+        weights = points[:,2]
+    """
     def __init__(self):
+        """Load the data file and set up RA/Dec limits."""
         data = pyfits.open('../data/deep2/windowf.31.fits')
         header = data[0].header
         data = data[0].data
