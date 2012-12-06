@@ -75,7 +75,10 @@ def do_one(comm,rank,bins,Nr,outname,d2p=None,data=None):
         points2 = comm.bcast(points2,root=0)
     if rank == 0:
         print '--------- Processing:',outname
-    counts = do_counting(comm,rank,bins,points,points2,angular=(d2p is not None))
+
+    angular = (d2p is not None)
+
+    counts = do_counting(comm,rank,bins,points,points2,angular=angular)
     if rank == 0:
         write_1d(bins,counts,outname,weightsum=weightsum)
 #...
@@ -106,11 +109,6 @@ def main(argv=None):
 
     comm = MPI.COMM_WORLD
     rank = comm.Get_rank()
-    if opts.data != '':
-        data = np.loadtxt(opts.data)
-        data = (data[:,data.shape[1]-1],data[:,-1])
-    else:
-        data = None
 
     if opts.deep2:
         d2p = deep2_angpairs.Deep2Pairs()
@@ -118,6 +116,12 @@ def main(argv=None):
     else:
         d2p = None
         outfilename = '../data/counts/NN_nn.dat'
+
+    if opts.data != '':
+        data = np.loadtxt(opts.data)
+        outfilename = outfilename.replace('nn','nn-DR')
+    else:
+        data = None
 
     for n in range(opts.n):
         outname = outfilename.replace('NN',str(opts.Nr)).replace('nn',str(n))

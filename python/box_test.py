@@ -42,6 +42,9 @@ def do_one(Nr,n,deep2=False,data=''):
 
     NCPU = 8*NODES
     RAM = 40*NODES
+    
+    if data != '':
+        data = '--data='+data
 
     bashname = bashfilename.replace('NN',str(Nr)).replace('nn',str(n))
     bash = script.replace('NODES',str(NODES)).replace('RAM',str(RAM)).replace('NCPU',str(NCPU))
