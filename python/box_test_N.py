@@ -42,7 +42,7 @@ def write_1d(bins,counts,outfilename,weightsum=None):
     """Write the (1-dimensional) results to outfilename."""
     outfile = file(outfilename,'wb')
     if weightsum:
-        outfile.write(str(weightsum))
+        outfile.write(str(weightsum)+'\n')
     header = ('Start','Stop','Count\n')
     outfile.write('\t'.join(header))
     for x in zip(bins[:-1],bins[1:],counts):
