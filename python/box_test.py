@@ -19,11 +19,11 @@ script = """#!/bin/bash
 
 cd astronomy/lowdiscrRR/python/
 
-mpirun -np NCPU python box_test_N.py MASK -s SEED -b BINS --Nr NN -n nn
+mpirun -np NCPU python box_test_N.py MASK -s SEED -b BINS --Nr NN -n nn DATA
 """
 bashfilename = '../temp/NN_nn.sh'
 
-def do_one(Nr,n,deep2=False):
+def do_one(Nr,n,deep2=False,data=''):
     """Generate a random file with Nr points, labeled n, and compute RR on it."""
     if Nr < 5e4:
         NODES = 1
@@ -47,6 +47,7 @@ def do_one(Nr,n,deep2=False):
     bash = script.replace('NODES',str(NODES)).replace('RAM',str(RAM)).replace('NCPU',str(NCPU))
     bash = bash.replace('NN',str(Nr)).replace('nn',str(n))
     bash = bash.replace('SEED',str(Nr)).replace('BINS',binfile).replace('MASK',mask)
+    bash = bash.replace('DATA',data)
     outfile = open(bashname,'w')
     outfile.write(bash)
     outfile.close()
@@ -71,13 +72,15 @@ def main(argv=None):
                       help='Power to raise to when multiplying by min (%default)')
     parser.add_option('--deep2',dest='deep2',default=False,action='store_true',
                       help='Use the DEEP2 mask for angular pairs (%default).')
+    parser.add_option('--data',dest='data',default='',
+                      help='Use this file to calculate DR, instead of RR.')
     (opts,args) = parser.parse_args(argv)
 
     Nrands = opts.min*(opts.k**np.arange(0,opts.maxpow,dtype=np.int))
 
     for Nr in Nrands:
         print 'Doing:',Nr
-        do_one(Nr,opts.n,deep2=opts.deep2)
+        do_one(Nr,opts.n,deep2=opts.deep2,data=opts.data)
 #...
 
 if __name__ == "__main__":

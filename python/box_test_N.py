@@ -51,7 +51,7 @@ def write_1d(bins,counts,outfilename,weightsum=None):
     sys.stdout.flush()
 #...
 
-def do_one(comm,rank,bins,Nr,outname,d2p=None):
+def do_one(comm,rank,bins,Nr,outname,d2p=None,data=None):
     """
     Generate one random realization, and compute its auto-correlation.
     """
@@ -69,7 +69,10 @@ def do_one(comm,rank,bins,Nr,outname,d2p=None):
         points = None
         points2 = None
     points = comm.bcast(points,root=0)
-    points2 = comm.bcast(points2,root=0)
+    if data is not None:
+        points2 = data
+    else:
+        points2 = comm.bcast(points2,root=0)
     if rank == 0:
         print '--------- Processing:',outname
     counts = do_counting(comm,rank,bins,points,points2,angular=(d2p is not None))
@@ -93,6 +96,8 @@ def main(argv=None):
                       help='random number seed for numpy (%default).')
     parser.add_option('--deep2',dest='deep2',default=False,action='store_true',
                       help='Use the DEEP2 mask for angular pairs (%default).')
+    parser.add_option('--data',dest='data',default='',
+                      help='Use this file to calculate DR, instead of RR. Expected to have 2 or 3 position columns + 1 weight column, and the header marked with "#".')
     (opts,args) = parser.parse_args(argv)
 
     bins = np.loadtxt(opts.binfile)
@@ -101,6 +106,12 @@ def main(argv=None):
 
     comm = MPI.COMM_WORLD
     rank = comm.Get_rank()
+    if opts.data != '':
+        data = np.loadtxt(opts.data)
+        data = (data[:,data.shape[1]-1],data[:,-1])
+    else:
+        data = None
+
     if opts.deep2:
         d2p = deep2_angpairs.Deep2Pairs()
         outfilename = '../data/deep2/counts/NN_nn.dat'
@@ -110,7 +121,7 @@ def main(argv=None):
 
     for n in range(opts.n):
         outname = outfilename.replace('NN',str(opts.Nr)).replace('nn',str(n))
-        do_one(comm,rank,bins,opts.Nr,outname,d2p=d2p)
+        do_one(comm,rank,bins,opts.Nr,outname,d2p=d2p,data=data)
 #...
             
 if __name__ == "__main__":
