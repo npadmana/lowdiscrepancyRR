@@ -10,7 +10,12 @@ Cell[BoxData[{
    RowBox[{"NotebookDirectory", "[", "]"}], "]"}], ";"}], "\n", 
  RowBox[{"NotebookDirectory", "[", "]"}], "\n", 
  RowBox[{
-  RowBox[{"Needs", "[", "\"\<plots`\>\"", "]"}], ";"}], "\n", 
+  RowBox[{"Off", "[", 
+   RowBox[{"Needs", "::", "nocont"}], "]"}], ";", 
+  RowBox[{"Needs", "[", "\"\<LowDiscrep`\>\"", "]"}], ";", " ", 
+  RowBox[{"Needs", "[", "\"\<plots`\>\"", "]"}], ";", " ", 
+  RowBox[{"On", "[", 
+   RowBox[{"Needs", "::", "nocont"}], "]"}], ";"}], "\n", 
  RowBox[{
   RowBox[{"SetOptions", "[", 
    RowBox[{"Plot", ",", " ", 
@@ -21,22 +26,226 @@ Cell[BoxData[{
      RowBox[{"8", "*", "72"}]}], ",", " ", 
     RowBox[{"LabelStyle", "\[Rule]", 
      RowBox[{"{", 
-      RowBox[{"FontSize", "\[Rule]", "25"}], "}"}]}]}], "]"}], ";"}]}], "Code",
+      RowBox[{"FontSize", "\[Rule]", "25"}], "}"}]}]}], "]"}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"SetOptions", "[", 
+   RowBox[{"ListPlot", ",", " ", 
+    RowBox[{"Frame", "\[Rule]", "True"}], ",", " ", 
+    RowBox[{"Axes", "\[Rule]", "False"}], ",", " ", 
+    RowBox[{"FrameStyle", "\[Rule]", "Thick"}], ",", " ", 
+    RowBox[{"ImageSize", "\[Rule]", 
+     RowBox[{"8", "*", "72"}]}], ",", " ", 
+    RowBox[{"LabelStyle", "\[Rule]", 
+     RowBox[{"{", 
+      RowBox[{"FontSize", "\[Rule]", "25"}], "}"}]}]}], "]"}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"SeedRandom", "[", "1234", "]"}], ";"}]}], "Code",
  InitializationCell->True],
 
-Cell[BoxData["\<\"/Users/npadmana/myWork/lowdiscrepancyRR/mma/\"\>"], \
-"Output"],
+Cell[BoxData["\<\"/Users/npadmana/myWork/lowdiscrepancyRR/mma/\"\>"], "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Sec 2", "Section"],
+
+Cell[CellGroupData[{
+
+Cell["\<\
+1D low discrepancy vs regular comparisons\
+\>", "Subsection"],
 
 Cell[BoxData[
  RowBox[{
-  StyleBox[
-   RowBox[{"Needs", "::", "nocont"}], "MessageName"], 
+  RowBox[{"npts", " ", "=", " ", "50"}], ";"}]], "Input"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"region1d", "=", 
+   RowBox[{"Graphics", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"Gray", ",", " ", 
+       RowBox[{"Opacity", "[", "0.5", "]"}], ",", 
+       RowBox[{"Polygon", "[", 
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{"0.0", ",", "0.0"}], "}"}], ",", 
+          RowBox[{"{", 
+           RowBox[{"0.2", ",", "0"}], "}"}], ",", " ", 
+          RowBox[{"{", 
+           RowBox[{"1.0", ",", " ", "0.8"}], "}"}], ",", " ", 
+          RowBox[{"{", 
+           RowBox[{"1.0", ",", "1.0"}], "}"}], ",", " ", 
+          RowBox[{"{", 
+           RowBox[{"0.8", ",", " ", "1.0"}], "}"}], ",", " ", 
+          RowBox[{"{", 
+           RowBox[{"0.0", ",", "0.2"}], "}"}]}], "}"}], "]"}]}], "}"}], ",", 
+     " ", 
+     RowBox[{"AspectRatio", "\[Rule]", "1"}], ",", " ", 
+     RowBox[{"PlotRangePadding", "\[Rule]", "None"}], ",", " ", 
+     RowBox[{"PlotRange", "\[Rule]", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{"0", ",", "1"}], "}"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"0", ",", "1"}], "}"}]}], "}"}]}], ",", " ", 
+     RowBox[{"ImagePadding", "\[Rule]", "None"}]}], "]"}]}], ";"}]], "Input"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"rr1", " ", "=", " ", 
+   RowBox[{"ListPlot", "[", 
+    RowBox[{
+     RowBox[{"generateRandomGrid", "[", "npts", "]"}], ",", " ", 
+     RowBox[{"AspectRatio", "\[Rule]", "1"}], ",", " ", 
+     RowBox[{"PlotRange", "\[Rule]", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{"0", ",", "1"}], "}"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"0", ",", "1"}], "}"}]}], "}"}]}], ",", " ", 
+     RowBox[{"Prolog", "\[Rule]", 
+      RowBox[{"Inset", "[", 
+       RowBox[{"region1d", ",", " ", 
+        RowBox[{"{", 
+         RowBox[{"0", ",", "0"}], "}"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"0", ",", "0"}], "}"}], ",", " ", 
+        RowBox[{"{", 
+         RowBox[{"1", ",", "1"}], "}"}]}], "]"}]}], ",", " ", 
+     RowBox[{"PlotRangePadding", "\[Rule]", "0.01"}]}], "]"}]}], 
+  ";"}]], "Input"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"rr2", " ", "=", " ", 
+   RowBox[{"ListPlot", "[", 
+    RowBox[{
+     RowBox[{"RandomReal", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"0", ",", "1"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{
+         SuperscriptBox["npts", "2"], ",", "2"}], "}"}]}], "]"}], ",", " ", 
+     RowBox[{"AspectRatio", "\[Rule]", "1"}], ",", " ", 
+     RowBox[{"PlotRange", "\[Rule]", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{"0", ",", "1"}], "}"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"0", ",", "1"}], "}"}]}], "}"}]}], ",", " ", 
+     RowBox[{"Prolog", "\[Rule]", 
+      RowBox[{"Inset", "[", 
+       RowBox[{"region1d", ",", " ", 
+        RowBox[{"{", 
+         RowBox[{"0", ",", "0"}], "}"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"0", ",", "0"}], "}"}], ",", " ", 
+        RowBox[{"{", 
+         RowBox[{"1", ",", "1"}], "}"}]}], "]"}]}], ",", " ", 
+     RowBox[{"PlotRangePadding", "\[Rule]", "0.01"}]}], "]"}]}], 
+  ";"}]], "Input"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"rr3", " ", "=", " ", 
+   RowBox[{"ListPlot", "[", 
+    RowBox[{
+     RowBox[{"generateLDSGrid", "[", 
+      SuperscriptBox["npts", "2"], "]"}], ",", " ", 
+     RowBox[{"AspectRatio", "\[Rule]", "1"}], ",", " ", 
+     RowBox[{"PlotRange", "\[Rule]", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{"0", ",", "1"}], "}"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"0", ",", "1"}], "}"}]}], "}"}]}], ",", " ", 
+     RowBox[{"Prolog", "\[Rule]", 
+      RowBox[{"Inset", "[", 
+       RowBox[{"region1d", ",", " ", 
+        RowBox[{"{", 
+         RowBox[{"0", ",", "0"}], "}"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"0", ",", "0"}], "}"}], ",", " ", 
+        RowBox[{"{", 
+         RowBox[{"1", ",", "1"}], "}"}]}], "]"}]}], ",", " ", 
+     RowBox[{"PlotRangePadding", "\[Rule]", "0.01"}]}], "]"}]}], 
+  ";"}]], "Input"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"gg", "=", " ", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"#1", ",", " ", 
+       RowBox[{"#1", "+", 
+        RowBox[{"#2", "*", "0.4"}], "-", "0.2"}]}], "}"}], " ", "&"}], "@@@", 
+    
+    RowBox[{"generateLDSGrid", "[", 
+     SuperscriptBox["npts", "2"], "]"}]}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"rr4", " ", "=", " ", 
+   RowBox[{"ListPlot", "[", 
+    RowBox[{"gg", ",", " ", 
+     RowBox[{"AspectRatio", "\[Rule]", "1.4"}], ",", " ", 
+     RowBox[{"PlotRange", "\[Rule]", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{"0.0", ",", "1.0"}], "}"}], ",", 
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"-", "0.2"}], ",", "1.2"}], "}"}]}], "}"}]}], ",", " ", 
+     RowBox[{"Prolog", "\[Rule]", 
+      RowBox[{"Inset", "[", 
+       RowBox[{"region1d", ",", " ", 
+        RowBox[{"{", 
+         RowBox[{"0", ",", "0"}], "}"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"0", ",", "0"}], "}"}], ",", " ", 
+        RowBox[{"{", 
+         RowBox[{"1", ",", "1"}], "}"}]}], "]"}]}], ",", " ", 
+     RowBox[{"PlotRangePadding", "\[Rule]", "0.01"}]}], "]"}]}], 
+  ";"}]}], "Input"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"Export", "[", 
+   RowBox[{"\"\<../tex/plots/grid1d-1.pdf\>\"", ",", " ", "rr1"}], "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Export", "[", 
+   RowBox[{"\"\<../tex/plots/grid1d-2.pdf\>\"", ",", " ", "rr2"}], "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Export", "[", 
+   RowBox[{"\"\<../tex/plots/grid1d-3.pdf\>\"", ",", " ", "rr3"}], "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Export", "[", 
+   RowBox[{"\"\<../tex/plots/grid1d-4.pdf\>\"", ",", " ", "rr4"}], "]"}], 
+  ";"}]}], "Input"],
+
+Cell[BoxData[
+ RowBox[{"Clear", "[", 
   RowBox[{
-  ":", " "}], "\<\"Context \[NoBreak]\\!\\(\\\"plots`\\\"\\)\[NoBreak] was \
-not created when Needs was evaluated. \\!\\(\\*ButtonBox[\\\"\[RightSkeleton]\
-\\\", ButtonStyle->\\\"Link\\\", ButtonFrame->None, \
-ButtonData:>\\\"paclet:ref/message/Needs/nocont\\\", ButtonNote -> \
-\\\"Needs::nocont\\\"]\\)\"\>"}]], "Message", "MSG"]
+  "gg", ",", " ", "rr1", ",", " ", "rr2", ",", " ", "rr3", ",", " ", "rr4", 
+   ",", " ", "region1d"}], "]"}]], "Input"]
+}, Closed]],
+
+Cell["1D interval comparison tests", "Subsection"],
+
+Cell["Angular cap convergence tests", "Subsection"],
+
+Cell["3D Box comparison tests", "Subsection"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -224,8 +433,8 @@ Cell[BoxData[
 }, Open  ]]
 }, Open  ]]
 },
-WindowSize->{1039, 1089},
-WindowMargins->{{342, Automatic}, {22, Automatic}},
+WindowSize->{1356, 1156},
+WindowMargins->{{226, Automatic}, {Automatic, 0}},
 PrivateNotebookOptions->{"VersionedStylesheet"->{"Default.nb"[8.] -> False}},
 FrontEndVersion->"9.0 for Mac OS X x86 (32-bit, 64-bit Kernel) (November 20, \
 2012)",
