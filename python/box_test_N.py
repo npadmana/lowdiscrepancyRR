@@ -6,6 +6,7 @@ in the DEEP2 mask.
 import numpy as np
 from pairs import mr_wpairs,mr_angpairs
 import sys
+import glob
 import time
 
 from mpi4py import MPI
@@ -51,14 +52,17 @@ def write_1d(bins,counts,outfilename,weightsum=None):
     sys.stdout.flush()
 #...
 
-def do_one(comm,rank,bins,Nr,outname,d2p=None,data=None):
+def do_one(comm,rank,bins,Nr,outname,d2p=None,data=None,lowdiscr=None):
     """
     Generate one random realization, and compute its auto-correlation.
     """
     # careful! want to only have one of these floating around...
     if rank == 0:
         if d2p is not None:
-            points = d2p(Nr)
+            if lowdiscr is not None:
+                points = d2p(Nr,vectorShift=True)
+            else:
+                points = d2p(Nr)
             points2 = points.copy()
             weightsum = points[:,2].sum()
         else:
@@ -101,6 +105,8 @@ def main(argv=None):
                       help='Use the DEEP2 mask for angular pairs (%default).')
     parser.add_option('--data',dest='data',default='',
                       help='Use this file to calculate DR, instead of RR. Expected to have 2 or 3 position columns + 1 weight column, and the header marked with "#".')
+    parser.add_option('--lowdiscr',dest='lowdiscr',default='',
+                      help='Use this low discrepency sequence when calculating DR.')
     (opts,args) = parser.parse_args(argv)
 
     bins = np.loadtxt(opts.binfile)
@@ -110,22 +116,34 @@ def main(argv=None):
     comm = MPI.COMM_WORLD
     rank = comm.Get_rank()
 
+    if opts.lowdiscr != '':
+        lowdiscr = np.loadtxt(opts.lowdiscr)
+        filename = 'NN_nn-lowdiscr.dat'
+    else:
+        lowdiscr = None
+        filename = 'NN_nn.dat'
+
     if opts.deep2:
-        d2p = deep2_angpairs.Deep2Pairs()
-        outfilename = '../data/deep2/counts/NN_nn.dat'
+        d2p = deep2_angpairs.Deep2Pairs(randarr=lowdiscr)
+        outfilename = '../data/deep2/counts/'+filename
     else:
         d2p = None
-        outfilename = '../data/counts/NN_nn.dat'
+        outfilename = '../data/counts/'+filename
 
     if opts.data != '':
         data = np.loadtxt(opts.data)
         outfilename = outfilename.replace('nn','nn-DR')
+        Ndata = opts.data.split('_')[-1].split('.')[0]
+        outfilename = outfilename.replace('counts','counts_D'+Ndata)
     else:
         data = None
 
+    if not os.path.exists(os.path.dirname(outfilename)):
+        os.path.mkdir(os.path.dirname(outfilename))
+
     for n in range(opts.n):
         outname = outfilename.replace('NN',str(opts.Nr)).replace('nn',str(n))
-        do_one(comm,rank,bins,opts.Nr,outname,d2p=d2p,data=data)
+        do_one(comm,rank,bins,opts.Nr,outname,d2p=d2p,data=data,lowdiscr=lowdiscr)
 #...
             
 if __name__ == "__main__":
