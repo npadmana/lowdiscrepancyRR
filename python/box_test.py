@@ -11,19 +11,18 @@ from mpi4py import MPI
 
 script = """#!/bin/bash
 #PBS -q long
-#PBS -l nodes=NODES:ppn=8
+#PBS -l nodes=NODES
 #PBS -l walltime=48:0:00
-#PBS -l mem=RAMgb
 #PBS -o ../temp/NN_nn.out
 #PBS -j oe
 
 cd astronomy/lowdiscrRR/python/
 
-mpirun -np NCPU python box_test_N.py MASK -s SEED -b BINS --Nr NN -n nn DATA
+mpirun -np NCPU python box_test_N.py MASK -s SEED -b BINS --Nr NN -n nn DATA LOWDISCR
 """
 bashfilename = '../temp/NN_nn.sh'
 
-def do_one(Nr,n,deep2=False,data=''):
+def do_one(Nr,n,deep2=False,data='',lowdiscr=''):
     """Generate a random file with Nr points, labeled n, and compute RR on it."""
     if Nr < 5e4:
         NODES = 1
@@ -45,12 +44,14 @@ def do_one(Nr,n,deep2=False,data=''):
     
     if data != '':
         data = '--data='+data
+    if lowdiscr != '':
+        lowdiscr = '--lowdiscr='+lowdiscr
 
     bashname = bashfilename.replace('NN',str(Nr)).replace('nn',str(n))
     bash = script.replace('NODES',str(NODES)).replace('RAM',str(RAM)).replace('NCPU',str(NCPU))
     bash = bash.replace('NN',str(Nr)).replace('nn',str(n))
     bash = bash.replace('SEED',str(Nr)).replace('BINS',binfile).replace('MASK',mask)
-    bash = bash.replace('DATA',data)
+    bash = bash.replace('DATA',data).replace('LOWDISCR',lowdiscr)
     outfile = open(bashname,'w')
     outfile.write(bash)
     outfile.close()
@@ -77,13 +78,15 @@ def main(argv=None):
                       help='Use the DEEP2 mask for angular pairs (%default).')
     parser.add_option('--data',dest='data',default='',
                       help='Use this file to calculate DR, instead of RR.')
+    parser.add_option('--lowdiscr',dest='lowdiscr',default='',
+                      help='Use this low discrepency sequence when calculating DR.')
     (opts,args) = parser.parse_args(argv)
 
     Nrands = opts.min*(opts.k**np.arange(0,opts.maxpow,dtype=np.int))
 
     for Nr in Nrands:
         print 'Doing:',Nr
-        do_one(Nr,opts.n,deep2=opts.deep2,data=opts.data)
+        do_one(Nr,opts.n,deep2=opts.deep2,data=opts.data,lowdiscr=opts.lowdiscr)
 #...
 
 if __name__ == "__main__":

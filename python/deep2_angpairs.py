@@ -14,8 +14,13 @@ class Deep2Pairs():
         Dec = points[:,1]
         weights = points[:,2]
     """
-    def __init__(self):
-        """Load the data file and set up RA/Dec limits."""
+    def __init__(self,randarr=None):
+        """
+        Load the data file and set up RA/Dec limits.
+
+        randarr: pass an [N,2] array with points in [0,1] to draw the first Nr
+        points from, instead of using numpy.random.uniform.
+        """
         data = pyfits.open('../data/deep2/windowf.31.fits')
         header = data[0].header
         data = data[0].data
@@ -30,15 +35,32 @@ class Deep2Pairs():
         self.DECmax = header['DECLIM1']
         self.nDEC = data.shape[0]
         self.dDEC = (self.DECmax - self.DECmin)/self.nDEC
+        
+        self.randarr = randarr
     #...
 
-    def __call__(self,N):
-        """Return N points in the deep2 mask, with their weights."""
-        RA = np.random.uniform(self.RAmin,self.RAmax,N)
+    def __call__(self,N,vectorShift=False):
+        """
+        Return N points in the deep2 mask, with their weights.
+        Set vectorShift to move all the points by a small random vector.
+        """
         zmin = np.sin(np.radians(self.DECmin))
         zmax = np.sin(np.radians(self.DECmax))
-        z = np.random.uniform(zmin,zmax,N)
+
+        if self.randarr is not None:
+            RA = (self.randarr[:N,0]*(self.RAmax-self.RAmin)) + self.RAmin
+            z = (self.randarr[:N,1]*(zmax-zmin)) + zmin
+        else:
+            RA = np.random.uniform(self.RAmin,self.RAmax,N)
+            z = np.random.uniform(zmin,zmax,N)
+        
         Dec = np.degrees(np.arcsin(z))
+        
+        if vectorShift:
+            vector = np.random.uniform(-1,1,size=(N,2))
+            RA += vector[:,0]
+            Dec += vector[:,1]
+
         weights = self.get_weights(RA,Dec)
         return np.array(zip(RA,Dec,weights))
     #...
