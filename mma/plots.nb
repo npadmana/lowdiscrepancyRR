@@ -414,66 +414,29 @@ Cell[BoxData[
         RowBox[{"All", ",", " ", "2", ",", "3"}], "]"}], "]"}]}], "}"}], 
     "\[Transpose]"]}], ";"}]], "Input"],
 
+Cell[CellGroupData[{
+
 Cell[BoxData[{
  RowBox[{
-  RowBox[{"xticks", " ", "=", " ", 
-   RowBox[{"{", 
+  RowBox[{"ticklabel", " ", "=", " ", 
+   RowBox[{"npLogTicks", "[", 
     RowBox[{
-     RowBox[{"{", 
-      RowBox[{
-       SuperscriptBox["10", "3"], ",", 
-       "\"\<\!\(\*SuperscriptBox[\(10\), \(3\)]\)\>\""}], "}"}], ",", " ", 
-     RowBox[{"{", 
-      RowBox[{
-       SuperscriptBox["10", "4"], ",", 
-       "\"\<\!\(\*SuperscriptBox[\(10\), \(4\)]\)\>\""}], "}"}], ",", " ", 
-     RowBox[{"{", 
-      RowBox[{
-       SuperscriptBox["10", "5"], ",", 
-       "\"\<\!\(\*SuperscriptBox[\(10\), \(5\)]\)\>\""}], "}"}], ",", " ", 
-     RowBox[{"{", 
-      RowBox[{
-       SuperscriptBox["10", "6"], ",", " ", 
-       "\"\<\!\(\*SuperscriptBox[\(10\), \(6\)]\)\>\""}], "}"}], ",", " ", 
-     RowBox[{"{", 
-      RowBox[{
-       SuperscriptBox["10", "7"], ",", 
-       "\"\<\!\(\*SuperscriptBox[\(10\), \(7\)]\)\>\""}], "}"}]}], "}"}]}], 
-  ";"}], "\[IndentingNewLine]", 
+     RowBox[{"-", "6"}], ",", "8"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
  RowBox[{
-  RowBox[{"yticks", " ", "=", " ", 
-   RowBox[{"{", 
+  RowBox[{"ticknolabel", " ", "=", " ", 
+   RowBox[{"npLogTicks", "[", 
     RowBox[{
-     RowBox[{"{", 
-      RowBox[{
-       SuperscriptBox["10", 
-        RowBox[{"-", "2"}]], ",", 
-       "\"\<\!\(\*SuperscriptBox[\(10\), \(-2\)]\)\>\""}], "}"}], ",", " ", 
-     RowBox[{"{", 
-      RowBox[{
-       SuperscriptBox["10", 
-        RowBox[{"-", "3"}]], ",", 
-       "\"\<\!\(\*SuperscriptBox[\(10\), \(-3\)]\)\>\""}], "}"}], ",", " ", 
-     RowBox[{"{", 
-      RowBox[{
-       SuperscriptBox["10", 
-        RowBox[{"-", "4"}]], ",", " ", 
-       "\"\<\!\(\*SuperscriptBox[\(10\), \(-4\)]\)\>\""}], "}"}], ",", " ", 
-     RowBox[{"{", 
-      RowBox[{
-       SuperscriptBox["10", 
-        RowBox[{"-", "5"}]], ",", " ", 
-       "\"\<\!\(\*SuperscriptBox[\(10\), \(-5\)]\)\>\""}], "}"}]}], "}"}]}], 
+     RowBox[{"-", "6"}], ",", "8", ",", " ", "False"}], "]"}]}], 
   ";"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{"pticks", " ", "=", " ", 
    RowBox[{"{", 
     RowBox[{
      RowBox[{"{", 
-      RowBox[{"yticks", ",", " ", "Automatic"}], "}"}], ",", " ", 
+      RowBox[{"ticklabel", ",", " ", "ticknolabel"}], "}"}], ",", 
      RowBox[{"{", 
-      RowBox[{"xticks", ",", " ", "Automatic"}], "}"}]}], "}"}]}], 
-  ";"}], "\n", 
+      RowBox[{"ticklabel", ",", "ticknolabel"}], "}"}]}], "}"}]}], 
+  ";"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{"pdata", " ", "=", " ", 
    RowBox[{"err", " ", "/@", " ", 
@@ -577,33 +540,24 @@ Cell[BoxData[{
        RowBox[{
         RowBox[{"AbsoluteDashing", "[", "10", "]"}], ",", " ", "Thick", ",", 
         " ", "Gray"}], "}"}]}]}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{"Export", "[", 
+  RowBox[{"\"\<../tex/plots/deep2rrcomp1.pdf\>\"", ",", 
+   RowBox[{"Show", "[", 
+    RowBox[{"p1", ",", "p2", ",", " ", "p3"}], "]"}]}], 
+  "]"}], "\[IndentingNewLine]", 
  RowBox[{
-  RowBox[{"Export", "[", 
-   RowBox[{"\"\<../tex/plots/deep2rrcomp1.pdf\>\"", ",", 
-    RowBox[{"Show", "[", 
-     RowBox[{"p1", ",", "p2", ",", " ", "p3"}], "]"}]}], "]"}], 
-  ";"}]}], "Input"]
+  RowBox[{"(*", 
+   RowBox[{"Show", "[", 
+    RowBox[{"p1", ",", "p2", ",", "p3"}], "]"}], "*)"}]}]}], "Input"],
+
+Cell[BoxData["\<\"../tex/plots/deep2rrcomp1.pdf\"\>"], "Output"]
+}, Open  ]]
 }, Open  ]]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell["Scratch", "Section"],
-
-Cell[CellGroupData[{
-
-Cell[BoxData[
- RowBox[{
-  RowBox[{"bin4", "[", 
-   RowBox[{"[", 
-    RowBox[{"1", ",", "1", ",", 
-     RowBox[{"{", 
-      RowBox[{"3", ",", "4"}], "}"}]}], "]"}], "]"}], "*", "60.0"}]], "Input"],
-
-Cell[BoxData[
- RowBox[{"{", 
-  RowBox[{"7.5`", ",", "15.`"}], "}"}]], "Output"]
-}, Open  ]],
 
 Cell[CellGroupData[{
 
@@ -3223,8 +3177,8 @@ Cell[BoxData[
 }, Open  ]]
 }, Open  ]]
 },
-WindowSize->{1356, 1156},
-WindowMargins->{{226, Automatic}, {Automatic, 0}},
+WindowSize->{966, 724},
+WindowMargins->{{180, Automatic}, {Automatic, 0}},
 PrivateNotebookOptions->{"VersionedStylesheet"->{"Default.nb"[8.] -> False}},
 FrontEndVersion->"9.0 for Mac OS X x86 (32-bit, 64-bit Kernel) (November 20, \
 2012)",
