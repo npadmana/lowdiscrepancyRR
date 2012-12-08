@@ -426,8 +426,8 @@ Cell[BoxData[{
   RowBox[{"ticknolabel", " ", "=", " ", 
    RowBox[{"npLogTicks", "[", 
     RowBox[{
-     RowBox[{"-", "6"}], ",", "8", ",", " ", "False"}], "]"}]}], 
-  ";"}], "\[IndentingNewLine]", 
+     RowBox[{"-", "6"}], ",", "8", ",", " ", 
+     RowBox[{"\"\<\>\"", "&"}]}], "]"}]}], ";"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{"pticks", " ", "=", " ", 
    RowBox[{"{", 
@@ -464,13 +464,13 @@ Cell[BoxData[{
    RowBox[{"{", 
     RowBox[{
      RowBox[{"{", 
-      RowBox[{"pDisk", ",", "0.04"}], "}"}], ",", " ", 
+      RowBox[{"npDisk", ",", "0.04"}], "}"}], ",", " ", 
      RowBox[{"{", 
-      RowBox[{"pSquare", ",", "0.04"}], "}"}], ",", 
+      RowBox[{"npSquare", ",", "0.04"}], "}"}], ",", 
      RowBox[{"{", 
-      RowBox[{"pDisk", ",", " ", "0.04"}], "}"}], ",", " ", 
+      RowBox[{"npDisk", ",", " ", "0.04"}], "}"}], ",", " ", 
      RowBox[{"{", 
-      RowBox[{"pSquare", ",", " ", "0.04"}], "}"}]}], "}"}]}], 
+      RowBox[{"npSquare", ",", " ", "0.04"}], "}"}]}], "}"}]}], 
   ";"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{"pstyle", " ", "=", " ", 
@@ -3174,11 +3174,184 @@ Cell[BoxData[
    StripOnInput->False,
    CacheGraphics->False],
   FrameMargins->Automatic]], "Output"]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{"flist", "=", " ", 
+  RowBox[{"FileNames", "[", 
+   RowBox[{"\"\<../data/deep2/counts/\>\"", "<>", 
+    RowBox[{"IntegerString", "[", "4000", "]"}], "<>", "\"\<*.dat\>\""}], 
+   "]"}]}]], "Input"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+  "\"\<../data/deep2/counts/4000_0.dat\>\"", ",", 
+   "\"\<../data/deep2/counts/4000_10.dat\>\"", ",", 
+   "\"\<../data/deep2/counts/4000_11.dat\>\"", ",", 
+   "\"\<../data/deep2/counts/4000_12.dat\>\"", ",", 
+   "\"\<../data/deep2/counts/4000_13.dat\>\"", ",", 
+   "\"\<../data/deep2/counts/4000_14.dat\>\"", ",", 
+   "\"\<../data/deep2/counts/4000_15.dat\>\"", ",", 
+   "\"\<../data/deep2/counts/4000_16.dat\>\"", ",", 
+   "\"\<../data/deep2/counts/4000_17.dat\>\"", ",", 
+   "\"\<../data/deep2/counts/4000_18.dat\>\"", ",", 
+   "\"\<../data/deep2/counts/4000_19.dat\>\"", ",", 
+   "\"\<../data/deep2/counts/4000_1.dat\>\"", ",", 
+   "\"\<../data/deep2/counts/4000_20.dat\>\"", ",", 
+   "\"\<../data/deep2/counts/4000_21.dat\>\"", ",", 
+   "\"\<../data/deep2/counts/4000_22.dat\>\"", ",", 
+   "\"\<../data/deep2/counts/4000_23.dat\>\"", ",", 
+   "\"\<../data/deep2/counts/4000_24.dat\>\"", ",", 
+   "\"\<../data/deep2/counts/4000_25.dat\>\"", ",", 
+   "\"\<../data/deep2/counts/4000_26.dat\>\"", ",", 
+   "\"\<../data/deep2/counts/4000_27.dat\>\"", ",", 
+   "\"\<../data/deep2/counts/4000_28.dat\>\"", ",", 
+   "\"\<../data/deep2/counts/4000_29.dat\>\"", ",", 
+   "\"\<../data/deep2/counts/4000_2.dat\>\"", ",", 
+   "\"\<../data/deep2/counts/4000_30.dat\>\"", ",", 
+   "\"\<../data/deep2/counts/4000_31.dat\>\"", ",", 
+   "\"\<../data/deep2/counts/4000_32.dat\>\"", ",", 
+   "\"\<../data/deep2/counts/4000_33.dat\>\"", ",", 
+   "\"\<../data/deep2/counts/4000_34.dat\>\"", ",", 
+   "\"\<../data/deep2/counts/4000_35.dat\>\"", ",", 
+   "\"\<../data/deep2/counts/4000_36.dat\>\"", ",", 
+   "\"\<../data/deep2/counts/4000_37.dat\>\"", ",", 
+   "\"\<../data/deep2/counts/4000_38.dat\>\"", ",", 
+   "\"\<../data/deep2/counts/4000_39.dat\>\"", ",", 
+   "\"\<../data/deep2/counts/4000_3.dat\>\"", ",", 
+   "\"\<../data/deep2/counts/4000_40.dat\>\"", ",", 
+   "\"\<../data/deep2/counts/4000_41.dat\>\"", ",", 
+   "\"\<../data/deep2/counts/4000_42.dat\>\"", ",", 
+   "\"\<../data/deep2/counts/4000_43.dat\>\"", ",", 
+   "\"\<../data/deep2/counts/4000_44.dat\>\"", ",", 
+   "\"\<../data/deep2/counts/4000_45.dat\>\"", ",", 
+   "\"\<../data/deep2/counts/4000_46.dat\>\"", ",", 
+   "\"\<../data/deep2/counts/4000_47.dat\>\"", ",", 
+   "\"\<../data/deep2/counts/4000_48.dat\>\"", ",", 
+   "\"\<../data/deep2/counts/4000_49.dat\>\"", ",", 
+   "\"\<../data/deep2/counts/4000_4.dat\>\"", ",", 
+   "\"\<../data/deep2/counts/4000_50.dat\>\"", ",", 
+   "\"\<../data/deep2/counts/4000_51.dat\>\"", ",", 
+   "\"\<../data/deep2/counts/4000_52.dat\>\"", ",", 
+   "\"\<../data/deep2/counts/4000_53.dat\>\"", ",", 
+   "\"\<../data/deep2/counts/4000_54.dat\>\"", ",", 
+   "\"\<../data/deep2/counts/4000_55.dat\>\"", ",", 
+   "\"\<../data/deep2/counts/4000_56.dat\>\"", ",", 
+   "\"\<../data/deep2/counts/4000_57.dat\>\"", ",", 
+   "\"\<../data/deep2/counts/4000_58.dat\>\"", ",", 
+   "\"\<../data/deep2/counts/4000_59.dat\>\"", ",", 
+   "\"\<../data/deep2/counts/4000_5.dat\>\"", ",", 
+   "\"\<../data/deep2/counts/4000_60.dat\>\"", ",", 
+   "\"\<../data/deep2/counts/4000_61.dat\>\"", ",", 
+   "\"\<../data/deep2/counts/4000_62.dat\>\"", ",", 
+   "\"\<../data/deep2/counts/4000_63.dat\>\"", ",", 
+   "\"\<../data/deep2/counts/4000_64.dat\>\"", ",", 
+   "\"\<../data/deep2/counts/4000_65.dat\>\"", ",", 
+   "\"\<../data/deep2/counts/4000_66.dat\>\"", ",", 
+   "\"\<../data/deep2/counts/4000_67.dat\>\"", ",", 
+   "\"\<../data/deep2/counts/4000_68.dat\>\"", ",", 
+   "\"\<../data/deep2/counts/4000_69.dat\>\"", ",", 
+   "\"\<../data/deep2/counts/4000_6.dat\>\"", ",", 
+   "\"\<../data/deep2/counts/4000_70.dat\>\"", ",", 
+   "\"\<../data/deep2/counts/4000_71.dat\>\"", ",", 
+   "\"\<../data/deep2/counts/4000_72.dat\>\"", ",", 
+   "\"\<../data/deep2/counts/4000_73.dat\>\"", ",", 
+   "\"\<../data/deep2/counts/4000_74.dat\>\"", ",", 
+   "\"\<../data/deep2/counts/4000_75.dat\>\"", ",", 
+   "\"\<../data/deep2/counts/4000_76.dat\>\"", ",", 
+   "\"\<../data/deep2/counts/4000_77.dat\>\"", ",", 
+   "\"\<../data/deep2/counts/4000_78.dat\>\"", ",", 
+   "\"\<../data/deep2/counts/4000_79.dat\>\"", ",", 
+   "\"\<../data/deep2/counts/4000_7.dat\>\"", ",", 
+   "\"\<../data/deep2/counts/4000_80.dat\>\"", ",", 
+   "\"\<../data/deep2/counts/4000_81.dat\>\"", ",", 
+   "\"\<../data/deep2/counts/4000_82.dat\>\"", ",", 
+   "\"\<../data/deep2/counts/4000_83.dat\>\"", ",", 
+   "\"\<../data/deep2/counts/4000_84.dat\>\"", ",", 
+   "\"\<../data/deep2/counts/4000_85.dat\>\"", ",", 
+   "\"\<../data/deep2/counts/4000_86.dat\>\"", ",", 
+   "\"\<../data/deep2/counts/4000_87.dat\>\"", ",", 
+   "\"\<../data/deep2/counts/4000_88.dat\>\"", ",", 
+   "\"\<../data/deep2/counts/4000_89.dat\>\"", ",", 
+   "\"\<../data/deep2/counts/4000_8.dat\>\"", ",", 
+   "\"\<../data/deep2/counts/4000_90.dat\>\"", ",", 
+   "\"\<../data/deep2/counts/4000_91.dat\>\"", ",", 
+   "\"\<../data/deep2/counts/4000_92.dat\>\"", ",", 
+   "\"\<../data/deep2/counts/4000_93.dat\>\"", ",", 
+   "\"\<../data/deep2/counts/4000_94.dat\>\"", ",", 
+   "\"\<../data/deep2/counts/4000_95.dat\>\"", ",", 
+   "\"\<../data/deep2/counts/4000_96.dat\>\"", ",", 
+   "\"\<../data/deep2/counts/4000_97.dat\>\"", ",", ",", 
+   "\"\<../data/deep2/counts/4000_99.dat\>\"", ",", 
+   "\"\<../data/deep2/counts/4000_9.dat\>\""}], "}"}]], "Input"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Import", "[", 
+  RowBox[{"\"\<../data/deep2/counts/4000_98.dat\>\"", ",", "\"\<Table\>\""}], 
+  "]"}]], "Input"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", "1806.9824427`", "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"Start\"\>", ",", "\<\"Stop\"\>", ",", "\<\"Count\"\>"}], 
+    "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"0.007812`", ",", "0.015625`", ",", "5814.165179`"}], "}"}], ",", 
+   
+   RowBox[{"{", 
+    RowBox[{"0.015625`", ",", "0.03125`", ",", "22605.439959`"}], "}"}], ",", 
+   
+   RowBox[{"{", 
+    RowBox[{"0.03125`", ",", "0.0625`", ",", "83130.63199`"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"0.0625`", ",", "0.125`", ",", "284241.352112`"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"0.125`", ",", "0.25`", ",", "853104.716584`"}], "}"}]}], 
+  "}"}]], "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"readjp", "[", "\"\<../data/deep2/counts/4000_2.dat\>\"", 
+  "]"}]], "Input"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+  "0.0017970017185299095`", ",", "0.006894097467845781`", ",", 
+   "0.025315387306393256`", ",", "0.08749315163462147`", ",", 
+   "0.25922836309223646`"}], "}"}]], "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"processbin", "[", 
+  RowBox[{"\"\<../data/deep2/rrdump\>\"", ",", "0", ",", 
+   RowBox[{"{", "16384000", "}"}]}], "]"}]], "Input"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{"100", ",", "16384000", ",", "0.007812`", ",", "0.015625`"}], 
+     "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{
+     "0.0017923185415562011`", ",", "7.441894168856813`*^-8", ",", 
+      "0.000041521046601433376`"}], "}"}]}], "}"}], "}"}]], "Output"]
 }, Open  ]]
 }, Open  ]]
 },
 WindowSize->{966, 724},
-WindowMargins->{{180, Automatic}, {Automatic, 0}},
+WindowMargins->{{463, Automatic}, {Automatic, 17}},
 PrivateNotebookOptions->{"VersionedStylesheet"->{"Default.nb"[8.] -> False}},
 FrontEndVersion->"9.0 for Mac OS X x86 (32-bit, 64-bit Kernel) (November 20, \
 2012)",
