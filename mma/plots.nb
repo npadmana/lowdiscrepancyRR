@@ -593,6 +593,21 @@ Cell["Scratch", "Section"],
 Cell[CellGroupData[{
 
 Cell[BoxData[
+ RowBox[{
+  RowBox[{"bin4", "[", 
+   RowBox[{"[", 
+    RowBox[{"1", ",", "1", ",", 
+     RowBox[{"{", 
+      RowBox[{"3", ",", "4"}], "}"}]}], "]"}], "]"}], "*", "60.0"}]], "Input"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"7.5`", ",", "15.`"}], "}"}]], "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
  RowBox[{"ColorData", "[", 
   RowBox[{"\"\<Legacy\>\"", ",", "\"\<Panel\>\""}], "]"}]], "Input"],
 
