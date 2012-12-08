@@ -17,27 +17,22 @@ Cell[BoxData[{
   RowBox[{"On", "[", 
    RowBox[{"Needs", "::", "nocont"}], "]"}], ";"}], "\n", 
  RowBox[{
-  RowBox[{"SetOptions", "[", 
-   RowBox[{"Plot", ",", " ", 
-    RowBox[{"Frame", "\[Rule]", "True"}], ",", " ", 
-    RowBox[{"Axes", "\[Rule]", "False"}], ",", " ", 
-    RowBox[{"FrameStyle", "\[Rule]", "Thick"}], ",", " ", 
-    RowBox[{"ImageSize", "\[Rule]", 
-     RowBox[{"8", "*", "72"}]}], ",", " ", 
-    RowBox[{"LabelStyle", "\[Rule]", 
-     RowBox[{"{", 
-      RowBox[{"FontSize", "\[Rule]", "25"}], "}"}]}]}], "]"}], ";"}], "\n", 
- RowBox[{
-  RowBox[{"SetOptions", "[", 
-   RowBox[{"ListPlot", ",", " ", 
-    RowBox[{"Frame", "\[Rule]", "True"}], ",", " ", 
-    RowBox[{"Axes", "\[Rule]", "False"}], ",", " ", 
-    RowBox[{"FrameStyle", "\[Rule]", "Thick"}], ",", " ", 
-    RowBox[{"ImageSize", "\[Rule]", 
-     RowBox[{"8", "*", "72"}]}], ",", " ", 
-    RowBox[{"LabelStyle", "\[Rule]", 
-     RowBox[{"{", 
-      RowBox[{"FontSize", "\[Rule]", "25"}], "}"}]}]}], "]"}], ";"}], "\n", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"SetOptions", "[", 
+     RowBox[{"#", ",", " ", 
+      RowBox[{"Frame", "\[Rule]", "True"}], ",", " ", 
+      RowBox[{"Axes", "\[Rule]", "False"}], ",", " ", 
+      RowBox[{"FrameStyle", "\[Rule]", "Thick"}], ",", " ", 
+      RowBox[{"ImageSize", "\[Rule]", 
+       RowBox[{"8", "*", "72"}]}], ",", " ", 
+      RowBox[{"LabelStyle", "\[Rule]", 
+       RowBox[{"{", 
+        RowBox[{"FontSize", "\[Rule]", "25"}], "}"}]}]}], "]"}], " ", "&"}], 
+   " ", "/@", " ", 
+   RowBox[{"{", 
+    RowBox[{"Plot", ",", " ", "ListPlot", ",", " ", "ListLogLogPlot"}], 
+    "}"}]}], ";"}], "\n", 
  RowBox[{
   RowBox[{"SeedRandom", "[", "1234", "]"}], ";"}]}], "Code",
  InitializationCell->True],
@@ -51,9 +46,7 @@ Cell["Sec 2", "Section"],
 
 Cell[CellGroupData[{
 
-Cell["\<\
-1D low discrepancy vs regular comparisons\
-\>", "Subsection"],
+Cell["1D low discrepancy vs regular comparisons", "Subsection"],
 
 Cell[BoxData[
  RowBox[{
@@ -62,37 +55,25 @@ Cell[BoxData[
 Cell[BoxData[
  RowBox[{
   RowBox[{"region1d", "=", 
-   RowBox[{"Graphics", "[", 
-    RowBox[{
-     RowBox[{"{", 
-      RowBox[{"Gray", ",", " ", 
-       RowBox[{"Opacity", "[", "0.5", "]"}], ",", 
-       RowBox[{"Polygon", "[", 
-        RowBox[{"{", 
-         RowBox[{
-          RowBox[{"{", 
-           RowBox[{"0.0", ",", "0.0"}], "}"}], ",", 
-          RowBox[{"{", 
-           RowBox[{"0.2", ",", "0"}], "}"}], ",", " ", 
-          RowBox[{"{", 
-           RowBox[{"1.0", ",", " ", "0.8"}], "}"}], ",", " ", 
-          RowBox[{"{", 
-           RowBox[{"1.0", ",", "1.0"}], "}"}], ",", " ", 
-          RowBox[{"{", 
-           RowBox[{"0.8", ",", " ", "1.0"}], "}"}], ",", " ", 
-          RowBox[{"{", 
-           RowBox[{"0.0", ",", "0.2"}], "}"}]}], "}"}], "]"}]}], "}"}], ",", 
-     " ", 
-     RowBox[{"AspectRatio", "\[Rule]", "1"}], ",", " ", 
-     RowBox[{"PlotRangePadding", "\[Rule]", "None"}], ",", " ", 
-     RowBox[{"PlotRange", "\[Rule]", 
+   RowBox[{"{", 
+    RowBox[{"Gray", ",", " ", 
+     RowBox[{"Opacity", "[", "0.5", "]"}], ",", 
+     RowBox[{"Polygon", "[", 
       RowBox[{"{", 
        RowBox[{
         RowBox[{"{", 
-         RowBox[{"0", ",", "1"}], "}"}], ",", 
+         RowBox[{"0.0", ",", "0.0"}], "}"}], ",", 
         RowBox[{"{", 
-         RowBox[{"0", ",", "1"}], "}"}]}], "}"}]}], ",", " ", 
-     RowBox[{"ImagePadding", "\[Rule]", "None"}]}], "]"}]}], ";"}]], "Input"],
+         RowBox[{"0.2", ",", "0"}], "}"}], ",", " ", 
+        RowBox[{"{", 
+         RowBox[{"1.0", ",", " ", "0.8"}], "}"}], ",", " ", 
+        RowBox[{"{", 
+         RowBox[{"1.0", ",", "1.0"}], "}"}], ",", " ", 
+        RowBox[{"{", 
+         RowBox[{"0.8", ",", " ", "1.0"}], "}"}], ",", " ", 
+        RowBox[{"{", 
+         RowBox[{"0.0", ",", "0.2"}], "}"}]}], "}"}], "]"}]}], "}"}]}], 
+  ";"}]], "Input"],
 
 Cell[BoxData[
  RowBox[{
@@ -108,15 +89,7 @@ Cell[BoxData[
          RowBox[{"0", ",", "1"}], "}"}], ",", 
         RowBox[{"{", 
          RowBox[{"0", ",", "1"}], "}"}]}], "}"}]}], ",", " ", 
-     RowBox[{"Prolog", "\[Rule]", 
-      RowBox[{"Inset", "[", 
-       RowBox[{"region1d", ",", " ", 
-        RowBox[{"{", 
-         RowBox[{"0", ",", "0"}], "}"}], ",", 
-        RowBox[{"{", 
-         RowBox[{"0", ",", "0"}], "}"}], ",", " ", 
-        RowBox[{"{", 
-         RowBox[{"1", ",", "1"}], "}"}]}], "]"}]}], ",", " ", 
+     RowBox[{"Prolog", "\[Rule]", "region1d"}], ",", " ", 
      RowBox[{"PlotRangePadding", "\[Rule]", "0.01"}]}], "]"}]}], 
   ";"}]], "Input"],
 
@@ -140,15 +113,7 @@ Cell[BoxData[
          RowBox[{"0", ",", "1"}], "}"}], ",", 
         RowBox[{"{", 
          RowBox[{"0", ",", "1"}], "}"}]}], "}"}]}], ",", " ", 
-     RowBox[{"Prolog", "\[Rule]", 
-      RowBox[{"Inset", "[", 
-       RowBox[{"region1d", ",", " ", 
-        RowBox[{"{", 
-         RowBox[{"0", ",", "0"}], "}"}], ",", 
-        RowBox[{"{", 
-         RowBox[{"0", ",", "0"}], "}"}], ",", " ", 
-        RowBox[{"{", 
-         RowBox[{"1", ",", "1"}], "}"}]}], "]"}]}], ",", " ", 
+     RowBox[{"Prolog", "\[Rule]", "region1d"}], ",", " ", 
      RowBox[{"PlotRangePadding", "\[Rule]", "0.01"}]}], "]"}]}], 
   ";"}]], "Input"],
 
@@ -167,15 +132,7 @@ Cell[BoxData[
          RowBox[{"0", ",", "1"}], "}"}], ",", 
         RowBox[{"{", 
          RowBox[{"0", ",", "1"}], "}"}]}], "}"}]}], ",", " ", 
-     RowBox[{"Prolog", "\[Rule]", 
-      RowBox[{"Inset", "[", 
-       RowBox[{"region1d", ",", " ", 
-        RowBox[{"{", 
-         RowBox[{"0", ",", "0"}], "}"}], ",", 
-        RowBox[{"{", 
-         RowBox[{"0", ",", "0"}], "}"}], ",", " ", 
-        RowBox[{"{", 
-         RowBox[{"1", ",", "1"}], "}"}]}], "]"}]}], ",", " ", 
+     RowBox[{"Prolog", "\[Rule]", "region1d"}], ",", " ", 
      RowBox[{"PlotRangePadding", "\[Rule]", "0.01"}]}], "]"}]}], 
   ";"}]], "Input"],
 
@@ -195,7 +152,7 @@ Cell[BoxData[{
   RowBox[{"rr4", " ", "=", " ", 
    RowBox[{"ListPlot", "[", 
     RowBox[{"gg", ",", " ", 
-     RowBox[{"AspectRatio", "\[Rule]", "1.4"}], ",", " ", 
+     RowBox[{"AspectRatio", "\[Rule]", "1"}], ",", " ", 
      RowBox[{"PlotRange", "\[Rule]", 
       RowBox[{"{", 
        RowBox[{
@@ -203,16 +160,8 @@ Cell[BoxData[{
          RowBox[{"0.0", ",", "1.0"}], "}"}], ",", 
         RowBox[{"{", 
          RowBox[{
-          RowBox[{"-", "0.2"}], ",", "1.2"}], "}"}]}], "}"}]}], ",", " ", 
-     RowBox[{"Prolog", "\[Rule]", 
-      RowBox[{"Inset", "[", 
-       RowBox[{"region1d", ",", " ", 
-        RowBox[{"{", 
-         RowBox[{"0", ",", "0"}], "}"}], ",", 
-        RowBox[{"{", 
-         RowBox[{"0", ",", "0"}], "}"}], ",", " ", 
-        RowBox[{"{", 
-         RowBox[{"1", ",", "1"}], "}"}]}], "]"}]}], ",", " ", 
+          RowBox[{"-", "0.2"}], ",", "1.2"}], "}"}]}], "}"}]}], ",", 
+     RowBox[{"Prolog", "\[Rule]", "region1d"}], ",", " ", 
      RowBox[{"PlotRangePadding", "\[Rule]", "0.01"}]}], "]"}]}], 
   ";"}]}], "Input"],
 
@@ -251,6 +200,10 @@ Cell["3D Box comparison tests", "Subsection"]
 Cell[CellGroupData[{
 
 Cell["Sec 3", "Section"],
+
+Cell[CellGroupData[{
+
+Cell["Deep2  mask", "Subsection"],
 
 Cell[BoxData[
  RowBox[{"(*", " ", 
@@ -409,6 +362,228 @@ Cell[BoxData[
   RowBox[{"Export", "[", 
    RowBox[{"\"\<../tex/plots/deep2mask.pdf\>\"", ",", " ", "p2"}], "]"}], 
   ";"}]], "Input"]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["DEEP2 fits ", "Subsection"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"nptlist", " ", "=", " ", 
+   RowBox[{"{", 
+    RowBox[{
+    "1000", ",", " ", "4000", ",", " ", "16000", ",", " ", "64000", ",", " ", 
+     "256000", ",", " ", "1024000", ",", " ", "4096000", ",", " ", 
+     "16384000"}], "}"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"bin0", " ", "=", " ", 
+   RowBox[{"processbin", "[", 
+    RowBox[{
+    "\"\<../data/deep2/rrdump\>\"", ",", " ", "0", ",", " ", "nptlist"}], 
+    "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"bin4", " ", "=", " ", 
+   RowBox[{"processbin", "[", 
+    RowBox[{"\"\<../data/deep2/rrdump\>\"", ",", "4", ",", " ", "nptlist"}], 
+    "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"bin0prng", " ", "=", " ", 
+   RowBox[{"processbin", "[", 
+    RowBox[{"\"\<../data/deep2_prng/rrdump\>\"", ",", "0", ",", "nptlist"}], 
+    "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"bin4prng", " ", "=", " ", 
+   RowBox[{"processbin", "[", 
+    RowBox[{
+    "\"\<../data/deep2_prng/rrdump\>\"", ",", " ", "4", ",", " ", "nptlist"}],
+     "]"}]}], ";"}]}], "Input"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"err", "[", "bin_", "]"}], " ", ":=", " ", 
+   SuperscriptBox[
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"bin", "[", 
+       RowBox[{"[", 
+        RowBox[{"All", ",", "1", ",", "2"}], "]"}], "]"}], ",", " ", 
+      RowBox[{"bin", "[", 
+       RowBox[{"[", 
+        RowBox[{"All", ",", " ", "2", ",", "3"}], "]"}], "]"}]}], "}"}], 
+    "\[Transpose]"]}], ";"}]], "Input"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"xticks", " ", "=", " ", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+       SuperscriptBox["10", "3"], ",", 
+       "\"\<\!\(\*SuperscriptBox[\(10\), \(3\)]\)\>\""}], "}"}], ",", " ", 
+     RowBox[{"{", 
+      RowBox[{
+       SuperscriptBox["10", "4"], ",", 
+       "\"\<\!\(\*SuperscriptBox[\(10\), \(4\)]\)\>\""}], "}"}], ",", " ", 
+     RowBox[{"{", 
+      RowBox[{
+       SuperscriptBox["10", "5"], ",", 
+       "\"\<\!\(\*SuperscriptBox[\(10\), \(5\)]\)\>\""}], "}"}], ",", " ", 
+     RowBox[{"{", 
+      RowBox[{
+       SuperscriptBox["10", "6"], ",", " ", 
+       "\"\<\!\(\*SuperscriptBox[\(10\), \(6\)]\)\>\""}], "}"}], ",", " ", 
+     RowBox[{"{", 
+      RowBox[{
+       SuperscriptBox["10", "7"], ",", 
+       "\"\<\!\(\*SuperscriptBox[\(10\), \(7\)]\)\>\""}], "}"}]}], "}"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"yticks", " ", "=", " ", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+       SuperscriptBox["10", 
+        RowBox[{"-", "2"}]], ",", 
+       "\"\<\!\(\*SuperscriptBox[\(10\), \(-2\)]\)\>\""}], "}"}], ",", " ", 
+     RowBox[{"{", 
+      RowBox[{
+       SuperscriptBox["10", 
+        RowBox[{"-", "3"}]], ",", 
+       "\"\<\!\(\*SuperscriptBox[\(10\), \(-3\)]\)\>\""}], "}"}], ",", " ", 
+     RowBox[{"{", 
+      RowBox[{
+       SuperscriptBox["10", 
+        RowBox[{"-", "4"}]], ",", " ", 
+       "\"\<\!\(\*SuperscriptBox[\(10\), \(-4\)]\)\>\""}], "}"}], ",", " ", 
+     RowBox[{"{", 
+      RowBox[{
+       SuperscriptBox["10", 
+        RowBox[{"-", "5"}]], ",", " ", 
+       "\"\<\!\(\*SuperscriptBox[\(10\), \(-5\)]\)\>\""}], "}"}]}], "}"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"pticks", " ", "=", " ", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"yticks", ",", " ", "Automatic"}], "}"}], ",", " ", 
+     RowBox[{"{", 
+      RowBox[{"xticks", ",", " ", "Automatic"}], "}"}]}], "}"}]}], 
+  ";"}], "\n", 
+ RowBox[{
+  RowBox[{"pdata", " ", "=", " ", 
+   RowBox[{"err", " ", "/@", " ", 
+    RowBox[{"{", 
+     RowBox[{
+     "bin0", ",", " ", "bin4", ",", " ", "bin0prng", ",", " ", "bin4prng"}], 
+     "}"}]}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"prange", " ", "=", " ", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"700", ",", " ", "3*^7"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"3", " ", 
+        SuperscriptBox["10", 
+         RowBox[{"-", "5"}]]}], ",", 
+       RowBox[{"5", "*", 
+        SuperscriptBox["10", 
+         RowBox[{"-", "2"}]]}]}], "}"}]}], "}"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"pmarkers", " ", "=", " ", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"pDisk", ",", "0.04"}], "}"}], ",", " ", 
+     RowBox[{"{", 
+      RowBox[{"pSquare", ",", "0.04"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"pDisk", ",", " ", "0.04"}], "}"}], ",", " ", 
+     RowBox[{"{", 
+      RowBox[{"pSquare", ",", " ", "0.04"}], "}"}]}], "}"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"pstyle", " ", "=", " ", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"{", "\"\<MediumBlue\>\"", "}"}], ",", 
+      RowBox[{"{", "\"\<Firebrick\>\"", "}"}], ",", " ", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"FaceForm", "[", "]"}], ",", 
+        RowBox[{"EdgeForm", "[", 
+         RowBox[{"{", 
+          RowBox[{"Thick", ",", "\"\<MediumBlue\>\""}], "}"}], "]"}]}], "}"}],
+       ",", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"FaceForm", "[", "]"}], ",", 
+        RowBox[{"EdgeForm", "[", 
+         RowBox[{"{", 
+          RowBox[{"Thick", ",", "\"\<Firebrick\>\""}], "}"}], "]"}]}], 
+       "}"}]}], "}"}], "/.", 
+    RowBox[{"ColorData", "[", 
+     RowBox[{"\"\<Legacy\>\"", ",", " ", "\"\<ColorRules\>\""}], "]"}]}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"p1", " ", "=", " ", 
+   RowBox[{"ListLogLogPlot", "[", 
+    RowBox[{"pdata", ",", " ", 
+     RowBox[{"PlotRange", "\[Rule]", "prange"}], ",", 
+     RowBox[{"PlotStyle", "\[Rule]", "pstyle"}], ",", 
+     RowBox[{"PlotMarkers", "\[Rule]", "pmarkers"}], ",", " ", 
+     RowBox[{"FrameTicks", "\[Rule]", "pticks"}], ",", " ", 
+     RowBox[{"FrameLabel", "\[Rule]", 
+      RowBox[{"{", 
+       RowBox[{
+       "\"\<\!\(\*SubscriptBox[\(N\), \(pairs\)]\)\>\"", ",", 
+        "\"\<Relative Error\>\""}], "}"}]}]}], " ", "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"p2", " ", "=", " ", 
+   RowBox[{"LogLogPlot", "[", 
+    RowBox[{
+     RowBox[{"20", 
+      SuperscriptBox["n", 
+       RowBox[{"-", "1"}]]}], ",", " ", 
+     RowBox[{"{", 
+      RowBox[{"n", ",", " ", "100", ",", " ", 
+       SuperscriptBox["10", "8"]}], "}"}], ",", " ", 
+     RowBox[{"PlotStyle", "\[Rule]", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"AbsoluteDashing", "[", "5", "]"}], ",", " ", "Thick", ",", 
+        " ", "Gray"}], "}"}]}]}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"p3", " ", "=", " ", 
+   RowBox[{"LogLogPlot", "[", 
+    RowBox[{
+     RowBox[{"0.7", 
+      SuperscriptBox["n", 
+       RowBox[{"-", "0.5"}]]}], ",", " ", 
+     RowBox[{"{", 
+      RowBox[{"n", ",", " ", "100", ",", " ", 
+       SuperscriptBox["10", "8"]}], "}"}], ",", " ", 
+     RowBox[{"PlotStyle", "\[Rule]", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"AbsoluteDashing", "[", "10", "]"}], ",", " ", "Thick", ",", 
+        " ", "Gray"}], "}"}]}]}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Export", "[", 
+   RowBox[{"\"\<../tex/plots/deep2rrcomp1.pdf\>\"", ",", 
+    RowBox[{"Show", "[", 
+     RowBox[{"p1", ",", "p2", ",", " ", "p3"}], "]"}]}], "]"}], 
+  ";"}]}], "Input"]
+}, Open  ]]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -418,18 +593,2618 @@ Cell["Scratch", "Section"],
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"processbin", "[", 
-  RowBox[{"\"\<../data/deep2/rrdump\>\"", ",", "4", ",", " ", 
-   RowBox[{"{", "16384000", "}"}]}], "]"}]], "Input"],
+ RowBox[{"ColorData", "[", 
+  RowBox[{"\"\<Legacy\>\"", ",", "\"\<Panel\>\""}], "]"}]], "Input"],
 
 Cell[BoxData[
- RowBox[{"{", 
-  RowBox[{"{", 
-   RowBox[{"16384000", ",", 
-    RowBox[{"{", 
-     RowBox[{
-     "0.2637221292198052`", ",", "0.000024076350637353718`", ",", 
-      "0.00009129438894104612`"}], "}"}]}], "}"}], "}"}]], "Output"]
+ PanelBox[
+  StyleBox[
+   GraphicsBox[
+    {EdgeForm[Opacity[0.1]], {
+      {RGBColor[1, 1, 1], 
+       TagBox[
+        TagBox[
+         TooltipBox[DiskBox[{1, 11}, 0.45],
+          "\"White\"",
+          TooltipStyle->"TextStyling"],
+         Annotation[#, "White", "Tooltip"]& ],
+        EventHandlerTag[{"MouseClicked" :> (SelectionMove[
+             ButtonNotebook[], After, ButtonCell]; NotebookWrite[
+             ButtonNotebook[], 
+             ToBoxes[
+              Part["White" -> RGBColor[1, 1, 1], 2]]]), PassEventsDown -> 
+          Automatic, PassEventsUp -> True}]]}, 
+      {RGBColor[0.960799, 0.960799, 0.960799], 
+       TagBox[
+        TagBox[
+         TooltipBox[DiskBox[{2, 11}, 0.45],
+          "\"Smoke\"",
+          TooltipStyle->"TextStyling"],
+         Annotation[#, "Smoke", "Tooltip"]& ],
+        EventHandlerTag[{"MouseClicked" :> (SelectionMove[
+             ButtonNotebook[], After, ButtonCell]; NotebookWrite[
+             ButtonNotebook[], 
+             ToBoxes[
+              Part["Smoke" -> RGBColor[0.960799, 0.960799, 0.960799], 2]]]), 
+          PassEventsDown -> Automatic, PassEventsUp -> True}]]}, 
+      {RGBColor[0.862697, 0.862697, 0.862697], 
+       TagBox[
+        TagBox[
+         TooltipBox[DiskBox[{3, 11}, 0.45],
+          "\"Gainsboro\"",
+          TooltipStyle->"TextStyling"],
+         Annotation[#, "Gainsboro", "Tooltip"]& ],
+        EventHandlerTag[{"MouseClicked" :> (SelectionMove[
+             ButtonNotebook[], After, ButtonCell]; NotebookWrite[
+             ButtonNotebook[], 
+             ToBoxes[
+              Part[
+              "Gainsboro" -> RGBColor[0.862697, 0.862697, 0.862697], 2]]]), 
+          PassEventsDown -> Automatic, PassEventsUp -> True}]]}, 
+      {RGBColor[0.666666, 0.666666, 0.666666], 
+       TagBox[
+        TagBox[
+         TooltipBox[DiskBox[{4, 11}, 0.45],
+          "\"LightGray\"",
+          TooltipStyle->"TextStyling"],
+         Annotation[#, "LightGray", "Tooltip"]& ],
+        EventHandlerTag[{"MouseClicked" :> (SelectionMove[
+             ButtonNotebook[], After, ButtonCell]; NotebookWrite[
+             ButtonNotebook[], 
+             ToBoxes[
+              Part[
+              "LightGray" -> RGBColor[0.666666, 0.666666, 0.666666], 2]]]), 
+          PassEventsDown -> Automatic, PassEventsUp -> True}]]}, 
+      {RGBColor[0.5, 0.5, 0.5], 
+       TagBox[
+        TagBox[
+         TooltipBox[DiskBox[{5, 11}, 0.45],
+          "\"Gray\"",
+          TooltipStyle->"TextStyling"],
+         Annotation[#, "Gray", "Tooltip"]& ],
+        EventHandlerTag[{"MouseClicked" :> (SelectionMove[
+             ButtonNotebook[], After, ButtonCell]; NotebookWrite[
+             ButtonNotebook[], 
+             ToBoxes[
+              Part["Gray" -> RGBColor[0.5, 0.5, 0.5], 2]]]), PassEventsDown -> 
+          Automatic, PassEventsUp -> True}]]}, 
+      {RGBColor[0.333333, 0.333333, 0.333333], 
+       TagBox[
+        TagBox[
+         TooltipBox[DiskBox[{6, 11}, 0.45],
+          "\"DimGray\"",
+          TooltipStyle->"TextStyling"],
+         Annotation[#, "DimGray", "Tooltip"]& ],
+        EventHandlerTag[{"MouseClicked" :> (SelectionMove[
+             ButtonNotebook[], After, ButtonCell]; NotebookWrite[
+             ButtonNotebook[], 
+             ToBoxes[
+              Part["DimGray" -> RGBColor[0.333333, 0.333333, 0.333333], 2]]]),
+           PassEventsDown -> Automatic, PassEventsUp -> True}]]}, 
+      {RGBColor[0, 0, 0], 
+       TagBox[
+        TagBox[
+         TooltipBox[DiskBox[{7, 11}, 0.45],
+          "\"Black\"",
+          TooltipStyle->"TextStyling"],
+         Annotation[#, "Black", "Tooltip"]& ],
+        EventHandlerTag[{"MouseClicked" :> (SelectionMove[
+             ButtonNotebook[], After, ButtonCell]; NotebookWrite[
+             ButtonNotebook[], 
+             ToBoxes[
+              Part["Black" -> RGBColor[0, 0, 0], 2]]]), PassEventsDown -> 
+          Automatic, PassEventsUp -> True}]]}, 
+      {RGBColor[1., 0.980407, 0.980407], 
+       TagBox[
+        TagBox[
+         TooltipBox[DiskBox[{8, 11}, 0.45],
+          "\"Snow\"",
+          TooltipStyle->"TextStyling"],
+         Annotation[#, "Snow", "Tooltip"]& ],
+        EventHandlerTag[{"MouseClicked" :> (SelectionMove[
+             ButtonNotebook[], After, ButtonCell]; NotebookWrite[
+             ButtonNotebook[], 
+             ToBoxes[
+              Part["Snow" -> RGBColor[1., 0.980407, 0.980407], 2]]]), 
+          PassEventsDown -> Automatic, PassEventsUp -> True}]]}, 
+      {RGBColor[0.737297, 0.560793, 0.560793], 
+       TagBox[
+        TagBox[
+         TooltipBox[DiskBox[{9, 11}, 0.45],
+          "\"RosyBrown\"",
+          TooltipStyle->"TextStyling"],
+         Annotation[#, "RosyBrown", "Tooltip"]& ],
+        EventHandlerTag[{"MouseClicked" :> (SelectionMove[
+             ButtonNotebook[], After, ButtonCell]; NotebookWrite[
+             ButtonNotebook[], 
+             ToBoxes[
+              Part[
+              "RosyBrown" -> RGBColor[0.737297, 0.560793, 0.560793], 2]]]), 
+          PassEventsDown -> Automatic, PassEventsUp -> True}]]}, 
+      {RGBColor[0.44, 0.26, 0.26], 
+       TagBox[
+        TagBox[
+         TooltipBox[DiskBox[{10, 11}, 0.45],
+          "\"Peach\"",
+          TooltipStyle->"TextStyling"],
+         Annotation[#, "Peach", "Tooltip"]& ],
+        EventHandlerTag[{"MouseClicked" :> (SelectionMove[
+             ButtonNotebook[], After, ButtonCell]; NotebookWrite[
+             ButtonNotebook[], 
+             ToBoxes[
+              Part["Peach" -> RGBColor[0.44, 0.26, 0.26], 2]]]), 
+          PassEventsDown -> Automatic, PassEventsUp -> True}]]}, 
+      {RGBColor[0.941206, 0.501999, 0.501999], 
+       TagBox[
+        TagBox[
+         TooltipBox[DiskBox[{11, 11}, 0.45],
+          "\"LightCoral\"",
+          TooltipStyle->"TextStyling"],
+         Annotation[#, "LightCoral", "Tooltip"]& ],
+        EventHandlerTag[{"MouseClicked" :> (SelectionMove[
+             ButtonNotebook[], After, ButtonCell]; NotebookWrite[
+             ButtonNotebook[], 
+             ToBoxes[
+              Part[
+              "LightCoral" -> RGBColor[0.941206, 0.501999, 0.501999], 2]]]), 
+          PassEventsDown -> Automatic, PassEventsUp -> True}]]}, 
+      {RGBColor[1, 0.5, 0.5], 
+       TagBox[
+        TagBox[
+         TooltipBox[DiskBox[{12, 11}, 0.45],
+          "\"Pink\"",
+          TooltipStyle->"TextStyling"],
+         Annotation[#, "Pink", "Tooltip"]& ],
+        EventHandlerTag[{"MouseClicked" :> (SelectionMove[
+             ButtonNotebook[], After, ButtonCell]; NotebookWrite[
+             ButtonNotebook[], 
+             ToBoxes[
+              Part["Pink" -> RGBColor[1, 0.5, 0.5], 2]]]), PassEventsDown -> 
+          Automatic, PassEventsUp -> True}]]}, 
+      {RGBColor[0.698004, 0.133305, 0.133305], 
+       TagBox[
+        TagBox[
+         TooltipBox[DiskBox[{13, 11}, 0.45],
+          "\"Firebrick\"",
+          TooltipStyle->"TextStyling"],
+         Annotation[#, "Firebrick", "Tooltip"]& ],
+        EventHandlerTag[{"MouseClicked" :> (SelectionMove[
+             ButtonNotebook[], After, ButtonCell]; NotebookWrite[
+             ButtonNotebook[], 
+             ToBoxes[
+              Part[
+              "Firebrick" -> RGBColor[0.698004, 0.133305, 0.133305], 2]]]), 
+          PassEventsDown -> Automatic, PassEventsUp -> True}]]}, 
+      {RGBColor[0.859996, 0.159993, 0.159993], 
+       TagBox[
+        TagBox[
+         TooltipBox[DiskBox[{14, 11}, 0.45],
+          "\"BrownMadder\"",
+          TooltipStyle->"TextStyling"],
+         Annotation[#, "BrownMadder", "Tooltip"]& ],
+        EventHandlerTag[{"MouseClicked" :> (SelectionMove[
+             ButtonNotebook[], After, ButtonCell]; NotebookWrite[
+             ButtonNotebook[], 
+             ToBoxes[
+              Part[
+              "BrownMadder" -> RGBColor[0.859996, 0.159993, 0.159993], 2]]]), 
+          PassEventsDown -> Automatic, PassEventsUp -> True}]]}, 
+      {RGBColor[1, 0, 0], 
+       TagBox[
+        TagBox[
+         TooltipBox[DiskBox[{15, 11}, 0.45],
+          "\"Red\"",
+          TooltipStyle->"TextStyling"],
+         Annotation[#, "Red", "Tooltip"]& ],
+        EventHandlerTag[{"MouseClicked" :> (SelectionMove[
+             ButtonNotebook[], After, ButtonCell]; NotebookWrite[
+             ButtonNotebook[], 
+             ToBoxes[
+              Part["Red" -> RGBColor[1, 0, 0], 2]]]), PassEventsDown -> 
+          Automatic, PassEventsUp -> True}]]}, 
+      {RGBColor[0.889996, 0.089999, 0.050005], 
+       TagBox[
+        TagBox[
+         TooltipBox[DiskBox[{16, 11}, 0.45],
+          "\"DeepCadmiumRed\"",
+          TooltipStyle->"TextStyling"],
+         Annotation[#, "DeepCadmiumRed", "Tooltip"]& ],
+        EventHandlerTag[{"MouseClicked" :> (SelectionMove[
+             ButtonNotebook[], After, ButtonCell]; NotebookWrite[
+             ButtonNotebook[], 
+             ToBoxes[
+              Part[
+              "DeepCadmiumRed" -> RGBColor[0.889996, 0.089999, 0.050005], 
+               2]]]), PassEventsDown -> Automatic, PassEventsUp -> True}]]}, 
+      {RGBColor[1., 0.894101, 0.882397], 
+       TagBox[
+        TagBox[
+         TooltipBox[DiskBox[{17, 11}, 0.45],
+          "\"MistyRose\"",
+          TooltipStyle->"TextStyling"],
+         Annotation[#, "MistyRose", "Tooltip"]& ],
+        EventHandlerTag[{"MouseClicked" :> (SelectionMove[
+             ButtonNotebook[], After, ButtonCell]; NotebookWrite[
+             ButtonNotebook[], 
+             ToBoxes[
+              Part["MistyRose" -> RGBColor[1., 0.894101, 0.882397], 2]]]), 
+          PassEventsDown -> Automatic, PassEventsUp -> True}]]}, 
+      {RGBColor[0.980407, 0.501999, 0.447096], 
+       TagBox[
+        TagBox[
+         TooltipBox[DiskBox[{18, 11}, 0.45],
+          "\"Salmon\"",
+          TooltipStyle->"TextStyling"],
+         Annotation[#, "Salmon", "Tooltip"]& ],
+        EventHandlerTag[{"MouseClicked" :> (SelectionMove[
+             ButtonNotebook[], After, ButtonCell]; NotebookWrite[
+             ButtonNotebook[], 
+             ToBoxes[
+              Part["Salmon" -> RGBColor[0.980407, 0.501999, 0.447096], 2]]]), 
+          PassEventsDown -> Automatic, PassEventsUp -> True}]]}}, {
+      {RGBColor[0.539994, 0.200003, 0.140004], 
+       TagBox[
+        TagBox[
+         TooltipBox[DiskBox[{1, 10}, 0.45],
+          "\"BurntUmber\"",
+          TooltipStyle->"TextStyling"],
+         Annotation[#, "BurntUmber", "Tooltip"]& ],
+        EventHandlerTag[{"MouseClicked" :> (SelectionMove[
+             ButtonNotebook[], After, ButtonCell]; NotebookWrite[
+             ButtonNotebook[], 
+             ToBoxes[
+              Part[
+              "BurntUmber" -> RGBColor[0.539994, 0.200003, 0.140004], 2]]]), 
+          PassEventsDown -> Automatic, PassEventsUp -> True}]]}, 
+      {RGBColor[1., 0.388195, 0.278405], 
+       TagBox[
+        TagBox[
+         TooltipBox[DiskBox[{2, 10}, 0.45],
+          "\"Tomato\"",
+          TooltipStyle->"TextStyling"],
+         Annotation[#, "Tomato", "Tooltip"]& ],
+        EventHandlerTag[{"MouseClicked" :> (SelectionMove[
+             ButtonNotebook[], After, ButtonCell]; NotebookWrite[
+             ButtonNotebook[], 
+             ToBoxes[
+              Part["Tomato" -> RGBColor[1., 0.388195, 0.278405], 2]]]), 
+          PassEventsDown -> Automatic, PassEventsUp -> True}]]}, 
+      {RGBColor[0.829997, 0.239998, 0.099994], 
+       TagBox[
+        TagBox[
+         TooltipBox[DiskBox[{3, 10}, 0.45],
+          "\"EnglishRed\"",
+          TooltipStyle->"TextStyling"],
+         Annotation[#, "EnglishRed", "Tooltip"]& ],
+        EventHandlerTag[{"MouseClicked" :> (SelectionMove[
+             ButtonNotebook[], After, ButtonCell]; NotebookWrite[
+             ButtonNotebook[], 
+             ToBoxes[
+              Part[
+              "EnglishRed" -> RGBColor[0.829997, 0.239998, 0.099994], 2]]]), 
+          PassEventsDown -> Automatic, PassEventsUp -> True}]]}, 
+      {RGBColor[1., 0.239998, 0.050005], 
+       TagBox[
+        TagBox[
+         TooltipBox[DiskBox[{4, 10}, 0.45],
+          "\"GreenishUmber\"",
+          TooltipStyle->"TextStyling"],
+         Annotation[#, "GreenishUmber", "Tooltip"]& ],
+        EventHandlerTag[{"MouseClicked" :> (SelectionMove[
+             ButtonNotebook[], After, ButtonCell]; NotebookWrite[
+             ButtonNotebook[], 
+             ToBoxes[
+              Part["GreenishUmber" -> RGBColor[1., 0.239998, 0.050005], 2]]]),
+           PassEventsDown -> Automatic, PassEventsUp -> True}]]}, 
+      {RGBColor[1., 0.340007, 0.129994], 
+       TagBox[
+        TagBox[
+         TooltipBox[DiskBox[{5, 10}, 0.45],
+          "\"Apricot\"",
+          TooltipStyle->"TextStyling"],
+         Annotation[#, "Apricot", "Tooltip"]& ],
+        EventHandlerTag[{"MouseClicked" :> (SelectionMove[
+             ButtonNotebook[], After, ButtonCell]; NotebookWrite[
+             ButtonNotebook[], 
+             ToBoxes[
+              Part["Apricot" -> RGBColor[1., 0.340007, 0.129994], 2]]]), 
+          PassEventsDown -> Automatic, PassEventsUp -> True}]]}, 
+      {RGBColor[0.370006, 0.149998, 0.069994], 
+       TagBox[
+        TagBox[
+         TooltipBox[DiskBox[{6, 10}, 0.45],
+          "\"Sepia\"",
+          TooltipStyle->"TextStyling"],
+         Annotation[#, "Sepia", "Tooltip"]& ],
+        EventHandlerTag[{"MouseClicked" :> (SelectionMove[
+             ButtonNotebook[], After, ButtonCell]; NotebookWrite[
+             ButtonNotebook[], 
+             ToBoxes[
+              Part["Sepia" -> RGBColor[0.370006, 0.149998, 0.069994], 2]]]), 
+          PassEventsDown -> Automatic, PassEventsUp -> True}]]}, 
+      {RGBColor[1., 0.498001, 0.3137], 
+       TagBox[
+        TagBox[
+         TooltipBox[DiskBox[{7, 10}, 0.45],
+          "\"Coral\"",
+          TooltipStyle->"TextStyling"],
+         Annotation[#, "Coral", "Tooltip"]& ],
+        EventHandlerTag[{"MouseClicked" :> (SelectionMove[
+             ButtonNotebook[], After, ButtonCell]; NotebookWrite[
+             ButtonNotebook[], 
+             ToBoxes[
+              Part["Coral" -> RGBColor[1., 0.498001, 0.3137], 2]]]), 
+          PassEventsDown -> Automatic, PassEventsUp -> True}]]}, 
+      {RGBColor[1., 0.270608, 0.], 
+       TagBox[
+        TagBox[
+         TooltipBox[DiskBox[{8, 10}, 0.45],
+          "\"OrangeRed\"",
+          TooltipStyle->"TextStyling"],
+         Annotation[#, "OrangeRed", "Tooltip"]& ],
+        EventHandlerTag[{"MouseClicked" :> (SelectionMove[
+             ButtonNotebook[], After, ButtonCell]; NotebookWrite[
+             ButtonNotebook[], 
+             ToBoxes[
+              Part["OrangeRed" -> RGBColor[1., 0.270608, 0.], 2]]]), 
+          PassEventsDown -> Automatic, PassEventsUp -> True}]]}, 
+      {RGBColor[1., 0.627506, 0.478393], 
+       TagBox[
+        TagBox[
+         TooltipBox[DiskBox[{9, 10}, 0.45],
+          "\"LightSalmon\"",
+          TooltipStyle->"TextStyling"],
+         Annotation[#, "LightSalmon", "Tooltip"]& ],
+        EventHandlerTag[{"MouseClicked" :> (SelectionMove[
+             ButtonNotebook[], After, ButtonCell]; NotebookWrite[
+             ButtonNotebook[], 
+             ToBoxes[
+              Part["LightSalmon" -> RGBColor[1., 0.627506, 0.478393], 2]]]), 
+          PassEventsDown -> Automatic, PassEventsUp -> True}]]}, 
+      {RGBColor[0.539994, 0.209998, 0.059999], 
+       TagBox[
+        TagBox[
+         TooltipBox[DiskBox[{10, 10}, 0.45],
+          "\"BurntSienna\"",
+          TooltipStyle->"TextStyling"],
+         Annotation[#, "BurntSienna", "Tooltip"]& ],
+        EventHandlerTag[{"MouseClicked" :> (SelectionMove[
+             ButtonNotebook[], After, ButtonCell]; NotebookWrite[
+             ButtonNotebook[], 
+             ToBoxes[
+              Part[
+              "BurntSienna" -> RGBColor[0.539994, 0.209998, 0.059999], 2]]]), 
+          PassEventsDown -> Automatic, PassEventsUp -> True}]]}, 
+      {RGBColor[1., 0.490005, 0.250008], 
+       TagBox[
+        TagBox[
+         TooltipBox[DiskBox[{11, 10}, 0.45],
+          "\"Oak\"",
+          TooltipStyle->"TextStyling"],
+         Annotation[#, "Oak", "Tooltip"]& ],
+        EventHandlerTag[{"MouseClicked" :> (SelectionMove[
+             ButtonNotebook[], After, ButtonCell]; NotebookWrite[
+             ButtonNotebook[], 
+             ToBoxes[
+              Part["Oak" -> RGBColor[1., 0.490005, 0.250008], 2]]]), 
+          PassEventsDown -> Automatic, PassEventsUp -> True}]]}, 
+      {RGBColor[0.627506, 0.321604, 0.176504], 
+       TagBox[
+        TagBox[
+         TooltipBox[DiskBox[{12, 10}, 0.45],
+          "\"Sienna\"",
+          TooltipStyle->"TextStyling"],
+         Annotation[#, "Sienna", "Tooltip"]& ],
+        EventHandlerTag[{"MouseClicked" :> (SelectionMove[
+             ButtonNotebook[], After, ButtonCell]; NotebookWrite[
+             ButtonNotebook[], 
+             ToBoxes[
+              Part["Sienna" -> RGBColor[0.627506, 0.321604, 0.176504], 2]]]), 
+          PassEventsDown -> Automatic, PassEventsUp -> True}]]}, 
+      {RGBColor[0.86, 0.58, 0.44], 
+       TagBox[
+        TagBox[
+         TooltipBox[DiskBox[{13, 10}, 0.45],
+          "\"YellowBrown\"",
+          TooltipStyle->"TextStyling"],
+         Annotation[#, "YellowBrown", "Tooltip"]& ],
+        EventHandlerTag[{"MouseClicked" :> (SelectionMove[
+             ButtonNotebook[], After, ButtonCell]; NotebookWrite[
+             ButtonNotebook[], 
+             ToBoxes[
+              Part["YellowBrown" -> RGBColor[0.86, 0.58, 0.44], 2]]]), 
+          PassEventsDown -> Automatic, PassEventsUp -> True}]]}, 
+      {RGBColor[0.159993, 0.140004, 0.129994], 
+       TagBox[
+        TagBox[
+         TooltipBox[DiskBox[{14, 10}, 0.45],
+          "\"IvoryBlack\"",
+          TooltipStyle->"TextStyling"],
+         Annotation[#, "IvoryBlack", "Tooltip"]& ],
+        EventHandlerTag[{"MouseClicked" :> (SelectionMove[
+             ButtonNotebook[], After, ButtonCell]; NotebookWrite[
+             ButtonNotebook[], 
+             ToBoxes[
+              Part[
+              "IvoryBlack" -> RGBColor[0.159993, 0.140004, 0.129994], 2]]]), 
+          PassEventsDown -> Automatic, PassEventsUp -> True}]]}, 
+      {RGBColor[0.53, 0.260002, 0.119999], 
+       TagBox[
+        TagBox[
+         TooltipBox[DiskBox[{15, 10}, 0.45],
+          "\"BrownOchre\"",
+          TooltipStyle->"TextStyling"],
+         Annotation[#, "BrownOchre", "Tooltip"]& ],
+        EventHandlerTag[{"MouseClicked" :> (SelectionMove[
+             ButtonNotebook[], After, ButtonCell]; NotebookWrite[
+             ButtonNotebook[], 
+             ToBoxes[
+              Part["BrownOchre" -> RGBColor[0.53, 0.260002, 0.119999], 2]]]), 
+          PassEventsDown -> Automatic, PassEventsUp -> True}]]}, 
+      {RGBColor[0.370006, 0.149998, 0.020005], 
+       TagBox[
+        TagBox[
+         TooltipBox[DiskBox[{16, 10}, 0.45],
+          "\"VanDykeBrown\"",
+          TooltipStyle->"TextStyling"],
+         Annotation[#, "VanDykeBrown", "Tooltip"]& ],
+        EventHandlerTag[{"MouseClicked" :> (SelectionMove[
+             ButtonNotebook[], After, ButtonCell]; NotebookWrite[
+             ButtonNotebook[], 
+             ToBoxes[
+              Part[
+              "VanDykeBrown" -> RGBColor[0.370006, 0.149998, 0.020005], 2]]]),
+           PassEventsDown -> Automatic, PassEventsUp -> True}]]}, 
+      {RGBColor[0.589999, 0.269997, 0.080004], 
+       TagBox[
+        TagBox[
+         TooltipBox[DiskBox[{17, 10}, 0.45],
+          "\"MarsOrange\"",
+          TooltipStyle->"TextStyling"],
+         Annotation[#, "MarsOrange", "Tooltip"]& ],
+        EventHandlerTag[{"MouseClicked" :> (SelectionMove[
+             ButtonNotebook[], After, ButtonCell]; NotebookWrite[
+             ButtonNotebook[], 
+             ToBoxes[
+              Part[
+              "MarsOrange" -> RGBColor[0.589999, 0.269997, 0.080004], 2]]]), 
+          PassEventsDown -> Automatic, PassEventsUp -> True}]]}, 
+      {RGBColor[1., 0.380001, 0.009995], 
+       TagBox[
+        TagBox[
+         TooltipBox[DiskBox[{18, 10}, 0.45],
+          "\"CadmiumOrange\"",
+          TooltipStyle->"TextStyling"],
+         Annotation[#, "CadmiumOrange", "Tooltip"]& ],
+        EventHandlerTag[{"MouseClicked" :> (SelectionMove[
+             ButtonNotebook[], After, ButtonCell]; NotebookWrite[
+             ButtonNotebook[], 
+             ToBoxes[
+              Part["CadmiumOrange" -> RGBColor[1., 0.380001, 0.009995], 2]]]),
+           PassEventsDown -> Automatic, PassEventsUp -> True}]]}}, {
+      {RGBColor[0.449995, 0.239998, 0.099994], 
+       TagBox[
+        TagBox[
+         TooltipBox[DiskBox[{1, 9}, 0.45],
+          "\"DeepOchre\"",
+          TooltipStyle->"TextStyling"],
+         Annotation[#, "DeepOchre", "Tooltip"]& ],
+        EventHandlerTag[{"MouseClicked" :> (SelectionMove[
+             ButtonNotebook[], After, ButtonCell]; NotebookWrite[
+             ButtonNotebook[], 
+             ToBoxes[
+              Part[
+              "DeepOchre" -> RGBColor[0.449995, 0.239998, 0.099994], 2]]]), 
+          PassEventsDown -> Automatic, PassEventsUp -> True}]]}, 
+      {RGBColor[1., 0.960799, 0.933302], 
+       TagBox[
+        TagBox[
+         TooltipBox[DiskBox[{2, 9}, 0.45],
+          "\"Seashell\"",
+          TooltipStyle->"TextStyling"],
+         Annotation[#, "Seashell", "Tooltip"]& ],
+        EventHandlerTag[{"MouseClicked" :> (SelectionMove[
+             ButtonNotebook[], After, ButtonCell]; NotebookWrite[
+             ButtonNotebook[], 
+             ToBoxes[
+              Part["Seashell" -> RGBColor[1., 0.960799, 0.933302], 2]]]), 
+          PassEventsDown -> Automatic, PassEventsUp -> True}]]}, 
+      {RGBColor[0.545106, 0.270608, 0.074496], 
+       TagBox[
+        TagBox[
+         TooltipBox[DiskBox[{3, 9}, 0.45],
+          "\"SaddleBrown\"",
+          TooltipStyle->"TextStyling"],
+         Annotation[#, "SaddleBrown", "Tooltip"]& ],
+        EventHandlerTag[{"MouseClicked" :> (SelectionMove[
+             ButtonNotebook[], After, ButtonCell]; NotebookWrite[
+             ButtonNotebook[], 
+             ToBoxes[
+              Part[
+              "SaddleBrown" -> RGBColor[0.545106, 0.270608, 0.074496], 2]]]), 
+          PassEventsDown -> Automatic, PassEventsUp -> True}]]}, 
+      {RGBColor[0.823496, 0.411802, 0.117603], 
+       TagBox[
+        TagBox[
+         TooltipBox[DiskBox[{4, 9}, 0.45],
+          "\"Chocolate\"",
+          TooltipStyle->"TextStyling"],
+         Annotation[#, "Chocolate", "Tooltip"]& ],
+        EventHandlerTag[{"MouseClicked" :> (SelectionMove[
+             ButtonNotebook[], After, ButtonCell]; NotebookWrite[
+             ButtonNotebook[], 
+             ToBoxes[
+              Part[
+              "Chocolate" -> RGBColor[0.823496, 0.411802, 0.117603], 2]]]), 
+          PassEventsDown -> Automatic, PassEventsUp -> True}]]}, 
+      {RGBColor[0.780007, 0.380001, 0.080004], 
+       TagBox[
+        TagBox[
+         TooltipBox[DiskBox[{5, 9}, 0.45],
+          "\"RawSienna\"",
+          TooltipStyle->"TextStyling"],
+         Annotation[#, "RawSienna", "Tooltip"]& ],
+        EventHandlerTag[{"MouseClicked" :> (SelectionMove[
+             ButtonNotebook[], After, ButtonCell]; NotebookWrite[
+             ButtonNotebook[], 
+             ToBoxes[
+              Part[
+              "RawSienna" -> RGBColor[0.780007, 0.380001, 0.080004], 2]]]), 
+          PassEventsDown -> Automatic, PassEventsUp -> True}]]}, 
+      {RGBColor[0.889996, 0.440001, 0.099994], 
+       TagBox[
+        TagBox[
+         TooltipBox[DiskBox[{6, 9}, 0.45],
+          "\"MarsYellow\"",
+          TooltipStyle->"TextStyling"],
+         Annotation[#, "MarsYellow", "Tooltip"]& ],
+        EventHandlerTag[{"MouseClicked" :> (SelectionMove[
+             ButtonNotebook[], After, ButtonCell]; NotebookWrite[
+             ButtonNotebook[], 
+             ToBoxes[
+              Part[
+              "MarsYellow" -> RGBColor[0.889996, 0.440001, 0.099994], 2]]]), 
+          PassEventsDown -> Automatic, PassEventsUp -> True}]]}, 
+      {RGBColor[0.956893, 0.643101, 0.376507], 
+       TagBox[
+        TagBox[
+         TooltipBox[DiskBox[{7, 9}, 0.45],
+          "\"SandyBrown\"",
+          TooltipStyle->"TextStyling"],
+         Annotation[#, "SandyBrown", "Tooltip"]& ],
+        EventHandlerTag[{"MouseClicked" :> (SelectionMove[
+             ButtonNotebook[], After, ButtonCell]; NotebookWrite[
+             ButtonNotebook[], 
+             ToBoxes[
+              Part[
+              "SandyBrown" -> RGBColor[0.956893, 0.643101, 0.376507], 2]]]), 
+          PassEventsDown -> Automatic, PassEventsUp -> True}]]}, 
+      {RGBColor[1., 0.8549, 0.725501], 
+       TagBox[
+        TagBox[
+         TooltipBox[DiskBox[{8, 9}, 0.45],
+          "\"PeachPuff\"",
+          TooltipStyle->"TextStyling"],
+         Annotation[#, "PeachPuff", "Tooltip"]& ],
+        EventHandlerTag[{"MouseClicked" :> (SelectionMove[
+             ButtonNotebook[], After, ButtonCell]; NotebookWrite[
+             ButtonNotebook[], 
+             ToBoxes[
+              Part["PeachPuff" -> RGBColor[1., 0.8549, 0.725501], 2]]]), 
+          PassEventsDown -> Automatic, PassEventsUp -> True}]]}, 
+      {RGBColor[0.803903, 0.521607, 0.247093], 
+       TagBox[
+        TagBox[
+         TooltipBox[DiskBox[{9, 9}, 0.45],
+          "\"Peru\"",
+          TooltipStyle->"TextStyling"],
+         Annotation[#, "Peru", "Tooltip"]& ],
+        EventHandlerTag[{"MouseClicked" :> (SelectionMove[
+             ButtonNotebook[], After, ButtonCell]; NotebookWrite[
+             ButtonNotebook[], 
+             ToBoxes[
+              Part["Peru" -> RGBColor[0.803903, 0.521607, 0.247093], 2]]]), 
+          PassEventsDown -> Automatic, PassEventsUp -> True}]]}, 
+      {RGBColor[0.980407, 0.941206, 0.902005], 
+       TagBox[
+        TagBox[
+         TooltipBox[DiskBox[{10, 9}, 0.45],
+          "\"Linen\"",
+          TooltipStyle->"TextStyling"],
+         Annotation[#, "Linen", "Tooltip"]& ],
+        EventHandlerTag[{"MouseClicked" :> (SelectionMove[
+             ButtonNotebook[], After, ButtonCell]; NotebookWrite[
+             ButtonNotebook[], 
+             ToBoxes[
+              Part["Linen" -> RGBColor[0.980407, 0.941206, 0.902005], 2]]]), 
+          PassEventsDown -> Automatic, PassEventsUp -> True}]]}, 
+      {RGBColor[0.6, 0.4, 0.2], 
+       TagBox[
+        TagBox[
+         TooltipBox[DiskBox[{11, 9}, 0.45],
+          "\"Brown\"",
+          TooltipStyle->"TextStyling"],
+         Annotation[#, "Brown", "Tooltip"]& ],
+        EventHandlerTag[{"MouseClicked" :> (SelectionMove[
+             ButtonNotebook[], After, ButtonCell]; NotebookWrite[
+             ButtonNotebook[], 
+             ToBoxes[
+              Part["Brown" -> RGBColor[0.6, 0.4, 0.2], 2]]]), PassEventsDown -> 
+          Automatic, PassEventsUp -> True}]]}, 
+      {RGBColor[1, 0.5, 0], 
+       TagBox[
+        TagBox[
+         TooltipBox[DiskBox[{12, 9}, 0.45],
+          "\"Orange\"",
+          TooltipStyle->"TextStyling"],
+         Annotation[#, "Orange", "Tooltip"]& ],
+        EventHandlerTag[{"MouseClicked" :> (SelectionMove[
+             ButtonNotebook[], After, ButtonCell]; NotebookWrite[
+             ButtonNotebook[], 
+             ToBoxes[
+              Part["Orange" -> RGBColor[1, 0.5, 0], 2]]]), PassEventsDown -> 
+          Automatic, PassEventsUp -> True}]]}, 
+      {RGBColor[0.780007, 0.47, 0.149998], 
+       TagBox[
+        TagBox[
+         TooltipBox[DiskBox[{13, 9}, 0.45],
+          "\"GoldOchre\"",
+          TooltipStyle->"TextStyling"],
+         Annotation[#, "GoldOchre", "Tooltip"]& ],
+        EventHandlerTag[{"MouseClicked" :> (SelectionMove[
+             ButtonNotebook[], After, ButtonCell]; NotebookWrite[
+             ButtonNotebook[], 
+             ToBoxes[
+              Part["GoldOchre" -> RGBColor[0.780007, 0.47, 0.149998], 2]]]), 
+          PassEventsDown -> Automatic, PassEventsUp -> True}]]}, 
+      {RGBColor[0.889996, 0.659993, 0.410001], 
+       TagBox[
+        TagBox[
+         TooltipBox[DiskBox[{14, 9}, 0.45],
+          "\"Melon\"",
+          TooltipStyle->"TextStyling"],
+         Annotation[#, "Melon", "Tooltip"]& ],
+        EventHandlerTag[{"MouseClicked" :> (SelectionMove[
+             ButtonNotebook[], After, ButtonCell]; NotebookWrite[
+             ButtonNotebook[], 
+             ToBoxes[
+              Part["Melon" -> RGBColor[0.889996, 0.659993, 0.410001], 2]]]), 
+          PassEventsDown -> Automatic, PassEventsUp -> True}]]}, 
+      {RGBColor[0.889996, 0.509995, 0.089999], 
+       TagBox[
+        TagBox[
+         TooltipBox[DiskBox[{15, 9}, 0.45],
+          "\"YellowOchre\"",
+          TooltipStyle->"TextStyling"],
+         Annotation[#, "YellowOchre", "Tooltip"]& ],
+        EventHandlerTag[{"MouseClicked" :> (SelectionMove[
+             ButtonNotebook[], After, ButtonCell]; NotebookWrite[
+             ButtonNotebook[], 
+             ToBoxes[
+              Part[
+              "YellowOchre" -> RGBColor[0.889996, 0.509995, 0.089999], 2]]]), 
+          PassEventsDown -> Automatic, PassEventsUp -> True}]]}, 
+      {RGBColor[1., 0.548997, 0.], 
+       TagBox[
+        TagBox[
+         TooltipBox[DiskBox[{16, 9}, 0.45],
+          "\"DarkOrange\"",
+          TooltipStyle->"TextStyling"],
+         Annotation[#, "DarkOrange", "Tooltip"]& ],
+        EventHandlerTag[{"MouseClicked" :> (SelectionMove[
+             ButtonNotebook[], After, ButtonCell]; NotebookWrite[
+             ButtonNotebook[], 
+             ToBoxes[
+              Part["DarkOrange" -> RGBColor[1., 0.548997, 0.], 2]]]), 
+          PassEventsDown -> Automatic, PassEventsUp -> True}]]}, 
+      {RGBColor[0.930006, 0.569994, 0.129994], 
+       TagBox[
+        TagBox[
+         TooltipBox[DiskBox[{17, 9}, 0.45],
+          "\"Carrot\"",
+          TooltipStyle->"TextStyling"],
+         Annotation[#, "Carrot", "Tooltip"]& ],
+        EventHandlerTag[{"MouseClicked" :> (SelectionMove[
+             ButtonNotebook[], After, ButtonCell]; NotebookWrite[
+             ButtonNotebook[], 
+             ToBoxes[
+              Part["Carrot" -> RGBColor[0.930006, 0.569994, 0.129994], 2]]]), 
+          PassEventsDown -> Automatic, PassEventsUp -> True}]]}, 
+      {RGBColor[0.990005, 0.900006, 0.790002], 
+       TagBox[
+        TagBox[
+         TooltipBox[DiskBox[{18, 9}, 0.45],
+          "\"Eggshell\"",
+          TooltipStyle->"TextStyling"],
+         Annotation[#, "Eggshell", "Tooltip"]& ],
+        EventHandlerTag[{"MouseClicked" :> (SelectionMove[
+             ButtonNotebook[], After, ButtonCell]; NotebookWrite[
+             ButtonNotebook[], 
+             ToBoxes[
+              Part[
+              "Eggshell" -> RGBColor[0.990005, 0.900006, 0.790002], 2]]]), 
+          PassEventsDown -> Automatic, PassEventsUp -> True}]]}}, {
+      {RGBColor[1., 0.898053, 0.771844], 
+       TagBox[
+        TagBox[
+         TooltipBox[DiskBox[{1, 8}, 0.45],
+          "\"Bisque\"",
+          TooltipStyle->"TextStyling"],
+         Annotation[#, "Bisque", "Tooltip"]& ],
+        EventHandlerTag[{"MouseClicked" :> (SelectionMove[
+             ButtonNotebook[], After, ButtonCell]; NotebookWrite[
+             ButtonNotebook[], 
+             ToBoxes[
+              Part["Bisque" -> RGBColor[1., 0.898053, 0.771844], 2]]]), 
+          PassEventsDown -> Automatic, PassEventsUp -> True}]]}, 
+      {RGBColor[0.870602, 0.721595, 0.529405], 
+       TagBox[
+        TagBox[
+         TooltipBox[DiskBox[{2, 8}, 0.45],
+          "\"Burlywood\"",
+          TooltipStyle->"TextStyling"],
+         Annotation[#, "Burlywood", "Tooltip"]& ],
+        EventHandlerTag[{"MouseClicked" :> (SelectionMove[
+             ButtonNotebook[], After, ButtonCell]; NotebookWrite[
+             ButtonNotebook[], 
+             ToBoxes[
+              Part[
+              "Burlywood" -> RGBColor[0.870602, 0.721595, 0.529405], 2]]]), 
+          PassEventsDown -> Automatic, PassEventsUp -> True}]]}, 
+      {RGBColor[1., 0.599994, 0.069994], 
+       TagBox[
+        TagBox[
+         TooltipBox[DiskBox[{3, 8}, 0.45],
+          "\"CadmiumYellow\"",
+          TooltipStyle->"TextStyling"],
+         Annotation[#, "CadmiumYellow", "Tooltip"]& ],
+        EventHandlerTag[{"MouseClicked" :> (SelectionMove[
+             ButtonNotebook[], After, ButtonCell]; NotebookWrite[
+             ButtonNotebook[], 
+             ToBoxes[
+              Part["CadmiumYellow" -> RGBColor[1., 0.599994, 0.069994], 2]]]),
+           PassEventsDown -> Automatic, PassEventsUp -> True}]]}, 
+      {RGBColor[0.610004, 0.400006, 0.119999], 
+       TagBox[
+        TagBox[
+         TooltipBox[DiskBox[{4, 8}, 0.45],
+          "\"Brick\"",
+          TooltipStyle->"TextStyling"],
+         Annotation[#, "Brick", "Tooltip"]& ],
+        EventHandlerTag[{"MouseClicked" :> (SelectionMove[
+             ButtonNotebook[], After, ButtonCell]; NotebookWrite[
+             ButtonNotebook[], 
+             ToBoxes[
+              Part["Brick" -> RGBColor[0.610004, 0.400006, 0.119999], 2]]]), 
+          PassEventsDown -> Automatic, PassEventsUp -> True}]]}, 
+      {RGBColor[0.640004, 0.580004, 0.5], 
+       TagBox[
+        TagBox[
+         TooltipBox[DiskBox[{5, 8}, 0.45],
+          "\"Beige\"",
+          TooltipStyle->"TextStyling"],
+         Annotation[#, "Beige", "Tooltip"]& ],
+        EventHandlerTag[{"MouseClicked" :> (SelectionMove[
+             ButtonNotebook[], After, ButtonCell]; NotebookWrite[
+             ButtonNotebook[], 
+             ToBoxes[
+              Part["Beige" -> RGBColor[0.640004, 0.580004, 0.5], 2]]]), 
+          PassEventsDown -> Automatic, PassEventsUp -> True}]]}, 
+      {RGBColor[0.980575, 0.92233, 0.844661], 
+       TagBox[
+        TagBox[
+         TooltipBox[DiskBox[{6, 8}, 0.45],
+          "\"Antique\"",
+          TooltipStyle->"TextStyling"],
+         Annotation[#, "Antique", "Tooltip"]& ],
+        EventHandlerTag[{"MouseClicked" :> (SelectionMove[
+             ButtonNotebook[], After, ButtonCell]; NotebookWrite[
+             ButtonNotebook[], 
+             ToBoxes[
+              Part["Antique" -> RGBColor[0.980575, 0.92233, 0.844661], 2]]]), 
+          PassEventsDown -> Automatic, PassEventsUp -> True}]]}, 
+      {RGBColor[0.449995, 0.290002, 0.069994], 
+       TagBox[
+        TagBox[
+         TooltipBox[DiskBox[{7, 8}, 0.45],
+          "\"RawUmber\"",
+          TooltipStyle->"TextStyling"],
+         Annotation[#, "RawUmber", "Tooltip"]& ],
+        EventHandlerTag[{"MouseClicked" :> (SelectionMove[
+             ButtonNotebook[], After, ButtonCell]; NotebookWrite[
+             ButtonNotebook[], 
+             ToBoxes[
+              Part[
+              "RawUmber" -> RGBColor[0.449995, 0.290002, 0.069994], 2]]]), 
+          PassEventsDown -> Automatic, PassEventsUp -> True}]]}, 
+      {RGBColor[1., 0.870602, 0.678396], 
+       TagBox[
+        TagBox[
+         TooltipBox[DiskBox[{8, 8}, 0.45],
+          "\"Navajo\"",
+          TooltipStyle->"TextStyling"],
+         Annotation[#, "Navajo", "Tooltip"]& ],
+        EventHandlerTag[{"MouseClicked" :> (SelectionMove[
+             ButtonNotebook[], After, ButtonCell]; NotebookWrite[
+             ButtonNotebook[], 
+             ToBoxes[
+              Part["Navajo" -> RGBColor[1., 0.870602, 0.678396], 2]]]), 
+          PassEventsDown -> Automatic, PassEventsUp -> True}]]}, 
+      {RGBColor[1., 0.921598, 0.803903], 
+       TagBox[
+        TagBox[
+         TooltipBox[DiskBox[{9, 8}, 0.45],
+          "\"BlanchedAlmond\"",
+          TooltipStyle->"TextStyling"],
+         Annotation[#, "BlanchedAlmond", "Tooltip"]& ],
+        EventHandlerTag[{"MouseClicked" :> (SelectionMove[
+             ButtonNotebook[], After, ButtonCell]; NotebookWrite[
+             ButtonNotebook[], 
+             ToBoxes[
+              Part[
+              "BlanchedAlmond" -> RGBColor[1., 0.921598, 0.803903], 2]]]), 
+          PassEventsDown -> Automatic, PassEventsUp -> True}]]}, 
+      {RGBColor[1., 0.659993, 0.140004], 
+       TagBox[
+        TagBox[
+         TooltipBox[DiskBox[{10, 8}, 0.45],
+          "\"AureolineYellow\"",
+          TooltipStyle->"TextStyling"],
+         Annotation[#, "AureolineYellow", "Tooltip"]& ],
+        EventHandlerTag[{"MouseClicked" :> (SelectionMove[
+             ButtonNotebook[], After, ButtonCell]; NotebookWrite[
+             ButtonNotebook[], 
+             ToBoxes[
+              Part[
+              "AureolineYellow" -> RGBColor[1., 0.659993, 0.140004], 2]]]), 
+          PassEventsDown -> Automatic, PassEventsUp -> True}]]}, 
+      {RGBColor[1., 0.9373, 0.835307], 
+       TagBox[
+        TagBox[
+         TooltipBox[DiskBox[{11, 8}, 0.45],
+          "\"PapayaWhip\"",
+          TooltipStyle->"TextStyling"],
+         Annotation[#, "PapayaWhip", "Tooltip"]& ],
+        EventHandlerTag[{"MouseClicked" :> (SelectionMove[
+             ButtonNotebook[], After, ButtonCell]; NotebookWrite[
+             ButtonNotebook[], 
+             ToBoxes[
+              Part["PapayaWhip" -> RGBColor[1., 0.9373, 0.835307], 2]]]), 
+          PassEventsDown -> Automatic, PassEventsUp -> True}]]}, 
+      {RGBColor[1., 0.659993, 0.069994], 
+       TagBox[
+        TagBox[
+         TooltipBox[DiskBox[{12, 8}, 0.45],
+          "\"DeepNaplesYellow\"",
+          TooltipStyle->"TextStyling"],
+         Annotation[#, "DeepNaplesYellow", "Tooltip"]& ],
+        EventHandlerTag[{"MouseClicked" :> (SelectionMove[
+             ButtonNotebook[], After, ButtonCell]; NotebookWrite[
+             ButtonNotebook[], 
+             ToBoxes[
+              Part[
+              "DeepNaplesYellow" -> RGBColor[1., 0.659993, 0.069994], 2]]]), 
+          PassEventsDown -> Automatic, PassEventsUp -> True}]]}, 
+      {RGBColor[1., 0.894101, 0.709799], 
+       TagBox[
+        TagBox[
+         TooltipBox[DiskBox[{13, 8}, 0.45],
+          "\"Moccasin\"",
+          TooltipStyle->"TextStyling"],
+         Annotation[#, "Moccasin", "Tooltip"]& ],
+        EventHandlerTag[{"MouseClicked" :> (SelectionMove[
+             ButtonNotebook[], After, ButtonCell]; NotebookWrite[
+             ButtonNotebook[], 
+             ToBoxes[
+              Part["Moccasin" -> RGBColor[1., 0.894101, 0.709799], 2]]]), 
+          PassEventsDown -> Automatic, PassEventsUp -> True}]]}, 
+      {RGBColor[0.960799, 0.870602, 0.702002], 
+       TagBox[
+        TagBox[
+         TooltipBox[DiskBox[{14, 8}, 0.45],
+          "\"Wheat\"",
+          TooltipStyle->"TextStyling"],
+         Annotation[#, "Wheat", "Tooltip"]& ],
+        EventHandlerTag[{"MouseClicked" :> (SelectionMove[
+             ButtonNotebook[], After, ButtonCell]; NotebookWrite[
+             ButtonNotebook[], 
+             ToBoxes[
+              Part["Wheat" -> RGBColor[0.960799, 0.870602, 0.702002], 2]]]), 
+          PassEventsDown -> Automatic, PassEventsUp -> True}]]}, 
+      {RGBColor[0.992203, 0.960799, 0.902005], 
+       TagBox[
+        TagBox[
+         TooltipBox[DiskBox[{15, 8}, 0.45],
+          "\"OldLace\"",
+          TooltipStyle->"TextStyling"],
+         Annotation[#, "OldLace", "Tooltip"]& ],
+        EventHandlerTag[{"MouseClicked" :> (SelectionMove[
+             ButtonNotebook[], After, ButtonCell]; NotebookWrite[
+             ButtonNotebook[], 
+             ToBoxes[
+              Part["OldLace" -> RGBColor[0.992203, 0.960799, 0.902005], 2]]]),
+           PassEventsDown -> Automatic, PassEventsUp -> True}]]}, 
+      {RGBColor[1., 0.980407, 0.941206], 
+       TagBox[
+        TagBox[
+         TooltipBox[DiskBox[{16, 8}, 0.45],
+          "\"Floral\"",
+          TooltipStyle->"TextStyling"],
+         Annotation[#, "Floral", "Tooltip"]& ],
+        EventHandlerTag[{"MouseClicked" :> (SelectionMove[
+             ButtonNotebook[], After, ButtonCell]; NotebookWrite[
+             ButtonNotebook[], 
+             ToBoxes[
+              Part["Floral" -> RGBColor[1., 0.980407, 0.941206], 2]]]), 
+          PassEventsDown -> Automatic, PassEventsUp -> True}]]}, 
+      {RGBColor[1., 0.689993, 0.059999], 
+       TagBox[
+        TagBox[
+         TooltipBox[DiskBox[{17, 8}, 0.45],
+          "\"LightCadmiumYellow\"",
+          TooltipStyle->"TextStyling"],
+         Annotation[#, "LightCadmiumYellow", "Tooltip"]& ],
+        EventHandlerTag[{"MouseClicked" :> (SelectionMove[
+             ButtonNotebook[], After, ButtonCell]; NotebookWrite[
+             ButtonNotebook[], 
+             ToBoxes[
+              Part[
+              "LightCadmiumYellow" -> RGBColor[1., 0.689993, 0.059999], 2]]]),
+           PassEventsDown -> Automatic, PassEventsUp -> True}]]}, 
+      {RGBColor[0.721595, 0.525498, 0.043107], 
+       TagBox[
+        TagBox[
+         TooltipBox[DiskBox[{18, 8}, 0.45],
+          "\"DarkGoldenrod\"",
+          TooltipStyle->"TextStyling"],
+         Annotation[#, "DarkGoldenrod", "Tooltip"]& ],
+        EventHandlerTag[{"MouseClicked" :> (SelectionMove[
+             ButtonNotebook[], After, ButtonCell]; NotebookWrite[
+             ButtonNotebook[], 
+             ToBoxes[
+              Part[
+              "DarkGoldenrod" -> RGBColor[0.721595, 0.525498, 0.043107], 
+               2]]]), PassEventsDown -> Automatic, PassEventsUp -> True}]]}}, {
+      {RGBColor[0.8549, 0.647099, 0.125507], 
+       TagBox[
+        TagBox[
+         TooltipBox[DiskBox[{1, 7}, 0.45],
+          "\"Goldenrod\"",
+          TooltipStyle->"TextStyling"],
+         Annotation[#, "Goldenrod", "Tooltip"]& ],
+        EventHandlerTag[{"MouseClicked" :> (SelectionMove[
+             ButtonNotebook[], After, ButtonCell]; NotebookWrite[
+             ButtonNotebook[], 
+             ToBoxes[
+              Part["Goldenrod" -> RGBColor[0.8549, 0.647099, 0.125507], 2]]]),
+           PassEventsDown -> Automatic, PassEventsUp -> True}]]}, 
+      {RGBColor[1., 0.972503, 0.862697], 
+       TagBox[
+        TagBox[
+         TooltipBox[DiskBox[{2, 7}, 0.45],
+          "\"Cornsilk\"",
+          TooltipStyle->"TextStyling"],
+         Annotation[#, "Cornsilk", "Tooltip"]& ],
+        EventHandlerTag[{"MouseClicked" :> (SelectionMove[
+             ButtonNotebook[], After, ButtonCell]; NotebookWrite[
+             ButtonNotebook[], 
+             ToBoxes[
+              Part["Cornsilk" -> RGBColor[1., 0.972503, 0.862697], 2]]]), 
+          PassEventsDown -> Automatic, PassEventsUp -> True}]]}, 
+      {RGBColor[0.933302, 0.866695, 0.509796], 
+       TagBox[
+        TagBox[
+         TooltipBox[DiskBox[{3, 7}, 0.45],
+          "\"LightGoldenrod\"",
+          TooltipStyle->"TextStyling"],
+         Annotation[#, "LightGoldenrod", "Tooltip"]& ],
+        EventHandlerTag[{"MouseClicked" :> (SelectionMove[
+             ButtonNotebook[], After, ButtonCell]; NotebookWrite[
+             ButtonNotebook[], 
+             ToBoxes[
+              Part[
+              "LightGoldenrod" -> RGBColor[0.933302, 0.866695, 0.509796], 
+               2]]]), PassEventsDown -> Automatic, PassEventsUp -> True}]]}, 
+      {RGBColor[1., 0.843104, 0.], 
+       TagBox[
+        TagBox[
+         TooltipBox[DiskBox[{4, 7}, 0.45],
+          "\"Gold\"",
+          TooltipStyle->"TextStyling"],
+         Annotation[#, "Gold", "Tooltip"]& ],
+        EventHandlerTag[{"MouseClicked" :> (SelectionMove[
+             ButtonNotebook[], After, ButtonCell]; NotebookWrite[
+             ButtonNotebook[], 
+             ToBoxes[
+              Part["Gold" -> RGBColor[1., 0.843104, 0.], 2]]]), 
+          PassEventsDown -> Automatic, PassEventsUp -> True}]]}, 
+      {RGBColor[0.889996, 0.810007, 0.340007], 
+       TagBox[
+        TagBox[
+         TooltipBox[DiskBox[{5, 7}, 0.45],
+          "\"Banana\"",
+          TooltipStyle->"TextStyling"],
+         Annotation[#, "Banana", "Tooltip"]& ],
+        EventHandlerTag[{"MouseClicked" :> (SelectionMove[
+             ButtonNotebook[], After, ButtonCell]; NotebookWrite[
+             ButtonNotebook[], 
+             ToBoxes[
+              Part["Banana" -> RGBColor[0.889996, 0.810007, 0.340007], 2]]]), 
+          PassEventsDown -> Automatic, PassEventsUp -> True}]]}, 
+      {RGBColor[1., 0.889996, 0.009995], 
+       TagBox[
+        TagBox[
+         TooltipBox[DiskBox[{6, 7}, 0.45],
+          "\"CadmiumLemon\"",
+          TooltipStyle->"TextStyling"],
+         Annotation[#, "CadmiumLemon", "Tooltip"]& ],
+        EventHandlerTag[{"MouseClicked" :> (SelectionMove[
+             ButtonNotebook[], After, ButtonCell]; NotebookWrite[
+             ButtonNotebook[], 
+             ToBoxes[
+              Part["CadmiumLemon" -> RGBColor[1., 0.889996, 0.009995], 2]]]), 
+          PassEventsDown -> Automatic, PassEventsUp -> True}]]}, 
+      {RGBColor[0.941206, 0.902005, 0.548997], 
+       TagBox[
+        TagBox[
+         TooltipBox[DiskBox[{7, 7}, 0.45],
+          "\"Khaki\"",
+          TooltipStyle->"TextStyling"],
+         Annotation[#, "Khaki", "Tooltip"]& ],
+        EventHandlerTag[{"MouseClicked" :> (SelectionMove[
+             ButtonNotebook[], After, ButtonCell]; NotebookWrite[
+             ButtonNotebook[], 
+             ToBoxes[
+              Part["Khaki" -> RGBColor[0.941206, 0.902005, 0.548997], 2]]]), 
+          PassEventsDown -> Automatic, PassEventsUp -> True}]]}, 
+      {RGBColor[1., 0.980407, 0.803903], 
+       TagBox[
+        TagBox[
+         TooltipBox[DiskBox[{8, 7}, 0.45],
+          "\"LemonChiffon\"",
+          TooltipStyle->"TextStyling"],
+         Annotation[#, "LemonChiffon", "Tooltip"]& ],
+        EventHandlerTag[{"MouseClicked" :> (SelectionMove[
+             ButtonNotebook[], After, ButtonCell]; NotebookWrite[
+             ButtonNotebook[], 
+             ToBoxes[
+              Part["LemonChiffon" -> RGBColor[1., 0.980407, 0.803903], 2]]]), 
+          PassEventsDown -> Automatic, PassEventsUp -> True}]]}, 
+      {RGBColor[0.933302, 0.909803, 0.666707], 
+       TagBox[
+        TagBox[
+         TooltipBox[DiskBox[{9, 7}, 0.45],
+          "\"PaleGoldenrod\"",
+          TooltipStyle->"TextStyling"],
+         Annotation[#, "PaleGoldenrod", "Tooltip"]& ],
+        EventHandlerTag[{"MouseClicked" :> (SelectionMove[
+             ButtonNotebook[], After, ButtonCell]; NotebookWrite[
+             ButtonNotebook[], 
+             ToBoxes[
+              Part[
+              "PaleGoldenrod" -> RGBColor[0.933302, 0.909803, 0.666707], 
+               2]]]), PassEventsDown -> Automatic, PassEventsUp -> True}]]}, 
+      {RGBColor[0.741203, 0.717597, 0.419599], 
+       TagBox[
+        TagBox[
+         TooltipBox[DiskBox[{10, 7}, 0.45],
+          "\"DarkKhaki\"",
+          TooltipStyle->"TextStyling"],
+         Annotation[#, "DarkKhaki", "Tooltip"]& ],
+        EventHandlerTag[{"MouseClicked" :> (SelectionMove[
+             ButtonNotebook[], After, ButtonCell]; NotebookWrite[
+             ButtonNotebook[], 
+             ToBoxes[
+              Part[
+              "DarkKhaki" -> RGBColor[0.741203, 0.717597, 0.419599], 2]]]), 
+          PassEventsDown -> Automatic, PassEventsUp -> True}]]}, 
+      {RGBColor[1., 1., 0.941206], 
+       TagBox[
+        TagBox[
+         TooltipBox[DiskBox[{11, 7}, 0.45],
+          "\"Ivory\"",
+          TooltipStyle->"TextStyling"],
+         Annotation[#, "Ivory", "Tooltip"]& ],
+        EventHandlerTag[{"MouseClicked" :> (SelectionMove[
+             ButtonNotebook[], After, ButtonCell]; NotebookWrite[
+             ButtonNotebook[], 
+             ToBoxes[
+              Part["Ivory" -> RGBColor[1., 1., 0.941206], 2]]]), 
+          PassEventsDown -> Automatic, PassEventsUp -> True}]]}, 
+      {RGBColor[0.960799, 0.960799, 0.862697], 
+       TagBox[
+        TagBox[
+         TooltipBox[DiskBox[{12, 7}, 0.45],
+          "\"LightBeige\"",
+          TooltipStyle->"TextStyling"],
+         Annotation[#, "LightBeige", "Tooltip"]& ],
+        EventHandlerTag[{"MouseClicked" :> (SelectionMove[
+             ButtonNotebook[], After, ButtonCell]; NotebookWrite[
+             ButtonNotebook[], 
+             ToBoxes[
+              Part[
+              "LightBeige" -> RGBColor[0.960799, 0.960799, 0.862697], 2]]]), 
+          PassEventsDown -> Automatic, PassEventsUp -> True}]]}, 
+      {RGBColor[1., 1., 0.878399], 
+       TagBox[
+        TagBox[
+         TooltipBox[DiskBox[{13, 7}, 0.45],
+          "\"LightYellow\"",
+          TooltipStyle->"TextStyling"],
+         Annotation[#, "LightYellow", "Tooltip"]& ],
+        EventHandlerTag[{"MouseClicked" :> (SelectionMove[
+             ButtonNotebook[], After, ButtonCell]; NotebookWrite[
+             ButtonNotebook[], 
+             ToBoxes[
+              Part["LightYellow" -> RGBColor[1., 1., 0.878399], 2]]]), 
+          PassEventsDown -> Automatic, PassEventsUp -> True}]]}, 
+      {RGBColor[0.5, 0.5, 0.410001], 
+       TagBox[
+        TagBox[
+         TooltipBox[DiskBox[{14, 7}, 0.45],
+          "\"WarmGray\"",
+          TooltipStyle->"TextStyling"],
+         Annotation[#, "WarmGray", "Tooltip"]& ],
+        EventHandlerTag[{"MouseClicked" :> (SelectionMove[
+             ButtonNotebook[], After, ButtonCell]; NotebookWrite[
+             ButtonNotebook[], 
+             ToBoxes[
+              Part["WarmGray" -> RGBColor[0.5, 0.5, 0.410001], 2]]]), 
+          PassEventsDown -> Automatic, PassEventsUp -> True}]]}, 
+      {RGBColor[1, 1, 0], 
+       TagBox[
+        TagBox[
+         TooltipBox[DiskBox[{15, 7}, 0.45],
+          "\"Yellow\"",
+          TooltipStyle->"TextStyling"],
+         Annotation[#, "Yellow", "Tooltip"]& ],
+        EventHandlerTag[{"MouseClicked" :> (SelectionMove[
+             ButtonNotebook[], After, ButtonCell]; NotebookWrite[
+             ButtonNotebook[], 
+             ToBoxes[
+              Part["Yellow" -> RGBColor[1, 1, 0], 2]]]), PassEventsDown -> 
+          Automatic, PassEventsUp -> True}]]}, 
+      {RGBColor[0.990005, 1., 0.940001], 
+       TagBox[
+        TagBox[
+         TooltipBox[DiskBox[{16, 7}, 0.45],
+          "\"Titanium\"",
+          TooltipStyle->"TextStyling"],
+         Annotation[#, "Titanium", "Tooltip"]& ],
+        EventHandlerTag[{"MouseClicked" :> (SelectionMove[
+             ButtonNotebook[], After, ButtonCell]; NotebookWrite[
+             ButtonNotebook[], 
+             ToBoxes[
+              Part["Titanium" -> RGBColor[0.990005, 1., 0.940001], 2]]]), 
+          PassEventsDown -> Automatic, PassEventsUp -> True}]]}, 
+      {RGBColor[0.400006, 0.5, 0.080004], 
+       TagBox[
+        TagBox[
+         TooltipBox[DiskBox[{17, 7}, 0.45],
+          "\"ChromeOxideGreen\"",
+          TooltipStyle->"TextStyling"],
+         Annotation[#, "ChromeOxideGreen", "Tooltip"]& ],
+        EventHandlerTag[{"MouseClicked" :> (SelectionMove[
+             ButtonNotebook[], After, ButtonCell]; NotebookWrite[
+             ButtonNotebook[], 
+             ToBoxes[
+              Part[
+              "ChromeOxideGreen" -> RGBColor[0.400006, 0.5, 0.080004], 2]]]), 
+          PassEventsDown -> Automatic, PassEventsUp -> True}]]}, 
+      {RGBColor[0.419599, 0.556902, 0.137303], 
+       TagBox[
+        TagBox[
+         TooltipBox[DiskBox[{18, 7}, 0.45],
+          "\"OliveDrab\"",
+          TooltipStyle->"TextStyling"],
+         Annotation[#, "OliveDrab", "Tooltip"]& ],
+        EventHandlerTag[{"MouseClicked" :> (SelectionMove[
+             ButtonNotebook[], After, ButtonCell]; NotebookWrite[
+             ButtonNotebook[], 
+             ToBoxes[
+              Part[
+              "OliveDrab" -> RGBColor[0.419599, 0.556902, 0.137303], 2]]]), 
+          PassEventsDown -> Automatic, PassEventsUp -> True}]]}}, {
+      {RGBColor[0.6039, 0.803903, 0.196097], 
+       TagBox[
+        TagBox[
+         TooltipBox[DiskBox[{1, 6}, 0.45],
+          "\"YellowGreen\"",
+          TooltipStyle->"TextStyling"],
+         Annotation[#, "YellowGreen", "Tooltip"]& ],
+        EventHandlerTag[{"MouseClicked" :> (SelectionMove[
+             ButtonNotebook[], After, ButtonCell]; NotebookWrite[
+             ButtonNotebook[], 
+             ToBoxes[
+              Part[
+              "YellowGreen" -> RGBColor[0.6039, 0.803903, 0.196097], 2]]]), 
+          PassEventsDown -> Automatic, PassEventsUp -> True}]]}, 
+      {RGBColor[0.333293, 0.419599, 0.184301], 
+       TagBox[
+        TagBox[
+         TooltipBox[DiskBox[{2, 6}, 0.45],
+          "\"DarkOliveGreen\"",
+          TooltipStyle->"TextStyling"],
+         Annotation[#, "DarkOliveGreen", "Tooltip"]& ],
+        EventHandlerTag[{"MouseClicked" :> (SelectionMove[
+             ButtonNotebook[], After, ButtonCell]; NotebookWrite[
+             ButtonNotebook[], 
+             ToBoxes[
+              Part[
+              "DarkOliveGreen" -> RGBColor[0.333293, 0.419599, 0.184301], 
+               2]]]), PassEventsDown -> Automatic, PassEventsUp -> True}]]}, 
+      {RGBColor[0.678396, 1., 0.184301], 
+       TagBox[
+        TagBox[
+         TooltipBox[DiskBox[{3, 6}, 0.45],
+          "\"GreenYellow\"",
+          TooltipStyle->"TextStyling"],
+         Annotation[#, "GreenYellow", "Tooltip"]& ],
+        EventHandlerTag[{"MouseClicked" :> (SelectionMove[
+             ButtonNotebook[], After, ButtonCell]; NotebookWrite[
+             ButtonNotebook[], 
+             ToBoxes[
+              Part["GreenYellow" -> RGBColor[0.678396, 1., 0.184301], 2]]]), 
+          PassEventsDown -> Automatic, PassEventsUp -> True}]]}, 
+      {RGBColor[0.219993, 0.370006, 0.059999], 
+       TagBox[
+        TagBox[
+         TooltipBox[DiskBox[{4, 6}, 0.45],
+          "\"TerreVerte\"",
+          TooltipStyle->"TextStyling"],
+         Annotation[#, "TerreVerte", "Tooltip"]& ],
+        EventHandlerTag[{"MouseClicked" :> (SelectionMove[
+             ButtonNotebook[], After, ButtonCell]; NotebookWrite[
+             ButtonNotebook[], 
+             ToBoxes[
+              Part[
+              "TerreVerte" -> RGBColor[0.219993, 0.370006, 0.059999], 2]]]), 
+          PassEventsDown -> Automatic, PassEventsUp -> True}]]}, 
+      {RGBColor[0.498001, 1., 0.], 
+       TagBox[
+        TagBox[
+         TooltipBox[DiskBox[{5, 6}, 0.45],
+          "\"Chartreuse\"",
+          TooltipStyle->"TextStyling"],
+         Annotation[#, "Chartreuse", "Tooltip"]& ],
+        EventHandlerTag[{"MouseClicked" :> (SelectionMove[
+             ButtonNotebook[], After, ButtonCell]; NotebookWrite[
+             ButtonNotebook[], 
+             ToBoxes[
+              Part["Chartreuse" -> RGBColor[0.498001, 1., 0.], 2]]]), 
+          PassEventsDown -> Automatic, PassEventsUp -> True}]]}, 
+      {RGBColor[0.486297, 0.988205, 0.], 
+       TagBox[
+        TagBox[
+         TooltipBox[DiskBox[{6, 6}, 0.45],
+          "\"LawnGreen\"",
+          TooltipStyle->"TextStyling"],
+         Annotation[#, "LawnGreen", "Tooltip"]& ],
+        EventHandlerTag[{"MouseClicked" :> (SelectionMove[
+             ButtonNotebook[], After, ButtonCell]; NotebookWrite[
+             ButtonNotebook[], 
+             ToBoxes[
+              Part["LawnGreen" -> RGBColor[0.486297, 0.988205, 0.], 2]]]), 
+          PassEventsDown -> Automatic, PassEventsUp -> True}]]}, 
+      {RGBColor[0.380001, 0.700003, 0.159993], 
+       TagBox[
+        TagBox[
+         TooltipBox[DiskBox[{7, 6}, 0.45],
+          "\"CinnabarGreen\"",
+          TooltipStyle->"TextStyling"],
+         Annotation[#, "CinnabarGreen", "Tooltip"]& ],
+        EventHandlerTag[{"MouseClicked" :> (SelectionMove[
+             ButtonNotebook[], After, ButtonCell]; NotebookWrite[
+             ButtonNotebook[], 
+             ToBoxes[
+              Part[
+              "CinnabarGreen" -> RGBColor[0.380001, 0.700003, 0.159993], 
+               2]]]), PassEventsDown -> Automatic, PassEventsUp -> True}]]}, 
+      {RGBColor[0.230003, 0.370006, 0.170003], 
+       TagBox[
+        TagBox[
+         TooltipBox[DiskBox[{8, 6}, 0.45],
+          "\"Olive\"",
+          TooltipStyle->"TextStyling"],
+         Annotation[#, "Olive", "Tooltip"]& ],
+        EventHandlerTag[{"MouseClicked" :> (SelectionMove[
+             ButtonNotebook[], After, ButtonCell]; NotebookWrite[
+             ButtonNotebook[], 
+             ToBoxes[
+              Part["Olive" -> RGBColor[0.230003, 0.370006, 0.170003], 2]]]), 
+          PassEventsDown -> Automatic, PassEventsUp -> True}]]}, 
+      {RGBColor[0.189993, 0.5, 0.080004], 
+       TagBox[
+        TagBox[
+         TooltipBox[DiskBox[{9, 6}, 0.45],
+          "\"SapGreen\"",
+          TooltipStyle->"TextStyling"],
+         Annotation[#, "SapGreen", "Tooltip"]& ],
+        EventHandlerTag[{"MouseClicked" :> (SelectionMove[
+             ButtonNotebook[], After, ButtonCell]; NotebookWrite[
+             ButtonNotebook[], 
+             ToBoxes[
+              Part["SapGreen" -> RGBColor[0.189993, 0.5, 0.080004], 2]]]), 
+          PassEventsDown -> Automatic, PassEventsUp -> True}]]}, 
+      {RGBColor[0.941206, 1., 0.941206], 
+       TagBox[
+        TagBox[
+         TooltipBox[DiskBox[{10, 6}, 0.45],
+          "\"Honeydew\"",
+          TooltipStyle->"TextStyling"],
+         Annotation[#, "Honeydew", "Tooltip"]& ],
+        EventHandlerTag[{"MouseClicked" :> (SelectionMove[
+             ButtonNotebook[], After, ButtonCell]; NotebookWrite[
+             ButtonNotebook[], 
+             ToBoxes[
+              Part["Honeydew" -> RGBColor[0.941206, 1., 0.941206], 2]]]), 
+          PassEventsDown -> Automatic, PassEventsUp -> True}]]}, 
+      {RGBColor[0.560793, 0.737297, 0.560793], 
+       TagBox[
+        TagBox[
+         TooltipBox[DiskBox[{11, 6}, 0.45],
+          "\"DarkSeaGreen\"",
+          TooltipStyle->"TextStyling"],
+         Annotation[#, "DarkSeaGreen", "Tooltip"]& ],
+        EventHandlerTag[{"MouseClicked" :> (SelectionMove[
+             ButtonNotebook[], After, ButtonCell]; NotebookWrite[
+             ButtonNotebook[], 
+             ToBoxes[
+              Part[
+              "DarkSeaGreen" -> RGBColor[0.560793, 0.737297, 0.560793], 2]]]),
+           PassEventsDown -> Automatic, PassEventsUp -> True}]]}, 
+      {RGBColor[0.596103, 0.984298, 0.596103], 
+       TagBox[
+        TagBox[
+         TooltipBox[DiskBox[{12, 6}, 0.45],
+          "\"PaleGreen\"",
+          TooltipStyle->"TextStyling"],
+         Annotation[#, "PaleGreen", "Tooltip"]& ],
+        EventHandlerTag[{"MouseClicked" :> (SelectionMove[
+             ButtonNotebook[], After, ButtonCell]; NotebookWrite[
+             ButtonNotebook[], 
+             ToBoxes[
+              Part[
+              "PaleGreen" -> RGBColor[0.596103, 0.984298, 0.596103], 2]]]), 
+          PassEventsDown -> Automatic, PassEventsUp -> True}]]}, 
+      {RGBColor[0.133305, 0.545106, 0.133305], 
+       TagBox[
+        TagBox[
+         TooltipBox[DiskBox[{13, 6}, 0.45],
+          "\"ForestGreen\"",
+          TooltipStyle->"TextStyling"],
+         Annotation[#, "ForestGreen", "Tooltip"]& ],
+        EventHandlerTag[{"MouseClicked" :> (SelectionMove[
+             ButtonNotebook[], After, ButtonCell]; NotebookWrite[
+             ButtonNotebook[], 
+             ToBoxes[
+              Part[
+              "ForestGreen" -> RGBColor[0.133305, 0.545106, 0.133305], 2]]]), 
+          PassEventsDown -> Automatic, PassEventsUp -> True}]]}, 
+      {RGBColor[0.196097, 0.803903, 0.196097], 
+       TagBox[
+        TagBox[
+         TooltipBox[DiskBox[{14, 6}, 0.45],
+          "\"LimeGreen\"",
+          TooltipStyle->"TextStyling"],
+         Annotation[#, "LimeGreen", "Tooltip"]& ],
+        EventHandlerTag[{"MouseClicked" :> (SelectionMove[
+             ButtonNotebook[], After, ButtonCell]; NotebookWrite[
+             ButtonNotebook[], 
+             ToBoxes[
+              Part[
+              "LimeGreen" -> RGBColor[0.196097, 0.803903, 0.196097], 2]]]), 
+          PassEventsDown -> Automatic, PassEventsUp -> True}]]}, 
+      {RGBColor[0, 1, 0], 
+       TagBox[
+        TagBox[
+         TooltipBox[DiskBox[{15, 6}, 0.45],
+          "\"Green\"",
+          TooltipStyle->"TextStyling"],
+         Annotation[#, "Green", "Tooltip"]& ],
+        EventHandlerTag[{"MouseClicked" :> (SelectionMove[
+             ButtonNotebook[], After, ButtonCell]; NotebookWrite[
+             ButtonNotebook[], 
+             ToBoxes[
+              Part["Green" -> RGBColor[0, 1, 0], 2]]]), PassEventsDown -> 
+          Automatic, PassEventsUp -> True}]]}, 
+      {RGBColor[0., 0.392193, 0.], 
+       TagBox[
+        TagBox[
+         TooltipBox[DiskBox[{16, 6}, 0.45],
+          "\"DarkGreen\"",
+          TooltipStyle->"TextStyling"],
+         Annotation[#, "DarkGreen", "Tooltip"]& ],
+        EventHandlerTag[{"MouseClicked" :> (SelectionMove[
+             ButtonNotebook[], After, ButtonCell]; NotebookWrite[
+             ButtonNotebook[], 
+             ToBoxes[
+              Part["DarkGreen" -> RGBColor[0., 0.392193, 0.], 2]]]), 
+          PassEventsDown -> Automatic, PassEventsUp -> True}]]}, 
+      {RGBColor[0.430006, 1., 0.440001], 
+       TagBox[
+        TagBox[
+         TooltipBox[DiskBox[{17, 6}, 0.45],
+          "\"LightViridian\"",
+          TooltipStyle->"TextStyling"],
+         Annotation[#, "LightViridian", "Tooltip"]& ],
+        EventHandlerTag[{"MouseClicked" :> (SelectionMove[
+             ButtonNotebook[], After, ButtonCell]; NotebookWrite[
+             ButtonNotebook[], 
+             ToBoxes[
+              Part["LightViridian" -> RGBColor[0.430006, 1., 0.440001], 2]]]),
+           PassEventsDown -> Automatic, PassEventsUp -> True}]]}, 
+      {RGBColor[0.239998, 0.569994, 0.250008], 
+       TagBox[
+        TagBox[
+         TooltipBox[DiskBox[{18, 6}, 0.45],
+          "\"CobaltGreen\"",
+          TooltipStyle->"TextStyling"],
+         Annotation[#, "CobaltGreen", "Tooltip"]& ],
+        EventHandlerTag[{"MouseClicked" :> (SelectionMove[
+             ButtonNotebook[], After, ButtonCell]; NotebookWrite[
+             ButtonNotebook[], 
+             ToBoxes[
+              Part[
+              "CobaltGreen" -> RGBColor[0.239998, 0.569994, 0.250008], 2]]]), 
+          PassEventsDown -> Automatic, PassEventsUp -> True}]]}}, {
+      {RGBColor[0.039995, 0.790002, 0.170003], 
+       TagBox[
+        TagBox[
+         TooltipBox[DiskBox[{1, 5}, 0.45],
+          "\"PermanentGreen\"",
+          TooltipStyle->"TextStyling"],
+         Annotation[#, "PermanentGreen", "Tooltip"]& ],
+        EventHandlerTag[{"MouseClicked" :> (SelectionMove[
+             ButtonNotebook[], After, ButtonCell]; NotebookWrite[
+             ButtonNotebook[], 
+             ToBoxes[
+              Part[
+              "PermanentGreen" -> RGBColor[0.039995, 0.790002, 0.170003], 
+               2]]]), PassEventsDown -> Automatic, PassEventsUp -> True}]]}, 
+      {RGBColor[0.739998, 0.990005, 0.790002], 
+       TagBox[
+        TagBox[
+         TooltipBox[DiskBox[{2, 5}, 0.45],
+          "\"Mint\"",
+          TooltipStyle->"TextStyling"],
+         Annotation[#, "Mint", "Tooltip"]& ],
+        EventHandlerTag[{"MouseClicked" :> (SelectionMove[
+             ButtonNotebook[], After, ButtonCell]; NotebookWrite[
+             ButtonNotebook[], 
+             ToBoxes[
+              Part["Mint" -> RGBColor[0.739998, 0.990005, 0.790002], 2]]]), 
+          PassEventsDown -> Automatic, PassEventsUp -> True}]]}, 
+      {RGBColor[0., 0.790002, 0.340007], 
+       TagBox[
+        TagBox[
+         TooltipBox[DiskBox[{3, 5}, 0.45],
+          "\"EmeraldGreen\"",
+          TooltipStyle->"TextStyling"],
+         Annotation[#, "EmeraldGreen", "Tooltip"]& ],
+        EventHandlerTag[{"MouseClicked" :> (SelectionMove[
+             ButtonNotebook[], After, ButtonCell]; NotebookWrite[
+             ButtonNotebook[], 
+             ToBoxes[
+              Part["EmeraldGreen" -> RGBColor[0., 0.790002, 0.340007], 2]]]), 
+          PassEventsDown -> Automatic, PassEventsUp -> True}]]}, 
+      {RGBColor[0.180395, 0.545106, 0.341197], 
+       TagBox[
+        TagBox[
+         TooltipBox[DiskBox[{4, 5}, 0.45],
+          "\"SeaGreen\"",
+          TooltipStyle->"TextStyling"],
+         Annotation[#, "SeaGreen", "Tooltip"]& ],
+        EventHandlerTag[{"MouseClicked" :> (SelectionMove[
+             ButtonNotebook[], After, ButtonCell]; NotebookWrite[
+             ButtonNotebook[], 
+             ToBoxes[
+              Part[
+              "SeaGreen" -> RGBColor[0.180395, 0.545106, 0.341197], 2]]]), 
+          PassEventsDown -> Automatic, PassEventsUp -> True}]]}, 
+      {RGBColor[0.235298, 0.702002, 0.443098], 
+       TagBox[
+        TagBox[
+         TooltipBox[DiskBox[{5, 5}, 0.45],
+          "\"MediumSeaGreen\"",
+          TooltipStyle->"TextStyling"],
+         Annotation[#, "MediumSeaGreen", "Tooltip"]& ],
+        EventHandlerTag[{"MouseClicked" :> (SelectionMove[
+             ButtonNotebook[], After, ButtonCell]; NotebookWrite[
+             ButtonNotebook[], 
+             ToBoxes[
+              Part[
+              "MediumSeaGreen" -> RGBColor[0.235298, 0.702002, 0.443098], 
+               2]]]), PassEventsDown -> Automatic, PassEventsUp -> True}]]}, 
+      {RGBColor[0., 1., 0.498001], 
+       TagBox[
+        TagBox[
+         TooltipBox[DiskBox[{6, 5}, 0.45],
+          "\"SpringGreen\"",
+          TooltipStyle->"TextStyling"],
+         Annotation[#, "SpringGreen", "Tooltip"]& ],
+        EventHandlerTag[{"MouseClicked" :> (SelectionMove[
+             ButtonNotebook[], After, ButtonCell]; NotebookWrite[
+             ButtonNotebook[], 
+             ToBoxes[
+              Part["SpringGreen" -> RGBColor[0., 1., 0.498001], 2]]]), 
+          PassEventsDown -> Automatic, PassEventsUp -> True}]]}, 
+      {RGBColor[0.179998, 0.280007, 0.230003], 
+       TagBox[
+        TagBox[
+         TooltipBox[DiskBox[{7, 5}, 0.45],
+          "\"LampBlack\"",
+          TooltipStyle->"TextStyling"],
+         Annotation[#, "LampBlack", "Tooltip"]& ],
+        EventHandlerTag[{"MouseClicked" :> (SelectionMove[
+             ButtonNotebook[], After, ButtonCell]; NotebookWrite[
+             ButtonNotebook[], 
+             ToBoxes[
+              Part[
+              "LampBlack" -> RGBColor[0.179998, 0.280007, 0.230003], 2]]]), 
+          PassEventsDown -> Automatic, PassEventsUp -> True}]]}, 
+      {RGBColor[0.960799, 1., 0.980407], 
+       TagBox[
+        TagBox[
+         TooltipBox[DiskBox[{8, 5}, 0.45],
+          "\"MintCream\"",
+          TooltipStyle->"TextStyling"],
+         Annotation[#, "MintCream", "Tooltip"]& ],
+        EventHandlerTag[{"MouseClicked" :> (SelectionMove[
+             ButtonNotebook[], After, ButtonCell]; NotebookWrite[
+             ButtonNotebook[], 
+             ToBoxes[
+              Part["MintCream" -> RGBColor[0.960799, 1., 0.980407], 2]]]), 
+          PassEventsDown -> Automatic, PassEventsUp -> True}]]}, 
+      {RGBColor[0., 0.980407, 0.6039], 
+       TagBox[
+        TagBox[
+         TooltipBox[DiskBox[{9, 5}, 0.45],
+          "\"MediumSpringGreen\"",
+          TooltipStyle->"TextStyling"],
+         Annotation[#, "MediumSpringGreen", "Tooltip"]& ],
+        EventHandlerTag[{"MouseClicked" :> (SelectionMove[
+             ButtonNotebook[], After, ButtonCell]; NotebookWrite[
+             ButtonNotebook[], 
+             ToBoxes[
+              Part[
+              "MediumSpringGreen" -> RGBColor[0., 0.980407, 0.6039], 2]]]), 
+          PassEventsDown -> Automatic, PassEventsUp -> True}]]}, 
+      {RGBColor[0.400006, 0.803903, 0.666707], 
+       TagBox[
+        TagBox[
+         TooltipBox[DiskBox[{10, 5}, 0.45],
+          "\"MediumAquamarine\"",
+          TooltipStyle->"TextStyling"],
+         Annotation[#, "MediumAquamarine", "Tooltip"]& ],
+        EventHandlerTag[{"MouseClicked" :> (SelectionMove[
+             ButtonNotebook[], After, ButtonCell]; NotebookWrite[
+             ButtonNotebook[], 
+             ToBoxes[
+              Part[
+              "MediumAquamarine" -> RGBColor[0.400006, 0.803903, 0.666707], 
+               2]]]), PassEventsDown -> Automatic, PassEventsUp -> True}]]}, 
+      {RGBColor[0.498001, 1., 0.831401], 
+       TagBox[
+        TagBox[
+         TooltipBox[DiskBox[{11, 5}, 0.45],
+          "\"Aquamarine\"",
+          TooltipStyle->"TextStyling"],
+         Annotation[#, "Aquamarine", "Tooltip"]& ],
+        EventHandlerTag[{"MouseClicked" :> (SelectionMove[
+             ButtonNotebook[], After, ButtonCell]; NotebookWrite[
+             ButtonNotebook[], 
+             ToBoxes[
+              Part["Aquamarine" -> RGBColor[0.498001, 1., 0.831401], 2]]]), 
+          PassEventsDown -> Automatic, PassEventsUp -> True}]]}, 
+      {RGBColor[0., 0.780007, 0.550005], 
+       TagBox[
+        TagBox[
+         TooltipBox[DiskBox[{12, 5}, 0.45],
+          "\"TurquoiseBlue\"",
+          TooltipStyle->"TextStyling"],
+         Annotation[#, "TurquoiseBlue", "Tooltip"]& ],
+        EventHandlerTag[{"MouseClicked" :> (SelectionMove[
+             ButtonNotebook[], After, ButtonCell]; NotebookWrite[
+             ButtonNotebook[], 
+             ToBoxes[
+              Part["TurquoiseBlue" -> RGBColor[0., 0.780007, 0.550005], 2]]]),
+           PassEventsDown -> Automatic, PassEventsUp -> True}]]}, 
+      {RGBColor[0.5, 0.539994, 0.53], 
+       TagBox[
+        TagBox[
+         TooltipBox[DiskBox[{13, 5}, 0.45],
+          "\"ColdGray\"",
+          TooltipStyle->"TextStyling"],
+         Annotation[#, "ColdGray", "Tooltip"]& ],
+        EventHandlerTag[{"MouseClicked" :> (SelectionMove[
+             ButtonNotebook[], After, ButtonCell]; NotebookWrite[
+             ButtonNotebook[], 
+             ToBoxes[
+              Part["ColdGray" -> RGBColor[0.5, 0.539994, 0.53], 2]]]), 
+          PassEventsDown -> Automatic, PassEventsUp -> True}]]}, 
+      {RGBColor[0.250999, 0.878399, 0.815699], 
+       TagBox[
+        TagBox[
+         TooltipBox[DiskBox[{14, 5}, 0.45],
+          "\"Turquoise\"",
+          TooltipStyle->"TextStyling"],
+         Annotation[#, "Turquoise", "Tooltip"]& ],
+        EventHandlerTag[{"MouseClicked" :> (SelectionMove[
+             ButtonNotebook[], After, ButtonCell]; NotebookWrite[
+             ButtonNotebook[], 
+             ToBoxes[
+              Part[
+              "Turquoise" -> RGBColor[0.250999, 0.878399, 0.815699], 2]]]), 
+          PassEventsDown -> Automatic, PassEventsUp -> True}]]}, 
+      {RGBColor[0.009995, 0.659993, 0.619999], 
+       TagBox[
+        TagBox[
+         TooltipBox[DiskBox[{15, 5}, 0.45],
+          "\"ManganeseBlue\"",
+          TooltipStyle->"TextStyling"],
+         Annotation[#, "ManganeseBlue", "Tooltip"]& ],
+        EventHandlerTag[{"MouseClicked" :> (SelectionMove[
+             ButtonNotebook[], After, ButtonCell]; NotebookWrite[
+             ButtonNotebook[], 
+             ToBoxes[
+              Part[
+              "ManganeseBlue" -> RGBColor[0.009995, 0.659993, 0.619999], 
+               2]]]), PassEventsDown -> Automatic, PassEventsUp -> True}]]}, 
+      {RGBColor[0.125507, 0.698004, 0.666707], 
+       TagBox[
+        TagBox[
+         TooltipBox[DiskBox[{16, 5}, 0.45],
+          "\"LightSeaGreen\"",
+          TooltipStyle->"TextStyling"],
+         Annotation[#, "LightSeaGreen", "Tooltip"]& ],
+        EventHandlerTag[{"MouseClicked" :> (SelectionMove[
+             ButtonNotebook[], After, ButtonCell]; NotebookWrite[
+             ButtonNotebook[], 
+             ToBoxes[
+              Part[
+              "LightSeaGreen" -> RGBColor[0.125507, 0.698004, 0.666707], 
+               2]]]), PassEventsDown -> Automatic, PassEventsUp -> True}]]}, 
+      {RGBColor[0.282403, 0.819605, 0.799997], 
+       TagBox[
+        TagBox[
+         TooltipBox[DiskBox[{17, 5}, 0.45],
+          "\"MediumTurquoise\"",
+          TooltipStyle->"TextStyling"],
+         Annotation[#, "MediumTurquoise", "Tooltip"]& ],
+        EventHandlerTag[{"MouseClicked" :> (SelectionMove[
+             ButtonNotebook[], After, ButtonCell]; NotebookWrite[
+             ButtonNotebook[], 
+             ToBoxes[
+              Part[
+              "MediumTurquoise" -> RGBColor[0.282403, 0.819605, 0.799997], 
+               2]]]), PassEventsDown -> Automatic, PassEventsUp -> True}]]}, 
+      {RGBColor[0.94174, 1., 1.], 
+       TagBox[
+        TagBox[
+         TooltipBox[DiskBox[{18, 5}, 0.45],
+          "\"Azure\"",
+          TooltipStyle->"TextStyling"],
+         Annotation[#, "Azure", "Tooltip"]& ],
+        EventHandlerTag[{"MouseClicked" :> (SelectionMove[
+             ButtonNotebook[], After, ButtonCell]; NotebookWrite[
+             ButtonNotebook[], 
+             ToBoxes[
+              Part["Azure" -> RGBColor[0.94174, 1., 1.], 2]]]), 
+          PassEventsDown -> Automatic, PassEventsUp -> True}]]}}, {
+      {RGBColor[0.878399, 1., 1.], 
+       TagBox[
+        TagBox[
+         TooltipBox[DiskBox[{1, 4}, 0.45],
+          "\"CyanWhite\"",
+          TooltipStyle->"TextStyling"],
+         Annotation[#, "CyanWhite", "Tooltip"]& ],
+        EventHandlerTag[{"MouseClicked" :> (SelectionMove[
+             ButtonNotebook[], After, ButtonCell]; NotebookWrite[
+             ButtonNotebook[], 
+             ToBoxes[
+              Part["CyanWhite" -> RGBColor[0.878399, 1., 1.], 2]]]), 
+          PassEventsDown -> Automatic, PassEventsUp -> True}]]}, 
+      {RGBColor[0.6863, 0.933302, 0.933302], 
+       TagBox[
+        TagBox[
+         TooltipBox[DiskBox[{2, 4}, 0.45],
+          "\"PaleTurquoise\"",
+          TooltipStyle->"TextStyling"],
+         Annotation[#, "PaleTurquoise", "Tooltip"]& ],
+        EventHandlerTag[{"MouseClicked" :> (SelectionMove[
+             ButtonNotebook[], After, ButtonCell]; NotebookWrite[
+             ButtonNotebook[], 
+             ToBoxes[
+              Part[
+              "PaleTurquoise" -> RGBColor[0.6863, 0.933302, 0.933302], 2]]]), 
+          PassEventsDown -> Automatic, PassEventsUp -> True}]]}, 
+      {RGBColor[0.184301, 0.309793, 0.309793], 
+       TagBox[
+        TagBox[
+         TooltipBox[DiskBox[{3, 4}, 0.45],
+          "\"DarkSlateGray\"",
+          TooltipStyle->"TextStyling"],
+         Annotation[#, "DarkSlateGray", "Tooltip"]& ],
+        EventHandlerTag[{"MouseClicked" :> (SelectionMove[
+             ButtonNotebook[], After, ButtonCell]; NotebookWrite[
+             ButtonNotebook[], 
+             ToBoxes[
+              Part[
+              "DarkSlateGray" -> RGBColor[0.184301, 0.309793, 0.309793], 
+               2]]]), PassEventsDown -> Automatic, PassEventsUp -> True}]]}, 
+      {RGBColor[0, 1, 1], 
+       TagBox[
+        TagBox[
+         TooltipBox[DiskBox[{4, 4}, 0.45],
+          "\"Cyan\"",
+          TooltipStyle->"TextStyling"],
+         Annotation[#, "Cyan", "Tooltip"]& ],
+        EventHandlerTag[{"MouseClicked" :> (SelectionMove[
+             ButtonNotebook[], After, ButtonCell]; NotebookWrite[
+             ButtonNotebook[], 
+             ToBoxes[
+              Part["Cyan" -> RGBColor[0, 1, 1], 2]]]), PassEventsDown -> 
+          Automatic, PassEventsUp -> True}]]}, 
+      {RGBColor[0., 0.807794, 0.819605], 
+       TagBox[
+        TagBox[
+         TooltipBox[DiskBox[{5, 4}, 0.45],
+          "\"DarkTurquoise\"",
+          TooltipStyle->"TextStyling"],
+         Annotation[#, "DarkTurquoise", "Tooltip"]& ],
+        EventHandlerTag[{"MouseClicked" :> (SelectionMove[
+             ButtonNotebook[], After, ButtonCell]; NotebookWrite[
+             ButtonNotebook[], 
+             ToBoxes[
+              Part["DarkTurquoise" -> RGBColor[0., 0.807794, 0.819605], 2]]]),
+           PassEventsDown -> Automatic, PassEventsUp -> True}]]}, 
+      {RGBColor[0.372494, 0.619602, 0.627506], 
+       TagBox[
+        TagBox[
+         TooltipBox[DiskBox[{6, 4}, 0.45],
+          "\"CadetBlue\"",
+          TooltipStyle->"TextStyling"],
+         Annotation[#, "CadetBlue", "Tooltip"]& ],
+        EventHandlerTag[{"MouseClicked" :> (SelectionMove[
+             ButtonNotebook[], After, ButtonCell]; NotebookWrite[
+             ButtonNotebook[], 
+             ToBoxes[
+              Part[
+              "CadetBlue" -> RGBColor[0.372494, 0.619602, 0.627506], 2]]]), 
+          PassEventsDown -> Automatic, PassEventsUp -> True}]]}, 
+      {RGBColor[0.020005, 0.719993, 0.799997], 
+       TagBox[
+        TagBox[
+         TooltipBox[DiskBox[{7, 4}, 0.45],
+          "\"Cerulean\"",
+          TooltipStyle->"TextStyling"],
+         Annotation[#, "Cerulean", "Tooltip"]& ],
+        EventHandlerTag[{"MouseClicked" :> (SelectionMove[
+             ButtonNotebook[], After, ButtonCell]; NotebookWrite[
+             ButtonNotebook[], 
+             ToBoxes[
+              Part[
+              "Cerulean" -> RGBColor[0.020005, 0.719993, 0.799997], 2]]]), 
+          PassEventsDown -> Automatic, PassEventsUp -> True}]]}, 
+      {RGBColor[0.690207, 0.878399, 0.902005], 
+       TagBox[
+        TagBox[
+         TooltipBox[DiskBox[{8, 4}, 0.45],
+          "\"PowderBlue\"",
+          TooltipStyle->"TextStyling"],
+         Annotation[#, "PowderBlue", "Tooltip"]& ],
+        EventHandlerTag[{"MouseClicked" :> (SelectionMove[
+             ButtonNotebook[], After, ButtonCell]; NotebookWrite[
+             ButtonNotebook[], 
+             ToBoxes[
+              Part[
+              "PowderBlue" -> RGBColor[0.690207, 0.878399, 0.902005], 2]]]), 
+          PassEventsDown -> Automatic, PassEventsUp -> True}]]}, 
+      {RGBColor[0.678396, 0.847102, 0.902005], 
+       TagBox[
+        TagBox[
+         TooltipBox[DiskBox[{9, 4}, 0.45],
+          "\"LightBlue\"",
+          TooltipStyle->"TextStyling"],
+         Annotation[#, "LightBlue", "Tooltip"]& ],
+        EventHandlerTag[{"MouseClicked" :> (SelectionMove[
+             ButtonNotebook[], After, ButtonCell]; NotebookWrite[
+             ButtonNotebook[], 
+             ToBoxes[
+              Part[
+              "LightBlue" -> RGBColor[0.678396, 0.847102, 0.902005], 2]]]), 
+          PassEventsDown -> Automatic, PassEventsUp -> True}]]}, 
+      {RGBColor[0., 0.749, 1.], 
+       TagBox[
+        TagBox[
+         TooltipBox[DiskBox[{10, 4}, 0.45],
+          "\"DeepSkyBlue\"",
+          TooltipStyle->"TextStyling"],
+         Annotation[#, "DeepSkyBlue", "Tooltip"]& ],
+        EventHandlerTag[{"MouseClicked" :> (SelectionMove[
+             ButtonNotebook[], After, ButtonCell]; NotebookWrite[
+             ButtonNotebook[], 
+             ToBoxes[
+              Part["DeepSkyBlue" -> RGBColor[0., 0.749, 1.], 2]]]), 
+          PassEventsDown -> Automatic, PassEventsUp -> True}]]}, 
+      {RGBColor[0.200003, 0.629994, 0.790002], 
+       TagBox[
+        TagBox[
+         TooltipBox[DiskBox[{11, 4}, 0.45],
+          "\"Peacock\"",
+          TooltipStyle->"TextStyling"],
+         Annotation[#, "Peacock", "Tooltip"]& ],
+        EventHandlerTag[{"MouseClicked" :> (SelectionMove[
+             ButtonNotebook[], After, ButtonCell]; NotebookWrite[
+             ButtonNotebook[], 
+             ToBoxes[
+              Part["Peacock" -> RGBColor[0.200003, 0.629994, 0.790002], 2]]]),
+           PassEventsDown -> Automatic, PassEventsUp -> True}]]}, 
+      {RGBColor[0.529405, 0.807794, 0.921598], 
+       TagBox[
+        TagBox[
+         TooltipBox[DiskBox[{12, 4}, 0.45],
+          "\"SkyBlue\"",
+          TooltipStyle->"TextStyling"],
+         Annotation[#, "SkyBlue", "Tooltip"]& ],
+        EventHandlerTag[{"MouseClicked" :> (SelectionMove[
+             ButtonNotebook[], After, ButtonCell]; NotebookWrite[
+             ButtonNotebook[], 
+             ToBoxes[
+              Part["SkyBlue" -> RGBColor[0.529405, 0.807794, 0.921598], 2]]]),
+           PassEventsDown -> Automatic, PassEventsUp -> True}]]}, 
+      {RGBColor[0.529405, 0.807794, 0.980407], 
+       TagBox[
+        TagBox[
+         TooltipBox[DiskBox[{13, 4}, 0.45],
+          "\"LightSkyBlue\"",
+          TooltipStyle->"TextStyling"],
+         Annotation[#, "LightSkyBlue", "Tooltip"]& ],
+        EventHandlerTag[{"MouseClicked" :> (SelectionMove[
+             ButtonNotebook[], After, ButtonCell]; NotebookWrite[
+             ButtonNotebook[], 
+             ToBoxes[
+              Part[
+              "LightSkyBlue" -> RGBColor[0.529405, 0.807794, 0.980407], 2]]]),
+           PassEventsDown -> Automatic, PassEventsUp -> True}]]}, 
+      {RGBColor[0.274499, 0.509796, 0.705893], 
+       TagBox[
+        TagBox[
+         TooltipBox[DiskBox[{14, 4}, 0.45],
+          "\"SteelBlue\"",
+          TooltipStyle->"TextStyling"],
+         Annotation[#, "SteelBlue", "Tooltip"]& ],
+        EventHandlerTag[{"MouseClicked" :> (SelectionMove[
+             ButtonNotebook[], After, ButtonCell]; NotebookWrite[
+             ButtonNotebook[], 
+             ToBoxes[
+              Part[
+              "SteelBlue" -> RGBColor[0.274499, 0.509796, 0.705893], 2]]]), 
+          PassEventsDown -> Automatic, PassEventsUp -> True}]]}, 
+      {RGBColor[0.941206, 0.972503, 1.], 
+       TagBox[
+        TagBox[
+         TooltipBox[DiskBox[{15, 4}, 0.45],
+          "\"AliceBlue\"",
+          TooltipStyle->"TextStyling"],
+         Annotation[#, "AliceBlue", "Tooltip"]& ],
+        EventHandlerTag[{"MouseClicked" :> (SelectionMove[
+             ButtonNotebook[], After, ButtonCell]; NotebookWrite[
+             ButtonNotebook[], 
+             ToBoxes[
+              Part["AliceBlue" -> RGBColor[0.941206, 0.972503, 1.], 2]]]), 
+          PassEventsDown -> Automatic, PassEventsUp -> True}]]}, 
+      {RGBColor[0.117603, 0.564699, 1.], 
+       TagBox[
+        TagBox[
+         TooltipBox[DiskBox[{16, 4}, 0.45],
+          "\"DodgerBlue\"",
+          TooltipStyle->"TextStyling"],
+         Annotation[#, "DodgerBlue", "Tooltip"]& ],
+        EventHandlerTag[{"MouseClicked" :> (SelectionMove[
+             ButtonNotebook[], After, ButtonCell]; NotebookWrite[
+             ButtonNotebook[], 
+             ToBoxes[
+              Part["DodgerBlue" -> RGBColor[0.117603, 0.564699, 1.], 2]]]), 
+          PassEventsDown -> Automatic, PassEventsUp -> True}]]}, 
+      {RGBColor[0.439207, 0.501999, 0.564699], 
+       TagBox[
+        TagBox[
+         TooltipBox[DiskBox[{17, 4}, 0.45],
+          "\"SlateGray\"",
+          TooltipStyle->"TextStyling"],
+         Annotation[#, "SlateGray", "Tooltip"]& ],
+        EventHandlerTag[{"MouseClicked" :> (SelectionMove[
+             ButtonNotebook[], After, ButtonCell]; NotebookWrite[
+             ButtonNotebook[], 
+             ToBoxes[
+              Part[
+              "SlateGray" -> RGBColor[0.439207, 0.501999, 0.564699], 2]]]), 
+          PassEventsDown -> Automatic, PassEventsUp -> True}]]}, 
+      {RGBColor[0.03, 0.179998, 0.329997], 
+       TagBox[
+        TagBox[
+         TooltipBox[DiskBox[{18, 4}, 0.45],
+          "\"Indigo\"",
+          TooltipStyle->"TextStyling"],
+         Annotation[#, "Indigo", "Tooltip"]& ],
+        EventHandlerTag[{"MouseClicked" :> (SelectionMove[
+             ButtonNotebook[], After, ButtonCell]; NotebookWrite[
+             ButtonNotebook[], 
+             ToBoxes[
+              Part["Indigo" -> RGBColor[0.03, 0.179998, 0.329997], 2]]]), 
+          PassEventsDown -> Automatic, PassEventsUp -> True}]]}}, {
+      {RGBColor[0.466704, 0.533296, 0.599994], 
+       TagBox[
+        TagBox[
+         TooltipBox[DiskBox[{1, 3}, 0.45],
+          "\"LightSlateGray\"",
+          TooltipStyle->"TextStyling"],
+         Annotation[#, "LightSlateGray", "Tooltip"]& ],
+        EventHandlerTag[{"MouseClicked" :> (SelectionMove[
+             ButtonNotebook[], After, ButtonCell]; NotebookWrite[
+             ButtonNotebook[], 
+             ToBoxes[
+              Part[
+              "LightSlateGray" -> RGBColor[0.466704, 0.533296, 0.599994], 
+               2]]]), PassEventsDown -> Automatic, PassEventsUp -> True}]]}, 
+      {RGBColor[0.690207, 0.768593, 0.870602], 
+       TagBox[
+        TagBox[
+         TooltipBox[DiskBox[{2, 3}, 0.45],
+          "\"LightSteelBlue\"",
+          TooltipStyle->"TextStyling"],
+         Annotation[#, "LightSteelBlue", "Tooltip"]& ],
+        EventHandlerTag[{"MouseClicked" :> (SelectionMove[
+             ButtonNotebook[], After, ButtonCell]; NotebookWrite[
+             ButtonNotebook[], 
+             ToBoxes[
+              Part[
+              "LightSteelBlue" -> RGBColor[0.690207, 0.768593, 0.870602], 
+               2]]]), PassEventsDown -> Automatic, PassEventsUp -> True}]]}, 
+      {RGBColor[0.392193, 0.584307, 0.929395], 
+       TagBox[
+        TagBox[
+         TooltipBox[DiskBox[{3, 3}, 0.45],
+          "\"CornflowerBlue\"",
+          TooltipStyle->"TextStyling"],
+         Annotation[#, "CornflowerBlue", "Tooltip"]& ],
+        EventHandlerTag[{"MouseClicked" :> (SelectionMove[
+             ButtonNotebook[], After, ButtonCell]; NotebookWrite[
+             ButtonNotebook[], 
+             ToBoxes[
+              Part[
+              "CornflowerBlue" -> RGBColor[0.392193, 0.584307, 0.929395], 
+               2]]]), PassEventsDown -> Automatic, PassEventsUp -> True}]]}, 
+      {RGBColor[0.239998, 0.350002, 0.670003], 
+       TagBox[
+        TagBox[
+         TooltipBox[DiskBox[{4, 3}, 0.45],
+          "\"Cobalt\"",
+          TooltipStyle->"TextStyling"],
+         Annotation[#, "Cobalt", "Tooltip"]& ],
+        EventHandlerTag[{"MouseClicked" :> (SelectionMove[
+             ButtonNotebook[], After, ButtonCell]; NotebookWrite[
+             ButtonNotebook[], 
+             ToBoxes[
+              Part["Cobalt" -> RGBColor[0.239998, 0.350002, 0.670003], 2]]]), 
+          PassEventsDown -> Automatic, PassEventsUp -> True}]]}, 
+      {RGBColor[0.254906, 0.411802, 0.882397], 
+       TagBox[
+        TagBox[
+         TooltipBox[DiskBox[{5, 3}, 0.45],
+          "\"RoyalBlue\"",
+          TooltipStyle->"TextStyling"],
+         Annotation[#, "RoyalBlue", "Tooltip"]& ],
+        EventHandlerTag[{"MouseClicked" :> (SelectionMove[
+             ButtonNotebook[], After, ButtonCell]; NotebookWrite[
+             ButtonNotebook[], 
+             ToBoxes[
+              Part[
+              "RoyalBlue" -> RGBColor[0.254906, 0.411802, 0.882397], 2]]]), 
+          PassEventsDown -> Automatic, PassEventsUp -> True}]]}, 
+      {RGBColor[0.972503, 0.972503, 1.], 
+       TagBox[
+        TagBox[
+         TooltipBox[DiskBox[{6, 3}, 0.45],
+          "\"Ghost\"",
+          TooltipStyle->"TextStyling"],
+         Annotation[#, "Ghost", "Tooltip"]& ],
+        EventHandlerTag[{"MouseClicked" :> (SelectionMove[
+             ButtonNotebook[], After, ButtonCell]; NotebookWrite[
+             ButtonNotebook[], 
+             ToBoxes[
+              Part["Ghost" -> RGBColor[0.972503, 0.972503, 1.], 2]]]), 
+          PassEventsDown -> Automatic, PassEventsUp -> True}]]}, 
+      {RGBColor[0.902005, 0.902005, 0.980407], 
+       TagBox[
+        TagBox[
+         TooltipBox[DiskBox[{7, 3}, 0.45],
+          "\"Lavender\"",
+          TooltipStyle->"TextStyling"],
+         Annotation[#, "Lavender", "Tooltip"]& ],
+        EventHandlerTag[{"MouseClicked" :> (SelectionMove[
+             ButtonNotebook[], After, ButtonCell]; NotebookWrite[
+             ButtonNotebook[], 
+             ToBoxes[
+              Part[
+              "Lavender" -> RGBColor[0.902005, 0.902005, 0.980407], 2]]]), 
+          PassEventsDown -> Automatic, PassEventsUp -> True}]]}, 
+      {RGBColor[0.18, 0.18, 0.31], 
+       TagBox[
+        TagBox[
+         TooltipBox[DiskBox[{8, 3}, 0.45],
+          "\"PrussianBlue\"",
+          TooltipStyle->"TextStyling"],
+         Annotation[#, "PrussianBlue", "Tooltip"]& ],
+        EventHandlerTag[{"MouseClicked" :> (SelectionMove[
+             ButtonNotebook[], After, ButtonCell]; NotebookWrite[
+             ButtonNotebook[], 
+             ToBoxes[
+              Part["PrussianBlue" -> RGBColor[0.18, 0.18, 0.31], 2]]]), 
+          PassEventsDown -> Automatic, PassEventsUp -> True}]]}, 
+      {RGBColor[0.097995, 0.097995, 0.439207], 
+       TagBox[
+        TagBox[
+         TooltipBox[DiskBox[{9, 3}, 0.45],
+          "\"MidnightBlue\"",
+          TooltipStyle->"TextStyling"],
+         Annotation[#, "MidnightBlue", "Tooltip"]& ],
+        EventHandlerTag[{"MouseClicked" :> (SelectionMove[
+             ButtonNotebook[], After, ButtonCell]; NotebookWrite[
+             ButtonNotebook[], 
+             ToBoxes[
+              Part[
+              "MidnightBlue" -> RGBColor[0.097995, 0.097995, 0.439207], 2]]]),
+           PassEventsDown -> Automatic, PassEventsUp -> True}]]}, 
+      {RGBColor[0, 0, 1], 
+       TagBox[
+        TagBox[
+         TooltipBox[DiskBox[{10, 3}, 0.45],
+          "\"Blue\"",
+          TooltipStyle->"TextStyling"],
+         Annotation[#, "Blue", "Tooltip"]& ],
+        EventHandlerTag[{"MouseClicked" :> (SelectionMove[
+             ButtonNotebook[], After, ButtonCell]; NotebookWrite[
+             ButtonNotebook[], 
+             ToBoxes[
+              Part["Blue" -> RGBColor[0, 0, 1], 2]]]), PassEventsDown -> 
+          Automatic, PassEventsUp -> True}]]}, 
+      {RGBColor[0., 0., 0.803903], 
+       TagBox[
+        TagBox[
+         TooltipBox[DiskBox[{11, 3}, 0.45],
+          "\"MediumBlue\"",
+          TooltipStyle->"TextStyling"],
+         Annotation[#, "MediumBlue", "Tooltip"]& ],
+        EventHandlerTag[{"MouseClicked" :> (SelectionMove[
+             ButtonNotebook[], After, ButtonCell]; NotebookWrite[
+             ButtonNotebook[], 
+             ToBoxes[
+              Part["MediumBlue" -> RGBColor[0., 0., 0.803903], 2]]]), 
+          PassEventsDown -> Automatic, PassEventsUp -> True}]]}, 
+      {RGBColor[0., 0., 0.501999], 
+       TagBox[
+        TagBox[
+         TooltipBox[DiskBox[{12, 3}, 0.45],
+          "\"NavyBlue\"",
+          TooltipStyle->"TextStyling"],
+         Annotation[#, "NavyBlue", "Tooltip"]& ],
+        EventHandlerTag[{"MouseClicked" :> (SelectionMove[
+             ButtonNotebook[], After, ButtonCell]; NotebookWrite[
+             ButtonNotebook[], 
+             ToBoxes[
+              Part["NavyBlue" -> RGBColor[0., 0., 0.501999], 2]]]), 
+          PassEventsDown -> Automatic, PassEventsUp -> True}]]}, 
+      {RGBColor[0., 0., 0.501999], 
+       TagBox[
+        TagBox[
+         TooltipBox[DiskBox[{13, 3}, 0.45],
+          "\"Navy\"",
+          TooltipStyle->"TextStyling"],
+         Annotation[#, "Navy", "Tooltip"]& ],
+        EventHandlerTag[{"MouseClicked" :> (SelectionMove[
+             ButtonNotebook[], After, ButtonCell]; NotebookWrite[
+             ButtonNotebook[], 
+             ToBoxes[
+              Part["Navy" -> RGBColor[0., 0., 0.501999], 2]]]), 
+          PassEventsDown -> Automatic, PassEventsUp -> True}]]}, 
+      {RGBColor[0.069994, 0.039995, 0.559999], 
+       TagBox[
+        TagBox[
+         TooltipBox[DiskBox[{14, 3}, 0.45],
+          "\"Ultramarine\"",
+          TooltipStyle->"TextStyling"],
+         Annotation[#, "Ultramarine", "Tooltip"]& ],
+        EventHandlerTag[{"MouseClicked" :> (SelectionMove[
+             ButtonNotebook[], After, ButtonCell]; NotebookWrite[
+             ButtonNotebook[], 
+             ToBoxes[
+              Part[
+              "Ultramarine" -> RGBColor[0.069994, 0.039995, 0.559999], 2]]]), 
+          PassEventsDown -> Automatic, PassEventsUp -> True}]]}, 
+      {RGBColor[0.415693, 0.352901, 0.803903], 
+       TagBox[
+        TagBox[
+         TooltipBox[DiskBox[{15, 3}, 0.45],
+          "\"SlateBlue\"",
+          TooltipStyle->"TextStyling"],
+         Annotation[#, "SlateBlue", "Tooltip"]& ],
+        EventHandlerTag[{"MouseClicked" :> (SelectionMove[
+             ButtonNotebook[], After, ButtonCell]; NotebookWrite[
+             ButtonNotebook[], 
+             ToBoxes[
+              Part[
+              "SlateBlue" -> RGBColor[0.415693, 0.352901, 0.803903], 2]]]), 
+          PassEventsDown -> Automatic, PassEventsUp -> True}]]}, 
+      {RGBColor[0.517594, 0.439207, 1.], 
+       TagBox[
+        TagBox[
+         TooltipBox[DiskBox[{16, 3}, 0.45],
+          "\"LightSlateBlue\"",
+          TooltipStyle->"TextStyling"],
+         Annotation[#, "LightSlateBlue", "Tooltip"]& ],
+        EventHandlerTag[{"MouseClicked" :> (SelectionMove[
+             ButtonNotebook[], After, ButtonCell]; NotebookWrite[
+             ButtonNotebook[], 
+             ToBoxes[
+              Part[
+              "LightSlateBlue" -> RGBColor[0.517594, 0.439207, 1.], 2]]]), 
+          PassEventsDown -> Automatic, PassEventsUp -> True}]]}, 
+      {RGBColor[0.282403, 0.239204, 0.545106], 
+       TagBox[
+        TagBox[
+         TooltipBox[DiskBox[{17, 3}, 0.45],
+          "\"DarkSlateBlue\"",
+          TooltipStyle->"TextStyling"],
+         Annotation[#, "DarkSlateBlue", "Tooltip"]& ],
+        EventHandlerTag[{"MouseClicked" :> (SelectionMove[
+             ButtonNotebook[], After, ButtonCell]; NotebookWrite[
+             ButtonNotebook[], 
+             ToBoxes[
+              Part[
+              "DarkSlateBlue" -> RGBColor[0.282403, 0.239204, 0.545106], 
+               2]]]), PassEventsDown -> Automatic, PassEventsUp -> True}]]}, 
+      {RGBColor[0.482406, 0.407804, 0.933302], 
+       TagBox[
+        TagBox[
+         TooltipBox[DiskBox[{18, 3}, 0.45],
+          "\"MediumSlateBlue\"",
+          TooltipStyle->"TextStyling"],
+         Annotation[#, "MediumSlateBlue", "Tooltip"]& ],
+        EventHandlerTag[{"MouseClicked" :> (SelectionMove[
+             ButtonNotebook[], After, ButtonCell]; NotebookWrite[
+             ButtonNotebook[], 
+             ToBoxes[
+              Part[
+              "MediumSlateBlue" -> RGBColor[0.482406, 0.407804, 0.933302], 
+               2]]]), PassEventsDown -> Automatic, PassEventsUp -> True}]]}}, {
+      {RGBColor[0.576495, 0.439207, 0.858806], 
+       TagBox[
+        TagBox[
+         TooltipBox[DiskBox[{1, 2}, 0.45],
+          "\"MediumPurple\"",
+          TooltipStyle->"TextStyling"],
+         Annotation[#, "MediumPurple", "Tooltip"]& ],
+        EventHandlerTag[{"MouseClicked" :> (SelectionMove[
+             ButtonNotebook[], After, ButtonCell]; NotebookWrite[
+             ButtonNotebook[], 
+             ToBoxes[
+              Part[
+              "MediumPurple" -> RGBColor[0.576495, 0.439207, 0.858806], 2]]]),
+           PassEventsDown -> Automatic, PassEventsUp -> True}]]}, 
+      {RGBColor[0.5412, 0.1686, 0.886303], 
+       TagBox[
+        TagBox[
+         TooltipBox[DiskBox[{2, 2}, 0.45],
+          "\"BlueViolet\"",
+          TooltipStyle->"TextStyling"],
+         Annotation[#, "BlueViolet", "Tooltip"]& ],
+        EventHandlerTag[{"MouseClicked" :> (SelectionMove[
+             ButtonNotebook[], After, ButtonCell]; NotebookWrite[
+             ButtonNotebook[], 
+             ToBoxes[
+              Part["BlueViolet" -> RGBColor[0.5412, 0.1686, 0.886303], 2]]]), 
+          PassEventsDown -> Automatic, PassEventsUp -> True}]]}, 
+      {RGBColor[0.990005, 0.97, 1.], 
+       TagBox[
+        TagBox[
+         TooltipBox[DiskBox[{3, 2}, 0.45],
+          "\"Zinc\"",
+          TooltipStyle->"TextStyling"],
+         Annotation[#, "Zinc", "Tooltip"]& ],
+        EventHandlerTag[{"MouseClicked" :> (SelectionMove[
+             ButtonNotebook[], After, ButtonCell]; NotebookWrite[
+             ButtonNotebook[], 
+             ToBoxes[
+              Part["Zinc" -> RGBColor[0.990005, 0.97, 1.], 2]]]), 
+          PassEventsDown -> Automatic, PassEventsUp -> True}]]}, 
+      {RGBColor[0.599994, 0.196097, 0.799997], 
+       TagBox[
+        TagBox[
+         TooltipBox[DiskBox[{4, 2}, 0.45],
+          "\"DarkOrchid\"",
+          TooltipStyle->"TextStyling"],
+         Annotation[#, "DarkOrchid", "Tooltip"]& ],
+        EventHandlerTag[{"MouseClicked" :> (SelectionMove[
+             ButtonNotebook[], After, ButtonCell]; NotebookWrite[
+             ButtonNotebook[], 
+             ToBoxes[
+              Part[
+              "DarkOrchid" -> RGBColor[0.599994, 0.196097, 0.799997], 2]]]), 
+          PassEventsDown -> Automatic, PassEventsUp -> True}]]}, 
+      {RGBColor[0.580401, 0., 0.827494], 
+       TagBox[
+        TagBox[
+         TooltipBox[DiskBox[{5, 2}, 0.45],
+          "\"DarkViolet\"",
+          TooltipStyle->"TextStyling"],
+         Annotation[#, "DarkViolet", "Tooltip"]& ],
+        EventHandlerTag[{"MouseClicked" :> (SelectionMove[
+             ButtonNotebook[], After, ButtonCell]; NotebookWrite[
+             ButtonNotebook[], 
+             ToBoxes[
+              Part["DarkViolet" -> RGBColor[0.580401, 0., 0.827494], 2]]]), 
+          PassEventsDown -> Automatic, PassEventsUp -> True}]]}, 
+      {RGBColor[0.359996, 0.140004, 0.430006], 
+       TagBox[
+        TagBox[
+         TooltipBox[DiskBox[{6, 2}, 0.45],
+          "\"UltramarineViolet\"",
+          TooltipStyle->"TextStyling"],
+         Annotation[#, "UltramarineViolet", "Tooltip"]& ],
+        EventHandlerTag[{"MouseClicked" :> (SelectionMove[
+             ButtonNotebook[], After, ButtonCell]; NotebookWrite[
+             ButtonNotebook[], 
+             ToBoxes[
+              Part[
+              "UltramarineViolet" -> RGBColor[0.359996, 0.140004, 0.430006], 
+               2]]]), PassEventsDown -> Automatic, PassEventsUp -> True}]]}, 
+      {RGBColor[0.729408, 0.333293, 0.827494], 
+       TagBox[
+        TagBox[
+         TooltipBox[DiskBox[{7, 2}, 0.45],
+          "\"MediumOrchid\"",
+          TooltipStyle->"TextStyling"],
+         Annotation[#, "MediumOrchid", "Tooltip"]& ],
+        EventHandlerTag[{"MouseClicked" :> (SelectionMove[
+             ButtonNotebook[], After, ButtonCell]; NotebookWrite[
+             ButtonNotebook[], 
+             ToBoxes[
+              Part[
+              "MediumOrchid" -> RGBColor[0.729408, 0.333293, 0.827494], 2]]]),
+           PassEventsDown -> Automatic, PassEventsUp -> True}]]}, 
+      {RGBColor[0.559999, 0.370006, 0.599994], 
+       TagBox[
+        TagBox[
+         TooltipBox[DiskBox[{8, 2}, 0.45],
+          "\"Violet\"",
+          TooltipStyle->"TextStyling"],
+         Annotation[#, "Violet", "Tooltip"]& ],
+        EventHandlerTag[{"MouseClicked" :> (SelectionMove[
+             ButtonNotebook[], After, ButtonCell]; NotebookWrite[
+             ButtonNotebook[], 
+             ToBoxes[
+              Part["Violet" -> RGBColor[0.559999, 0.370006, 0.599994], 2]]]), 
+          PassEventsDown -> Automatic, PassEventsUp -> True}]]}, 
+      {RGBColor[0.569994, 0.129994, 0.619999], 
+       TagBox[
+        TagBox[
+         TooltipBox[DiskBox[{9, 2}, 0.45],
+          "\"DeepCobaltViolet\"",
+          TooltipStyle->"TextStyling"],
+         Annotation[#, "DeepCobaltViolet", "Tooltip"]& ],
+        EventHandlerTag[{"MouseClicked" :> (SelectionMove[
+             ButtonNotebook[], After, ButtonCell]; NotebookWrite[
+             ButtonNotebook[], 
+             ToBoxes[
+              Part[
+              "DeepCobaltViolet" -> RGBColor[0.569994, 0.129994, 0.619999], 
+               2]]]), PassEventsDown -> Automatic, PassEventsUp -> True}]]}, 
+      {RGBColor[0.847102, 0.749, 0.847102], 
+       TagBox[
+        TagBox[
+         TooltipBox[DiskBox[{10, 2}, 0.45],
+          "\"Thistle\"",
+          TooltipStyle->"TextStyling"],
+         Annotation[#, "Thistle", "Tooltip"]& ],
+        EventHandlerTag[{"MouseClicked" :> (SelectionMove[
+             ButtonNotebook[], After, ButtonCell]; NotebookWrite[
+             ButtonNotebook[], 
+             ToBoxes[
+              Part["Thistle" -> RGBColor[0.847102, 0.749, 0.847102], 2]]]), 
+          PassEventsDown -> Automatic, PassEventsUp -> True}]]}, 
+      {RGBColor[0.866695, 0.627506, 0.866695], 
+       TagBox[
+        TagBox[
+         TooltipBox[DiskBox[{11, 2}, 0.45],
+          "\"Plum\"",
+          TooltipStyle->"TextStyling"],
+         Annotation[#, "Plum", "Tooltip"]& ],
+        EventHandlerTag[{"MouseClicked" :> (SelectionMove[
+             ButtonNotebook[], After, ButtonCell]; NotebookWrite[
+             ButtonNotebook[], 
+             ToBoxes[
+              Part["Plum" -> RGBColor[0.866695, 0.627506, 0.866695], 2]]]), 
+          PassEventsDown -> Automatic, PassEventsUp -> True}]]}, 
+      {RGBColor[1, 0, 1], 
+       TagBox[
+        TagBox[
+         TooltipBox[DiskBox[{12, 2}, 0.45],
+          "\"Magenta\"",
+          TooltipStyle->"TextStyling"],
+         Annotation[#, "Magenta", "Tooltip"]& ],
+        EventHandlerTag[{"MouseClicked" :> (SelectionMove[
+             ButtonNotebook[], After, ButtonCell]; NotebookWrite[
+             ButtonNotebook[], 
+             ToBoxes[
+              Part["Magenta" -> RGBColor[1, 0, 1], 2]]]), PassEventsDown -> 
+          Automatic, PassEventsUp -> True}]]}, 
+      {RGBColor[0.5, 0, 0.5], 
+       TagBox[
+        TagBox[
+         TooltipBox[DiskBox[{13, 2}, 0.45],
+          "\"Purple\"",
+          TooltipStyle->"TextStyling"],
+         Annotation[#, "Purple", "Tooltip"]& ],
+        EventHandlerTag[{"MouseClicked" :> (SelectionMove[
+             ButtonNotebook[], After, ButtonCell]; NotebookWrite[
+             ButtonNotebook[], 
+             ToBoxes[
+              Part["Purple" -> RGBColor[0.5, 0, 0.5], 2]]]), PassEventsDown -> 
+          Automatic, PassEventsUp -> True}]]}, 
+      {RGBColor[0.8549, 0.439207, 0.839198], 
+       TagBox[
+        TagBox[
+         TooltipBox[DiskBox[{14, 2}, 0.45],
+          "\"Orchid\"",
+          TooltipStyle->"TextStyling"],
+         Annotation[#, "Orchid", "Tooltip"]& ],
+        EventHandlerTag[{"MouseClicked" :> (SelectionMove[
+             ButtonNotebook[], After, ButtonCell]; NotebookWrite[
+             ButtonNotebook[], 
+             ToBoxes[
+              Part["Orchid" -> RGBColor[0.8549, 0.439207, 0.839198], 2]]]), 
+          PassEventsDown -> Automatic, PassEventsUp -> True}]]}, 
+      {RGBColor[0.815699, 0.125507, 0.564699], 
+       TagBox[
+        TagBox[
+         TooltipBox[DiskBox[{15, 2}, 0.45],
+          "\"VioletRed\"",
+          TooltipStyle->"TextStyling"],
+         Annotation[#, "VioletRed", "Tooltip"]& ],
+        EventHandlerTag[{"MouseClicked" :> (SelectionMove[
+             ButtonNotebook[], After, ButtonCell]; NotebookWrite[
+             ButtonNotebook[], 
+             ToBoxes[
+              Part[
+              "VioletRed" -> RGBColor[0.815699, 0.125507, 0.564699], 2]]]), 
+          PassEventsDown -> Automatic, PassEventsUp -> True}]]}, 
+      {RGBColor[0.780404, 0.0824, 0.521607], 
+       TagBox[
+        TagBox[
+         TooltipBox[DiskBox[{16, 2}, 0.45],
+          "\"MediumVioletRed\"",
+          TooltipStyle->"TextStyling"],
+         Annotation[#, "MediumVioletRed", "Tooltip"]& ],
+        EventHandlerTag[{"MouseClicked" :> (SelectionMove[
+             ButtonNotebook[], After, ButtonCell]; NotebookWrite[
+             ButtonNotebook[], 
+             ToBoxes[
+              Part[
+              "MediumVioletRed" -> RGBColor[0.780404, 0.0824, 0.521607], 
+               2]]]), PassEventsDown -> Automatic, PassEventsUp -> True}]]}, 
+      {RGBColor[1., 0.078402, 0.576495], 
+       TagBox[
+        TagBox[
+         TooltipBox[DiskBox[{17, 2}, 0.45],
+          "\"DeepPink\"",
+          TooltipStyle->"TextStyling"],
+         Annotation[#, "DeepPink", "Tooltip"]& ],
+        EventHandlerTag[{"MouseClicked" :> (SelectionMove[
+             ButtonNotebook[], After, ButtonCell]; NotebookWrite[
+             ButtonNotebook[], 
+             ToBoxes[
+              Part["DeepPink" -> RGBColor[1., 0.078402, 0.576495], 2]]]), 
+          PassEventsDown -> Automatic, PassEventsUp -> True}]]}, 
+      {RGBColor[0.53, 0.149998, 0.340007], 
+       TagBox[
+        TagBox[
+         TooltipBox[DiskBox[{18, 2}, 0.45],
+          "\"Raspberry\"",
+          TooltipStyle->"TextStyling"],
+         Annotation[#, "Raspberry", "Tooltip"]& ],
+        EventHandlerTag[{"MouseClicked" :> (SelectionMove[
+             ButtonNotebook[], After, ButtonCell]; NotebookWrite[
+             ButtonNotebook[], 
+             ToBoxes[
+              Part["Raspberry" -> RGBColor[0.53, 0.149998, 0.340007], 2]]]), 
+          PassEventsDown -> Automatic, PassEventsUp -> True}]]}}, {
+      {RGBColor[1., 0.411802, 0.705893], 
+       TagBox[
+        TagBox[
+         TooltipBox[DiskBox[{1, 1}, 0.45],
+          "\"HotPink\"",
+          TooltipStyle->"TextStyling"],
+         Annotation[#, "HotPink", "Tooltip"]& ],
+        EventHandlerTag[{"MouseClicked" :> (SelectionMove[
+             ButtonNotebook[], After, ButtonCell]; NotebookWrite[
+             ButtonNotebook[], 
+             ToBoxes[
+              Part["HotPink" -> RGBColor[1., 0.411802, 0.705893], 2]]]), 
+          PassEventsDown -> Automatic, PassEventsUp -> True}]]}, 
+      {RGBColor[0.690207, 0.188192, 0.376507], 
+       TagBox[
+        TagBox[
+         TooltipBox[DiskBox[{2, 1}, 0.45],
+          "\"Maroon\"",
+          TooltipStyle->"TextStyling"],
+         Annotation[#, "Maroon", "Tooltip"]& ],
+        EventHandlerTag[{"MouseClicked" :> (SelectionMove[
+             ButtonNotebook[], After, ButtonCell]; NotebookWrite[
+             ButtonNotebook[], 
+             ToBoxes[
+              Part["Maroon" -> RGBColor[0.690207, 0.188192, 0.376507], 2]]]), 
+          PassEventsDown -> Automatic, PassEventsUp -> True}]]}, 
+      {RGBColor[1., 0.941206, 0.960799], 
+       TagBox[
+        TagBox[
+         TooltipBox[DiskBox[{3, 1}, 0.45],
+          "\"LavenderBlush\"",
+          TooltipStyle->"TextStyling"],
+         Annotation[#, "LavenderBlush", "Tooltip"]& ],
+        EventHandlerTag[{"MouseClicked" :> (SelectionMove[
+             ButtonNotebook[], After, ButtonCell]; NotebookWrite[
+             ButtonNotebook[], 
+             ToBoxes[
+              Part["LavenderBlush" -> RGBColor[1., 0.941206, 0.960799], 2]]]),
+           PassEventsDown -> Automatic, PassEventsUp -> True}]]}, 
+      {RGBColor[0.858806, 0.439207, 0.576495], 
+       TagBox[
+        TagBox[
+         TooltipBox[DiskBox[{4, 1}, 0.45],
+          "\"PaleVioletRed\"",
+          TooltipStyle->"TextStyling"],
+         Annotation[#, "PaleVioletRed", "Tooltip"]& ],
+        EventHandlerTag[{"MouseClicked" :> (SelectionMove[
+             ButtonNotebook[], After, ButtonCell]; NotebookWrite[
+             ButtonNotebook[], 
+             ToBoxes[
+              Part[
+              "PaleVioletRed" -> RGBColor[0.858806, 0.439207, 0.576495], 
+               2]]]), PassEventsDown -> Automatic, PassEventsUp -> True}]]}, 
+      {RGBColor[0.859996, 0.149998, 0.269997], 
+       TagBox[
+        TagBox[
+         TooltipBox[DiskBox[{5, 1}, 0.45],
+          "\"PermanentRedViolet\"",
+          TooltipStyle->"TextStyling"],
+         Annotation[#, "PermanentRedViolet", "Tooltip"]& ],
+        EventHandlerTag[{"MouseClicked" :> (SelectionMove[
+             ButtonNotebook[], After, ButtonCell]; NotebookWrite[
+             ButtonNotebook[], 
+             ToBoxes[
+              Part[
+              "PermanentRedViolet" -> RGBColor[0.859996, 0.149998, 0.269997], 
+               2]]]), PassEventsDown -> Automatic, PassEventsUp -> True}]]}, 
+      {RGBColor[1., 0.713706, 0.756905], 
+       TagBox[
+        TagBox[
+         TooltipBox[DiskBox[{6, 1}, 0.45],
+          "\"LightPink\"",
+          TooltipStyle->"TextStyling"],
+         Annotation[#, "LightPink", "Tooltip"]& ],
+        EventHandlerTag[{"MouseClicked" :> (SelectionMove[
+             ButtonNotebook[], After, ButtonCell]; NotebookWrite[
+             ButtonNotebook[], 
+             ToBoxes[
+              Part["LightPink" -> RGBColor[1., 0.713706, 0.756905], 2]]]), 
+          PassEventsDown -> Automatic, PassEventsUp -> True}]]}, 
+      {RGBColor[0.889996, 0.069994, 0.189993], 
+       TagBox[
+        TagBox[
+         TooltipBox[DiskBox[{7, 1}, 0.45],
+          "\"GeraniumLake\"",
+          TooltipStyle->"TextStyling"],
+         Annotation[#, "GeraniumLake", "Tooltip"]& ],
+        EventHandlerTag[{"MouseClicked" :> (SelectionMove[
+             ButtonNotebook[], After, ButtonCell]; NotebookWrite[
+             ButtonNotebook[], 
+             ToBoxes[
+              Part[
+              "GeraniumLake" -> RGBColor[0.889996, 0.069994, 0.189993], 2]]]),
+           PassEventsDown -> Automatic, PassEventsUp -> True}]]}, 
+      {RGBColor[0.889996, 0.149998, 0.209998], 
+       TagBox[
+        TagBox[
+         TooltipBox[DiskBox[{8, 1}, 0.45],
+          "\"AlizarinCrimson\"",
+          TooltipStyle->"TextStyling"],
+         Annotation[#, "AlizarinCrimson", "Tooltip"]& ],
+        EventHandlerTag[{"MouseClicked" :> (SelectionMove[
+             ButtonNotebook[], After, ButtonCell]; NotebookWrite[
+             ButtonNotebook[], 
+             ToBoxes[
+              Part[
+              "AlizarinCrimson" -> RGBColor[0.889996, 0.149998, 0.209998], 
+               2]]]), PassEventsDown -> Automatic, PassEventsUp -> True}]]}, 
+      {RGBColor[0.689993, 0.089999, 0.119999], 
+       TagBox[
+        TagBox[
+         TooltipBox[DiskBox[{9, 1}, 0.45],
+          "\"IndianRed\"",
+          TooltipStyle->"TextStyling"],
+         Annotation[#, "IndianRed", "Tooltip"]& ],
+        EventHandlerTag[{"MouseClicked" :> (SelectionMove[
+             ButtonNotebook[], After, ButtonCell]; NotebookWrite[
+             ButtonNotebook[], 
+             ToBoxes[
+              Part[
+              "IndianRed" -> RGBColor[0.689993, 0.089999, 0.119999], 2]]]), 
+          PassEventsDown -> Automatic, PassEventsUp -> True}]]}, 
+      {RGBColor[1., 0.009995, 0.050005], 
+       TagBox[
+        TagBox[
+         TooltipBox[DiskBox[{10, 1}, 0.45],
+          "\"LightCadmiumRed\"",
+          TooltipStyle->"TextStyling"],
+         Annotation[#, "LightCadmiumRed", "Tooltip"]& ],
+        EventHandlerTag[{"MouseClicked" :> (SelectionMove[
+             ButtonNotebook[], After, ButtonCell]; NotebookWrite[
+             ButtonNotebook[], 
+             ToBoxes[
+              Part[
+              "LightCadmiumRed" -> RGBColor[1., 0.009995, 0.050005], 2]]]), 
+          PassEventsDown -> Automatic, PassEventsUp -> True}]]}, 
+      {RGBColor[0.829997, 0.099994, 0.119999], 
+       TagBox[
+        TagBox[
+         TooltipBox[DiskBox[{11, 1}, 0.45],
+          "\"VenetianRed\"",
+          TooltipStyle->"TextStyling"],
+         Annotation[#, "VenetianRed", "Tooltip"]& ],
+        EventHandlerTag[{"MouseClicked" :> (SelectionMove[
+             ButtonNotebook[], After, ButtonCell]; NotebookWrite[
+             ButtonNotebook[], 
+             ToBoxes[
+              Part[
+              "VenetianRed" -> RGBColor[0.829997, 0.099994, 0.119999], 2]]]), 
+          PassEventsDown -> Automatic, PassEventsUp -> True}]]}, 
+      {RGBColor[0.889996, 0.209998, 0.219993], 
+       TagBox[
+        TagBox[
+         TooltipBox[DiskBox[{12, 1}, 0.45],
+          "\"RoseMadder\"",
+          TooltipStyle->"TextStyling"],
+         Annotation[#, "RoseMadder", "Tooltip"]& ],
+        EventHandlerTag[{"MouseClicked" :> (SelectionMove[
+             ButtonNotebook[], After, ButtonCell]; NotebookWrite[
+             ButtonNotebook[], 
+             ToBoxes[
+              Part[
+              "RoseMadder" -> RGBColor[0.889996, 0.209998, 0.219993], 2]]]), 
+          PassEventsDown -> Automatic, PassEventsUp -> True}]]}, 
+      {RGBColor[0.889996, 0.179998, 0.189993], 
+       TagBox[
+        TagBox[
+         TooltipBox[DiskBox[{13, 1}, 0.45],
+          "\"DeepMadderLake\"",
+          TooltipStyle->"TextStyling"],
+         Annotation[#, "DeepMadderLake", "Tooltip"]& ],
+        EventHandlerTag[{"MouseClicked" :> (SelectionMove[
+             ButtonNotebook[], After, ButtonCell]; NotebookWrite[
+             ButtonNotebook[], 
+             ToBoxes[
+              Part[
+              "DeepMadderLake" -> RGBColor[0.889996, 0.179998, 0.189993], 
+               2]]]), PassEventsDown -> Automatic, PassEventsUp -> True}]]}}},
+    
+    ContentSelectable->False,
+    PlotRangePadding->None],
+   StripOnInput->False,
+   CacheGraphics->False],
+  FrameMargins->Automatic]], "Output"]
 }, Open  ]]
 }, Open  ]]
 },
