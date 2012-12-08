@@ -368,36 +368,58 @@ Cell[CellGroupData[{
 
 Cell["DEEP2 fits ", "Subsection"],
 
-Cell[BoxData[{
+Cell[BoxData[
  RowBox[{
-  RowBox[{"nptlist", " ", "=", " ", 
-   RowBox[{"{", 
-    RowBox[{
-    "1000", ",", " ", "4000", ",", " ", "16000", ",", " ", "64000", ",", " ", 
-     "256000", ",", " ", "1024000", ",", " ", "4096000", ",", " ", 
-     "16384000"}], "}"}]}], ";"}], "\[IndentingNewLine]", 
- RowBox[{
-  RowBox[{"bin0", " ", "=", " ", 
-   RowBox[{"processbin", "[", 
-    RowBox[{
-    "\"\<../data/deep2/rrdump\>\"", ",", " ", "0", ",", " ", "nptlist"}], 
-    "]"}]}], ";"}], "\[IndentingNewLine]", 
- RowBox[{
-  RowBox[{"bin4", " ", "=", " ", 
-   RowBox[{"processbin", "[", 
-    RowBox[{"\"\<../data/deep2/rrdump\>\"", ",", "4", ",", " ", "nptlist"}], 
-    "]"}]}], ";"}], "\[IndentingNewLine]", 
- RowBox[{
-  RowBox[{"bin0prng", " ", "=", " ", 
-   RowBox[{"processbin", "[", 
-    RowBox[{"\"\<../data/deep2_prng/rrdump\>\"", ",", "0", ",", "nptlist"}], 
-    "]"}]}], ";"}], "\[IndentingNewLine]", 
- RowBox[{
-  RowBox[{"bin4prng", " ", "=", " ", 
-   RowBox[{"processbin", "[", 
-    RowBox[{
-    "\"\<../data/deep2_prng/rrdump\>\"", ",", " ", "4", ",", " ", "nptlist"}],
-     "]"}]}], ";"}]}], "Input"],
+  RowBox[{"(*", " ", 
+   RowBox[{
+   "Read", " ", "in", " ", "all", " ", "the", " ", "data", " ", "files"}], 
+   " ", "*)"}], "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"nptlist", " ", "=", " ", 
+     RowBox[{"{", 
+      RowBox[{
+      "1000", ",", " ", "4000", ",", " ", "16000", ",", " ", "64000", ",", 
+       " ", "256000", ",", " ", "1024000", ",", " ", "4096000", ",", " ", 
+       "16384000"}], "}"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"bin0", " ", "=", " ", 
+     RowBox[{"processbin", "[", 
+      RowBox[{
+      "\"\<../data/deep2/rrdump\>\"", ",", " ", "0", ",", " ", "nptlist"}], 
+      "]"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"bin4", " ", "=", " ", 
+     RowBox[{"processbin", "[", 
+      RowBox[{"\"\<../data/deep2/rrdump\>\"", ",", "4", ",", " ", "nptlist"}],
+       "]"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"bin0prng", " ", "=", " ", 
+     RowBox[{"processbin", "[", 
+      RowBox[{"\"\<../data/deep2_prng/rrdump\>\"", ",", "0", ",", "nptlist"}],
+       "]"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"bin4prng", " ", "=", " ", 
+     RowBox[{"processbin", "[", 
+      RowBox[{
+      "\"\<../data/deep2_prng/rrdump\>\"", ",", " ", "4", ",", " ", 
+       "nptlist"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"jplist", " ", "=", " ", 
+     RowBox[{"Table", "[", 
+      RowBox[{
+       RowBox[{"1000", "*", 
+        SuperscriptBox["2", "i"]}], ",", " ", 
+       RowBox[{"{", 
+        RowBox[{"i", ",", " ", "0", ",", " ", "8"}], "}"}]}], "]"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"binsjp", " ", "=", " ", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"readalljp", "[", 
+        RowBox[{"\"\<../data/deep2/counts/\>\"", ",", "#"}], "]"}], "&"}], 
+      " ", "/@", " ", "jplist"}]}], ";"}]}]}]], "Input"],
 
 Cell[BoxData[
  RowBox[{
@@ -551,7 +573,15 @@ Cell[BoxData[{
     RowBox[{"p1", ",", "p2", ",", "p3"}], "]"}], "*)"}]}]}], "Input"],
 
 Cell[BoxData["\<\"../tex/plots/deep2rrcomp1.pdf\"\>"], "Output"]
-}, Open  ]]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{"(*", " ", 
+  RowBox[{
+   RowBox[{
+   "Now", " ", "do", " ", "the", " ", "comparison", " ", "with", " ", "the", 
+    " ", "old"}], "-", 
+   RowBox[{"fashioned", " ", "RR", " ", "case"}]}], " ", "*)"}]], "Input"]
 }, Open  ]]
 }, Open  ]],
 
@@ -3351,7 +3381,7 @@ Cell[BoxData[
 }, Open  ]]
 },
 WindowSize->{966, 724},
-WindowMargins->{{463, Automatic}, {Automatic, 17}},
+WindowMargins->{{Automatic, 196}, {Automatic, 4}},
 PrivateNotebookOptions->{"VersionedStylesheet"->{"Default.nb"[8.] -> False}},
 FrontEndVersion->"9.0 for Mac OS X x86 (32-bit, 64-bit Kernel) (November 20, \
 2012)",

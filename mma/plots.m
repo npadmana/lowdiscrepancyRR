@@ -25,7 +25,6 @@ processbin[hdr_, ibin_, nptlist_] := With[{tmp=readSims[genfilenames[hdr, ibin, 
 Three functions :
   readjp : reads in one file and dumps out a normalized array
   readalljp : reads in all the files
-  processjp : data in a similar format as previously.
 *)
 
 readjp[fn_] := Module[{dat, norm}, 
@@ -34,7 +33,8 @@ readjp[fn_] := Module[{dat, norm},
 	dat[[3;;,3]]/norm^2
 ]
 
-readalljp[dir_, npts_] := Module[{fnlist},
+readalljp[dir_, npts_] := Module[{fnlist, dat},
 	fnlist = FileNames[dir<>IntegerString[npts]<>"*.dat"];
-	readjp /@ fnlist
+	dat = readjp /@ fnlist // Transpose // Map[stats, #] &;
+	{npts, dat}
 ];
