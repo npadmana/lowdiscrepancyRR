@@ -443,12 +443,12 @@ Cell[BoxData[{
   RowBox[{"ticklabel", " ", "=", " ", 
    RowBox[{"npLogTicks", "[", 
     RowBox[{
-     RowBox[{"-", "6"}], ",", "8"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+     RowBox[{"-", "6"}], ",", "10"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{"ticknolabel", " ", "=", " ", 
    RowBox[{"npLogTicks", "[", 
     RowBox[{
-     RowBox[{"-", "6"}], ",", "8", ",", " ", 
+     RowBox[{"-", "6"}], ",", "10", ",", " ", 
      RowBox[{"\"\<\>\"", "&"}]}], "]"}]}], ";"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{"pticks", " ", "=", " ", 
@@ -556,7 +556,7 @@ Cell[BoxData[{
        RowBox[{"-", "0.5"}]]}], ",", " ", 
      RowBox[{"{", 
       RowBox[{"n", ",", " ", "100", ",", " ", 
-       SuperscriptBox["10", "8"]}], "}"}], ",", " ", 
+       SuperscriptBox["10", "9"]}], "}"}], ",", " ", 
      RowBox[{"PlotStyle", "\[Rule]", 
       RowBox[{"{", 
        RowBox[{
@@ -581,7 +581,92 @@ Cell[BoxData[
    RowBox[{
    "Now", " ", "do", " ", "the", " ", "comparison", " ", "with", " ", "the", 
     " ", "old"}], "-", 
-   RowBox[{"fashioned", " ", "RR", " ", "case"}]}], " ", "*)"}]], "Input"]
+   RowBox[{"fashioned", " ", "RR", " ", "case"}]}], " ", "*)"}]], "Input"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"errjp", "[", "ibin_", "]"}], ":=", " ", 
+   SuperscriptBox[
+    RowBox[{"{", 
+     RowBox[{
+      SuperscriptBox[
+       RowBox[{"binsjp", "[", 
+        RowBox[{"[", 
+         RowBox[{"All", ",", " ", "1"}], "]"}], "]"}], "2"], ",", 
+      RowBox[{"binsjp", "[", 
+       RowBox[{"[", 
+        RowBox[{"All", ",", "2", ",", 
+         RowBox[{"ibin", "+", "1"}], ",", " ", "3"}], "]"}], "]"}]}], "}"}], 
+    "\[Transpose]"]}], ";"}]], "Input"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"pdata", " ", "=", " ", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"err", "[", "bin0", "]"}], ",", " ", 
+     RowBox[{"err", "[", "bin4", "]"}], ",", " ", 
+     RowBox[{"errjp", "[", "0", "]"}], ",", " ", 
+     RowBox[{"errjp", "[", "4", "]"}]}], "}"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"prange", " ", "=", " ", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"700", ",", " ", 
+       SuperscriptBox["10", "10"]}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"3", " ", 
+        SuperscriptBox["10", 
+         RowBox[{"-", "5"}]]}], ",", 
+       SuperscriptBox["10", 
+        RowBox[{"-", "1"}]]}], "}"}]}], "}"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"p1", " ", "=", " ", 
+   RowBox[{"ListLogLogPlot", "[", 
+    RowBox[{"pdata", ",", " ", 
+     RowBox[{"PlotRange", "\[Rule]", "prange"}], ",", 
+     RowBox[{"PlotStyle", "\[Rule]", "pstyle"}], ",", 
+     RowBox[{"PlotMarkers", "\[Rule]", "pmarkers"}], ",", " ", 
+     RowBox[{"FrameTicks", "\[Rule]", "pticks"}], ",", " ", 
+     RowBox[{"FrameLabel", "\[Rule]", 
+      RowBox[{"{", 
+       RowBox[{
+       "\"\<\!\(\*SubscriptBox[\(N\), \(pairs\)]\)\>\"", ",", 
+        "\"\<Relative Error\>\""}], "}"}]}]}], " ", "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"p4", " ", "=", " ", 
+   RowBox[{"LogLogPlot", "[", 
+    RowBox[{
+     RowBox[{"0.7", 
+      SuperscriptBox["n", 
+       RowBox[{"-", "0.25"}]]}], ",", " ", 
+     RowBox[{"{", 
+      RowBox[{"n", ",", " ", "100", ",", " ", 
+       SuperscriptBox["10", "10"]}], "}"}], ",", " ", 
+     RowBox[{"PlotStyle", "\[Rule]", 
+      RowBox[{"{", 
+       RowBox[{"DotDashed", ",", " ", "Thick", ",", " ", "Gray"}], "}"}]}]}], 
+    "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{"Export", "[", 
+  RowBox[{"\"\<../tex/plots/deep2rrcomp2.pdf\>\"", ",", 
+   RowBox[{"Show", "[", 
+    RowBox[{"p1", ",", "p2", ",", " ", "p3", ",", "p4"}], "]"}]}], 
+  "]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"(*", 
+   RowBox[{"Show", "[", 
+    RowBox[{"p1", ",", "p2", ",", "p3", ",", " ", "p4"}], "]"}], 
+   "*)"}]}]}], "Input"],
+
+Cell[BoxData["\<\"../tex/plots/deep2rrcomp2.pdf\"\>"], "Output"]
+}, Open  ]]
 }, Open  ]]
 }, Open  ]],
 
