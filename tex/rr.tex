@@ -113,17 +113,40 @@ counting pairs as with the actual galaxies.
 \subsubsection{The Unit Interval}
 
 \begin{figure*}
-\includegraphics[width=3in]{plots/grid1d-1}
-\includegraphics[width=3in]{plots/grid1d-2}
-\includegraphics[width=3in]{plots/grid1d-3}
-\includegraphics[width=3in]{plots/grid1d-4}
+\includegraphics[width=1.5in]{plots/grid1d-1}
+\includegraphics[width=1.5in]{plots/grid1d-2}
+\includegraphics[width=1.5in]{plots/grid1d-3}
+\includegraphics[width=1.5in]{plots/grid1d-4}
 \caption{???? Needs a caption ????}
 \label{fig:grid1d}
 \end{figure*}
 
 \subsubsection{A Spherical Cap}
 
+\begin{figure}
+\includegraphics[width=3in]{plots/cap2d}
+\caption{???The scaling of the relative error in RR for a spherical cap as a function of the number
+of pairs. The cap is centered about the north pole, and extends down by
+$60^{\circ}$. The circles and squares correspond to separations of points $<
+0.1$ and $10$ degrees respectively. The long and short dashed lines are
+$\propto N_{\rm pairs}^{-1/2}$ and $N_{\rm pairs}^{-1}$ respectively. The error
+scaling is steeper than the $N^{-1/2}$ expected from purely random numbers.}
+\label{fig:cap2d}
+\end{figure}
+
+
 \subsubsection{The Unit 3D Hypercube}
+
+\begin{figure}
+\includegraphics[width=3in]{plots/unit3d}
+\caption{???The scaling of the relative error in RR for a unit cube as a
+function of the number of pairs. The circles and squares correspond to radial
+bins of $[0.015625,0.03125]$ and $[0.25,0.5]$ respectively.
+The long and short dashed lines are $\propto N_{\rm pairs}^{-1/2}$ and $N_{\rm pairs}^{-1}$ respectively. The error
+scaling is steeper than the $N^{-1/2}$ expected from purely random numbers.}
+\label{fig:unit3d}
+\end{figure}
+
 
 \section{The Algorithm Summarized}
 \label{sec:alg}
@@ -173,7 +196,7 @@ angular bins $[28.12,56.25]$ arcseconds and $[7.5,15]$ arcminutes respectively,
 while the filled and open symbols compare a low discrepancy
 sequence to pseudo-random numbers. The long and short dashed lines are
 $\propto N_{\rm pairs}^{-1/2}$ and $N_{\rm pairs}^{-1}$ respectively. The low
-discrepancy sequences are seen to outperform pseudo-random numbers both in the
+discrepancy sequences outperform pseudo-random numbers both in the
 absolute error as well as in the scaling with $N_{\rm pairs}$.}
 \label{fig:deep2comp1}
 \end{figure}
