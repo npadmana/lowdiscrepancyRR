@@ -47,20 +47,21 @@ class Deep2Pairs():
         zmin = np.sin(np.radians(self.DECmin))
         zmax = np.sin(np.radians(self.DECmax))
 
+        if vectorShift:
+            vector = np.random.random(2)
+            randarr = (self.randarr+vector)%1
+        else:
+            randarr = self.randarr
+            
         if self.randarr is not None:
-            RA = (self.randarr[:N,0]*(self.RAmax-self.RAmin)) + self.RAmin
-            z = (self.randarr[:N,1]*(zmax-zmin)) + zmin
+            RA = (randarr[:N,0]*(self.RAmax-self.RAmin)) + self.RAmin
+            z = (randarr[:N,1]*(zmax-zmin)) + zmin
         else:
             RA = np.random.uniform(self.RAmin,self.RAmax,N)
             z = np.random.uniform(zmin,zmax,N)
         
         Dec = np.degrees(np.arcsin(z))
         
-        if vectorShift:
-            vector = np.random.uniform(-1,1,size=(N,2))
-            RA += vector[:,0]
-            Dec += vector[:,1]
-
         weights = self.get_weights(RA,Dec)
         return np.array(zip(RA,Dec,weights))
     #...

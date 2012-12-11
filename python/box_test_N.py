@@ -5,6 +5,7 @@ in the DEEP2 mask.
 """
 import numpy as np
 from pairs import mr_wpairs,mr_angpairs
+import os
 import sys
 import glob
 import time
@@ -54,7 +55,9 @@ def write_1d(bins,counts,outfilename,weightsum=None):
 
 def do_one(comm,rank,bins,Nr,outname,d2p=None,data=None,lowdiscr=None):
     """
-    Generate one random realization, and compute its auto-correlation.
+    Generate one random realization, and compute either its
+    auto-correlation, if data == None
+    cross-correlation if data is an array.
     """
     # careful! want to only have one of these floating around...
     if rank == 0:
@@ -74,7 +77,7 @@ def do_one(comm,rank,bins,Nr,outname,d2p=None,data=None,lowdiscr=None):
         points2 = None
     points = comm.bcast(points,root=0)
     if data is not None:
-        points2 = data
+        points2 = data.copy()
     else:
         points2 = comm.bcast(points2,root=0)
     if rank == 0:
@@ -138,8 +141,9 @@ def main(argv=None):
     else:
         data = None
 
-    if not os.path.exists(os.path.dirname(outfilename)):
-        os.path.mkdir(os.path.dirname(outfilename))
+    if rank == 0:
+        if not os.path.exists(os.path.dirname(outfilename)):
+            os.mkdir(os.path.dirname(outfilename))
 
     for n in range(opts.n):
         outname = outfilename.replace('NN',str(opts.Nr)).replace('nn',str(n))
