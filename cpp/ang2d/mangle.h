@@ -11,7 +11,6 @@
 #define MANGLE_H_
 
 #include <vector>
-#include <list>
 #include <string>
 
 namespace Mangle {
@@ -79,7 +78,7 @@ class MaskClass {
 	// The main method returns a completeness, used for making random catalogs.
 private:
 	std::vector<PolygonClass>	polygons;
-	std::vector< std::list<int> >	pixels;
+	std::vector< std::vector<int> >	pixels;
 	int				pixelres;
 	char				pixeltype;
 	long parsepoly(std::string sbuf, long &ncap, double &weight, long &pixel);
@@ -88,6 +87,9 @@ public:
 	MaskClass(std::string fname);
 	long npolygons();
 	double completeness(double theta, double phi);
+
+	/* Input in RA, Dec in degrees */
+	double completeness_radec(double ra, double dec);
 
 };
 

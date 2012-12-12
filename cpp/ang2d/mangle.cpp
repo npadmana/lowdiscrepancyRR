@@ -306,3 +306,10 @@ double Mangle::MaskClass::completeness(double theta, double phi) {
 		return(wt);
 }
 
+double Mangle::MaskClass::completeness_radec(double ra, double dec) {
+	const double d2r = M_PI/180.0;
+	double theta, phi;
+	phi = ra*d2r;
+	theta = (90.0-dec)*d2r;
+	return completeness(theta, phi);
+}
