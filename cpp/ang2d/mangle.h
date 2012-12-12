@@ -90,6 +90,7 @@ public:
 
 	/* Input in RA, Dec in degrees */
 	double completeness_radec(double ra, double dec);
+	double operator()(double ra, double dec);
 
 };
 
