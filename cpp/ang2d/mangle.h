@@ -75,59 +75,20 @@ public:
 };	// SDSSpixClass
 
 class MaskClass {
-// A class to handle masks.  When invoked it reads an ascii mask file.
-// The main method returns a completeness, used for making random catalogs.
+	// A class to handle masks.  When invoked it reads an ascii mask file.
+	// The main method returns a completeness, used for making random catalogs.
 private:
-  std::vector<PolygonClass>	polygons;
-  std::vector< std::list<int> >	pixels;
-  int				pixelres;
-  char				pixeltype;
-  long parsepoly(std::string sbuf, long &ncap, double &weight, long &pixel);
-  long pixelnum(double theta, double phi);
+	std::vector<PolygonClass>	polygons;
+	std::vector< std::list<int> >	pixels;
+	int				pixelres;
+	char				pixeltype;
+	long parsepoly(std::string sbuf, long &ncap, double &weight, long &pixel);
+	long pixelnum(double theta, double phi);
 public:
-  MaskClass(std::string fname);
-  long npolygons() {	// For general interest, how many polygons in mask
-    return(polygons.size());
-  }
-  double completeness(double theta, double phi) {
-  // This is the main method, returning the completness at (theta,phi).
-    bool	notfnd=true;
-    long	ii,pid=-1;
-    double	wt=0;
-    if (pixelres==-1) {	// Mask isn't pixelized.
-      for (ii=0; ii<polygons.size() && notfnd; ii++)
-        if (polygons[ii].inpoly(theta,phi)) {
-          wt    = polygons[ii].getwt();
-          notfnd= false;
-        }
-    }
-    else {
-      long ipix;
-      if (pixeltype=='s')
-        ipix= this->pixelnum(theta,phi);
-      else if (pixeltype=='d') {
-        SDSSpixClass sdsspix(pixelres);
-        ipix= sdsspix.pixelnum(theta,phi);
-      }
-      else {
-        cerr << "Unknown pixelization scheme " << pixeltype << endl;
-        exit(1);
-      }
-      if (ipix<pixels.size()) {
-        for (std::list<int>::iterator ii=pixels[ipix].begin();
-             ii!=pixels[ipix].end() && notfnd; ii++) {
-          if (polygons[*ii].inpoly(theta,phi)) {
-            wt    = polygons[*ii].getwt();
-            notfnd= false;
-          }
-        }
-      }
-    }
-    if (notfnd)
-      return(0.0);
-    else
-      return(wt);
-  }
+	MaskClass(std::string fname);
+	long npolygons();
+	double completeness(double theta, double phi);
+
 };
 
 
