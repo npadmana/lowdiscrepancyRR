@@ -67,10 +67,10 @@ private:
 	long		nx0,ny0,resolution;
 	double	deg2Rad,node,etapole;
 	double	etaOffSet,surveyCenterRA,surveyCenterDEC;
-	std::vector<double> Mangle::SDSSpixClass::tp2survey(double theta, double phi);
+	std::vector<double> tp2survey(double theta, double phi);
 public:
 	SDSSpixClass(long pixres);
-	long Mangle::SDSSpixClass::pixelnum(double theta, double phi);
+	long pixelnum(double theta, double phi);
 };	// SDSSpixClass
 
 class MaskClass {

@@ -5,8 +5,6 @@
 #include	<fstream>
 #include	<sstream>
 #include	<iomanip>
-#include	<vector>
-#include	<string>
 
 using namespace std;
 
@@ -291,7 +289,7 @@ double Mangle::MaskClass::completeness(double theta, double phi) {
 			exit(1);
 		}
 		if (ipix<pixels.size()) {
-			for (std::list<int>::iterator ii=pixels[ipix].begin();
+			for (std::vector<int>::iterator ii=pixels[ipix].begin();
 					ii!=pixels[ipix].end() && notfnd; ii++) {
 				if (polygons[*ii].inpoly(theta,phi)) {
 					wt    = polygons[*ii].getwt();
