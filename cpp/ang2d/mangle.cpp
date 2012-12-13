@@ -311,7 +311,3 @@ double Mangle::MaskClass::completeness_radec(double ra, double dec) {
 	theta = (90.0-dec)*d2r;
 	return completeness(theta, phi);
 }
-
-double Mangle::MaskClass::operator ()(double ra, double dec) {
-	return completeness_radec(ra, dec);
-}
