@@ -185,79 +185,64 @@ long Mangle::MaskClass::pixelnum(double theta, double phi) {
 	return(ipix);
 }
 
-Mangle::MaskClass::MaskClass(std::string fname) {	// Load the mask from fname.
+Mangle::MaskClass::MaskClass(string fname) :
+				pixeltype('u'),
+				pixelres(-1)
+{
 	std::string	sbuf;
-	long	i,j,npoly,maxpix=-1;
+	long	i,j,npoly,maxpix=-1, ipoly, ncap, pixel;
+	double weight;
 	ifstream	fs(fname.c_str());
 	if (!fs) {
 		cerr << "Unable to open " << fname << endl;
 		exit(1);
 	}
 	// Read in the number of polygons, which should start the file.
-	getline(fs,sbuf);
-	if (fs.eof()) {cerr<<"Unexpected end-of-file."<<endl;exit(1);}
+	if (!getline(fs,sbuf)) {cerr<<"Unexpected end-of-file."<<endl;exit(1);}
 	istringstream(sbuf) >> npoly;
 	polygons.resize(npoly);
-	// See if we're pixelized.
-	getline(fs,sbuf);
-	if ( (i=sbuf.find("pixelization"))!=std::string::npos &&
-			(j=sbuf.find("s",i)         )!=std::string::npos) {
-		string ss;
-		ss.assign(sbuf,i+string("pixelization").size(),j);
-		istringstream(ss) >> pixelres;
-		pixeltype = 's';
-	}
-	else if ( (i=sbuf.find("pixelization"))!=std::string::npos &&
-			(j=sbuf.find("d",i)         )!=std::string::npos) {
-		string ss;
-		ss.assign(sbuf,i+string("pixelization").size(),j);
-		istringstream(ss) >> pixelres;
-		pixeltype = 'd';
-		// It turns out that the Mangle "default" pixelization scheme is
-		// not quite SDSSpix, but "based on SDSSpix" in a fairly complicated
-		// manner.  So for now, pretend it's not pixelized.
-		pixelres  = -1;
-		pixeltype = 'u';
-	}
-	else  {
-		pixelres  = -1;
-		pixeltype = 'u';
-	}
-	cout << "# Pixel res "<< pixelres << ", type " << pixeltype << endl;
-	cout.flush();
-	// For each polygon, create the appropriate "polygons" entry.
-	for (int ipoly=0; ipoly<npoly; ipoly++) {
-		long	ncap,pixel;
-		double	weight;
-		do {
-			getline(fs,sbuf);
-			if (fs.eof()) {cerr<<"Unexpected end-of-file."<<endl;exit(1);}
-		} while(sbuf.find("polygon")==std::string::npos);
-		j = parsepoly(sbuf,ncap,weight,pixel);
-		/*if (j!=ipoly) {
-			cerr<<"Error reading "<<fname<<endl;
-			cerr<<"Read polygon "<<j<<" expecting "<<ipoly<<endl;
-			exit(1);
-		}*/
-		polygons[ipoly].setid(pixel);
-		polygons[ipoly].setwt(weight);
-		if (pixel>maxpix) maxpix=pixel;
-		// and read in the caps.
-		for (int icap=0; icap<ncap; icap++) {
-			double x1,y1,z1,cm1;
-			getline(fs,sbuf);
-			if (fs.eof()) {cerr<<"Unexpected end-of-file."<<endl;exit(1);}
-			istringstream(sbuf) >> x1 >> y1 >> z1 >> cm1;
-			polygons[ipoly].addcap( Mangle::CapClass(x1,y1,z1,cm1) );
+
+	ipoly = 0;
+	while (getline(fs, sbuf)) {
+		// Match polygons
+		if ((i=sbuf.find("polygon"))!=std::string::npos) {
+			// Do all the checks for the different cases here.
+			j = parsepoly(sbuf,ncap,weight,pixel);
+			polygons[ipoly].setid(pixel);
+			polygons[ipoly].setwt(weight);
+			if (pixel>maxpix) maxpix=pixel;
+			// and read in the caps.
+			for (int icap=0; icap<ncap; icap++) {
+				double x1,y1,z1,cm1;
+				if (!getline(fs, sbuf)) {cerr<<"Unexpected end-of-file."<<endl;exit(1);}
+				istringstream(sbuf) >> x1 >> y1 >> z1 >> cm1;
+				polygons[ipoly].addcap( Mangle::CapClass(x1,y1,z1,cm1) );
+			}
+			ipoly++;
+		}
+		// Match pixelization
+		else if ((i=sbuf.find("pixelization"))!=std::string::npos &&
+				(j=sbuf.find("s",i)         )!=std::string::npos) {
+			string ss;
+			ss.assign(sbuf,i+string("pixelization").size(),j);
+			istringstream(ss) >> pixelres;
+			pixeltype = 's';
+			cout << "Setting the pixel resolution to " << pixelres << pixeltype << endl;
 		}
 	}
 	fs.close();
+
+	// Check to see that we read in the correct number of polygons
+	if (ipoly != npoly) {cerr<<"Unexpected end-of-file."<<endl;exit(1);}
+
 	// If we're pixelized make a list of which polygons lie in each pixel.
 	if (pixelres>=0) {
 		pixels.resize(maxpix+1);
 		for (int ipoly=0; ipoly<npoly; ipoly++)
 			pixels[polygons[ipoly].getid()].push_back(ipoly);
 	}
+
+
 }
 
 long Mangle::MaskClass::npolygons() {	// For general interest, how many polygons in mask

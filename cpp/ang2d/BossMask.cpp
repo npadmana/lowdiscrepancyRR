@@ -6,6 +6,7 @@
  */
 
 #include <iostream>
+#include <vector>
 
 #include "BossMask.h"
 #include "ang2d.h"
@@ -24,7 +25,9 @@ Boss::BossMask::BossMask(string acceptfn, double thresh_, bool flat_) :
 
 	// Compute the area and cache it.
 	area = 1.0;
-	area = Ang2D::area(RABounds, DecBounds, 1000000, 1, *this, false)[0];
+	vector<double> areas = Ang2D::area(RABounds, DecBounds, 1000000, 20, *this, false);
+	area = 0.0;
+	for (auto a1 : areas) area+=a1; area /= areas.size();
 }
 
 double Boss::BossMask::operator ()(double ra, double dec) const {
