@@ -5,4 +5,6 @@ add_executable(deep2 deep2.cpp)
 target_link_libraries(deep2 npgsl cfitsio m boost_program_options)
 
 add_executable(test_mangle test_mangle.cpp mangle.cpp)
+add_executable(test_bossmask test_bossmask.cpp BossMask.cpp mangle.cpp)
+target_link_libraries(test_bossmask npgsl m)
 configure_file(../../data/boss/boss_survey.ply ${CMAKE_CURRENT_BINARY_DIR}/boss_survey.ply COPYONLY)

@@ -234,11 +234,11 @@ Mangle::MaskClass::MaskClass(std::string fname) {	// Load the mask from fname.
 			if (fs.eof()) {cerr<<"Unexpected end-of-file."<<endl;exit(1);}
 		} while(sbuf.find("polygon")==std::string::npos);
 		j = parsepoly(sbuf,ncap,weight,pixel);
-		if (j!=ipoly) {
+		/*if (j!=ipoly) {
 			cerr<<"Error reading "<<fname<<endl;
 			cerr<<"Read polygon "<<j<<" expecting "<<ipoly<<endl;
 			exit(1);
-		}
+		}*/
 		polygons[ipoly].setid(pixel);
 		polygons[ipoly].setwt(weight);
 		if (pixel>maxpix) maxpix=pixel;
