@@ -32,11 +32,7 @@ typedef pair<double, double> dpair;
  *
  * The vectors should be the same size; no checking is done.
  */
-void vecshift(vector<double> &x, vector<double> &x0) {
-	double tmp;
-	transform(x0.begin(), x0.end(), x.begin(), x.begin(),
-			[&tmp](double a, double b){return modf(a+b,&tmp);});
-}
+void vecshift(vector<double> &x, vector<double> &x0);
 
 /** Compute the angular RR integral
  *
