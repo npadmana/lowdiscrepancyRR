@@ -1,0 +1,7 @@
+# coefficients from a numpy.polynomial.chebyshev.Chebyshev 7-th order
+# polynomial fit to the LOWZ NGC N(z) from 0.05 to 0.6
+# To get 10000 points distributed with this PDF, use:
+#    coeffs = np.loadtxt('../data/boss/LOWZ-north-Nz.dat')
+#    cheb = np.polynomial.chebyshev.Chebyshev(coeffs,domain=[0,1])
+#    cheb(np.random.random(10000)
+0.280147395734 0.196677519794 -0.0169564574324 0.013449553529 0.00813103337299 0.00288000599451 0.000819140634134 0.00171057241911
