@@ -21,7 +21,6 @@ namespace po = boost::program_options;
 Boss::BossMask::BossMask(string configfn) :
 		flat(false)
 {
-	double ramin, ramax, decmin, decmax;
 	int flat_;
 
 	// Get the mask configuration parameters
@@ -74,8 +73,6 @@ Boss::BossMask::BossMask(string configfn) :
 
 	// Set all values
 	if (flat_ != 0) flat=true;
-	RABounds = dpair(ramin, ramax);
-	DecBounds = dpair(decmin, decmax);
 }
 
 double Boss::BossMask::operator ()(double ra, double dec) const {
@@ -96,8 +93,8 @@ double Boss::BossMask::operator ()(double ra, double dec) const {
 // Don't worry about pretty printing --- this is
 void Boss::BossMask::print() {
 	cout << "Normalization : " << area << endl;
-	cout << "RA range : " << RABounds.first << " " << RABounds.second << endl;
-	cout << "Dec range :" << DecBounds.first << " " << DecBounds.second << endl;
+	cout << "RA range : " << ramin << " " << ramax << endl;
+	cout << "Dec range :" << decmin << " " << decmax << endl;
 	cout << "Threshold : " << thresh << endl;
 	if (flat) {
 		cout << "Using flat randoms...\n";

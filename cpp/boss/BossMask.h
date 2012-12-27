@@ -33,7 +33,6 @@ using namespace Mangle;
 class BossMask {
 private :
 	typedef std::unique_ptr<MaskClass> maskptr;
-	typedef pair<double, double> dpair;
 
 	// Define the threshold
 	double thresh;
@@ -49,7 +48,7 @@ private :
 public :
 	// Define RA and Dec bounds for the survey
 	// Make these publicly accessible.
-	dpair RABounds, DecBounds;
+	double ramin, ramax, decmin, decmax;
 
 	/** Constructor
 	 *
