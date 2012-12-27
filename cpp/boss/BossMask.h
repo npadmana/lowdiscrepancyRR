@@ -40,14 +40,15 @@ private :
 	bool flat;
 
 	// Define the acceptance mask
+	string acceptfn;
 	maskptr acceptance;
 
 	// Area
 	double area;
 
 public :
-	// Define Ra and Dec bounds for the survey
-	// Make these publically accessible.
+	// Define RA and Dec bounds for the survey
+	// Make these publicly accessible.
 	dpair RABounds, DecBounds;
 
 	/** Constructor
@@ -55,7 +56,7 @@ public :
 	 *  @param acceptfn [string] acceptance mask file name
 	 *  @param threshold [double] threshold
 	 */
-	BossMask(string acceptfn);
+	BossMask(string configfn);
 
 	/** Return the completeness
 	 *

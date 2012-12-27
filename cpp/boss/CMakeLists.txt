@@ -1,10 +1,16 @@
 # Simple mangle tests
 add_executable(test_mangle test_mangle.cpp mangle.cpp)
 
-#add_executable(test_bossmask test_bossmask.cpp BossMask.cpp mangle.cpp ang2d.cpp)
+# Copy files
+configure_file(bossmask_template.cfg ${CMAKE_CURRENT_BINARY_DIR}/bossmask_template.cfg COPYONLY)
+
+add_library(bosslib SHARED mangle.cpp BossMask.cpp)
+target_link_libraries(bosslib npgsl m boost_program_options)
+
+# Now start building codes
+add_executable(test_bossmask test_bossmask.cpp)
+target_link_libraries(test_bossmask bosslib)
+
 #add_executable(boss boss.cpp mangle.cpp BossMask.cpp ang2d.cpp)
 #target_link_libraries(test_bossmask npgsl m)
 #target_link_libraries(boss npgsl m boost_program_options)
-#configure_file(../../data/boss/boss_survey.ply ${CMAKE_CURRENT_BINARY_DIR}/boss_survey.ply COPYONLY)
-#configure_file(../../data/boss/boss_geometry_2011_06_10_LOWZ-north.ply 
-#         ${CMAKE_CURRENT_BINARY_DIR}/boss_geometry_2011_06_10_LOWZ-north.ply COPYONLY)

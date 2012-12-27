@@ -11,6 +11,6 @@ using namespace std;
 using namespace Boss;
 
 int main() {
-	BossMask mask("boss_survey.ply",0.0, true);
+	BossMask mask("bossmask_template.cfg");
 	mask.print();
 }

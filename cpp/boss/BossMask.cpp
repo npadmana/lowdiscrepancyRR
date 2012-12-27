@@ -6,11 +6,11 @@
  */
 
 #include <iostream>
+#include <fstream>
 #include <vector>
 #include <stdexcept>
 
 #include "BossMask.h"
-#include "ang2d.h"
 
 // We will use boost::program_options to parse the file
 #include "boost/program_options.hpp"
@@ -19,13 +19,8 @@ using namespace std;
 namespace po = boost::program_options;
 
 Boss::BossMask::BossMask(string configfn) :
-		flat(false),
-		thresh(0.0),
-		area(1.0),
-		RABounds(0.0, 360.0),
-		DecBounds(-90.0,90.0)
+		flat(false)
 {
-	string acceptfn;
 	double ramin, ramax, decmin, decmax;
 	int flat_;
 
@@ -46,7 +41,7 @@ Boss::BossMask::BossMask(string configfn) :
 	    				;
 
 			po::variables_map vm;
-			ifstream ifs(configfn.c_str());
+			ifstream ifs(configfn);
 			if (!ifs) {
 				cout << "Error opening configuration file " << configfn << endl;
 				throw runtime_error("Error opening configuration file");
@@ -77,7 +72,7 @@ Boss::BossMask::BossMask(string configfn) :
 
 	// The rejection mask code would go here.
 
-	// Reset all values
+	// Set all values
 	if (flat_ != 0) flat=true;
 	RABounds = dpair(ramin, ramax);
 	DecBounds = dpair(decmin, decmax);
@@ -102,4 +97,12 @@ double Boss::BossMask::operator ()(double ra, double dec) const {
 void Boss::BossMask::print() {
 	cout << "Normalization : " << area << endl;
 	cout << "RA range : " << RABounds.first << " " << RABounds.second << endl;
+	cout << "Dec range :" << DecBounds.first << " " << DecBounds.second << endl;
+	cout << "Threshold : " << thresh << endl;
+	if (flat) {
+		cout << "Using flat randoms...\n";
+	} else {
+		cout << "Using non-flat randoms...\n";
+	}
+	cout << "Acceptance mask : " << acceptfn << " has " << acceptance->npolygons() << " polygons\n";
 }
