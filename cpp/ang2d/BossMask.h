@@ -55,7 +55,7 @@ public :
 	 *  @param acceptfn [string] acceptance mask file name
 	 *  @param threshold [double] threshold
 	 */
-	BossMask(string acceptfn, double thresh_, bool flat_);
+	BossMask(string acceptfn);
 
 	/** Return the completeness
 	 *
