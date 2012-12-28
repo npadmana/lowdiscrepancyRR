@@ -108,6 +108,7 @@ int main(int argc, char **argv) {
 	// Actual call to code needs to go here.
 	Ang2D::OutputData out = Ang2D::rreval(mask1, mask1, p0, thetamin, thetamax);
 	steady_clock::time_point t2 = steady_clock::now();
+	out.finalize();
 
 	out.print();
 

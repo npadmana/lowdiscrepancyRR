@@ -7,13 +7,16 @@
 #ifndef ANG2D_H_
 #define ANG2D_H_
 
-#include "src/npmisc.h"
+#include "src/misc/npcommon.h"
+
 #include <fstream>
 #include <list>
 #include <algorithm>
 #include <cmath>
 #include <Eigen/Core>
 #include <stdexcept>
+#include <tuple>
+
 #include "src/npgsl/npRandom.h"
 
 namespace Ang2D {
@@ -28,15 +31,28 @@ using namespace Padmanabhan;
  */
 class OutputData {
 public :
+	typedef tuple<int, dvector> ResultType;
+	typedef tuple<int, int, double, double, double> StatsType;
+
 	// Data
-	list<int> nrands;
-	list<dvector> vals;
+	vector<ResultType> results;
+	vector<StatsType> stats;
+
+	// Push back
+	void push_back(const int nrand, const dvector& vec);
+
+	// Finalize values
+	void finalize();
 
 	// Print out results to screen
 	void print();
 
 	// Write out results in a binary format
 	void save(ofstream& out);
+
+	// Return the final mean value and error
+	double mean();
+	double error();
 };
 
 
@@ -158,8 +174,7 @@ OutputData area(const Mask &Mask1, const InputParams& p) {
 		if (n1 != p.save_schedule.end()) {
 			if (*n1 == (ii+1)) {
 				transform(val.begin(), val.end(), val1.begin(), [&ii,&jacobian](double x){return x/(ii+1) * jacobian;});
-				out.nrands.push_back(ii+1);
-				out.vals.push_back(val1);
+				out.push_back(ii+1, val1);
 				n1++;
 			}
 		}
@@ -169,8 +184,7 @@ OutputData area(const Mask &Mask1, const InputParams& p) {
 
 	// Multiply back in the jacobian
 	transform(val.begin(), val.end(), val1.begin(), [&p,&jacobian](double x){return x/p.nrand * jacobian;});
-	out.nrands.push_back(p.nrand);
-	out.vals.push_back(val1);
+	out.push_back(p.nrand, val1);
 
 	return out;
 }
@@ -299,8 +313,7 @@ OutputData rreval(const Mask &Mask1, const Mask &Mask2, const InputParams& p, do
 		if (n1 != p.save_schedule.end()) {
 			if (*n1 == (ii+1)) {
 				transform(val.begin(), val.end(), val1.begin(), [&ii,&jacobian](double x){return x/(ii+1) * jacobian;});
-				out.nrands.push_back(ii+1);
-				out.vals.push_back(val1);
+				out.push_back(ii+1, val1);
 				n1++;
 			}
 		}
@@ -310,8 +323,7 @@ OutputData rreval(const Mask &Mask1, const Mask &Mask2, const InputParams& p, do
 
 	// Multiply back in the jacobian
 	transform(val.begin(), val.end(), val1.begin(), [&p,&jacobian](double x){return x/p.nrand * jacobian;});
-	out.nrands.push_back(p.nrand);
-	out.vals.push_back(val1);
+	out.push_back(p.nrand, val1);
 
 	return out;
 }
