@@ -156,9 +156,9 @@ OutputData area(const Mask &Mask1, const InputParams& p) {
 
 		// Save if necessary
 		if (n1 != p.save_schedule.end()) {
-			if (*n1 == ii) {
-				transform(val.begin(), val.end(), val1.begin(), [&ii,&jacobian](double x){return x/ii * jacobian;});
-				out.nrands.push_back(ii);
+			if (*n1 == (ii+1)) {
+				transform(val.begin(), val.end(), val1.begin(), [&ii,&jacobian](double x){return x/(ii+1) * jacobian;});
+				out.nrands.push_back(ii+1);
 				out.vals.push_back(val1);
 				n1++;
 			}
@@ -214,11 +214,12 @@ OutputData rreval(const Mask &Mask1, const Mask &Mask2, const InputParams& p, do
 	double phi1 = p.ramin; // phi_1, leave in degrees
 	double dphi = (p.ramax - p.ramin); // phi_2 - phi1
 	if (p.ramax < p.ramin) dphi += 360; // Wrap around
+	dphi *= D2R; // Work in radians -- necessary for the rotations later
 
 	// Scatter bounds
-	double cDth1 = cos(thetamin * D2R); // Cos Delta theta_1 --- use the larger number first,
+	double cDth1 = cos(thetamax * D2R); // Cos Delta theta_1 --- use the larger number first,
 	// to avoid -ve's in the code
-	double dcDth = cos(thetamax * D2R) - cDth1; // Cos Delta theta_2 - Cos Delta theta_1
+	double dcDth = cos(thetamin * D2R) - cDth1; // Cos Delta theta_2 - Cos Delta theta_1
 
 	// Jacobian
 	double jacobian = dcth * dphi * dcDth * 2 * PI;
@@ -262,9 +263,9 @@ OutputData rreval(const Mask &Mask1, const Mask &Mask2, const InputParams& p, do
 			}
 
 			// Work out the RA, Dec of position 1
-			ra1 = ((x[1] * dphi) + phi1 ); // in degrees
-			if (ra1 > 360) ra1 = ra1-360;
+			x[1] = ((x[1] * dphi) + phi1 );
 			x[0] = x[0]*dcth + cth1;
+			ra1 = x[1]/D2R; if (ra1 > 360) ra1 = ra1-360;
  			dec1 = 90 - acos(x[0])/D2R;
 
  			// Work out displacement vector
@@ -296,9 +297,9 @@ OutputData rreval(const Mask &Mask1, const Mask &Mask2, const InputParams& p, do
 
 		// Save if necessary
 		if (n1 != p.save_schedule.end()) {
-			if (*n1 == ii) {
-				transform(val.begin(), val.end(), val1.begin(), [&ii,&jacobian](double x){return x/ii * jacobian;});
-				out.nrands.push_back(ii);
+			if (*n1 == (ii+1)) {
+				transform(val.begin(), val.end(), val1.begin(), [&ii,&jacobian](double x){return x/(ii+1) * jacobian;});
+				out.nrands.push_back(ii+1);
 				out.vals.push_back(val1);
 				n1++;
 			}
