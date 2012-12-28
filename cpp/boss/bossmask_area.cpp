@@ -25,79 +25,27 @@ namespace po = boost::program_options;
 
 
 int main(int argc, char **argv) {
-	Ang2D::InputParams p0;
-	string maskfn;
+	if (argc < 2) throw runtime_error("Missing argument");
 
-	string fn;
-	bool savefile=false;
+	Ang2D::InputParams p0(argv[1]);
 
-	// Get the input parameters -- pull them into their own scope
-	{
-		try {
-			po::options_description desc("Allowed options");
-			desc.add_options()
-	    				("help", "produce help message")
-	    				("maskfn", po::value<string>(&maskfn), "mask file")
-	    				("nrand", po::value<int>(&p0.nrand)->default_value(10000), "Number of pseudo-random points")
-	    				("nsim", po::value<int>(&p0.nsim)->default_value(1), "Number of simulations")
-	    				("save", po::value<string>(&fn), "save simulation results to file [optional]")
-	    				("prng", "Use pseudo-random numbers instead of a low discrepancy sequence")
-	    				;
-
-			po::variables_map vm;
-			po::store(po::parse_command_line(argc, argv, desc), vm);
-			po::notify(vm);
-
-			if (vm.count("help")) {
-				cout << desc << "\n";
-				return 1;
-			}
-			if (vm.count("maskfn")==0) {
-				cout << "ERROR : A mask file is required\n";
-				return 1;
-			}
-			if (vm.count("save")) {
-				savefile=true;
-			}
-			if (vm.count("prng")) {
-				p0.use_prng=true;
-			}
-
-
-
-		}
-		catch (exception &e) {
-			cout << e.what() << "\n";
-			return 1;
-		}
-
-	}
 
 	// Print some informational messages
 	cout << format("Running with %1% pseudo-random numbers... \n")%p0.nrand;
 	cout << format("and %1% simulations\n")%p0.nsim;
-	if (savefile) {
-		cout << format("Simulations will be saved in %1% \n")%fn;
+	if (p0._dump) {
+		cout << format("Simulations will be saved in %1% \n")%p0.dumpfn;
 	}
 	if (p0.use_prng) {
 		cout << "Using pseudo-random numbers instead of a low discrepancy sequence\n";
 	}
 
 	// Now define the mask
-	BossMask mask1(maskfn);
+	BossMask mask1(p0.mask1fn);
 
 	// Define various bounds
 	p0.ramin = mask1.ramin; p0.ramax = mask1.ramax;
 	p0.decmin = mask1.decmin; p0.decmax = mask1.decmax;
-
-	// Define the save schedule
-	{
-		int n1=10000;
-		while (n1 < p0.nrand) {
-			p0.save_schedule.push_back(n1);
-			n1 *= 2;
-		}
-	}
 
 
 	steady_clock::time_point t1 = steady_clock::now();
@@ -113,8 +61,8 @@ int main(int argc, char **argv) {
 
 
 	// Binary file format
-	if (savefile) {
-		ofstream ofs(fn.c_str(), ios::binary);
+	if (p0._dump) {
+		ofstream ofs(p0.dumpfn, ios::binary);
 		if (!ofs) {
 			cout << "ERROR! Unable to save file\n";
 			return 1;

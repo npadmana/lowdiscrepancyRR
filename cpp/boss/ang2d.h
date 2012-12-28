@@ -9,6 +9,7 @@
 
 #include "src/misc/npcommon.h"
 
+#include <string>
 #include <fstream>
 #include <list>
 #include <algorithm>
@@ -62,14 +63,45 @@ public :
  */
 class InputParams {
 public :
+	// Define the masks
+	// If mask2fn is not specified, use mask1fn
+	string mask1fn, mask2fn;
+
+	// Define the number of random points and simulations
 	int nrand, nsim; // Number of randoms, simulations
-	double decmin, decmax, ramin, ramax; // Bounds for the simulation
+
+	// Use pseudo-random numbers instead of a low discrepancy sequence
 	bool use_prng;
 
+	// Save files
+	// dumpfn is where all the information is dumped.
+	// savefn is a clean version.
+	string dumpfn, savefn;
+
+	// Define the schedule to save the files on
 	vector<int> save_schedule;
 
+
+	// Theta bins for angular cases
+	dvector thetabins;
+
+	//-----------------------------------------
+	// Parameters below this are internally set
+	//-----------------------------------------
+
+	// Bounds for the simulation.
+	double decmin, decmax, ramin, ramax;
+
+	// If we should save dump and save files
+	bool _dump, _save;
+
+	//-----------------------------------------
+	// Methods defined below
+	//-----------------------------------------
+
+
 	// Define the default constructor
-	InputParams() : nrand(10000), nsim(1), decmin(-90.0), decmax(90.0), ramin(0.0), ramax(360.0), use_prng(false) {};
+	InputParams(string fn);
 };
 
 
