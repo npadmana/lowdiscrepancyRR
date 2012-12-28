@@ -84,8 +84,12 @@ double Ang2D::OutputData::mean() {
 	return get<2>(stats.back());
 }
 
-double Ang2D::OutputData::error() {
-	return get<3>(stats.back());
+double Ang2D::OutputData::error(bool percent) {
+	if (percent) {
+		return get<3>(stats.back())/mean() * 100.0;
+	} else {
+		return get<3>(stats.back());
+	}
 }
 
 template <class T>
@@ -110,7 +114,8 @@ Ang2D::InputParams::InputParams(string fn) :
 		decmin{-90},
 		decmax{90},
 		save_schedule{},
-		thetabins{}
+		thetabins{},
+		verbose{0}
 {
 	// Get the mask configuration parameters
 	{
@@ -129,6 +134,7 @@ Ang2D::InputParams::InputParams(string fn) :
 	    				("savefn", po::value<string>(&savefn),"Save file name")
 	    				("save_schedule", po::value< vector<string> >(&_save_schedule),"Save schedule")
 	    				("thetabins", po::value< vector<string> >(&_thetabins),"Thetabins")
+	    				("verbose", po::value<int>(&verbose)->default_value(0),"Verbosity")
 	    				;
 
 			po::variables_map vm;

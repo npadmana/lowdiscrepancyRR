@@ -29,15 +29,16 @@ int main(int argc, char **argv) {
 
 	Ang2D::InputParams p0(argv[1]);
 
-
 	// Print some informational messages
-	cout << format("Running with %1% pseudo-random numbers... \n")%p0.nrand;
-	cout << format("and %1% simulations\n")%p0.nsim;
-	if (p0._dump) {
-		cout << format("Simulations will be saved in %1% \n")%p0.dumpfn;
-	}
-	if (p0.use_prng) {
-		cout << "Using pseudo-random numbers instead of a low discrepancy sequence\n";
+	if (p0.verbose) {
+		cout << format("Running with %1% pseudo-random numbers... \n")%p0.nrand;
+		cout << format("and %1% simulations\n")%p0.nsim;
+		if (p0._dump) {
+			cout << format("Simulations will be saved in %1% \n")%p0.dumpfn;
+		}
+		if (p0.use_prng) {
+			cout << "Using pseudo-random numbers instead of a low discrepancy sequence\n";
+		}
 	}
 
 	// Now define the mask
@@ -54,9 +55,10 @@ int main(int argc, char **argv) {
 	steady_clock::time_point t2 = steady_clock::now();
 	out.finalize();
 
-	out.print();
+	if (p0.verbose > 2) out.print();
 
 	duration<double> time_span = duration_cast<duration<double>>(t2 - t1);
+	cout << format("Estimate of integral = %13.10e with a scatter of %9.6f percent\n")%out.mean() % out.error(true);
 	cout << format("Total evaluation time = %1% seconds \n")%(time_span.count());
 
 

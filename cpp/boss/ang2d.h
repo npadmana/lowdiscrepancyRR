@@ -53,7 +53,7 @@ public :
 
 	// Return the final mean value and error
 	double mean();
-	double error();
+	double error(bool percent=false);
 };
 
 
@@ -84,6 +84,9 @@ public :
 
 	// Theta bins for angular cases
 	dvector thetabins;
+
+	// Verbosity
+	int verbose;
 
 	//-----------------------------------------
 	// Parameters below this are internally set
