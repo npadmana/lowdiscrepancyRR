@@ -117,7 +117,6 @@ int main(int argc, char **argv) {
 
 
 	// Binary file format
-	// int nsim, int nrand, double thetamin, double thetamax, double values[nrand]
 	if (savefile) {
 		ofstream ofs(fn.c_str(), ios::binary);
 		if (!ofs) {
