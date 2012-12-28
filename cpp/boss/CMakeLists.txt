@@ -19,5 +19,5 @@ target_link_libraries(test_bossmask bosslib)
 add_executable(bossmask_area bossmask_area.cpp)
 target_link_libraries(bossmask_area bosslib)
 
-#add_executable(bossRR bossRR.cpp)
-#target_link_libraries(bossRR bosslib)
+add_executable(bossRR bossRR.cpp)
+target_link_libraries(bossRR bosslib)
