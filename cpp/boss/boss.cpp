@@ -1,4 +1,4 @@
-/** Do the angular integral over the DEEP2 mask.
+/** Do the angular integral over a mangle mask
  *
  * Nikhil Padmanabhan, Yale
  */
@@ -26,15 +26,12 @@ namespace po = boost::program_options;
 typedef pair<double, double> dpair;
 
 int main(int argc, char **argv) {
-	int nrand, nsim;
+	Ang2D::InputParams p0;
 	double thetamin, thetamax;
-	double cthresh; // Completeness threshold
-	bool flatmask = false;
 	string maskfn;
 
 	string fn;
 	bool savefile=false;
-	bool use_prng=false;
 
 	// Get the input parameters -- pull them into their own scope
 	{
@@ -43,12 +40,10 @@ int main(int argc, char **argv) {
 			desc.add_options()
 	    				("help", "produce help message")
 	    				("maskfn", po::value<string>(&maskfn), "mask file")
-	    				("nrand", po::value<int>(&nrand)->default_value(10000), "Number of pseudo-random points")
+	    				("nrand", po::value<int>(&p0.nrand)->default_value(10000), "Number of pseudo-random points")
 	    				("thetamin", po::value<double>(&thetamin)->default_value(0.0), "Minimum theta value for RR")
 	    				("thetamax", po::value<double>(&thetamax)->default_value(0.5), "Maximum theta value for RR")
-	    				("cthresh", po::value<double>(&cthresh)->default_value(0.5), "Threshold completeness for mask [0.5]")
-	    				("flatmask","Use completeness values for the mask in the RR calculation [false]")
-	    				("nsim", po::value<int>(&nsim)->default_value(1), "Number of simulations")
+	    				("nsim", po::value<int>(&p0.nsim)->default_value(1), "Number of simulations")
 	    				("save", po::value<string>(&fn), "save simulation results to file [optional]")
 	    				("prng", "Use pseudo-random numbers instead of a low discrepancy sequence")
 	    				;
@@ -69,10 +64,7 @@ int main(int argc, char **argv) {
 				savefile=true;
 			}
 			if (vm.count("prng")) {
-				use_prng=true;
-			}
-			if (vm.count("flatmask")) {
-				flatmask=true;
+				p0.use_prng=true;
 			}
 
 
@@ -86,44 +78,42 @@ int main(int argc, char **argv) {
 
 	// Print some informational messages
 	cout << format("Running with a bin from %1% to %2%...\n")%thetamin%thetamax;
-	cout << format("Running with %1% pseudo-random numbers... \n")%nrand;
-	cout << format("and %1% simulations\n")%nsim;
+	cout << format("Running with %1% pseudo-random numbers... \n")%p0.nrand;
+	cout << format("and %1% simulations\n")%p0.nsim;
 	if (savefile) {
 		cout << format("Simulations will be saved in %1% \n")%fn;
 	}
-	if (use_prng) {
+	if (p0.use_prng) {
 		cout << "Using pseudo-random numbers instead of a low discrepancy sequence\n";
 	}
 
 	// Now define the mask
-	BossMask mask1(maskfn,cthresh,flatmask);
+	BossMask mask1(maskfn);
 
 	// Define various bounds
-	dpair RABounds = mask1.RABounds;
-	dpair decBounds = mask1.DecBounds;
-	dpair thetaBin(thetamin, thetamax);
+	p0.ramin = mask1.ramin; p0.ramax = mask1.ramax;
+	p0.decmin = mask1.decmin; p0.decmax = mask1.decmax;
 
-	// Test the cap area -- do just one simulation
+	// Define the save schedule
 	{
-		vector<double> val = Ang2D::area(RABounds, decBounds, 1000000, 1, mask1, use_prng);
-		cout << format("The mask integrates to %13.10f\n")%val[0];
+		int n1=10000;
+		while (n1 < p0.nrand) {
+			p0.save_schedule.push_back(n1);
+			n1 *= 2;
+		}
 	}
 
 
 	steady_clock::time_point t1 = steady_clock::now();
 	// Actual call to code needs to go here.
-	vector<double> val = Ang2D::rreval(RABounds, decBounds, thetaBin, nrand, nsim, mask1, mask1, use_prng);
+	Ang2D::OutputData out = Ang2D::rreval(mask1, mask1, p0, thetamin, thetamax);
 	steady_clock::time_point t2 = steady_clock::now();
-	double mean=0.0, stddev=0.0;
 
-	for (auto v1 : val) mean+=v1; mean /= val.size();
-	for (auto v1 : val) stddev += (v1-mean)*(v1-mean); stddev = sqrt(stddev/val.size());
-
-	cout << format("The mean is %13.10e +/- %13.10e with a scatter of %13.10e, a fractional error of %9.6f percent\n")
-			% mean % (stddev/sqrt(nsim)) % stddev % (stddev/mean * 100);
+	out.print();
 
 	duration<double> time_span = duration_cast<duration<double>>(t2 - t1);
 	cout << format("Total evaluation time = %1% seconds \n")%(time_span.count());
+
 
 
 	// Binary file format
@@ -134,11 +124,9 @@ int main(int argc, char **argv) {
 			cout << "ERROR! Unable to save file\n";
 			return 1;
 		}
-		ofs.write((char*)&nsim, sizeof(int));
-		ofs.write((char*)&nrand, sizeof(int));
 		ofs.write((char*)&thetamin, sizeof(double));
 		ofs.write((char*)&thetamax, sizeof(double));
-		ofs.write((char*)&val[0], sizeof(double)*nsim);
+		out.write(ofs);
 		ofs.close();
 	}
 
