@@ -126,7 +126,7 @@ int main(int argc, char **argv) {
 		}
 		ofs.write((char*)&thetamin, sizeof(double));
 		ofs.write((char*)&thetamax, sizeof(double));
-		out.write(ofs);
+		out.save(ofs);
 		ofs.close();
 	}
 

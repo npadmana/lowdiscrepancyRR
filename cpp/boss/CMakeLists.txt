@@ -14,6 +14,5 @@ target_link_libraries(test_bossmask bosslib)
 add_executable(bossmask_area bossmask_area.cpp)
 target_link_libraries(bossmask_area bosslib)
 
-#add_executable(boss boss.cpp mangle.cpp BossMask.cpp ang2d.cpp)
-#target_link_libraries(test_bossmask npgsl m)
-#target_link_libraries(boss npgsl m boost_program_options)
+add_executable(bossRR bossRR.cpp)
+target_link_libraries(bossRR bosslib)
