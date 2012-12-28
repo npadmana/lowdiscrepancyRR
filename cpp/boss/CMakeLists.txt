@@ -7,6 +7,11 @@ configure_file(bossmask_template.cfg ${CMAKE_CURRENT_BINARY_DIR}/bossmask_templa
 add_library(bosslib SHARED mangle.cpp BossMask.cpp ang2d.cpp)
 target_link_libraries(bosslib npgsl m boost_program_options)
 
+# Test codes 
+add_executable(test_program_options test_program_options.cpp)
+target_link_libraries(test_program_options boost_program_options)
+
+
 # Now start building codes
 add_executable(test_bossmask test_bossmask.cpp)
 target_link_libraries(test_bossmask bosslib)
