@@ -23,7 +23,7 @@ void Ang2D::OutputData::print() {
 		// This is an extra copy, but it makes the code cleaner
 		boost::tie(nrand1, val1) = v1;
 		nsim = val1.size();
-		cout << format("Using %7i terms... \n") % nrand1;
+		cout << format("Using %7i terms and %5i simulations... \n") % nrand1 % nsim;
 		tie(mean, stddev) = stats(val1);
 		cout << format("The mean is %13.10e +/- %13.10e with a scatter of %13.10e, a fractional error of %9.6f percent\n")
 				% mean % (stddev/sqrt(nsim)) % stddev % (stddev/mean * 100);
