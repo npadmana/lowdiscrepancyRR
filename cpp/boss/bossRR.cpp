@@ -62,6 +62,7 @@ int main(int argc, char **argv) {
 	// Define various bounds
 	int nra, ndec;
 	tie(ndec, nra) = Ang2D::partition(nproc);
+	if (p0.verbose && (rank==0)) cout << "Partitioning into " << nra << " x " << ndec << endl;
 	Ang2D::setBounds(nra,ndec,rank,mask1,p0);
 
 
