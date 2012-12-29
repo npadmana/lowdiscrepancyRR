@@ -94,6 +94,9 @@ int main(int argc, char **argv) {
 				return 1;
 			}
 
+			// Save the number of bins
+			ofs.write((char*)&nbins, sizeof(int));
+			// Now save the data -- thetamin, thetamax, and then the dump
 			auto ii = outlist.begin();
 			for (int ibin=0;ibin < nbins; ii++, ++ibin) {
 				ofs.write((char*)&p0.thetabins[ibin], sizeof(double));
