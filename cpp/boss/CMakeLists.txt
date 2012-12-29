@@ -21,3 +21,5 @@ target_link_libraries(bossmask_area bosslib)
 
 add_executable(bossRR bossRR.cpp)
 target_link_libraries(bossRR bosslib)
+
+add_executable(test_partition test_partition.cpp)
