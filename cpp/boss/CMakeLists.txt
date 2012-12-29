@@ -1,3 +1,6 @@
+set(CMAKE_C_COMPILER "mpicc")
+set(CMAKE_CXX_COMPILER "mpicxx")
+
 # Simple mangle tests
 add_executable(test_mangle test_mangle.cpp mangle.cpp)
 
