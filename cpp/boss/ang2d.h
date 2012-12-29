@@ -107,7 +107,10 @@ public :
 	InputParams(string fn);
 };
 
-
+/** Helper function for MPI data partitioning
+ *
+ */
+tuple<int, int> partition(int n);
 
 /** Convenience function -- shifts a random vector in a random direction mod 1
  *
@@ -117,6 +120,47 @@ public :
  * The vectors should be the same size; no checking is done.
  */
 void vecshift(vector<double> &x, vector<double> &x0);
+
+/** Subdivide mask region and set the bounds in the
+ *  InputParams structure accordingly.
+ *
+ *  Note that p is altered by this routine
+ *
+ *  @param nra  : Number of RA divisions
+ *  @param ndec : Number of Dec divisions
+ *  @param rank : the rank of this process
+ *  @param mask1 : The mask -- assumed to have members ramin, ramax, decmin,decmax
+ *  @param p : InputParams -- ramin, ... etc are set by this routine.
+ *
+ *  Not meant for general use.
+ */
+template <class Mask>
+void setBounds(int nra, int ndec, int rank, const Mask& mask1, InputParams& p) {
+
+	// Survey Bounds
+	double cth1 = sin(mask1.decmin * D2R); // Cos theta_1
+	double dcth = sin(mask1.decmax*D2R) - cth1; // Cos theta_2 - Cos theta_1
+	double phi1 = mask1.ramin; // phi_1, leave in degrees
+	double dphi = (mask1.ramax - mask1.ramin); // phi_2 - phi1
+	if (mask1.ramax < mask1.ramin) dphi += 360; // Wrap around
+
+	// Figure out my position in the mask
+	int ira, idec;
+	ira = rank % nra;
+	idec = rank / nra;
+
+	// Set ramin, ramax, wrapping around if necessary
+	p.ramin = phi1 + ira * dphi/nra;
+	p.ramax = p.ramin + dphi/nra;
+	if (p.ramin > 360) p.ramin -= 360;
+	if (p.ramax > 360) p.ramax -= 360;
+
+	// Set decmin, decmax
+	p.decmin = 90-acos(cth1 + idec * dcth/ndec)/D2R;
+	p.decmax = 90-acos(cth1 + (idec+1)*dcth/ndec)/D2R;
+
+}
+
 
 
 /** Compute the weighted area of a mask

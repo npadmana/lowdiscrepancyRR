@@ -171,3 +171,17 @@ Ang2D::InputParams::InputParams(string fn) :
 	}
 
 }
+
+/** Helper function for partition code
+ *
+ */
+tuple<int, int> partition(int n) {
+	// Short circuit the case of n=1
+	if (n==1) return make_tuple(1,1);
+
+	int sn = static_cast<int>(floor(sqrt(n)+0.01)); // shift slightly to avoid missing perfect squares.
+	while ((n % sn)!=0) sn--;
+
+	return make_tuple(sn, n/sn);
+}
+

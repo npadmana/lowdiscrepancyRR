@@ -51,8 +51,7 @@ int main(int argc, char **argv) {
 	BossMask mask2(p0.mask2fn);
 
 	// Define various bounds
-	p0.ramin = mask1.ramin; p0.ramax = mask1.ramax;
-	p0.decmin = mask1.decmin; p0.decmax = mask1.decmax;
+	Ang2D::setBounds(1,1,0,mask1,p0);
 
 
 	// Get ready to execute the loop over thetabins here
