@@ -15,6 +15,7 @@
 #include "boost/format.hpp"
 #include "boost/program_options.hpp"
 
+#include "mpi.h"
 
 using namespace std;
 using boost::format;
@@ -27,6 +28,12 @@ namespace po = boost::program_options;
 typedef pair<double, double> dpair;
 
 int main(int argc, char **argv) {
+	// MPI initialization
+	MPI_Init(&argc, &argv);
+	int rank, nproc;
+	MPI_Comm_rank(MPI_COMM_WORLD, &rank);
+	MPI_Comm_size(MPI_COMM_WORLD, &nproc);
+
 	if (argc < 2) throw runtime_error("Missing argument");
 
 	Ang2D::InputParams p0(argv[1]);
@@ -36,14 +43,16 @@ int main(int argc, char **argv) {
 	if (nbins < 1) throw invalid_argument("thetabins needs to have length > 1");
 
 	// Print some informational messages
-	cout << format("Running with bins from %1% to %2%...\n")%p0.thetabins[0]%p0.thetabins[nbins];
-	cout << format("Running with %1% pseudo-random numbers... \n")%p0.nrand;
-	cout << format("and %1% simulations\n")%p0.nsim;
-	if (p0._dump) {
-		cout << format("Simulations will be saved in %1% \n")%p0.dumpfn;
-	}
-	if (p0.use_prng) {
-		cout << "Using pseudo-random numbers instead of a low discrepancy sequence\n";
+	if (p0.verbose && (rank==0)) {
+		cout << format("Running with bins from %1% to %2%...\n")%p0.thetabins[0]%p0.thetabins[nbins];
+		cout << format("Running with %1% pseudo-random numbers... \n")%p0.nrand;
+		cout << format("and %1% simulations\n")%p0.nsim;
+		if (p0._dump) {
+			cout << format("Simulations will be saved in %1% \n")%p0.dumpfn;
+		}
+		if (p0.use_prng) {
+			cout << "Using pseudo-random numbers instead of a low discrepancy sequence\n";
+		}
 	}
 
 	// Now define the mask
@@ -51,7 +60,9 @@ int main(int argc, char **argv) {
 	BossMask mask2(p0.mask2fn);
 
 	// Define various bounds
-	Ang2D::setBounds(1,1,0,mask1,p0);
+	int nra, ndec;
+	tie(ndec, nra) = Ang2D::partition(nproc);
+	Ang2D::setBounds(nra,ndec,rank,mask1,p0);
 
 
 	// Get ready to execute the loop over thetabins here
@@ -67,44 +78,49 @@ int main(int argc, char **argv) {
 	steady_clock::time_point t2 = steady_clock::now();
 
 	duration<double> time_span = duration_cast<duration<double>>(t2 - t1);
-	cout << format("Total evaluation time = %1% seconds \n")%(time_span.count());
+
+
+	if (rank==0) {
+		cout << format("Total evaluation time = %1% seconds \n")%(time_span.count());
 
 
 
-	// Binary file format
-	if (p0._dump) {
-		ofstream ofs(p0.dumpfn, ios::binary);
-		if (!ofs) {
-			cout << "ERROR! Unable to save dump file\n";
-			return 1;
+		// Binary file format
+		if (p0._dump) {
+			ofstream ofs(p0.dumpfn, ios::binary);
+			if (!ofs) {
+				cout << "ERROR! Unable to save dump file\n";
+				return 1;
+			}
+
+			auto ii = outlist.begin();
+			for (int ibin=0;ibin < nbins; ii++, ++ibin) {
+				ofs.write((char*)&p0.thetabins[ibin], sizeof(double));
+				ofs.write((char*)&p0.thetabins[ibin+1], sizeof(double));
+				ii->save(ofs);
+			}
+			ofs.close();
 		}
 
-		auto ii = outlist.begin();
-		for (int ibin=0;ibin < nbins; ii++, ++ibin) {
-			ofs.write((char*)&p0.thetabins[ibin], sizeof(double));
-			ofs.write((char*)&p0.thetabins[ibin+1], sizeof(double));
-			ii->save(ofs);
+		// Save file format
+		if (p0._save) {
+			ofstream ofs(p0.savefn);
+			if (!ofs) {
+				cout << "ERROR! Unable to save file\n";
+				return 1;
+			}
+
+			auto ii = outlist.begin();
+			ofs << format("# %15s %15s %15s %9s\n")%"theta_min"%"theta_max"%"RR"%"error";
+			for (int ibin=0;ibin < nbins; ii++, ++ibin) {
+				ofs << format("  %15.10e %15.10e %15.10e %9.6f\n")
+									% p0.thetabins[ibin] % p0.thetabins[ibin+1] % ii->mean() % ii->error(true);
+			}
+			ofs.close();
 		}
-		ofs.close();
-	}
-
-	// Save file format
-	if (p0._save) {
-		ofstream ofs(p0.savefn);
-		if (!ofs) {
-					cout << "ERROR! Unable to save file\n";
-					return 1;
-				}
-
-				auto ii = outlist.begin();
-				ofs << format("# %15s %15s %15s %9s\n")%"theta_min"%"theta_max"%"RR"%"error";
-				for (int ibin=0;ibin < nbins; ii++, ++ibin) {
-					ofs << format("  %15.10e %15.10e %15.10e %9.6f\n")
-							% p0.thetabins[ibin] % p0.thetabins[ibin+1] % ii->mean() % ii->error(true);
-				}
-				ofs.close();
 	}
 
 
-
+	// Nothing goes below this
+	MPI_Finalize();
 }

@@ -6,6 +6,8 @@
 #include <boost/format.hpp>
 #include <boost/program_options.hpp>
 
+#include "mpi.h"
+
 
 using namespace std;
 using boost::format;
@@ -42,6 +44,15 @@ void Ang2D::OutputData::push_back(const int nrand, const dvector& vec) {
 void Ang2D::OutputData::finalize() {
 
 	// MPI finalization will happen here
+	MPI_Barrier(MPI_COMM_WORLD); // Barrier for sanity
+	{
+		dvector val1;
+		for (auto& v1 : results) {
+			tie(ignore, val1) = v1; // Copy here, don't try to do this in place
+			MPI_Allreduce(&val1[0], &(get<1>(v1)[0]), val1.size(), MPI_DOUBLE, MPI_SUM, MPI_COMM_WORLD);
+			MPI_Barrier(MPI_COMM_WORLD);
+		}
+	}
 
 
 	// Compute the statistics
@@ -175,7 +186,7 @@ Ang2D::InputParams::InputParams(string fn) :
 /** Helper function for partition code
  *
  */
-tuple<int, int> partition(int n) {
+tuple<int, int> Ang2D::partition(int n) {
 	// Short circuit the case of n=1
 	if (n==1) return make_tuple(1,1);
 
