@@ -9,6 +9,7 @@
 #include <fstream>
 #include <vector>
 #include <stdexcept>
+#include <boost/filesystem.hpp>
 
 #include "BossMask.h"
 
@@ -17,6 +18,19 @@
 
 using namespace std;
 namespace po = boost::program_options;
+namespace fs = boost::filesystem;
+
+/* Helper function
+ *
+ * if fn is an absolute path, return unchanged.
+ * if not, use the root from configfn
+ */
+void fixpath(string& fn, const string& configfn) {
+	fs::path p1(fn);
+	if (!p1.is_absolute()) {
+		fn = (fs::path(configfn).parent_path()/=p1).native();
+	}
+}
 
 Boss::BossMask::BossMask(string configfn) :
 		flat(false)
@@ -66,7 +80,7 @@ Boss::BossMask::BossMask(string configfn) :
 
 	}
 
-
+	fixpath(acceptfn, configfn);
 	acceptance.reset(new MaskClass(acceptfn));
 
 	// The rejection mask code would go here.
