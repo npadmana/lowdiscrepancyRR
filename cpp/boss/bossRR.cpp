@@ -64,6 +64,9 @@ int main(int argc, char **argv) {
 	tie(ndec, nra) = Ang2D::partition(nproc);
 	if (p0.verbose && (rank==0)) cout << "Partitioning into " << nra << " x " << ndec << endl;
 	Ang2D::setBounds(nra,ndec,rank,mask1,p0);
+	if (p0.verbose > 2) cout <<
+			format("Rank %i -> %10.6f < RA < %10.6f, %10.6f < Dec < %10.6f\n")
+			% rank % p0.ramin % p0.ramax % p0.decmin % p0.decmax;
 
 
 	// Get ready to execute the loop over thetabins here
