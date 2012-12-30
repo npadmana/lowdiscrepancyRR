@@ -133,6 +133,10 @@ Ang2D::InputParams::InputParams(string fn) :
 		int prng_;
 		vector<string> _save_schedule;
 		vector<string> _thetabins;
+
+		double thetamin, dtheta;
+		int nthetabins;
+
 		try {
 			po::options_description desc("Allowed options");
 			desc.add_options()
@@ -145,6 +149,9 @@ Ang2D::InputParams::InputParams(string fn) :
 	    				("savefn", po::value<string>(&savefn),"Save file name")
 	    				("save_schedule", po::value< vector<string> >(&_save_schedule),"Save schedule")
 	    				("thetabins", po::value< vector<string> >(&_thetabins),"Thetabins")
+	    				("thetamin",po::value<double>(&thetamin),"Theta_min")
+	    				("dtheta", po::value<double>(&dtheta), "dtheta")
+	    				("nthetabins", po::value<int>(&nthetabins), "number of theta bins")
 	    				("verbose", po::value<int>(&verbose)->default_value(0),"Verbosity")
 	    				;
 
@@ -170,8 +177,19 @@ Ang2D::InputParams::InputParams(string fn) :
 
 			if (vm.count("save_schedule")) save_schedule = parsestring<int>(_save_schedule);
 			sort(save_schedule.begin(), save_schedule.end());
-			if (vm.count("thetabins")) thetabins = parsestring<double>(_thetabins);
-			sort(thetabins.begin(), thetabins.end());
+
+			// Thetabins has priority over incremental fills
+			if (vm.count("thetabins")) {
+				thetabins = parsestring<double>(_thetabins);
+				sort(thetabins.begin(), thetabins.end());
+			}
+			// Incremental fill -- check
+			else if ((vm.count("thetamin")>0) &&
+					   (vm.count("dtheta")>0) && (vm.count("nthetabins")>0))
+			{
+				thetabins.resize(nthetabins);
+				for (int ii=0; ii<nthetabins; ++ii) thetabins[ii] = ii*dtheta + thetamin;
+			}
 
 
 		}
