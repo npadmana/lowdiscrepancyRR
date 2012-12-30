@@ -188,7 +188,7 @@ Ang2D::InputParams::InputParams(string fn) :
 					   (vm.count("dtheta")>0) && (vm.count("nthetabins")>0))
 			{
 				thetabins.resize(nthetabins);
-				for (int ii=0; ii<nthetabins; ++ii) thetabins[ii] = ii*dtheta + thetamin;
+				for (int ii=0; ii<=nthetabins; ++ii) thetabins[ii] = ii*dtheta + thetamin;
 			}
 
 
