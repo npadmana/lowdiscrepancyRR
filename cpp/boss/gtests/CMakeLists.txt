@@ -1,6 +1,6 @@
 
 # Test data files
-set (testdata hemisphere.cfg hemisphere.ply hemisphere_input.cfg)
+set (testdata hemisphere.cfg hemisphere.ply hemisphere_input.cfg sphere.cfg sphere.ply sphere_input.cfg)
 foreach(file1 ${testdata})
   configure_file(${file1} ${CMAKE_CURRENT_BINARY_DIR}/${file1} COPYONLY)
 endforeach(file1)
