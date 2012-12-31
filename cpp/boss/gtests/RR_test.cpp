@@ -74,6 +74,22 @@ TEST_F(RRTest, AbsoluteTestSphereBin2) {
 }
 
 
+TEST_F(RRTest, AbsoluteTestHemisphereBin1) {
+	string inputfn {"hemisphere_input.cfg"};
+	double testbase = calcRR(inputfn, 1, 0.0, 1.0);
+	double testabs = 0.000151736; // Calculated from Mathematica
+	EXPECT_NEAR(1.0, testabs/testbase, 1.e-3);
+}
+
+TEST_F(RRTest, AbsoluteTestHemisphereBin2) {
+	string inputfn {"hemisphere_input.cfg"};
+	double testbase = calcRR(inputfn, 1, 3.0, 5.0);
+	double testabs = 0.0023797; // Calculated from Mathematica
+	EXPECT_NEAR(1.0, testabs/testbase, 1.e-3);
+}
+
+
+
 INSTANTIATE_TEST_CASE_P(MultiSectionRRTest,
                         RRTest,
                         ::testing::Values(2,4,8,16,32));

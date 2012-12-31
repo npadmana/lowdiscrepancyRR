@@ -22,9 +22,7 @@ Cell[CellGroupData[{
 
 Cell["Set up the rotation matrix ", "Section"],
 
-Cell["\<\
-See ang2d.nb for some more tests\
-\>", "Text"],
+Cell["See ang2d.nb for some more tests", "Text"],
 
 Cell[CellGroupData[{
 
@@ -367,12 +365,89 @@ Cell[BoxData[
    "3.38468136823989`", ",", "0.0000342616923496641`", ",", 
     "6.283185307179586`"}], "}"}], "}"}]], "Output"]
 }, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Test cases for C++ unit test", "Section"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{"bin1", " ", "=", " ", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"area", "[", 
+     RowBox[{"0.0", ",", " ", "1.0", ",", " ", "5"}], "]"}], "[", 
+    RowBox[{"[", 
+     RowBox[{"1", ",", "1"}], "]"}], "]"}], "/", 
+   RowBox[{"(", 
+    RowBox[{"4", " ", 
+     SuperscriptBox["Pi", "2"]}], ")"}]}]}], "\[IndentingNewLine]", 
+ RowBox[{"bin21", " ", "=", " ", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"area", "[", 
+     RowBox[{"0.0", ",", " ", "3.0", ",", " ", "5"}], "]"}], "[", 
+    RowBox[{"[", 
+     RowBox[{"1", ",", "1"}], "]"}], "]"}], "/", 
+   RowBox[{"(", 
+    RowBox[{"4", " ", 
+     SuperscriptBox["Pi", "2"]}], ")"}]}]}], "\[IndentingNewLine]", 
+ RowBox[{"bin22", " ", "=", " ", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"area", "[", 
+     RowBox[{"0.0", ",", " ", "5.0", ",", " ", "5"}], "]"}], "[", 
+    RowBox[{"[", 
+     RowBox[{"1", ",", "1"}], "]"}], "]"}], "/", 
+   RowBox[{"(", 
+    RowBox[{"4", 
+     SuperscriptBox["Pi", "2"]}], ")"}]}]}], "\[IndentingNewLine]", 
+ RowBox[{"bin22", "-", "bin21"}]}], "Input"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"Divonne", "::", "success"}], "MessageName"], 
+  RowBox[{
+  ":", " "}], "\<\"Needed \[NoBreak]\\!\\(375188\\)\[NoBreak] integrand \
+evaluations on \[NoBreak]\\!\\(668\\)\[NoBreak] subregions.\"\>"}]], \
+"Message", "MSG"],
+
+Cell[BoxData["0.00015173597391108525`"], "Output"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"Divonne", "::", "success"}], "MessageName"], 
+  RowBox[{
+  ":", " "}], "\<\"Needed \[NoBreak]\\!\\(192032\\)\[NoBreak] integrand \
+evaluations on \[NoBreak]\\!\\(87\\)\[NoBreak] subregions.\"\>"}]], \
+"Message", "MSG"],
+
+Cell[BoxData["0.001355221200034086`"], "Output"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"Divonne", "::", "success"}], "MessageName"], 
+  RowBox[{
+  ":", " "}], "\<\"Needed \[NoBreak]\\!\\(355916\\)\[NoBreak] integrand \
+evaluations on \[NoBreak]\\!\\(106\\)\[NoBreak] subregions.\"\>"}]], \
+"Message", "MSG"],
+
+Cell[BoxData["0.003734923465770418`"], "Output"],
+
+Cell[BoxData["0.0023797022657363323`"], "Output"]
+}, Open  ]]
 }, Open  ]]
 },
-WindowSize->{699, 724},
+WindowSize->{1511, 1147},
 WindowMargins->{{74, Automatic}, {Automatic, 0}},
-FrontEndVersion->"8.0 for Mac OS X x86 (32-bit, 64-bit Kernel) (February 23, \
-2011)",
+PrivateNotebookOptions->{"VersionedStylesheet"->{"Default.nb"[8.] -> False}},
+FrontEndVersion->"9.0 for Mac OS X x86 (32-bit, 64-bit Kernel) (November 20, \
+2012)",
 StyleDefinitions->"Default.nb"
 ]
 
