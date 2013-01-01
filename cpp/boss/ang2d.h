@@ -319,7 +319,6 @@ OutputData rreval(const Mask &Mask1, const Mask &Mask2, const InputParams& p, do
 	double phi1 = p.ramin; // phi_1, leave in degrees
 	double dphi = (p.ramax - p.ramin); // phi_2 - phi1
 	if (p.ramax < p.ramin) dphi += 360; // Wrap around
-	dphi *= D2R; // Work in radians -- necessary for the rotations later
 
 	// Scatter bounds
 	double cDth1 = cos(thetamax * D2R); // Cos Delta theta_1 --- use the larger number first,
@@ -327,7 +326,7 @@ OutputData rreval(const Mask &Mask1, const Mask &Mask2, const InputParams& p, do
 	double dcDth = cos(thetamin * D2R) - cDth1; // Cos Delta theta_2 - Cos Delta theta_1
 
 	// Jacobian
-	double jacobian = dcth * dphi * dcDth * 2 * PI;
+	double jacobian = dcth * dphi * D2R * dcDth * 2 * PI;
 
 	// Set up the output data
 	OutputData out;
@@ -343,8 +342,7 @@ OutputData rreval(const Mask &Mask1, const Mask &Mask2, const InputParams& p, do
 
 	// Temporary values
 	dvector x, xsave;
-	double ra1, dec1, ra2, dec2, tmp, cth_, sth_, phi_;
-	Vector3d x1, x2; Matrix3d rotmat;
+	double ra1, dec1, ra2, dec2, tmp, cth_, phi_;
 	dvector val(p.nsim, 0.0), val1(p.nsim);
 	auto n1 = p.save_schedule.begin();
 
@@ -368,33 +366,15 @@ OutputData rreval(const Mask &Mask1, const Mask &Mask2, const InputParams& p, do
 			}
 
 			// Work out the RA, Dec of position 1
-			x[1] = ((x[1] * dphi) + phi1 );
+			ra1 = ((x[1] * dphi) + phi1 );
+			if (ra1 > 360) ra1 = ra1-360;
 			x[0] = x[0]*dcth + cth1;
-			ra1 = x[1]/D2R; if (ra1 > 360) ra1 = ra1-360;
  			dec1 = 90 - acos(x[0])/D2R;
 
  			// Work out displacement vector
- 			phi_ = x[3]*2 *PI;
+ 			phi_ = x[3]*360.0;
  			cth_ = x[2]*dcDth + cDth1;
- 			sth_ = sqrt(1-cth_*cth_);
- 			x1 << sth_ * cos(phi_), sth_ * sin(phi_), cth_;
-
- 			// Generate rotation matrix
- 			tmp = sqrt(1-x[0]*x[0]); // sin
- 			// x[0] = cos theta
- 			// tmp = sin theta
- 			// x[1] = phi
- 			rotmat << x[0] * cos(x[1]), -sin(x[1]), tmp *cos(x[1]),
- 					x[0] * sin(x[1]),  cos(x[1]), tmp *sin(x[1]),
- 					tmp             ,          0, x[0];
-
- 			x2.noalias() = rotmat * x1;
-
- 			// Now convert back to ra, dec
- 			dec2 = 90 - acos(x2.coeff(2))/D2R; // no range checking
- 			ra2 = atan2(x2.coeff(1), x2.coeff(0))/D2R; // (-180, 180)
- 			if (ra2 < 0) ra2 = 360+ra2;
-
+ 			tie(ra2, dec2) = rotatePoint(ra1, dec1, cth_, phi_);
 
 			// Now do the actual calculation
 			val[jj] += Mask1(ra1, dec1)*Mask2(ra2, dec2);

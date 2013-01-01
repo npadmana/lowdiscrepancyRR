@@ -7,7 +7,7 @@ endforeach(file1)
 
 
 # Build tests
-set (testlist partition_test area_test RR_test test_rotatePoint)
+set (testlist partition_test area_test RR_test test_rotatePoint mpi_RR_test)
 
 foreach (test1 ${testlist})
 add_executable(${test1} ${test1}.cpp)
