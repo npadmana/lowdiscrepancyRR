@@ -268,6 +268,18 @@ OutputData area(const Mask &Mask1, const InputParams& p) {
 	return out;
 }
 
+/** Helper routine to rotate the displaced point to its final position
+ *  Not designed for general use.....
+ *
+ *   @param ra1 : position of point 1 (degrees)
+ *   @param dec2 : position of point 1 (degrees)
+ *   @param costheta : cosine of polar angle
+ *   @param phi : azimuth angle of displaced point (degrees)
+ *
+ *   returns ra2, dec2 -- ra2 is between 0, 360
+ */
+tuple<double, double> rotatePoint(double ra1, double dec1, double costheta, double phi);
+
 
 /** Compute the angular RR integral
  *
@@ -332,7 +344,7 @@ OutputData rreval(const Mask &Mask1, const Mask &Mask2, const InputParams& p, do
 	// Temporary values
 	dvector x, xsave;
 	double ra1, dec1, ra2, dec2, tmp, cth_, sth_, phi_;
-	Vector3d x1, x2; Matrix3d rotmat;;
+	Vector3d x1, x2; Matrix3d rotmat;
 	dvector val(p.nsim, 0.0), val1(p.nsim);
 	auto n1 = p.save_schedule.begin();
 

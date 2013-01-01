@@ -214,3 +214,33 @@ tuple<int, int> Ang2D::partition(int n) {
 	return make_tuple(sn, n/sn);
 }
 
+tuple<double, double> Ang2D::rotatePoint(double ra1, double dec1,
+		double costheta, double phi) {
+
+	double cth = sin(dec1*D2R);  // Note that Dec is 90-theta
+	double sth = cos(dec1*D2R);  // Note that Dec is 90-theta
+	double cphi = cos(ra1*D2R);
+	double sphi = sin(ra1*D2R);
+
+	// Define the rotation matrix
+	Matrix3d rotmat;
+	rotmat << cth * cphi, -sphi, sth*cphi,
+			  cth * sphi,  cphi, sth*sphi,
+			  -sth      ,     0, cth      ;
+
+	// Define the input and output vectors
+	Vector3d x1, x2;
+	double sth_ = sqrt(1-costheta*costheta);
+	double cphi_ = cos(phi*D2R);
+	double sphi_ = sin(phi*D2R);
+	x1 << sth_* cphi_, sth_*sphi_, costheta;
+	x2.noalias() = rotmat * x1;
+
+	// Now convert back to ra, dec
+	double ra2, dec2;
+	dec2 = 90 - acos(x2.coeff(2))/D2R; // no range checking
+	ra2 = atan2(x2.coeff(1), x2.coeff(0))/D2R; // (-180, 180)
+	if (ra2 < 0) ra2 = 360+ra2;
+
+	return make_tuple(ra2,dec2);
+}
