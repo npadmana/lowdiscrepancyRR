@@ -1,0 +1,400 @@
+Running with a bin from 0.007812 to 0.015625...
+Running with 1000 pseudo-random numbers... 
+and 100 simulations
+Simulations will be saved in rrdump_00_00001000.dat 
+RA limits from 351.370209 to 352.083069 in 1500 pixels
+Dec limits from  -0.103432 to   0.377050 in 1000 pixels
+Weighted mask area = 4.696889e-05
+The mask integrates to  0.9999549035
+The mean is 1.7964260333e-03 +/- 2.3012895626e-06 with a scatter of 2.3012895626e-05, a fractional error of  1.281038 percent
+Total evaluation time = 0.088006 seconds 
+Running with a bin from 0.007812 to 0.015625...
+Running with 4000 pseudo-random numbers... 
+and 100 simulations
+Simulations will be saved in rrdump_00_00004000.dat 
+RA limits from 351.370209 to 352.083069 in 1500 pixels
+Dec limits from  -0.103432 to   0.377050 in 1000 pixels
+Weighted mask area = 4.696889e-05
+The mask integrates to  0.9999549035
+The mean is 1.7956374134e-03 +/- 1.2272965990e-06 with a scatter of 1.2272965990e-05, a fractional error of  0.683488 percent
+Total evaluation time = 0.246842 seconds 
+Running with a bin from 0.007812 to 0.015625...
+Running with 16000 pseudo-random numbers... 
+and 100 simulations
+Simulations will be saved in rrdump_00_00016000.dat 
+RA limits from 351.370209 to 352.083069 in 1500 pixels
+Dec limits from  -0.103432 to   0.377050 in 1000 pixels
+Weighted mask area = 4.696889e-05
+The mask integrates to  0.9999549035
+The mean is 1.7922930706e-03 +/- 4.8604522333e-07 with a scatter of 4.8604522333e-06, a fractional error of  0.271186 percent
+Total evaluation time = 0.889287 seconds 
+Running with a bin from 0.007812 to 0.015625...
+Running with 64000 pseudo-random numbers... 
+and 100 simulations
+Simulations will be saved in rrdump_00_00064000.dat 
+RA limits from 351.370209 to 352.083069 in 1500 pixels
+Dec limits from  -0.103432 to   0.377050 in 1000 pixels
+Weighted mask area = 4.696889e-05
+The mask integrates to  0.9999549035
+The mean is 1.7921470441e-03 +/- 2.1591037385e-07 with a scatter of 2.1591037385e-06, a fractional error of  0.120476 percent
+Total evaluation time = 3.42739 seconds 
+Running with a bin from 0.007812 to 0.015625...
+Running with 256000 pseudo-random numbers... 
+and 100 simulations
+Simulations will be saved in rrdump_00_00256000.dat 
+RA limits from 351.370209 to 352.083069 in 1500 pixels
+Dec limits from  -0.103432 to   0.377050 in 1000 pixels
+Weighted mask area = 4.696889e-05
+The mask integrates to  0.9999549035
+The mean is 1.7923841607e-03 +/- 9.6808902493e-08 with a scatter of 9.6808902493e-07, a fractional error of  0.054011 percent
+Total evaluation time = 13.7457 seconds 
+Running with a bin from 0.007812 to 0.015625...
+Running with 1024000 pseudo-random numbers... 
+and 100 simulations
+Simulations will be saved in rrdump_00_01024000.dat 
+RA limits from 351.370209 to 352.083069 in 1500 pixels
+Dec limits from  -0.103432 to   0.377050 in 1000 pixels
+Weighted mask area = 4.696889e-05
+The mask integrates to  0.9999549035
+The mean is 1.7923022637e-03 +/- 4.5157587181e-08 with a scatter of 4.5157587181e-07, a fractional error of  0.025195 percent
+Total evaluation time = 54.8141 seconds 
+Running with a bin from 0.007812 to 0.015625...
+Running with 4096000 pseudo-random numbers... 
+and 100 simulations
+Simulations will be saved in rrdump_00_04096000.dat 
+RA limits from 351.370209 to 352.083069 in 1500 pixels
+Dec limits from  -0.103432 to   0.377050 in 1000 pixels
+Weighted mask area = 4.696889e-05
+The mask integrates to  0.9999549035
+The mean is 1.7923239404e-03 +/- 1.8528756803e-08 with a scatter of 1.8528756803e-07, a fractional error of  0.010338 percent
+Total evaluation time = 218.998 seconds 
+Running with a bin from 0.007812 to 0.015625...
+Running with 16384000 pseudo-random numbers... 
+and 100 simulations
+Simulations will be saved in rrdump_00_16384000.dat 
+RA limits from 351.370209 to 352.083069 in 1500 pixels
+Dec limits from  -0.103432 to   0.377050 in 1000 pixels
+Weighted mask area = 4.696889e-05
+The mask integrates to  0.9999549035
+The mean is 1.7923228944e-03 +/- 7.5259431461e-09 with a scatter of 7.5259431461e-08, a fractional error of  0.004199 percent
+Total evaluation time = 876.087 seconds 
+Running with a bin from 0.015625 to 0.03125...
+Running with 1000 pseudo-random numbers... 
+and 100 simulations
+Simulations will be saved in rrdump_01_00001000.dat 
+RA limits from 351.370209 to 352.083069 in 1500 pixels
+Dec limits from  -0.103432 to   0.377050 in 1000 pixels
+Weighted mask area = 4.696889e-05
+The mask integrates to  0.9999549035
+The mean is 6.8603706813e-03 +/- 1.0559761385e-05 with a scatter of 1.0559761385e-04, a fractional error of  1.539241 percent
+Total evaluation time = 0.087745 seconds 
+Running with a bin from 0.015625 to 0.03125...
+Running with 4000 pseudo-random numbers... 
+and 100 simulations
+Simulations will be saved in rrdump_01_00004000.dat 
+RA limits from 351.370209 to 352.083069 in 1500 pixels
+Dec limits from  -0.103432 to   0.377050 in 1000 pixels
+Weighted mask area = 4.696889e-05
+The mask integrates to  0.9999549035
+The mean is 6.8791260873e-03 +/- 5.3028773392e-06 with a scatter of 5.3028773392e-05, a fractional error of  0.770865 percent
+Total evaluation time = 0.248362 seconds 
+Running with a bin from 0.015625 to 0.03125...
+Running with 16000 pseudo-random numbers... 
+and 100 simulations
+Simulations will be saved in rrdump_01_00016000.dat 
+RA limits from 351.370209 to 352.083069 in 1500 pixels
+Dec limits from  -0.103432 to   0.377050 in 1000 pixels
+Weighted mask area = 4.696889e-05
+The mask integrates to  0.9999549035
+The mean is 6.8754678191e-03 +/- 2.0954309947e-06 with a scatter of 2.0954309947e-05, a fractional error of  0.304769 percent
+Total evaluation time = 0.886816 seconds 
+Running with a bin from 0.015625 to 0.03125...
+Running with 64000 pseudo-random numbers... 
+and 100 simulations
+Simulations will be saved in rrdump_01_00064000.dat 
+RA limits from 351.370209 to 352.083069 in 1500 pixels
+Dec limits from  -0.103432 to   0.377050 in 1000 pixels
+Weighted mask area = 4.696889e-05
+The mask integrates to  0.9999549035
+The mean is 6.8738658122e-03 +/- 9.7326820867e-07 with a scatter of 9.7326820867e-06, a fractional error of  0.141590 percent
+Total evaluation time = 3.42593 seconds 
+Running with a bin from 0.015625 to 0.03125...
+Running with 256000 pseudo-random numbers... 
+and 100 simulations
+Simulations will be saved in rrdump_01_00256000.dat 
+RA limits from 351.370209 to 352.083069 in 1500 pixels
+Dec limits from  -0.103432 to   0.377050 in 1000 pixels
+Weighted mask area = 4.696889e-05
+The mask integrates to  0.9999549035
+The mean is 6.8745667802e-03 +/- 4.7742095504e-07 with a scatter of 4.7742095504e-06, a fractional error of  0.069447 percent
+Total evaluation time = 13.7314 seconds 
+Running with a bin from 0.015625 to 0.03125...
+Running with 1024000 pseudo-random numbers... 
+and 100 simulations
+Simulations will be saved in rrdump_01_01024000.dat 
+RA limits from 351.370209 to 352.083069 in 1500 pixels
+Dec limits from  -0.103432 to   0.377050 in 1000 pixels
+Weighted mask area = 4.696889e-05
+The mask integrates to  0.9999549035
+The mean is 6.8745650225e-03 +/- 2.0505407094e-07 with a scatter of 2.0505407094e-06, a fractional error of  0.029828 percent
+Total evaluation time = 54.6552 seconds 
+Running with a bin from 0.015625 to 0.03125...
+Running with 4096000 pseudo-random numbers... 
+and 100 simulations
+Simulations will be saved in rrdump_01_04096000.dat 
+RA limits from 351.370209 to 352.083069 in 1500 pixels
+Dec limits from  -0.103432 to   0.377050 in 1000 pixels
+Weighted mask area = 4.696889e-05
+The mask integrates to  0.9999549035
+The mean is 6.8746009303e-03 +/- 7.3379893648e-08 with a scatter of 7.3379893648e-07, a fractional error of  0.010674 percent
+Total evaluation time = 217.482 seconds 
+Running with a bin from 0.015625 to 0.03125...
+Running with 16384000 pseudo-random numbers... 
+and 100 simulations
+Simulations will be saved in rrdump_01_16384000.dat 
+RA limits from 351.370209 to 352.083069 in 1500 pixels
+Dec limits from  -0.103432 to   0.377050 in 1000 pixels
+Weighted mask area = 4.696889e-05
+The mask integrates to  0.9999549035
+The mean is 6.8746398108e-03 +/- 3.4235361072e-08 with a scatter of 3.4235361072e-07, a fractional error of  0.004980 percent
+Total evaluation time = 872.752 seconds 
+Running with a bin from 0.03125 to 0.0625...
+Running with 1000 pseudo-random numbers... 
+and 100 simulations
+Simulations will be saved in rrdump_02_00001000.dat 
+RA limits from 351.370209 to 352.083069 in 1500 pixels
+Dec limits from  -0.103432 to   0.377050 in 1000 pixels
+Weighted mask area = 4.696889e-05
+The mask integrates to  0.9999549035
+The mean is 2.5378958541e-02 +/- 4.4796589869e-05 with a scatter of 4.4796589869e-04, a fractional error of  1.765107 percent
+Total evaluation time = 0.08776 seconds 
+Running with a bin from 0.03125 to 0.0625...
+Running with 4000 pseudo-random numbers... 
+and 100 simulations
+Simulations will be saved in rrdump_02_00004000.dat 
+RA limits from 351.370209 to 352.083069 in 1500 pixels
+Dec limits from  -0.103432 to   0.377050 in 1000 pixels
+Weighted mask area = 4.696889e-05
+The mask integrates to  0.9999549035
+The mean is 2.5405570888e-02 +/- 2.1723535875e-05 with a scatter of 2.1723535875e-04, a fractional error of  0.855070 percent
+Total evaluation time = 0.246829 seconds 
+Running with a bin from 0.03125 to 0.0625...
+Running with 16000 pseudo-random numbers... 
+and 100 simulations
+Simulations will be saved in rrdump_02_00016000.dat 
+RA limits from 351.370209 to 352.083069 in 1500 pixels
+Dec limits from  -0.103432 to   0.377050 in 1000 pixels
+Weighted mask area = 4.696889e-05
+The mask integrates to  0.9999549035
+The mean is 2.5401431945e-02 +/- 8.7538145395e-06 with a scatter of 8.7538145395e-05, a fractional error of  0.344619 percent
+Total evaluation time = 0.88743 seconds 
+Running with a bin from 0.03125 to 0.0625...
+Running with 64000 pseudo-random numbers... 
+and 100 simulations
+Simulations will be saved in rrdump_02_00064000.dat 
+RA limits from 351.370209 to 352.083069 in 1500 pixels
+Dec limits from  -0.103432 to   0.377050 in 1000 pixels
+Weighted mask area = 4.696889e-05
+The mask integrates to  0.9999549035
+The mean is 2.5389543309e-02 +/- 3.5777586009e-06 with a scatter of 3.5777586009e-05, a fractional error of  0.140915 percent
+Total evaluation time = 3.4403 seconds 
+Running with a bin from 0.03125 to 0.0625...
+Running with 256000 pseudo-random numbers... 
+and 100 simulations
+Simulations will be saved in rrdump_02_00256000.dat 
+RA limits from 351.370209 to 352.083069 in 1500 pixels
+Dec limits from  -0.103432 to   0.377050 in 1000 pixels
+Weighted mask area = 4.696889e-05
+The mask integrates to  0.9999549035
+The mean is 2.5386233974e-02 +/- 1.7766368824e-06 with a scatter of 1.7766368824e-05, a fractional error of  0.069984 percent
+Total evaluation time = 13.6552 seconds 
+Running with a bin from 0.03125 to 0.0625...
+Running with 1024000 pseudo-random numbers... 
+and 100 simulations
+Simulations will be saved in rrdump_02_01024000.dat 
+RA limits from 351.370209 to 352.083069 in 1500 pixels
+Dec limits from  -0.103432 to   0.377050 in 1000 pixels
+Weighted mask area = 4.696889e-05
+The mask integrates to  0.9999549035
+The mean is 2.5386660812e-02 +/- 8.2963818475e-07 with a scatter of 8.2963818475e-06, a fractional error of  0.032680 percent
+Total evaluation time = 54.1481 seconds 
+Running with a bin from 0.03125 to 0.0625...
+Running with 4096000 pseudo-random numbers... 
+and 100 simulations
+Simulations will be saved in rrdump_02_04096000.dat 
+RA limits from 351.370209 to 352.083069 in 1500 pixels
+Dec limits from  -0.103432 to   0.377050 in 1000 pixels
+Weighted mask area = 4.696889e-05
+The mask integrates to  0.9999549035
+The mean is 2.5386053844e-02 +/- 3.9557684731e-07 with a scatter of 3.9557684731e-06, a fractional error of  0.015582 percent
+Total evaluation time = 219.217 seconds 
+Running with a bin from 0.03125 to 0.0625...
+Running with 16384000 pseudo-random numbers... 
+and 100 simulations
+Simulations will be saved in rrdump_02_16384000.dat 
+RA limits from 351.370209 to 352.083069 in 1500 pixels
+Dec limits from  -0.103432 to   0.377050 in 1000 pixels
+Weighted mask area = 4.696889e-05
+The mask integrates to  0.9999549035
+The mean is 2.5386218432e-02 +/- 1.5187310061e-07 with a scatter of 1.5187310061e-06, a fractional error of  0.005983 percent
+Total evaluation time = 870.898 seconds 
+Running with a bin from 0.0625 to 0.125...
+Running with 1000 pseudo-random numbers... 
+and 100 simulations
+Simulations will be saved in rrdump_03_00001000.dat 
+RA limits from 351.370209 to 352.083069 in 1500 pixels
+Dec limits from  -0.103432 to   0.377050 in 1000 pixels
+Weighted mask area = 4.696889e-05
+The mask integrates to  0.9999549035
+The mean is 8.7797928733e-02 +/- 1.9379998561e-04 with a scatter of 1.9379998561e-03, a fractional error of  2.207341 percent
+Total evaluation time = 0.087355 seconds 
+Running with a bin from 0.0625 to 0.125...
+Running with 4000 pseudo-random numbers... 
+and 100 simulations
+Simulations will be saved in rrdump_03_00004000.dat 
+RA limits from 351.370209 to 352.083069 in 1500 pixels
+Dec limits from  -0.103432 to   0.377050 in 1000 pixels
+Weighted mask area = 4.696889e-05
+The mask integrates to  0.9999549035
+The mean is 8.8058352705e-02 +/- 8.0105781115e-05 with a scatter of 8.0105781115e-04, a fractional error of  0.909690 percent
+Total evaluation time = 0.246405 seconds 
+Running with a bin from 0.0625 to 0.125...
+Running with 16000 pseudo-random numbers... 
+and 100 simulations
+Simulations will be saved in rrdump_03_00016000.dat 
+RA limits from 351.370209 to 352.083069 in 1500 pixels
+Dec limits from  -0.103432 to   0.377050 in 1000 pixels
+Weighted mask area = 4.696889e-05
+The mask integrates to  0.9999549035
+The mean is 8.8021517674e-02 +/- 3.3487256833e-05 with a scatter of 3.3487256833e-04, a fractional error of  0.380444 percent
+Total evaluation time = 0.879067 seconds 
+Running with a bin from 0.0625 to 0.125...
+Running with 64000 pseudo-random numbers... 
+and 100 simulations
+Simulations will be saved in rrdump_03_00064000.dat 
+RA limits from 351.370209 to 352.083069 in 1500 pixels
+Dec limits from  -0.103432 to   0.377050 in 1000 pixels
+Weighted mask area = 4.696889e-05
+The mask integrates to  0.9999549035
+The mean is 8.8005087430e-02 +/- 1.2646651112e-05 with a scatter of 1.2646651112e-04, a fractional error of  0.143704 percent
+Total evaluation time = 3.41083 seconds 
+Running with a bin from 0.0625 to 0.125...
+Running with 256000 pseudo-random numbers... 
+and 100 simulations
+Simulations will be saved in rrdump_03_00256000.dat 
+RA limits from 351.370209 to 352.083069 in 1500 pixels
+Dec limits from  -0.103432 to   0.377050 in 1000 pixels
+Weighted mask area = 4.696889e-05
+The mask integrates to  0.9999549035
+The mean is 8.8001634433e-02 +/- 6.2182392437e-06 with a scatter of 6.2182392437e-05, a fractional error of  0.070660 percent
+Total evaluation time = 13.5619 seconds 
+Running with a bin from 0.0625 to 0.125...
+Running with 1024000 pseudo-random numbers... 
+and 100 simulations
+Simulations will be saved in rrdump_03_01024000.dat 
+RA limits from 351.370209 to 352.083069 in 1500 pixels
+Dec limits from  -0.103432 to   0.377050 in 1000 pixels
+Weighted mask area = 4.696889e-05
+The mask integrates to  0.9999549035
+The mean is 8.8014230339e-02 +/- 3.1176218323e-06 with a scatter of 3.1176218323e-05, a fractional error of  0.035422 percent
+Total evaluation time = 54.3066 seconds 
+Running with a bin from 0.0625 to 0.125...
+Running with 4096000 pseudo-random numbers... 
+and 100 simulations
+Simulations will be saved in rrdump_03_04096000.dat 
+RA limits from 351.370209 to 352.083069 in 1500 pixels
+Dec limits from  -0.103432 to   0.377050 in 1000 pixels
+Weighted mask area = 4.696889e-05
+The mask integrates to  0.9999549035
+The mean is 8.8012306020e-02 +/- 1.3734479677e-06 with a scatter of 1.3734479677e-05, a fractional error of  0.015605 percent
+Total evaluation time = 215.414 seconds 
+Running with a bin from 0.0625 to 0.125...
+Running with 16384000 pseudo-random numbers... 
+and 100 simulations
+Simulations will be saved in rrdump_03_16384000.dat 
+RA limits from 351.370209 to 352.083069 in 1500 pixels
+Dec limits from  -0.103432 to   0.377050 in 1000 pixels
+Weighted mask area = 4.696889e-05
+The mask integrates to  0.9999549035
+The mean is 8.8014512753e-02 +/- 6.1053467665e-07 with a scatter of 6.1053467665e-06, a fractional error of  0.006937 percent
+Total evaluation time = 873.385 seconds 
+Running with a bin from 0.125 to 0.25...
+Running with 1000 pseudo-random numbers... 
+and 100 simulations
+Simulations will be saved in rrdump_04_00001000.dat 
+RA limits from 351.370209 to 352.083069 in 1500 pixels
+Dec limits from  -0.103432 to   0.377050 in 1000 pixels
+Weighted mask area = 4.696889e-05
+The mask integrates to  0.9999549035
+The mean is 2.6356424286e-01 +/- 5.9078103944e-04 with a scatter of 5.9078103944e-03, a fractional error of  2.241507 percent
+Total evaluation time = 0.087925 seconds 
+Running with a bin from 0.125 to 0.25...
+Running with 4000 pseudo-random numbers... 
+and 100 simulations
+Simulations will be saved in rrdump_04_00004000.dat 
+RA limits from 351.370209 to 352.083069 in 1500 pixels
+Dec limits from  -0.103432 to   0.377050 in 1000 pixels
+Weighted mask area = 4.696889e-05
+The mask integrates to  0.9999549035
+The mean is 2.6396065459e-01 +/- 2.5077714510e-04 with a scatter of 2.5077714510e-03, a fractional error of  0.950055 percent
+Total evaluation time = 0.244546 seconds 
+Running with a bin from 0.125 to 0.25...
+Running with 16000 pseudo-random numbers... 
+and 100 simulations
+Simulations will be saved in rrdump_04_00016000.dat 
+RA limits from 351.370209 to 352.083069 in 1500 pixels
+Dec limits from  -0.103432 to   0.377050 in 1000 pixels
+Weighted mask area = 4.696889e-05
+The mask integrates to  0.9999549035
+The mean is 2.6372454197e-01 +/- 1.1958334572e-04 with a scatter of 1.1958334572e-03, a fractional error of  0.453440 percent
+Total evaluation time = 0.867851 seconds 
+Running with a bin from 0.125 to 0.25...
+Running with 64000 pseudo-random numbers... 
+and 100 simulations
+Simulations will be saved in rrdump_04_00064000.dat 
+RA limits from 351.370209 to 352.083069 in 1500 pixels
+Dec limits from  -0.103432 to   0.377050 in 1000 pixels
+Weighted mask area = 4.696889e-05
+The mask integrates to  0.9999549035
+The mean is 2.6374892141e-01 +/- 5.1150153414e-05 with a scatter of 5.1150153414e-04, a fractional error of  0.193935 percent
+Total evaluation time = 3.38174 seconds 
+Running with a bin from 0.125 to 0.25...
+Running with 256000 pseudo-random numbers... 
+and 100 simulations
+Simulations will be saved in rrdump_04_00256000.dat 
+RA limits from 351.370209 to 352.083069 in 1500 pixels
+Dec limits from  -0.103432 to   0.377050 in 1000 pixels
+Weighted mask area = 4.696889e-05
+The mask integrates to  0.9999549035
+The mean is 2.6370270814e-01 +/- 2.3781642901e-05 with a scatter of 2.3781642901e-04, a fractional error of  0.090184 percent
+Total evaluation time = 13.4403 seconds 
+Running with a bin from 0.125 to 0.25...
+Running with 1024000 pseudo-random numbers... 
+and 100 simulations
+Simulations will be saved in rrdump_04_01024000.dat 
+RA limits from 351.370209 to 352.083069 in 1500 pixels
+Dec limits from  -0.103432 to   0.377050 in 1000 pixels
+Weighted mask area = 4.696889e-05
+The mask integrates to  0.9999549035
+The mean is 2.6371935240e-01 +/- 1.0586327649e-05 with a scatter of 1.0586327649e-04, a fractional error of  0.040142 percent
+Total evaluation time = 53.6042 seconds 
+Running with a bin from 0.125 to 0.25...
+Running with 4096000 pseudo-random numbers... 
+and 100 simulations
+Simulations will be saved in rrdump_04_04096000.dat 
+RA limits from 351.370209 to 352.083069 in 1500 pixels
+Dec limits from  -0.103432 to   0.377050 in 1000 pixels
+Weighted mask area = 4.696889e-05
+The mask integrates to  0.9999549035
+The mean is 2.6371561813e-01 +/- 5.0144630300e-06 with a scatter of 5.0144630300e-05, a fractional error of  0.019015 percent
+Total evaluation time = 214.254 seconds 
+Running with a bin from 0.125 to 0.25...
+Running with 16384000 pseudo-random numbers... 
+and 100 simulations
+Simulations will be saved in rrdump_04_16384000.dat 
+RA limits from 351.370209 to 352.083069 in 1500 pixels
+Dec limits from  -0.103432 to   0.377050 in 1000 pixels
+Weighted mask area = 4.696889e-05
+The mask integrates to  0.9999549035
+The mean is 2.6371840209e-01 +/- 2.3270947310e-06 with a scatter of 2.3270947310e-05, a fractional error of  0.008824 percent
+Total evaluation time = 854.234 seconds 
