@@ -149,7 +149,7 @@ vector<double> rreval(dpair RABounds, dpair DecBounds, dpair thetaBin,
 			// x[1] = phi
 			rotmat << x[0] * cos(x[1]), -sin(x[1]), tmp *cos(x[1]),
 					  x[0] * sin(x[1]),  cos(x[1]), tmp *sin(x[1]),
-					  tmp             ,          0, x[0];
+					  -tmp             ,          0, x[0];
 
 			x2.noalias() = rotmat * x1;
 
