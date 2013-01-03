@@ -1,0 +1,108 @@
+Notebook[{
+
+Cell[CellGroupData[{
+Cell[BoxData[{
+ RowBox[{"SetDirectory", "[", 
+  RowBox[{"NotebookDirectory", "[", "]"}], "]"}], "\n", 
+ RowBox[{
+  RowBox[{"fortranNum", " ", "=", " ", 
+   RowBox[{
+    RowBox[{"NumberString", ".."}], "~~", 
+    RowBox[{
+     RowBox[{"(", 
+      RowBox[{"\"\<e\>\"", "~~", 
+       RowBox[{"\"\<-\>\"", "..."}], "~~", 
+       RowBox[{"DigitCharacter", ".."}]}], ")"}], "..."}]}]}], 
+  ";"}]}], "Code"],
+
+Cell[BoxData["\<\"/Users/npadmana/myWork/lowdiscrepancyRR/data/boss/lds_lowz_\
+angular\"\>"], "Output"]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", " ", 
+   RowBox[{"Read", " ", "in", " ", "the", " ", "polygon", " ", 
+    RowBox[{"file", ".", " ", "This"}], " ", "is", " ", "a", " ", "little", 
+    " ", 
+    RowBox[{"hacky", "!"}]}], " ", "*)"}], " ", "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"ll", " ", "=", " ", 
+     RowBox[{
+      RowBox[{"ReadList", "[", 
+       RowBox[{
+       "\"\<../boss_geometry_2011_06_10_LOWZ-north.ply\>\"", ",", " ", 
+        "String"}], "]"}], "//", "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"Select", "[", 
+        RowBox[{"#", ",", " ", 
+         RowBox[{
+          RowBox[{"StringMatchQ", "[", 
+           RowBox[{"#", ",", "\"\<polygon*\>\""}], "]"}], " ", "&"}]}], "]"}],
+        "&"}]}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"weightarea", " ", "=", " ", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"StringCases", "[", 
+        RowBox[{"ll", ",", " ", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"(", 
+            RowBox[{"x", ":", "fortranNum"}], ")"}], "~~", "\"\< weight\>\"", 
+           "~~", "__", "~~", "\"\< \>\"", "~~", 
+           RowBox[{"(", 
+            RowBox[{"y", ":", "fortranNum"}], ")"}], "~~", "\"\< str\>\""}], 
+          "\[Rule]", 
+          RowBox[{
+          "x", "~~", "\"\< \>\"", "~~", "y", "~~", "\"\<\\n\>\""}]}]}], "]"}],
+        "//", "StringJoin"}], " ", "//", " ", 
+      RowBox[{
+       RowBox[{"ImportString", "[", 
+        RowBox[{"#", ",", "\"\<Table\>\""}], "]"}], " ", "&"}]}]}], " ", 
+    ";"}]}]}]], "Input"],
+
+Cell[BoxData[
+ RowBox[{"(*", " ", 
+  RowBox[{
+   RowBox[{"Now", " ", "select", " ", "areas", " ", "with", " ", "weight"}], 
+   " ", ">", " ", "0.5"}], " ", "*)"}]], "Input"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"area", " ", "=", " ", 
+  RowBox[{"Total", " ", "@", " ", 
+   RowBox[{
+    RowBox[{"Select", "[", 
+     RowBox[{"weightarea", ",", " ", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"#", "[", 
+         RowBox[{"[", "1", "]"}], "]"}], ">", "0.5"}], " ", "&"}]}], "]"}], 
+    "[", 
+    RowBox[{"[", 
+     RowBox[{"All", ",", "2"}], "]"}], "]"}]}]}]], "Input"],
+
+Cell[BoxData["0.5412927833025121`"], "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"area", " ", "*", " ", 
+  SuperscriptBox[
+   RowBox[{"(", 
+    RowBox[{"180", "/", "Pi"}], ")"}], "2"]}]], "Input"],
+
+Cell[BoxData["1776.9593862410175`"], "Output"]
+}, Open  ]]
+},
+WindowSize->{740, 867},
+WindowMargins->{{Automatic, 328}, {46, Automatic}},
+FrontEndVersion->"9.0 for Mac OS X x86 (32-bit, 64-bit Kernel) (November 20, \
+2012)",
+StyleDefinitions->"Default.nb"
+]
+
