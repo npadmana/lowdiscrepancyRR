@@ -58,19 +58,19 @@ public:
 class PolygonClass {
 private:
   std::list<CapClass>	caps;
-  long			pid;
+  long			pixelid;
   double		weight;
 public:
   PolygonClass() {
     caps.clear();
     weight = 0;
-    pid    = 0;
+    pixelid    = 0;
   }
-  long getid() {
-    return(pid);
+  long getpixelid() {
+    return(pixelid);
   }
-  void setid(long pid1) {
-    pid = pid1;
+  void setpixelid(long pid1) {
+    pixelid = pid1;
   }
   double getwt() {
     return(weight);
@@ -285,7 +285,7 @@ public:
         cerr<<"Read polygon "<<j<<" expecting "<<ipoly<<endl;
         exit(1);
       }
-      polygons[ipoly].setid(pixel);
+      polygons[ipoly].setpixelid(pixel);
       polygons[ipoly].setwt(weight);
       if (pixel>maxpix) maxpix=pixel;
       // and read in the caps.
@@ -302,7 +302,7 @@ public:
     if (pixelres>=0) {
       pixels.resize(maxpix+1);
       for (int ipoly=0; ipoly<npoly; ipoly++)
-        pixels[polygons[ipoly].getid()].push_back(ipoly);
+        pixels[polygons[ipoly].getpixelid()].push_back(ipoly);
     }
   }
   long npolygons() {	// For general interest, how many polygons in mask

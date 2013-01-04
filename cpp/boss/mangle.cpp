@@ -28,12 +28,12 @@ bool Mangle::CapClass::incap(double theta, double phi) {
     return incap(x0,y0,z0);
 }
 
-long Mangle::PolygonClass::getid() {
-	return pid;
+long Mangle::PolygonClass::getpixelid() {
+	return pixelid;
 }
 
-void Mangle::PolygonClass::setid(long int pid1) {
-	pid = pid1;
+void Mangle::PolygonClass::setpixelid(long int pid1) {
+	pixelid = pid1;
 }
 
 void Mangle::PolygonClass::addcap(CapClass cap1) {
@@ -208,7 +208,7 @@ Mangle::MaskClass::MaskClass(string fname) :
 		if ((i=sbuf.find("polygon"))!=std::string::npos) {
 			// Do all the checks for the different cases here.
 			j = parsepoly(sbuf,ncap,weight,pixel);
-			polygons[ipoly].setid(pixel);
+			polygons[ipoly].setpixelid(pixel);
 			polygons[ipoly].setwt(weight);
 			if (pixel>maxpix) maxpix=pixel;
 			// and read in the caps.
@@ -239,7 +239,7 @@ Mangle::MaskClass::MaskClass(string fname) :
 	if (pixelres>=0) {
 		pixels.resize(maxpix+1);
 		for (int ipoly=0; ipoly<npoly; ipoly++)
-			pixels[polygons[ipoly].getid()].push_back(ipoly);
+			pixels[polygons[ipoly].getpixelid()].push_back(ipoly);
 	}
 
 

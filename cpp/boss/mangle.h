@@ -39,14 +39,14 @@ public:
 class PolygonClass {
 private:
 	std::vector<CapClass>	caps;
-	long			pid;
+	long			pixelid;
 	double		weight;
 public:
-	PolygonClass() : weight(0.0), pid(0) {};
+	PolygonClass() : weight(0.0), pixelid(0) {};
 
 	// Getters and setters
-	long getid();
-	void setid(long pid1);
+	long getpixelid();
+	void setpixelid(long pid1);
 	double getwt();
 	void setwt(double wt);
 
