@@ -1,9 +1,6 @@
 set(CMAKE_C_COMPILER "mpicc")
 set(CMAKE_CXX_COMPILER "mpicxx")
 
-# Simple mangle tests
-add_executable(test_mangle test_mangle.cpp mangle.cpp)
-
 # Copy files
 configure_file(bossmask_template.cfg ${CMAKE_CURRENT_BINARY_DIR}/bossmask_template.cfg COPYONLY)
 
