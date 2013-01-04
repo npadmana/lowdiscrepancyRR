@@ -78,10 +78,12 @@ Landy-Szalay (CITE???) estimator :
 \begin{equation}
 \xi = \frac{DD - 2 DR + RR}{RR}
 \end{equation}
-where $DD$ is the number of galaxy pairs. This raw number of pairs must be
-scaled and corrected for the effects of the survey selection function. The $DR$
-and $RR$ terms represent this correction. $RR$ is the expected number of pairs
-if the galaxies were homogeously distributed according to the survey selectio
+where $\xi$ here represents the correlation function in a particular separation
+bin (appropriately averaged) and $DD$ is the number of galaxy pairs that fall in
+that bin. This raw number of pairs must be scaled and corrected for the effects
+of the survey selection function. The $DR$ and $RR$ terms represent this correction. 
+$RR$ is the expected number of pairs
+if the galaxies were homogeously distributed according to the survey selection
 function, while $DR$ is the expected number of pairs around the actual galaxies
 themselves. If we consider the survey selection function $n(\vx)$ normalized
 by the volume integral
@@ -100,28 +102,81 @@ DR = \sum_{i=1}^{N} \int d\vx_1 \,n(\vx_1) \bin(\vx_1, \vx_{g,i}) \,\,
 \end{equation}
 where the sum for $DR$ runs over the $N$ galaxy positions $\vx_{g,i}$. 
 Note that for an $n$-dimensional galaxy distribution, the $RR$ integral is
-$2n$-dimensional, while $DR$ is $n$-dimensional. In what follows, it is often
-convenient to scale $DR$ and $RR$ as defined by $N^2$; for simplicity, we refer
-to these as $DR$ and $RR$ as well.
+$2n$-dimensional, while $DR$ is $n$-dimensional. In what follows, it will be
+convenient to scale $DR$ and $RR$ as defined by $1/N^2$, equivalent to
+normalizing the selection function by $\int d\vx\,n(\vx)=1$. For simplicity, we
+refer to these as $DR$ and $RR$ as well. 
 
-These integrals are usually evaluated by Monte-Carlo techniques by laying down a
-set of random points according to the survey selection function and then
-counting pairs as with the actual galaxies. 
+In what follows, it is important to remember that both $DR$ and $RR$ are purely
+geometric quantities and do not have any intrinsic statistical fluctuations.
+These therefore should be estimated at a high enough accuracy to introduce no
+additional errors to the correlation function estimate. 
 
-\subsection{Three Toy Problems}
+\subsection{Calculating RR}
 
-\subsubsection{The Unit Interval}
+Given the complexity of survey selection functions, these integrals are most
+conveniently estimated by Monte-Carlo techniques. We continue to adopt this
+approach here, and only depart in the details of our implementation. We focus on
+the $RR$ calculation here, and discuss the $DR$ calculation in Sec.???. 
+
+The traditional approach to calculating $RR$ is to lay down a set random points
+according to the survey selection function and then to count the number of pairs
+when correlating this random catalog with itself. This approach has much to
+recommend it : it is identical to the $DD$ calculation and therefore
+conceptually simple to implement, and the random catalogs so created are a
+convenient and portable representation of the survey selection function.
+However, the number of random points needs to be significantly larger than the
+number of data points to prevent the estimation error in $RR$ from contributing
+to the error in $\xi$; factors of 50 to 100 times the data sample are relatively
+commonly used. A result of this is that the calculation of the correlation
+function is immediately dominated by the $RR$ pair counting, and significant
+effort has been expended to speed up this calculation, both with algorithmic
+improvements (CITES???) and parallelization (CITES????).
 
 \begin{figure*}
 \includegraphics[width=1.5in]{plots/grid1d-1}
 \includegraphics[width=1.5in]{plots/grid1d-2}
 \includegraphics[width=1.5in]{plots/grid1d-3}
 \includegraphics[width=1.5in]{plots/grid1d-4}
-\caption{???? Needs a caption ????}
+\caption{Computing $RR$ for a 1D survey geometry on the unit interval
+for points separated by 0.2. The area of the shaded region is the desired value
+of $RR$. Starting from the left, the panels are (a) the traditional algorithm,
+formed by the Cartesian product of a 1D random set, (b) pseudo-random 2D
+numbers, (c) a 2D Niederreiter quasi-random sequence and (d) a 2D Niederreiter
+sequence in position and displacement (see text). Note that the $y$-axis in the
+last panel runs from -0.2 to 1.2 to account for points on the edges. The number
+of points (pairs) in all panels is the same.}
 \label{fig:grid1d}
 \end{figure*}
 
-\subsubsection{A Spherical Cap}
+
+The inefficiencies with this approach is clearly demonstrated by a toy example.
+Consider a 1D survey geometry, and imagine we
+needed to estimate $RR$ for points separated by less than a chosen distance. 
+Fig.~\ref{fig:grid1d} graphically demonstrates this for a survey defined on
+the unit interval, and a separation distance of 0.2. Calculating $RR$ is
+equivalent to the problem of calculating the area of the shaded region. The
+leftmost panel illustrates the algorithm as described above. Since the pairs are
+the Cartesian product of the random set, they arrange themselves onto a grid,
+and cover the 2D integral domain very non-uniformly. As we will see explicitly
+below, this adversly affects the convergence rate of this algorithm below,
+scaling much slower than the $\sqrt{N_{\rm pairs}}$ that one would expect for a
+random sequence. 
+
+Our first improvement is shown in the second panel - we simply
+randomly\footnote{Technically, pseudo-randomly, since the random number
+generator is completely deterministic given a starting seed. We use the GSL
+implementation of the Mersenne Twister throughout this paper.} distribute the
+points over the full integration domain.
+Both panels have the same number of points sampling the integration domain, and the difference in
+coverage is apparent. This is {\it not} equivalent to generating two separate
+random sets and correlating them - we are sampling points from the underlying $2n$ dimensional 
+space (2D in this case). We expect this to scale as
+$\sqrt{N_{\rm pairs}}$ (see below). 
+
+
+
+
 
 \begin{figure}
 \includegraphics[width=3in]{plots/cap2d}
@@ -134,8 +189,6 @@ scaling is steeper than the $N^{-1/2}$ expected from purely random numbers.}
 \label{fig:cap2d}
 \end{figure}
 
-
-\subsubsection{The Unit 3D Hypercube}
 
 \begin{figure}
 \includegraphics[width=3in]{plots/unit3d}
