@@ -39,10 +39,10 @@ public:
 class PolygonClass {
 private:
 	std::vector<CapClass>	caps;
-	long			pixelid;
+	long			pixelid, polyid;
 	double		weight;
 public:
-	PolygonClass() : weight(0.0), pixelid(0) {};
+	PolygonClass() : weight(0.0), pixelid(-1), polyid(-1) {};
 
 	// Getters and setters
 	long getpixelid();
@@ -58,8 +58,8 @@ public:
 
 	// Check to see if in polygons using theta, phi
 	bool inpoly(double theta, double phi) ;
-
-
+	long getPolyid() const;
+	void setPolyid(long polyid);
 };	// PolygonClass
 
 class SDSSpixClass {	// Does conversions for us.  Based on SDSSpix.pro

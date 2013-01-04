@@ -190,7 +190,7 @@ Mangle::MaskClass::MaskClass(string fname) :
 				pixelres(-1)
 {
 	std::string	sbuf;
-	long	i,j,npoly,maxpix=-1, ipoly, ncap, pixel;
+	long	i,j,npoly,maxpix=-1, ipoly, ncap, pixel, ipolyid;
 	double weight;
 	ifstream	fs(fname.c_str());
 	if (!fs) {
@@ -207,7 +207,8 @@ Mangle::MaskClass::MaskClass(string fname) :
 		// Match polygons
 		if ((i=sbuf.find("polygon"))!=std::string::npos) {
 			// Do all the checks for the different cases here.
-			j = parsepoly(sbuf,ncap,weight,pixel);
+			ipolyid = parsepoly(sbuf,ncap,weight,pixel);
+			polygons[ipoly].setPolyid(ipolyid);
 			polygons[ipoly].setpixelid(pixel);
 			polygons[ipoly].setwt(weight);
 			if (pixel>maxpix) maxpix=pixel;
@@ -295,4 +296,12 @@ double Mangle::MaskClass::completeness_radec(double ra, double dec) {
 	phi = ra*d2r;
 	theta = (90.0-dec)*d2r;
 	return completeness(theta, phi);
+}
+
+long Mangle::PolygonClass::getPolyid() const {
+	return polyid;
+}
+
+void Mangle::PolygonClass::setPolyid(long polyid) {
+	this->polyid = polyid;
 }
