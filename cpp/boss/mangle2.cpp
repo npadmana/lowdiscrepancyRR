@@ -6,9 +6,9 @@
 #include <sstream>
 #include <fstream>
 
-bool Mangle2::MaskClass::inCap(const CapClass& cap, double x0, double y0, double z0) {
-    double	cdot;
-    cdot = 1.0 - cap.x*x0 - cap.y*y0 - cap.z*z0;
+bool Mangle2::MaskClass::inCap(const CapClass& cap, const Vector4d &x1) {
+    double	cdot = x1.dot(cap.x);
+    //cdot = 1.0 - cap.x*x0 - cap.y*y0 - cap.z*z0;
     if (cap.cm < 0.0)
       return cdot > (-cap.cm);
     else
@@ -17,10 +17,10 @@ bool Mangle2::MaskClass::inCap(const CapClass& cap, double x0, double y0, double
 }
 
 bool Mangle2::MaskClass::inPolygon(const PolygonClass& poly,
-		double x0, double y0, double z0) {
+		const Vector4d &x1) {
 	return all_of(caps.begin()+poly.capbegin,
 				  caps.begin()+poly.capbegin+poly.ncaps,
-				  [&](const CapClass& c){return inCap(c,x0,y0,z0);});
+				  [&](const CapClass& c){return inCap(c,x1);});
 }
 
 
@@ -55,12 +55,12 @@ int Mangle2::MaskClass::getPixelres() const {
 }
 
 double Mangle2::MaskClass::findpoly(PolyIterator start, PolyIterator end,
-		double x0, double y0, double z0,
+		const Vector4d &x1,
 		long & polyid) {
 	polyid = -1;
 	PolyIterator res = find_if(start, end,
-			           [&,x0,y0,z0](const PolygonClass &p)
-			           {return inPolygon(p, x0, y0, z0);});
+			           [&](const PolygonClass &p)
+			           {return inPolygon(p, x1);});
 	if (res == end) {
 		return 0;
 	} else {
@@ -71,13 +71,14 @@ double Mangle2::MaskClass::findpoly(PolyIterator start, PolyIterator end,
 
 double Mangle2::MaskClass::completeness(double theta, double phi, long &polyid) {
 	// This is the main method, returning the completness at (theta,phi).
-	double x0,y0,z0;
-    x0 = sin(theta)*cos(phi);
-    y0 = sin(theta)*sin(phi);
-    z0 = cos(theta);
+//	double x0,y0,z0;
+//    x0 = sin(theta)*cos(phi);
+//    y0 = sin(theta)*sin(phi);
+//    z0 = cos(theta);
+	Vector4d x1; x1 << 1.0, -sin(theta)*cos(phi), -sin(theta)*sin(phi), -cos(theta);
 
     if (pixelres==-1) {
-    	return findpoly(polys.begin(), polys.end(), x0, y0, z0, polyid);
+    	return findpoly(polys.begin(), polys.end(), x1, polyid);
     } else {
     	long ipix;
     	if (pixeltype=='s') {
@@ -91,7 +92,7 @@ double Mangle2::MaskClass::completeness(double theta, double phi, long &polyid) 
     	{
     		auto start = polys.begin()+ pixelIndex[ipix];
     		auto end = start + numPolyInPixel[ipix];
-    		return findpoly(start, end, x0, y0, z0, polyid);
+    		return findpoly(start, end, x1, polyid);
     	} else {
     		polyid = -1;
     		return 0.0;
@@ -201,7 +202,8 @@ Mangle2::MaskClass::MaskClass(string fname) :
 			for (int icap=0; icap<ncap; icap++) {
 				if (!getline(fs, sbuf)) throw runtime_error("Unexpected end of file");
 				istringstream(sbuf) >> x1 >> y1 >> z1 >> cm1;
-				caps.push_back({x1,y1,z1,cm1});
+				CapClass cap1; cap1.x << 1,x1,y1,z1; cap1.cm = cm1;
+				caps.push_back(cap1);
 			}
 			if (caps.size() != icap) throw runtime_error("Egad! Cap and polygon index out of sync");
 		}

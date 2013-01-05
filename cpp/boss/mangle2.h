@@ -16,17 +16,22 @@
 
 #include <vector>
 #include <string>
+#include <Eigen/Core>
 
 namespace Mangle2 {
 
 using namespace std;
+using namespace Eigen;
 
 /* A simple POD to store cap data
  *
  */
 class CapClass {
 public :
-	double x, y, z, cm;
+	Vector4d x;
+	//double x, y, z, cm;
+	double cm;
+	EIGEN_MAKE_ALIGNED_OPERATOR_NEW
 };
 
 
@@ -66,7 +71,7 @@ private:
 	// Pixel number for simplepix
 	long pixelnum(double theta, double phi);
 	// Find polygon and returns its weight and polyid, else returns 0, and -1;
-	double findpoly(PolyIterator start, PolyIterator end, double x0, double y0, double z0, long &polyid);
+	double findpoly(PolyIterator start, PolyIterator end, const Vector4d &x1, long &polyid);
 	// Parsing routine for reading ply files
 	long parsepoly(std::string sbuf, long &ncap, double &weight, long &pixel);
 
@@ -78,7 +83,7 @@ private:
 	 *
 	 *  You need to make sure that CapList and PolygonClass are associated. The MaskClass does this automatically.
 	 */
-	bool inPolygon(const PolygonClass& poly, double x0, double y0, double z0);
+	bool inPolygon(const PolygonClass& poly, const Vector4d &x1);
 
 	/* Check if in cap or not
 	 *
@@ -87,7 +92,7 @@ private:
 	 *
 	 *   This could really be a static method
 	 */
-	bool inCap(const CapClass &cap, double x0, double y0, double z0);
+	bool inCap(const CapClass &cap, const Vector4d &x1);
 
 
 public:
