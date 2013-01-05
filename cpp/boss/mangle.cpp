@@ -8,7 +8,7 @@
 
 using namespace std;
 
-bool Mangle::CapClass::incap(double x0, double y0, double z0) {
+bool MangleDeprecated::CapClass::incap(double x0, double y0, double z0) {
     double	cdot;
     bool	tmp;
     cdot = 1.0 - x*x0 - y*y0 - z*z0;
@@ -19,7 +19,7 @@ bool Mangle::CapClass::incap(double x0, double y0, double z0) {
     return(tmp);
 }
 
-bool Mangle::CapClass::incap(double theta, double phi) {
+bool MangleDeprecated::CapClass::incap(double theta, double phi) {
 	double x0, y0, z0;
     x0 = sin(theta)*cos(phi);
     y0 = sin(theta)*sin(phi);
@@ -28,29 +28,29 @@ bool Mangle::CapClass::incap(double theta, double phi) {
     return incap(x0,y0,z0);
 }
 
-long Mangle::PolygonClass::getpixelid() {
+long MangleDeprecated::PolygonClass::getpixelid() {
 	return pixelid;
 }
 
-void Mangle::PolygonClass::setpixelid(long int pid1) {
+void MangleDeprecated::PolygonClass::setpixelid(long int pid1) {
 	pixelid = pid1;
 }
 
-void Mangle::PolygonClass::addcap(CapClass cap1) {
+void MangleDeprecated::PolygonClass::addcap(CapClass cap1) {
 	caps.push_back(cap1);
 }
 
-double Mangle::PolygonClass::getwt() {
+double MangleDeprecated::PolygonClass::getwt() {
 	return weight;
 }
 
-void Mangle::PolygonClass::setwt(double wt) {
+void MangleDeprecated::PolygonClass::setwt(double wt) {
 	weight = wt;
 }
 
 // Note that both these methods use short circuits to jump out of the loop
 // as soon as a single polygon fails
-bool Mangle::PolygonClass::inpoly(double theta, double phi) {
+bool MangleDeprecated::PolygonClass::inpoly(double theta, double phi) {
 	bool tmp=true;
 	for (std::vector<CapClass>::iterator i=caps.begin();
 			i!=caps.end() && tmp; i++) {
@@ -59,7 +59,7 @@ bool Mangle::PolygonClass::inpoly(double theta, double phi) {
 	return(tmp);
 }
 
-bool Mangle::PolygonClass::inpoly(double x, double y, double z) {
+bool MangleDeprecated::PolygonClass::inpoly(double x, double y, double z) {
   bool tmp=true;
   for (std::vector<CapClass>::iterator i=caps.begin();
        i!=caps.end() && tmp; i++) {
@@ -68,7 +68,7 @@ bool Mangle::PolygonClass::inpoly(double x, double y, double z) {
   return(tmp);
 }
 
-std::vector<double> Mangle::SDSSpixClass::tp2survey(double theta, double phi) {
+std::vector<double> MangleDeprecated::SDSSpixClass::tp2survey(double theta, double phi) {
 	// Converts (theta,phi) to survey coordinates (eta,lambda).
 	// On input (theta,phi) are in radians, eta/lambda come out in degrees.
 	std::vector<double> retval(2);
@@ -90,7 +90,7 @@ std::vector<double> Mangle::SDSSpixClass::tp2survey(double theta, double phi) {
 	return(retval);
 }
 
-Mangle::SDSSpixClass::SDSSpixClass(long pixres) {
+MangleDeprecated::SDSSpixClass::SDSSpixClass(long pixres) {
 	nx0=36;
 	ny0=13;
 	deg2Rad=M_PI/180.;
@@ -103,7 +103,7 @@ Mangle::SDSSpixClass::SDSSpixClass(long pixres) {
 }
 
 
-long Mangle::SDSSpixClass::pixelnum(double theta, double phi) {
+long MangleDeprecated::SDSSpixClass::pixelnum(double theta, double phi) {
 	long   i,j,nx=nx0*resolution,ny=ny0*resolution;
 	std::vector<double> surv = tp2survey(theta,phi);
 
@@ -120,7 +120,7 @@ long Mangle::SDSSpixClass::pixelnum(double theta, double phi) {
 }
 
 
-long Mangle::MaskClass::parsepoly(std::string sbuf, long &ncap, double &weight, long &pixel) {
+long MangleDeprecated::MaskClass::parsepoly(std::string sbuf, long &ncap, double &weight, long &pixel) {
 	// Reads the "polygon" line in a Mangle file, returning #caps, weight & pixel.
 	long	i,j,ipoly=-1;
 	std::string	ss;
@@ -168,7 +168,7 @@ long Mangle::MaskClass::parsepoly(std::string sbuf, long &ncap, double &weight, 
 	return(ipoly);
 }
 
-long Mangle::MaskClass::pixelnum(double theta, double phi) {
+long MangleDeprecated::MaskClass::pixelnum(double theta, double phi) {
 	// For the "simple" pixelization we're just Cartesian in cos(theta) & phi.
 	long ipix=0;
 	if (pixelres>0) {
@@ -185,7 +185,7 @@ long Mangle::MaskClass::pixelnum(double theta, double phi) {
 	return(ipix);
 }
 
-Mangle::MaskClass::MaskClass(string fname) :
+MangleDeprecated::MaskClass::MaskClass(string fname) :
 				pixeltype('u'),
 				pixelres(-1)
 {
@@ -217,7 +217,7 @@ Mangle::MaskClass::MaskClass(string fname) :
 				double x1,y1,z1,cm1;
 				if (!getline(fs, sbuf)) {cerr<<"Unexpected end-of-file."<<endl;exit(1);}
 				istringstream(sbuf) >> x1 >> y1 >> z1 >> cm1;
-				polygons[ipoly].addcap( Mangle::CapClass(x1,y1,z1,cm1) );
+				polygons[ipoly].addcap( MangleDeprecated::CapClass(x1,y1,z1,cm1) );
 			}
 			ipoly++;
 		}
@@ -246,11 +246,11 @@ Mangle::MaskClass::MaskClass(string fname) :
 
 }
 
-long Mangle::MaskClass::npolygons() {	// For general interest, how many polygons in mask
+long MangleDeprecated::MaskClass::npolygons() {	// For general interest, how many polygons in mask
 	return(polygons.size());
 }
 
-double Mangle::MaskClass::completeness(double theta, double phi, long &polyid) {
+double MangleDeprecated::MaskClass::completeness(double theta, double phi, long &polyid) {
 	// This is the main method, returning the completness at (theta,phi).
 	bool	notfnd=true;
 	long	ii,pid=-1;
@@ -293,12 +293,12 @@ double Mangle::MaskClass::completeness(double theta, double phi, long &polyid) {
 		return(wt);
 }
 
-double Mangle::MaskClass::completeness(double theta, double phi) {
+double MangleDeprecated::MaskClass::completeness(double theta, double phi) {
 	long polyid;
 	return completeness(theta, phi, polyid);
 }
 
-double Mangle::MaskClass::completeness_radec(double ra, double dec, long &polyid) {
+double MangleDeprecated::MaskClass::completeness_radec(double ra, double dec, long &polyid) {
 	const double d2r = M_PI/180.0;
 	double theta, phi;
 	phi = ra*d2r;
@@ -306,23 +306,23 @@ double Mangle::MaskClass::completeness_radec(double ra, double dec, long &polyid
 	return completeness(theta, phi, polyid);
 }
 
-int Mangle::MaskClass::getPixelres() const {
+int MangleDeprecated::MaskClass::getPixelres() const {
 	return pixelres;
 }
 
-void Mangle::MaskClass::setPixelres(int pixelres) {
+void MangleDeprecated::MaskClass::setPixelres(int pixelres) {
 	this->pixelres = pixelres;
 }
 
-double Mangle::MaskClass::completeness_radec(double ra, double dec) {
+double MangleDeprecated::MaskClass::completeness_radec(double ra, double dec) {
 	long polyid;
 	return completeness_radec(ra,dec, polyid);
 }
 
-long Mangle::PolygonClass::getPolyid() const {
+long MangleDeprecated::PolygonClass::getPolyid() const {
 	return polyid;
 }
 
-void Mangle::PolygonClass::setPolyid(long polyid) {
+void MangleDeprecated::PolygonClass::setPolyid(long polyid) {
 	this->polyid = polyid;
 }

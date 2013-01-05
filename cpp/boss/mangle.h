@@ -13,7 +13,7 @@
 #include <vector>
 #include <string>
 
-namespace Mangle {
+namespace MangleDeprecated {
 
 /** Class definition for a cap.
  *

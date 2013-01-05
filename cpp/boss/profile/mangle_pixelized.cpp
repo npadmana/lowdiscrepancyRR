@@ -1,4 +1,4 @@
-#include "../mangle.h"
+#include "../mangle2.h"
 #include <fstream>
 #include <sstream>
 #include <iostream>
@@ -16,7 +16,7 @@ struct Data {
 
 int main() {
 	// Open the file
-	Mangle::MaskClass mask("../gtests/lowz.ply");
+	Mangle2::MaskClass mask("../gtests/lowz.ply");
 	ifstream ff("../gtests/lowz.random");
 	string sbuf;
 	double ra, dec, wt;

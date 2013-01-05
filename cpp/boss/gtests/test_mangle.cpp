@@ -1,5 +1,5 @@
 #include "gtest/gtest.h"
-#include "../mangle.h"
+#include "../mangle2.h"
 #include <fstream>
 #include <sstream>
 #include <iostream>
@@ -12,7 +12,7 @@ int main() {
 TEST(Mangle, Test1) {
 #endif
 	// Open the file
-	Mangle::MaskClass mask("lowz.ply");
+	Mangle2::MaskClass mask("lowz.ply");
 	ifstream ff("lowz.random");
 	string sbuf;
 	double ra, dec, wt;
@@ -26,6 +26,8 @@ TEST(Mangle, Test1) {
 		wt = mask.completeness_radec(ra, dec, polyid_out);
 #ifndef DEBUGMODE
 		EXPECT_EQ(polyid_in, polyid_out);
+#else
+		if (polyid_in != polyid_out) cout << "Error!" << polyid_in << " " << polyid_out << endl;
 #endif
 	}
 	ff.close();
@@ -37,7 +39,7 @@ int main2() {
 TEST(Mangle, Test2) {
 #endif
 	// Open the file
-	Mangle::MaskClass mask("lowz.ply");
+	Mangle2::MaskClass mask("lowz.ply");
 	// Turn off pixelization
 	mask.setPixelres(-1);
 	ifstream ff("lowz.random");

@@ -8,7 +8,7 @@
 #ifndef BOSSMASK_H_
 #define BOSSMASK_H_
 
-#include "mangle.h"
+#include "mangle2.h"
 #include <memory>
 #include <string>
 #include <utility>
@@ -16,7 +16,7 @@
 namespace Boss {
 
 using namespace std;
-using namespace Mangle;
+using namespace Mangle2;
 
 /** BossMask --
  *    a generic class to handle BOSS window functions

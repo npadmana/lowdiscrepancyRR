@@ -19,7 +19,7 @@ Modified:	 6-Aug-2009	(Put MaskClass in Mangle namespace)
 
 */
 
-namespace Mangle {
+namespace MangleDeprecated {
 
 class CapClass {
 private:
@@ -294,7 +294,7 @@ public:
         getline(fs,sbuf);
         if (fs.eof()) {cerr<<"Unexpected end-of-file."<<endl;exit(1);}
         istringstream(sbuf) >> x1 >> y1 >> z1 >> cm1;
-        polygons[ipoly].addcap( Mangle::CapClass(x1,y1,z1,cm1) );
+        polygons[ipoly].addcap( MangleDeprecated::CapClass(x1,y1,z1,cm1) );
       }
     }
     fs.close();
@@ -361,7 +361,7 @@ int	main(int argc, char **argv) {
     exit(1);
   }
   std::string fname(argv[1]);
-  Mangle::MaskClass mm(fname);
+  MangleDeprecated::MaskClass mm(fname);
   cout << "# Read " << mm.npolygons() << " polygons from " << fname << endl;
   cout << setiosflags(ios::left)  << "#" << setiosflags(ios::right)
        << setw(9) << "Phi" << setw(10) << "Cos(th)" << endl;

@@ -15,5 +15,5 @@ target_link_libraries(${test1} gtest bosslib)
 endforeach(test1)
 
 # Code below is for debugging
-#add_executable(test_mangle_debug test_mangle.cpp ../mangle.cpp)
+#add_executable(test_mangle_debug test_mangle.cpp ../mangle2.cpp)
 #set_target_properties(test_mangle_debug PROPERTIES COMPILE_FLAGS "-O0 -DDEBUGMODE")
