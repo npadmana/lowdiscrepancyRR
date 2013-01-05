@@ -86,9 +86,11 @@ private:
 public:
 	MaskClass(std::string fname);
 	long npolygons();
+	double completeness(double theta, double phi, long &polyid);
 	double completeness(double theta, double phi);
 
 	/* Input in RA, Dec in degrees */
+	double completeness_radec(double ra, double dec, long &polyid);
 	double completeness_radec(double ra, double dec);
 
 };

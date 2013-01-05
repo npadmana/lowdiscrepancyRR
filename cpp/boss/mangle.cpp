@@ -250,15 +250,17 @@ long Mangle::MaskClass::npolygons() {	// For general interest, how many polygons
 	return(polygons.size());
 }
 
-double Mangle::MaskClass::completeness(double theta, double phi) {
+double Mangle::MaskClass::completeness(double theta, double phi, long &polyid) {
 	// This is the main method, returning the completness at (theta,phi).
 	bool	notfnd=true;
 	long	ii,pid=-1;
 	double	wt=0;
+	polyid = -99;
 	if (pixelres==-1) {	// Mask isn't pixelized.
 		for (ii=0; ii<polygons.size() && notfnd; ii++)
 			if (polygons[ii].inpoly(theta,phi)) {
 				wt    = polygons[ii].getwt();
+				polyid= polygons[ii].getPolyid();
 				notfnd= false;
 			}
 	}
@@ -279,6 +281,7 @@ double Mangle::MaskClass::completeness(double theta, double phi) {
 					ii!=pixels[ipix].end() && notfnd; ii++) {
 				if (polygons[*ii].inpoly(theta,phi)) {
 					wt    = polygons[*ii].getwt();
+					polyid = polygons[*ii].getPolyid();
 					notfnd= false;
 				}
 			}
@@ -290,12 +293,22 @@ double Mangle::MaskClass::completeness(double theta, double phi) {
 		return(wt);
 }
 
-double Mangle::MaskClass::completeness_radec(double ra, double dec) {
+double Mangle::MaskClass::completeness(double theta, double phi) {
+	long polyid;
+	return completeness(theta, phi, polyid);
+}
+
+double Mangle::MaskClass::completeness_radec(double ra, double dec, long &polyid) {
 	const double d2r = M_PI/180.0;
 	double theta, phi;
 	phi = ra*d2r;
 	theta = (90.0-dec)*d2r;
-	return completeness(theta, phi);
+	return completeness(theta, phi, polyid);
+}
+
+double Mangle::MaskClass::completeness_radec(double ra, double dec) {
+	long polyid;
+	return completeness_radec(ra,dec, polyid);
 }
 
 long Mangle::PolygonClass::getPolyid() const {
