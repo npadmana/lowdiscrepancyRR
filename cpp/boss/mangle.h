@@ -93,6 +93,9 @@ public:
 	double completeness_radec(double ra, double dec, long &polyid);
 	double completeness_radec(double ra, double dec);
 
+	// Mostly for debugging and tests
+	int getPixelres() const;
+	void setPixelres(int pixelres);
 };
 
 

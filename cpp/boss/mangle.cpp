@@ -306,6 +306,14 @@ double Mangle::MaskClass::completeness_radec(double ra, double dec, long &polyid
 	return completeness(theta, phi, polyid);
 }
 
+int Mangle::MaskClass::getPixelres() const {
+	return pixelres;
+}
+
+void Mangle::MaskClass::setPixelres(int pixelres) {
+	this->pixelres = pixelres;
+}
+
 double Mangle::MaskClass::completeness_radec(double ra, double dec) {
 	long polyid;
 	return completeness_radec(ra,dec, polyid);
