@@ -48,3 +48,9 @@ TEST(Partition, Test64) {
 	EXPECT_EQ(nra, 8);
 }
 
+int main(int argc, char **argv) {
+	::testing::InitGoogleTest(&argc, argv);
+	int retval = RUN_ALL_TESTS();
+	return retval;
+}
+

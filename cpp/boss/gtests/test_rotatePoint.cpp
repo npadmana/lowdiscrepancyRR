@@ -133,5 +133,11 @@ INSTANTIATE_TEST_CASE_P(DisplacementTest1,
                         //::testing::Values(0.0, 45.0, 90.0, 135.0, 180.0, 225.0, 270.0, 315.0));
 
 
+int main(int argc, char **argv) {
+	::testing::InitGoogleTest(&argc, argv);
+	int retval = RUN_ALL_TESTS();
+	return retval;
+}
+
 
 
