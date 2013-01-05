@@ -7,9 +7,9 @@
 #include <fstream>
 
 bool Mangle2::MaskClass::inCap(const CapClass& cap, const Vector4d &x1) {
-    double	cdot = x1.dot(cap.x);
+    return x1.dot(cap.x) < cap.cm;
     //cdot = 1.0 - cap.x*x0 - cap.y*y0 - cap.z*z0;
-    return (cap.cm < 0.0) ? (cdot > (-cap.cm)) : (cdot < cap.cm);
+    //return (cap.cm < 0.0) ? (cdot > (-cap.cm)) : (cdot < cap.cm);
 }
 
 bool Mangle2::MaskClass::inPolygon(const PolygonClass& poly,
@@ -198,7 +198,12 @@ Mangle2::MaskClass::MaskClass(string fname) :
 			for (int icap=0; icap<ncap; icap++) {
 				if (!getline(fs, sbuf)) throw runtime_error("Unexpected end of file");
 				istringstream(sbuf) >> x1 >> y1 >> z1 >> cm1;
-				CapClass cap1; cap1.x << 1,x1,y1,z1; cap1.cm = cm1;
+				CapClass cap1;
+				if (cm1 < 0.0) {
+					cap1.x << -1,-x1,-y1,-z1; cap1.cm = cm1;
+				} else {
+					cap1.x << 1,x1,y1,z1; cap1.cm = cm1;
+				}
 				caps.push_back(cap1);
 			}
 			if (caps.size() != icap) throw runtime_error("Egad! Cap and polygon index out of sync");
