@@ -9,11 +9,7 @@
 bool Mangle2::MaskClass::inCap(const CapClass& cap, const Vector4d &x1) {
     double	cdot = x1.dot(cap.x);
     //cdot = 1.0 - cap.x*x0 - cap.y*y0 - cap.z*z0;
-    if (cap.cm < 0.0)
-      return cdot > (-cap.cm);
-    else
-      return cdot < cap.cm;
-
+    return (cap.cm < 0.0) ? (cdot > (-cap.cm)) : (cdot < cap.cm);
 }
 
 bool Mangle2::MaskClass::inPolygon(const PolygonClass& poly,
