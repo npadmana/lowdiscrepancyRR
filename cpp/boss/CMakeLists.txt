@@ -25,3 +25,4 @@ target_link_libraries(bossRR bosslib)
 add_executable(test_partition test_partition.cpp)
 
 add_subdirectory(gtests)
+add_subdirectory(profile)
