@@ -1,8 +1,7 @@
 
 # Build profiling codes
-set (profilelist mangle_pixelized)
+add_executable(mangle_pixelized mangle_pixelized.cpp)
+target_link_libraries(mangle_pixelized bosslib)
 
-foreach (prof1 ${profilelist})
-add_executable(${prof1} ${prof1}.cpp)
-target_link_libraries(${prof1} bosslib)
-endforeach(prof1)
+add_executable(mangle_compare mangle_compare.cpp ../deprecated/mangle.cpp)
+target_link_libraries(mangle_compare bosslib)
