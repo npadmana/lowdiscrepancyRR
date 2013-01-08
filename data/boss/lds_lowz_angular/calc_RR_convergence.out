@@ -146,9 +146,9 @@ Setting the pixel resolution to 6s
 Setting the pixel resolution to 6s
 Setting the pixel resolution to 6s
 Setting the pixel resolution to 6s
-[c127:25671] 63 more processes have sent help message help-mpi-btl-openib.txt / reg mem limit low
-[c127:25671] Set MCA parameter "orte_base_help_aggregate" to 0 to see all help / error messages
-Total evaluation time = 395.495 seconds 
+[c127:29701] 63 more processes have sent help message help-mpi-btl-openib.txt / reg mem limit low
+[c127:29701] Set MCA parameter "orte_base_help_aggregate" to 0 to see all help / error messages
+Total evaluation time = 438.52 seconds 
 --------------------------------------------------------------------------
 WARNING: It appears that your OpenFabrics subsystem is configured to only
 allow registering part of your physical memory.  This can cause MPI jobs to
@@ -165,7 +165,7 @@ parameters:
 
     http://www.open-mpi.org/faq/?category=openfabrics#ib-locked-pages
 
-  Local host:              c120
+  Local host:              c118
   Registerable memory:     32768 MiB
   Total memory:            48433 MiB
 --------------------------------------------------------------------------
@@ -297,9 +297,9 @@ Setting the pixel resolution to 6s
 Setting the pixel resolution to 6s
 Setting the pixel resolution to 6s
 Setting the pixel resolution to 6s
-[c127:25853] 63 more processes have sent help message help-mpi-btl-openib.txt / reg mem limit low
-[c127:25853] Set MCA parameter "orte_base_help_aggregate" to 0 to see all help / error messages
-Total evaluation time = 394.231 seconds 
+[c127:29859] 63 more processes have sent help message help-mpi-btl-openib.txt / reg mem limit low
+[c127:29859] Set MCA parameter "orte_base_help_aggregate" to 0 to see all help / error messages
+Total evaluation time = 438.056 seconds 
 --------------------------------------------------------------------------
 WARNING: It appears that your OpenFabrics subsystem is configured to only
 allow registering part of your physical memory.  This can cause MPI jobs to
@@ -316,7 +316,7 @@ parameters:
 
     http://www.open-mpi.org/faq/?category=openfabrics#ib-locked-pages
 
-  Local host:              c120
+  Local host:              c127
   Registerable memory:     32768 MiB
   Total memory:            48433 MiB
 --------------------------------------------------------------------------
@@ -448,9 +448,9 @@ Setting the pixel resolution to 6s
 Setting the pixel resolution to 6s
 Setting the pixel resolution to 6s
 Setting the pixel resolution to 6s
-[c127:26052] 63 more processes have sent help message help-mpi-btl-openib.txt / reg mem limit low
-[c127:26052] Set MCA parameter "orte_base_help_aggregate" to 0 to see all help / error messages
-Total evaluation time = 328.337 seconds 
+[c127:30053] 63 more processes have sent help message help-mpi-btl-openib.txt / reg mem limit low
+[c127:30053] Set MCA parameter "orte_base_help_aggregate" to 0 to see all help / error messages
+Total evaluation time = 364.967 seconds 
 --------------------------------------------------------------------------
 WARNING: It appears that your OpenFabrics subsystem is configured to only
 allow registering part of your physical memory.  This can cause MPI jobs to
@@ -467,7 +467,7 @@ parameters:
 
     http://www.open-mpi.org/faq/?category=openfabrics#ib-locked-pages
 
-  Local host:              c125
+  Local host:              c117
   Registerable memory:     32768 MiB
   Total memory:            48433 MiB
 --------------------------------------------------------------------------
@@ -599,9 +599,9 @@ Setting the pixel resolution to 6s
 Setting the pixel resolution to 6s
 Setting the pixel resolution to 6s
 Setting the pixel resolution to 6s
-[c127:26186] 63 more processes have sent help message help-mpi-btl-openib.txt / reg mem limit low
-[c127:26186] Set MCA parameter "orte_base_help_aggregate" to 0 to see all help / error messages
-Total evaluation time = 268.844 seconds 
+[c127:30244] 63 more processes have sent help message help-mpi-btl-openib.txt / reg mem limit low
+[c127:30244] Set MCA parameter "orte_base_help_aggregate" to 0 to see all help / error messages
+Total evaluation time = 298.91 seconds 
 --------------------------------------------------------------------------
 WARNING: It appears that your OpenFabrics subsystem is configured to only
 allow registering part of your physical memory.  This can cause MPI jobs to
@@ -618,7 +618,7 @@ parameters:
 
     http://www.open-mpi.org/faq/?category=openfabrics#ib-locked-pages
 
-  Local host:              c125
+  Local host:              c127
   Registerable memory:     32768 MiB
   Total memory:            48433 MiB
 --------------------------------------------------------------------------
@@ -750,6 +750,6 @@ Setting the pixel resolution to 6s
 Setting the pixel resolution to 6s
 Setting the pixel resolution to 6s
 Setting the pixel resolution to 6s
-[c127:26305] 63 more processes have sent help message help-mpi-btl-openib.txt / reg mem limit low
-[c127:26305] Set MCA parameter "orte_base_help_aggregate" to 0 to see all help / error messages
-Total evaluation time = 265.864 seconds 
+[c127:30369] 63 more processes have sent help message help-mpi-btl-openib.txt / reg mem limit low
+[c127:30369] Set MCA parameter "orte_base_help_aggregate" to 0 to see all help / error messages
+Total evaluation time = 295.419 seconds 
