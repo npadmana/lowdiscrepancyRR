@@ -188,7 +188,12 @@ Ang2D::InputParams::InputParams(string fn) :
 					   (vm.count("dtheta")>0) && (vm.count("nthetabins")>0))
 			{
 				thetabins.resize(nthetabins+1);
-				for (int ii=0; ii<=nthetabins; ++ii) thetabins[ii] = ii*dtheta + thetamin;
+				// If thetamin < 0, then assume these are specified as log10.
+				if (thetamin < 0) {
+					for (int ii=0; ii<=nthetabins;++ii) thetabins[ii] = pow(10.0,ii*dtheta + thetamin);
+				} else {
+					for (int ii=0; ii<=nthetabins; ++ii) thetabins[ii] = ii*dtheta + thetamin;
+				}
 			}
 
 
