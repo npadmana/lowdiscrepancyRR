@@ -323,7 +323,10 @@ OutputData rreval(const Mask &Mask1, const Mask &Mask2, const InputParams& p, do
 	// Scatter bounds
 	double cDth1 = cos(thetamax * D2R); // Cos Delta theta_1 --- use the larger number first,
 	// to avoid -ve's in the code
-	double dcDth = cos(thetamin * D2R) - cDth1; // Cos Delta theta_2 - Cos Delta theta_1
+	// Use the difference angle formula, to avoid roundoff errors
+	// This is equivalent to this formula
+	//double dcDth = cos(thetamin * D2R) - cDth1; // Cos Delta theta_2 - Cos Delta theta_1
+	double dcDth = -2 * sin((thetamin+thetamax)*D2R/2)*sin((thetamin-thetamax)*D2R/2);
 
 	// Jacobian
 	double jacobian = dcth * dphi * D2R * dcDth * 2 * PI;
