@@ -106,7 +106,9 @@ Cell[BoxData[
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"ListPlot", "[", "rrAccum", "]"}]], "Input"],
+ RowBox[{"ListPlot", "[", 
+  RowBox[{"rrAccum", ",", " ", 
+   RowBox[{"PlotRange", "\[Rule]", "All"}]}], "]"}]], "Input"],
 
 Cell[BoxData[
  GraphicsBox[{{}, 
@@ -288,12 +290,9 @@ vRMr8D+4ibpK
   AspectRatio->NCache[GoldenRatio^(-1), 0.6180339887498948],
   Axes->True,
   AxesLabel->{None, None},
-  AxesOrigin->{0, 0},
+  AxesOrigin->{0., 0.},
   Method->{},
-  PlotRange->{{0, 33.7129524113805}, {0, 0.2839562734228558}},
-  PlotRangeClipping->True,
-  PlotRangePadding->{{0.67425904822761, 0.67425904822761}, {
-   0.005679125468457116, 0.005679125468457116}}]], "Output"]
+  PlotRangeClipping->True]], "Output"]
 }, Open  ]],
 
 Cell[CellGroupData[{
