@@ -1,0 +1,1504 @@
+#LyX 2.0 created this file. For more info see http://www.lyx.org/
+\lyxformat 413
+\begin_document
+\begin_header
+\textclass mn2e
+\begin_preamble
+\usepackage{bm}
+\usepackage{fixltx2e}
+\usepackage{astrobib_mnras2e}
+%\usepackage{lineno}
+
+% Filler text
+\usepackage{lipsum}
+
+\topmargin-1cm
+%\linenumbers
+
+%Make my life significantly easier
+\newcommand{\vx}{{\bm x}}
+\newcommand{\vr}{{\bm r}}
+\newcommand{\vdx}{{\bm dx}}
+\newcommand{\vy}{{\bm y}}
+\newcommand{\bin}{\Theta}
+\end_preamble
+\options usenatbib
+\use_default_options false
+\maintain_unincluded_children false
+\language english
+\language_package none
+\inputencoding auto
+\fontencoding default
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_amsmath 1
+\use_esint 1
+\use_mhchem 0
+\use_mathdots 0
+\cite_engine natbib_authoryear
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\use_refstyle 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+title[Geometric Integrals for Correlation Functions]
+\end_layout
+
+\begin_layout Plain Layout
+
+{On Calculating the Geometric Integrals in Correlation Function Estimators}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+author[Padmanabhan
+\backslash
+&Parejko]{Nikhil Padmanabhan$^{1}$, John K.
+ Parejko$^{1}$ 
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+$^{1}$ Dept.
+ of Physics, Yale University, New Haven, CT 06511 
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+date{
+\backslash
+today}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+maketitle
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Abstract
+We present a quasi-Monte Carlo technique for computing the geometric integrals
+ - 
+\begin_inset Formula $RR$
+\end_inset
+
+ and 
+\begin_inset Formula $DR$
+\end_inset
+
+ - that appear in pair-counted correlation function estimators.
+ We demonstrate that this technique can accelerate the convergence of these
+ integrals, substantially reducing the number of random points required
+ to reach a desired error target.
+ MAYBE PUT IN EXACT SCALINGS, DEPENDING ON WHAT WE FIND??? We also present
+ a simplification for surveys with separable angular and radial window functions.
+ ???? 
+\end_layout
+
+\begin_layout Section
+Introduction
+\end_layout
+
+\begin_layout Standard
+The correlation function is one of the fundamental measurements in characterizin
+g the distribution of galaxies, both on small and large scales.
+ Given its importance and the computationally intensive nature of the na
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+"i
+\end_layout
+
+\end_inset
+
+ve 
+\begin_inset Formula $\mathcal{O}(N^{2})$
+\end_inset
+
+ calculation, a number of techniques have been developed to speed up this
+ calculation 
+\begin_inset CommandInset citation
+LatexCommand citep
+after "MORE!!!"
+before "e.g."
+key "1980lssu.book.....P,2001misk.conf...71M"
+
+\end_inset
+
+.
+ These fast estimation and counting methods are particularly necessary for
+ counting the RR pairs, as a large on-sky region may require, at minimum,
+ several million pseudo-random points to properly map the geometry 
+\begin_inset CommandInset citation
+LatexCommand citep
+before "e.g."
+key "2012MNRAS.427.3435A,2013MNRAS.429...98P"
+
+\end_inset
+
+, resulting 
+\begin_inset Formula $>10^{12}$
+\end_inset
+
+ potential pairs.
+ Additionally, a pseudo-random distribution of N points does not optimally
+ map the geometry, resulting in a higher variance than might be possible
+ with a more favorable distribution.
+\end_layout
+
+\begin_layout Standard
+In this work, we describe a technique for calculating RR (and, by extension,
+ DR) using low-discrepency sequences.
+ A low-discrepency--alternately, 
+\begin_inset Quotes eld
+\end_inset
+
+quasi-random
+\begin_inset Quotes erd
+\end_inset
+
+--sequence in some measure space has the fraction of points falling into
+ an arbitrary set nearly proportional to the measure of that set.
+ A particular sequence of uniformly distributed pseudo-random numbers, as
+ are typically used in the RR calculation, does not have low discrepency,
+ though the uniform distribution that the pseudo-random points draw from
+ does.
+\end_layout
+
+\begin_layout Standard
+MORE BRIEF DESCRIPTION OF THIS WORK
+\end_layout
+
+\begin_layout Standard
+This paper is organized as follows : Sec.
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:RR"
+
+\end_inset
+
+ introduces the 
+\begin_inset Formula $RR$
+\end_inset
+
+ integral, and presents the usual method by which it is estimated.
+ We then introduce our suggested technique for calculating this integral,
+ constrasting it with the usual calculation in a series of three toy problems.
+ We then summarize the algorithm in Sec.
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:alg"
+
+\end_inset
+
+ and present a realistic examples from the DEEP2 DR4 (CITE???) survey.
+ We then present an important simplification applicable to surveys with
+ separable angular and radial selection functions in Sec.
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:sep"
+
+\end_inset
+
+.
+ We continue by extending our algorithm to the 
+\begin_inset Formula $DR$
+\end_inset
+
+ integral in Sec.
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:DR"
+
+\end_inset
+
+.
+ Appendix
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:review"
+
+\end_inset
+
+ reviews the basics of Monte Carlo and quasi-Monte Carlo integration techniques,
+ and gathers together results used in this work.
+\end_layout
+
+\begin_layout Standard
+A note on the nomenclature used in the paper.
+ Vectors are denoted as (
+\begin_inset Formula $\vx$
+\end_inset
+
+), with their components specified as 
+\begin_inset Formula $x_{i}$
+\end_inset
+
+.
+ We also define a bin function 
+\begin_inset Formula $\bin(\vx,\vy)$
+\end_inset
+
+ which is 
+\begin_inset Formula $1$
+\end_inset
+
+ if the separation between 
+\begin_inset Formula $\vx$
+\end_inset
+
+ and 
+\begin_inset Formula $\vy$
+\end_inset
+
+ corresponds to the bin of interest, and zero otherwise.
+\end_layout
+
+\begin_layout Section
+The RR Integral
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:RR"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+We start by reviewing the basics of galaxy correlation function estimation,
+ as is most commonly used in large-scale structure work today.
+ We then introduce our modifications in a series of toy examples, that highlight
+ both the algorithm and the differences with the traditional approach.
+\end_layout
+
+\begin_layout Subsection
+Correlation Function Estimators and their Standard Calculation
+\end_layout
+
+\begin_layout Standard
+The galaxy two-point correlation 
+\begin_inset Formula $\xi(r)$
+\end_inset
+
+ is defined as the fractional excess over a uniform distribution in the
+ number of galaxy pairs separated by a distance 
+\begin_inset Formula $r$
+\end_inset
+
+ from one another.
+ The most commonly used estimator is the Landy-Szalay 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "1993ApJ...412...64L"
+
+\end_inset
+
+ estimator : 
+\begin_inset Formula 
+\begin{equation}
+\xi=\frac{DD-2DR+RR}{RR}
+\end{equation}
+
+\end_inset
+
+where 
+\begin_inset Formula $\xi$
+\end_inset
+
+ here represents the correlation function in a particular separation bin
+ (appropriately averaged) and 
+\begin_inset Formula $DD$
+\end_inset
+
+ is the number of galaxy pairs that fall in that bin.
+ This raw number of pairs must be scaled and corrected for the effects of
+ the survey selection function.
+ The 
+\begin_inset Formula $DR$
+\end_inset
+
+ and 
+\begin_inset Formula $RR$
+\end_inset
+
+ terms represent this correction.
+ 
+\begin_inset Formula $RR$
+\end_inset
+
+ is the expected number of pairs if the galaxies were homogeously distributed
+ according to the survey selection function, while 
+\begin_inset Formula $DR$
+\end_inset
+
+ is the expected number of pairs around the actual galaxies themselves.
+ If we consider the survey selection function 
+\begin_inset Formula $n(\vx)$
+\end_inset
+
+ normalized by the volume integral 
+\begin_inset Formula 
+\begin{equation}
+N=\int d\vx\, n(\vx)
+\end{equation}
+
+\end_inset
+
+where 
+\begin_inset Formula $N$
+\end_inset
+
+ is the observed number of galaxies, then 
+\begin_inset Formula 
+\begin{equation}
+RR=\int d\vx_{1}\int d\vx_{2}\, n(\vx_{1})n(\vx_{2})\bin(\vx,\vy)\,\,,\label{eq:RRdef}
+\end{equation}
+
+\end_inset
+
+and 
+\begin_inset Formula 
+\begin{equation}
+DR=\sum_{i=1}^{N}\int d\vx_{1}\, n(\vx_{1})\bin(\vx_{1},\vx_{g,i})\,\,\label{eq:DRdef}
+\end{equation}
+
+\end_inset
+
+where the sum for 
+\begin_inset Formula $DR$
+\end_inset
+
+ runs over the 
+\begin_inset Formula $N$
+\end_inset
+
+ galaxy positions 
+\begin_inset Formula $\vx_{g,i}$
+\end_inset
+
+.
+ Note that for an 
+\begin_inset Formula $n$
+\end_inset
+
+-dimensional galaxy distribution, the 
+\begin_inset Formula $RR$
+\end_inset
+
+ integral is 
+\begin_inset Formula $2n$
+\end_inset
+
+-dimensional, while 
+\begin_inset Formula $DR$
+\end_inset
+
+ is 
+\begin_inset Formula $n$
+\end_inset
+
+-dimensional.
+ In what follows, it will be convenient to scale 
+\begin_inset Formula $DR$
+\end_inset
+
+ and 
+\begin_inset Formula $RR$
+\end_inset
+
+ as defined by 
+\begin_inset Formula $1/N^{2}$
+\end_inset
+
+, equivalent to normalizing the selection function by 
+\begin_inset Formula $\int d\vx\, n(\vx)=1$
+\end_inset
+
+.
+ For simplicity, we refer to these as 
+\begin_inset Formula $DR$
+\end_inset
+
+ and 
+\begin_inset Formula $RR$
+\end_inset
+
+ as well.
+\end_layout
+
+\begin_layout Standard
+In what follows, it is important to remember that both 
+\begin_inset Formula $DR$
+\end_inset
+
+ and 
+\begin_inset Formula $RR$
+\end_inset
+
+ are purely geometric quantities and do not have any intrinsic statistical
+ fluctuations.
+ These therefore should be estimated at a high enough accuracy to introduce
+ no additional errors to the correlation function estimate.
+\end_layout
+
+\begin_layout Subsection
+Calculating RR
+\end_layout
+
+\begin_layout Standard
+Given the complexity of survey selection functions, these integrals are
+ most conveniently estimated by Monte-Carlo techniques.
+ We continue to adopt this approach here, and only depart in the details
+ of our implementation.
+ We focus on the 
+\begin_inset Formula $RR$
+\end_inset
+
+ calculation here, and discuss the 
+\begin_inset Formula $DR$
+\end_inset
+
+ calculation in Sec.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:DR"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+The traditional approach to calculating 
+\begin_inset Formula $RR$
+\end_inset
+
+ is to lay down a set random points according to the survey selection function
+ and then to count the number of pairs when correlating this random catalog
+ with itself.
+ This approach has much to recommend it: it is identical to the 
+\begin_inset Formula $DD$
+\end_inset
+
+ calculation and therefore conceptually simple to implement, and the random
+ catalogs so created are a convenient and portable representation of the
+ survey selection function.
+ However, the number of random points needs to be significantly larger than
+ the number of data points to prevent the estimation error in 
+\begin_inset Formula $RR$
+\end_inset
+
+ from contributing to the error in 
+\begin_inset Formula $\xi$
+\end_inset
+
+; factors of 50 to 100 times the data sample are relatively commonly used.
+ A result of this is that the calculation of the correlation function is
+ immediately dominated by the 
+\begin_inset Formula $RR$
+\end_inset
+
+ pair counting, and significant effort has been expended to speed up this
+ calculation, both with algorithmic improvements 
+\begin_inset CommandInset citation
+LatexCommand citep
+before "e.g."
+key "2001misk.conf...71M"
+
+\end_inset
+
+ and parallelization (CITES????).
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide true
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename plots/grid1d-1.pdf
+	width 1.5in
+
+\end_inset
+
+ 
+\begin_inset Graphics
+	filename plots/grid1d-2.pdf
+	width 1.5in
+
+\end_inset
+
+ 
+\begin_inset Graphics
+	filename plots/grid1d-3.pdf
+	width 1.5in
+
+\end_inset
+
+ 
+\begin_inset Graphics
+	filename plots/grid1d-4.pdf
+	width 1.5in
+
+\end_inset
+
+ 
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Computing 
+\begin_inset Formula $RR$
+\end_inset
+
+ for a 1D survey geometry on the unit interval for points separated by 0.2.
+ The area of the shaded region is the desired value of 
+\begin_inset Formula $RR$
+\end_inset
+
+.
+ Starting from the left, the panels are (a) the traditional algorithm, formed
+ by the Cartesian product of a 1D random set, (b) pseudo-random 2D numbers,
+ (c) a 2D Niederreiter quasi-random sequence and (d) a 2D Niederreiter sequence
+ in position and displacement (see text).
+ Note that the 
+\begin_inset Formula $y$
+\end_inset
+
+-axis in the last panel runs from -0.2 to 1.2 to account for points on the
+ edges.
+ The number of points (pairs) in all panels is the same.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:grid1d"
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The inefficiencies with this approach is clearly demonstrated by a toy example.
+ Consider a 1D survey geometry, and imagine we needed to estimate 
+\begin_inset Formula $RR$
+\end_inset
+
+ for points separated by less than a chosen distance.
+ Fig.
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:grid1d"
+
+\end_inset
+
+ graphically demonstrates this for a survey defined on the unit interval,
+ and a separation distance of 0.2.
+ Calculating 
+\begin_inset Formula $RR$
+\end_inset
+
+ is equivalent to the problem of calculating the area of the shaded region.
+ The leftmost panel illustrates the algorithm as described above.
+ Since the pairs are the Cartesian product of the random set, they arrange
+ themselves onto a grid, and cover the 2D integral domain very non-uniformly.
+ As we will see explicitly below, this adversely affects the convergence
+ rate of this algorithm, scaling much slower than the 
+\begin_inset Formula $\sqrt{N_{{\rm pairs}}}$
+\end_inset
+
+ that one would expect for a random sequence.
+\end_layout
+
+\begin_layout Standard
+Our first improvement is shown in the second panel - we simply randomly
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Technically, pseudo-randomly, since the random number generator is completely
+ deterministic given a starting seed.
+ We use the GSL implementation of the Mersenne Twister throughout this paper.
+\end_layout
+
+\end_inset
+
+ distribute the points over the full integration domain.
+ Both panels have the same number of points sampling the integration domain,
+ and the difference in coverage is apparent.
+ This is 
+\shape italic
+not
+\shape default
+ equivalent to generating two separate random sets and correlating them
+ - we are sampling points from the underlying 
+\begin_inset Formula $2n$
+\end_inset
+
+ dimensional space (2D in this case).
+ We expect this to scale as 
+\begin_inset Formula $\sqrt{N_{{\rm pairs}}}$
+\end_inset
+
+ (see below).
+ However, the distribution of points in this case is still non-optimal:
+ large gaps and overdensities still remain.
+\end_layout
+
+\begin_layout Standard
+We next replace the pseudo-random 2D distribution with a 2D Niederreiter
+ quasi-random sequence containg the same number of points (third panel).
+ This sequence has low discrepency, and clearly fills the space more uniformly
+ than either of the pseudo-random sequences.
+\end_layout
+
+\begin_layout Subsection
+A Spherical Cap and a Unit Cube
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+lipsum[1-3]
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename plots/cap2d.pdf
+	width 3in
+
+\end_inset
+
+ 
+\begin_inset Caption
+
+\begin_layout Plain Layout
+???The scaling of the relative error in RR for a spherical cap as a function
+ of the number of pairs.
+ The cap is centered about the north pole, and extends down by 
+\begin_inset Formula $60^{\circ}$
+\end_inset
+
+.
+ The circles and squares correspond to separations of points 
+\begin_inset Formula $<0.1$
+\end_inset
+
+ and 
+\begin_inset Formula $10$
+\end_inset
+
+ degrees respectively.
+ The long and short dashed lines are 
+\begin_inset Formula $\propto N_{{\rm pairs}}^{-1/2}$
+\end_inset
+
+ and 
+\begin_inset Formula $N_{{\rm pairs}}^{-1}$
+\end_inset
+
+ respectively.
+ The error scaling is steeper than the 
+\begin_inset Formula $N^{-1/2}$
+\end_inset
+
+ expected from purely random numbers.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:cap2d"
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename plots/unit3d.pdf
+	width 3in
+
+\end_inset
+
+ 
+\begin_inset Caption
+
+\begin_layout Plain Layout
+???The scaling of the relative error in RR for a unit cube as a function
+ of the number of pairs.
+ The circles and squares correspond to radial bins of 
+\begin_inset Formula $[0.015625,0.03125]$
+\end_inset
+
+ and 
+\begin_inset Formula $[0.25,0.5]$
+\end_inset
+
+ respectively.
+ The long and short dashed lines are 
+\begin_inset Formula $\propto N_{{\rm pairs}}^{-1/2}$
+\end_inset
+
+ and 
+\begin_inset Formula $N_{{\rm pairs}}^{-1}$
+\end_inset
+
+ respectively.
+ The error scaling is steeper than the 
+\begin_inset Formula $N^{-1/2}$
+\end_inset
+
+ expected from purely random numbers.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:unit3d"
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Real World Examples
+\end_layout
+
+\begin_layout Subsection
+The Algorithm Summarized
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:alg"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+PSEUDO-CODE HERE????? 
+\end_layout
+
+\begin_layout Enumerate
+Generate a random vector in 
+\begin_inset Formula $[0,1)^{2n}$
+\end_inset
+
+ .
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Repeat the instructions in this group 
+\begin_inset Formula $N$
+\end_inset
+
+ times.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Generate a 
+\begin_inset Formula $2n$
+\end_inset
+
+ dimensional element in 
+\begin_inset Formula $[0,1)^{2n}$
+\end_inset
+
+ from a low discrepancy sequence.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Shift it (mod 1) by the random vector stored above.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Generate 
+\begin_inset Formula $\vx$
+\end_inset
+
+ from the first 
+\begin_inset Formula $n$
+\end_inset
+
+ elements and 
+\begin_inset Formula $\vdx$
+\end_inset
+
+ from the last 
+\begin_inset Formula $n$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Generate 
+\begin_inset Formula $\vy$
+\end_inset
+
+ from 
+\begin_inset Formula $\vx$
+\end_inset
+
+ and 
+\begin_inset Formula $\vdx$
+\end_inset
+
+.
+ The most common rules are summarized below.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Evaluate 
+\begin_inset Formula $n_{1}(\vx)n_{2}(\vy)\bin(\vx,\vy)$
+\end_inset
+
+ and add to a running sum 
+\begin_inset Formula $\Sigma$
+\end_inset
+
+.
+ 
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+The estimate for 
+\begin_inset Formula $RR$
+\end_inset
+
+ is then 
+\begin_inset Formula $\Sigma/N$
+\end_inset
+
+ multiplied by the appropriate Jacobian factors from the variable transformation
+s.
+ 
+\end_layout
+
+\begin_layout Enumerate
+If desired, an error may be estimated by repeating this process and measuring
+ the scatter.
+ 
+\end_layout
+
+\begin_layout Standard
+COMMON VARIABLE TRANSFORMATIONS 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $2D$
+\end_inset
+
+ Cartesian space 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $2D$
+\end_inset
+
+ Spherical coordinates 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $3D$
+\end_inset
+
+ Cartesian space 
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+lipsum[1-3]
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Two Dimensions : The DEEP2 DR4 Survey Mask
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename plots/deep2mask.pdf
+	width 3in
+
+\end_inset
+
+ 
+\begin_inset Caption
+
+\begin_layout Plain Layout
+The DEEP2 survey mask for the first pointing in field 3.
+ The completeness ranges from 0 (white) to 1 (black).
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:deep2mask"
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename plots/deep2rrcomp1.pdf
+	width 3in
+
+\end_inset
+
+ 
+\begin_inset Caption
+
+\begin_layout Plain Layout
+???The scaling of the relative error in RR for the DEEP2 survey mask as
+ a function of the number of pairs.
+ The circles and squares correspond to the angular bins 
+\begin_inset Formula $[28.12,56.25]$
+\end_inset
+
+ arcseconds and 
+\begin_inset Formula $[7.5,15]$
+\end_inset
+
+ arcminutes respectively, while the filled and open symbols compare a low
+ discrepancy sequence to pseudo-random numbers.
+ The long and short dashed lines are 
+\begin_inset Formula $\propto N_{{\rm pairs}}^{-1/2}$
+\end_inset
+
+ and 
+\begin_inset Formula $N_{{\rm pairs}}^{-1}$
+\end_inset
+
+ respectively.
+ The low discrepancy sequences outperform pseudo-random numbers both in
+ the absolute error as well as in the scaling with 
+\begin_inset Formula $N_{{\rm pairs}}$
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:deep2comp1"
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename plots/deep2rrcomp2.pdf
+	width 3in
+
+\end_inset
+
+ 
+\begin_inset Caption
+
+\begin_layout Plain Layout
+The same as Fig.
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:deep2comp1"
+
+\end_inset
+
+ except the open symbols are now calculated using the traditional RR method.
+ The dot-dashed line is 
+\begin_inset Formula $\propto N_{{\rm pairs}}^{-1/4}$
+\end_inset
+
+.
+ The significant inefficiencies in the traditional approach are clearly
+ apparent here.
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:deep2comp2"
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:deep2PDF"
+
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename plots/deep2rrhist.pdf
+	width 3in
+
+\end_inset
+
+ 
+\begin_inset Caption
+
+\begin_layout Plain Layout
+????
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:deep2comp2"
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+lipsum[1-3]
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Three Dimensions : The BOSS LOWZ sample
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+lipsum[1-3]
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Geometry
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+lipsum[1-3]
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Separable Window Functions
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:sep"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+lipsum[1-3]
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+The DR Integral
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:DR"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+lipsum[1-3]
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Conclusions
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:conclude"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+lipsum[1-3]
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Acknowledgments
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset bibtex
+LatexCommand bibtex
+bibfiles "bib/clustering_method,bib/sdss-tech,bib/sdss,bib/Npoint,bib/lowdiscr"
+options "mn2e"
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document
